@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://x8onaolkwe5v"]
+
+[ext_resource type="Script" uid="uid://c2q51iiaxua7n" path="res://player.gd" id="1_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://1xvbq41oxbsv" path="res://assets/TurtleThrashing.png" id="2_lnu2h"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fc0e3"]
+size = Vector2(116, 68)
+
+[node name="Node2D" type="Node2D" unique_id=2020137742]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1744978302]
+script = ExtResource("1_yqjtg")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player" unique_id=736989500]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("2_lnu2h")
+
+[node name="Camera2D" type="Camera2D" parent="Player" unique_id=252486179]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=825924628]
+shape = SubResource("RectangleShape2D_fc0e3")
+
+[node name="TurtleThrashing" type="Sprite2D" parent="." unique_id=1590373526]
+position = Vector2(85, 196)
+texture = ExtResource("2_lnu2h")

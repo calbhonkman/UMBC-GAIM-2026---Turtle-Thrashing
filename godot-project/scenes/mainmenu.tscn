@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://1w845eeqw7qm"]
+
+[ext_resource type="Script" uid="uid://dtd5y8l7gj8xj" path="res://scenes/mainmenu.gd" id="1_5mbse"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_loy4s"]
+font_size = 96
+
+[node name="Node2D" type="Node2D" unique_id=1445423648]
+script = ExtResource("1_5mbse")
+
+[node name="Title" type="Label" parent="." unique_id=2065225026]
+offset_left = 580.0
+offset_top = 269.0
+offset_right = 1343.0
+offset_bottom = 401.0
+text = "Turtle Thrashing"
+label_settings = SubResource("LabelSettings_loy4s")
+
+[node name="Play (Button)" type="Button" parent="." unique_id=171000035]
+offset_left = 757.0
+offset_top = 475.0
+offset_right = 1148.0
+offset_bottom = 616.0
+theme_override_font_sizes/font_size = 48
+text = "Play"
+
+[connection signal="pressed" from="Play (Button)" to="." method="_on_play_button_pressed"]
