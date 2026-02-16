@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://csgsdh6itco8"]
+
+[ext_resource type="Script" uid="uid://bt5emnfecomlv" path="res://scenes/fist.gd" id="1_vbem3"]
+[ext_resource type="Texture2D" uid="uid://bvj8yj51s2f7d" path="res://assets/Fist.png" id="2_u8nvv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
+size = Vector2(124, 106)
+
+[node name="Fist" type="Area2D" unique_id=238644860]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_vbem3")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=731389129]
+texture = ExtResource("2_u8nvv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=468740506]
+position = Vector2(6, -9)
+shape = SubResource("RectangleShape2D_iywne")
