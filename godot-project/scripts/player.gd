@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
-@export var SPEED = 200
-@export var CAMERA_DIST = 100
-
 @onready var sprite = $Sprite2D
 @onready var camera = $Camera2D
 @onready var indicator = $Indicator
+
+@export var SPEED = 200
+@export var CAMERA_DIST = 100
 
 func _process(delta):
 	var movement_vector = Input.get_vector("left","right","up","down")
