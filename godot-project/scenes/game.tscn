@@ -55,7 +55,9 @@ texture = ExtResource("3_lnu2h")
 
 [node name="Camera" type="Camera2D" parent="Player" unique_id=252486179]
 
-[node name="Hitbox" type="CollisionShape2D" parent="Player" unique_id=825924628]
+[node name="Area2D" type="Area2D" parent="Player" unique_id=1698332872]
+
+[node name="Hitbox" type="CollisionShape2D" parent="Player/Area2D" unique_id=825924628]
 position = Vector2(52, -44)
 shape = SubResource("RectangleShape2D_fc0e3")
 
@@ -71,3 +73,5 @@ shape = SubResource("CircleShape2D_iywne")
 script = ExtResource("7_u5sy4")
 
 [node name="Node2D" type="Node2D" parent="." unique_id=1018766390]
+
+[connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_area_2d_area_entered"]

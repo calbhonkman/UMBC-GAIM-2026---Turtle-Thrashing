@@ -6,6 +6,8 @@ extends CharacterBody2D
 
 @export var SPEED = 200
 @export var CAMERA_DIST = 100
+@export var HEALTH = 5
+@export var invincible = false
 
 func _process(delta):
 	var movement_vector = Input.get_vector("left","right","up","down")
@@ -19,3 +21,9 @@ func _process(delta):
 	else:
 		sprite.play("default")
 		indicator.visible = false
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.get_script() and area.get_script().get_path() == "res://scripts/enemy.gd":
+		HEALTH -= 1
+		area.queue_free()
