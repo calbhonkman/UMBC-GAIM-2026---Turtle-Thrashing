@@ -14,7 +14,7 @@ func _process(delta):
 	if timer >= COOLDOWN:
 		var closest_enemy = null
 		for area in get_overlapping_areas():
-			if area.get_script().get_path() != "res://scripts/enemy.gd":
+			if area.get_script() and area.get_script().get_path() != "res://scripts/enemy.gd":
 				pass
 			elif closest_enemy == null:
 				closest_enemy = area

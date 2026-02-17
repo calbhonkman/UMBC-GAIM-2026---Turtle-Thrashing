@@ -30,8 +30,8 @@ animations = [{
 "speed": 2.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fc0e3"]
-size = Vector2(436, 204)
+[sub_resource type="CircleShape2D" id="CircleShape2D_u5sy4"]
+radius = 223.32935
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iywne"]
 radius = 600.0
@@ -55,9 +55,12 @@ texture = ExtResource("3_lnu2h")
 
 [node name="Camera" type="Camera2D" parent="Player" unique_id=252486179]
 
-[node name="Hitbox" type="CollisionShape2D" parent="Player" unique_id=825924628]
-position = Vector2(52, -44)
-shape = SubResource("RectangleShape2D_fc0e3")
+[node name="Area2D" type="Area2D" parent="Player" unique_id=1698332872]
+position = Vector2(50, -30)
+
+[node name="Hitbox" type="CollisionShape2D" parent="Player/Area2D" unique_id=825924628]
+scale = Vector2(1, 0.5)
+shape = SubResource("CircleShape2D_u5sy4")
 
 [node name="(Weapon) Punch" type="Area2D" parent="Player" unique_id=1650126049]
 script = ExtResource("4_lbhrr")
@@ -70,4 +73,4 @@ shape = SubResource("CircleShape2D_iywne")
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=1043795800]
 script = ExtResource("7_u5sy4")
 
-[node name="Node2D" type="Node2D" parent="." unique_id=1018766390]
+[connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_area_2d_area_entered"]
