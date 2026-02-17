@@ -7,9 +7,11 @@ extends CharacterBody2D
 @export var SPEED = 200
 @export var CAMERA_DIST = 100
 @export var HEALTH = 5
-@export var invincible = false
+@export var invincibility_length = 10
+var invincible_tick = 0
 
 func _process(delta):
+	invincible_tick -= 1
 	var movement_vector = Input.get_vector("left","right","up","down")
 	camera.global_position = lerp(camera.global_position, global_position + movement_vector * CAMERA_DIST, delta)
 	if movement_vector.length() != 0:
@@ -25,5 +27,7 @@ func _process(delta):
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	if area.get_script() and area.get_script().get_path() == "res://scripts/enemy.gd":
-		HEALTH -= 1
+		if invincible_tick < 0:
+			HEALTH -= 1
+			invincible_tick = invincibility_length
 		area.queue_free()
