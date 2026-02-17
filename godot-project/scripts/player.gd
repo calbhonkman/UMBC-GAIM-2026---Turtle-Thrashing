@@ -30,4 +30,6 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 		if invincible_tick < 0:
 			HEALTH -= 1
 			invincible_tick = invincibility_length
+			if 	HEALTH == 0:
+				self.queue_free()
 		area.queue_free()
