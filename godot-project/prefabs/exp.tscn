@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://blf6oam0dwfh5"]
+
+[node name="Exp" type="Node2D" unique_id=362096671]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1483436095]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=261572919]

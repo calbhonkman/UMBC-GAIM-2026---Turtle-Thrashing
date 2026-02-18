@@ -34,4 +34,4 @@ func _process(delta):
 			isFading = true
 			timer = 0
 		if area.get_script() and area.get_script().get_path() == "res://scripts/enemy.gd":
-			area.queue_free()
+			area.death()
