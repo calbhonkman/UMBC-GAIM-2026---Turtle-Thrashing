@@ -1,20 +1,50 @@
 [gd_scene format=3 uid="uid://csgsdh6itco8"]
 
 [ext_resource type="Script" uid="uid://bt5emnfecomlv" path="res://scripts/fist.gd" id="1_vbem3"]
-[ext_resource type="Texture2D" uid="uid://bvj8yj51s2f7d" path="res://assets/Fist.png" id="2_u8nvv"]
+[ext_resource type="Texture2D" uid="uid://c3nk04dplygky" path="res://assets/Turtle/Direct Attacks/TurtPunch.png" id="2_15iu4"]
+[ext_resource type="Texture2D" uid="uid://dyot3gq62lbqn" path="res://assets/Turtle/Direct Attacks/TurtPunchFrame0001.png" id="3_0yt16"]
+[ext_resource type="Texture2D" uid="uid://b1xw2r3mpbtyg" path="res://assets/Turtle/Direct Attacks/TurtPunchFrame0002.png" id="4_r5hlp"]
+[ext_resource type="Texture2D" uid="uid://cvijeb77m8ln0" path="res://assets/Turtle/Direct Attacks/TurtPunchFrame0003.png" id="5_dbyx4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
-size = Vector2(248, 169)
+size = Vector2(160, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lmy6u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_15iu4")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_15iu4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0yt16")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_r5hlp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dbyx4")
+}],
+"loop": true,
+"name": &"punch",
+"speed": 5.0
+}]
 
 [node name="Fist" type="Area2D" unique_id=238644860]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_vbem3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=468740506]
-position = Vector2(6, -30.5)
+position = Vector2(12, -9)
 shape = SubResource("RectangleShape2D_iywne")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=731389129]
-z_index = 1
-scale = Vector2(2, 2)
-texture = ExtResource("2_u8nvv")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=521042213]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_lmy6u")

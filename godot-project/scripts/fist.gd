@@ -1,14 +1,17 @@
 extends Area2D
 
-@onready var sprite = $Sprite2D
+@onready var sprite = $AnimatedSprite2D
 
-@export var LIFETIME = 10.0
+@export var CHARGEUP = 1.0
+@export var LIFETIME = 3.0
 @export var FADETIME = 0.3
 @export var SPEED = 500.0
 
 var timer = 0
 var target = null
-var target_direction = null
+var target_direction = Vector2.ZERO
+
+var isCharging = true
 var isFading = false
 
 func set_target(t: Area2D):
@@ -16,6 +19,11 @@ func set_target(t: Area2D):
 
 func _process(delta):
 	timer += delta
+	if isCharging and timer < CHARGEUP:
+		pass
+	elif isCharging and timer >= CHARGEUP:
+		isCharging = false
+	
 	if timer >= LIFETIME:
 		queue_free()
 	if isFading:

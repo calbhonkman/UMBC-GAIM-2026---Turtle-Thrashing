@@ -5,9 +5,10 @@ extends Area2D
 @export var SPEED = 80
 
 func _process(delta):
-s	var playerDirection = player.global_position - global_position
-	playerDirection = playerDirection / playerDirection.length()
-	global_position += playerDirection * delta * SPEED
+	if player:
+		var playerDirection = player.global_position - global_position
+		playerDirection = playerDirection / playerDirection.length()
+		global_position += playerDirection * delta * SPEED
 
 func death():
 	queue_free()

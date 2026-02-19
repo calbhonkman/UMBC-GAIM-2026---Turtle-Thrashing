@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://x8onaolkwe5v"]
 
 [ext_resource type="Script" uid="uid://c2q51iiaxua7n" path="res://scripts/player.gd" id="1_yqjtg"]
-[ext_resource type="Texture2D" uid="uid://dd4kgnf0sr7pb" path="res://assets/Turtle/Turtle_Dead.png" id="2_gee14"]
 [ext_resource type="Texture2D" uid="uid://dmdftboxv07d5" path="res://assets/Turtle/Turtle_Idle.png" id="2_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://b0lhcesvxk5es" path="res://assets/Turtle/TurtWalk1.png" id="3_gee14"]
 [ext_resource type="Texture2D" uid="uid://dfjwoe1nwqe4t" path="res://assets/DirectionIndicator.png" id="3_lnu2h"]
@@ -13,19 +12,11 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_gee14")
-}],
-"loop": true,
-"name": &"death",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
 "texture": ExtResource("2_u5sy4")
 }],
 "loop": true,
 "name": &"default",
-"speed": 1.0
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -36,7 +27,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 4.0
+"speed": 2.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u5sy4"]
@@ -46,9 +37,6 @@ radius = 223.32935
 radius = 600.0
 
 [node name="Node2D" type="Node2D" unique_id=2020137742]
-
-[node name="Camera" type="Camera2D" parent="." unique_id=252486179]
-scale = Vector2(0.5, 0.5)
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1744978302]
 scale = Vector2(0.5, 0.5)
@@ -64,6 +52,8 @@ sprite_frames = SubResource("SpriteFrames_vtaks")
 position = Vector2(350, 0)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_lnu2h")
+
+[node name="Camera" type="Camera2D" parent="Player" unique_id=252486179]
 
 [node name="Area2D" type="Area2D" parent="Player" unique_id=1698332872]
 position = Vector2(50, -30)

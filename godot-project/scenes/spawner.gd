@@ -4,14 +4,14 @@ extends Node2D
 const ENEMY = preload("uid://d1k32mfbnnud3")
 
 @export var SPAWNTIMER = 1.0
-@export var SPAWNDISTANCE = 500
+@export var SPAWNDISTANCE = 960
 
 var timer = 0
 
 func _process(delta):
 	timer += delta
 	
-	if timer >= SPAWNTIMER:
+	if player and timer >= SPAWNTIMER:
 		var new_enemy = ENEMY.instantiate()
 		new_enemy.global_position = player.global_position + (SPAWNDISTANCE*Vector2.RIGHT.rotated(randf_range(0, 2*PI)))
 		add_child(new_enemy)
