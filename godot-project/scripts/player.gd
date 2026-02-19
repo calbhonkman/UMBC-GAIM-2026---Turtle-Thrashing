@@ -11,6 +11,9 @@ extends CharacterBody2D
 
 var health = 5
 var invincible_timer = 0
+var xp = 0
+var level = 1
+var levelup_req = level * 10 + ((level-1) * 10) / 4
 
 func _process(delta):
 	invincible_timer = max(0, invincible_timer - delta)
@@ -40,6 +43,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 	# If hit by something that isn't an enemy, pass
 	if !area.get_script() or area.get_script().get_path() != "res://scripts/enemy.gd":
 		pass
+		area.queue_free()
+		xp += 1
+		if xp >= levelup_req:
+			pass
 	# Otherwise, take damage
 	elif invincible_timer == 0:
 		health -= 1

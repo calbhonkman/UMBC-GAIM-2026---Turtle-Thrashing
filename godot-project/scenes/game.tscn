@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://vg1j3cyln3qy" path="res://assets/Turtle/TurtWalk2.png" id="4_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://c2o7rlkurisb7" path="res://prefabs/weapons/(weapon)_punch.tscn" id="7_gee14"]
 [ext_resource type="Script" uid="uid://bx1idfwe4fxpi" path="res://scenes/spawner.gd" id="7_u5sy4"]
-[ext_resource type="Script" uid="uid://bstu2wfytyykc" path="res://scenes/game_manager.gd" id="9_0tnpc"]
+[ext_resource type="Script" path="res://scenes/game_manager.gd" id="9_0tnpc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vtaks"]
 animations = [{
