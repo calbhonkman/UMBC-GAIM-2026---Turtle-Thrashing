@@ -1,13 +1,15 @@
 extends CharacterBody2D
 
 @onready var sprite = $Sprite
-@onready var indicator = $Indicator
+@onready var indicator = $"Direction Indicator"
 @onready var camera = $"../Camera"
 
 @export var SPEED = 200
 @export var CAMERA_DIST = 100
-@export var HEALTH = 5
+@export var MAX_HEALTH = 5
 @export var INVINCIBLE_TIME = 1.0
+
+var health = 5
 var invincible_timer = 0
 
 func _process(delta):
@@ -19,23 +21,27 @@ func _process(delta):
 	
 	var movement_vector = Input.get_vector("left","right","up","down")
 	camera.global_position = lerp(camera.global_position, global_position + movement_vector * CAMERA_DIST, delta)
-	if movement_vector.length() != 0:
+	if health <= 0:
+		sprite.play("death")
+		indicator.visible = false
+		get_tree().paused = true
+	elif movement_vector.length() != 0:
 		sprite.play("walk")
 		indicator.visible = true
 		indicator.rotation = movement_vector.angle()
 		sprite.scale.x = abs(sprite.scale.x) * movement_vector.x / abs(movement_vector.x) if movement_vector.x != 0 else sprite.scale.x
 		move_and_collide(movement_vector * SPEED * delta)
-	elif HEALTH > 0:
+	else:
 		sprite.play("default")
 		indicator.visible = false
 
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
-	# If hit by an enemy
-	if area.get_script() and area.get_script().get_path() == "res://scripts/enemy.gd":
-		if invincible_timer == 0:
-			HEALTH -= 1
-			invincible_timer = INVINCIBLE_TIME
-			if HEALTH == 0:
-				sprite.play("death")
-		area.queue_free()
+	# If hit by something that isn't an enemy, pass
+	if !area.get_script() or area.get_script().get_path() != "res://scripts/enemy.gd":
+		pass
+	# Otherwise, take damage
+	elif invincible_timer == 0:
+		health -= 1
+		invincible_timer = INVINCIBLE_TIME
+	area.queue_free()

@@ -5,7 +5,7 @@ extends Area2D
 @onready var mother_of_all_bullets = $"../../MotherOfAllBullets"
 
 # Time (in seconds) between each attack
-@export var COOLDOWN: float = 3.0
+@export var COOLDOWN: float = 30.0
 
 # Hold CTRL and drag a prefab in to get this line
 const FIST = preload("uid://csgsdh6itco8")
