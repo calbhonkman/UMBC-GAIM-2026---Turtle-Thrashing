@@ -42,7 +42,6 @@ func _process(delta):
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	# If hit by something that isn't an enemy, pass
 	if !area.get_script() or area.get_script().get_path() != "res://scripts/enemy.gd":
-		pass
 		area.queue_free()
 		xp += 1
 		if xp >= levelup_req:
