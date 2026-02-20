@@ -5,10 +5,9 @@ extends Area2D
 @onready var mother_of_all_bullets = $"../../MotherOfAllBullets"
 
 # Time (in seconds) between each attack
-@export var COOLDOWN: float = 30.0
-
-# Hold CTRL and drag a prefab in to get this line
-const FIST = preload("uid://csgsdh6itco8")
+@export var COOLDOWN: float = 3.0
+# Thing that is being created by the weapon (fist, cloud, etc.)
+@export var BULLET: Resource
 
 # Time (in seconds) since the last attack
 var timer = 0.0
@@ -38,8 +37,8 @@ func _process(delta):
 		# If an enemy is within range
 		if closest_enemy != null:
 			timer = 0
-			# See line 11 for FIST
-			var new_bullet = FIST.instantiate()
+			# See line 9 for BULLET
+			var new_bullet = BULLET.instantiate()
 			# The bullet won't exist until you set its parent
 			mother_of_all_bullets.add_child(new_bullet)
 			new_bullet.global_position = global_position
