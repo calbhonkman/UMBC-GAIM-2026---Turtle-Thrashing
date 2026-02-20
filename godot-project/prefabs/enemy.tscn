@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://b3yjqrutoexbs"]
+[gd_scene format=3 uid="uid://dwacp3wkowvsi"]
 
 [ext_resource type="Script" uid="uid://d2rsnatar30qh" path="res://scripts/enemy.gd" id="1_yfjof"]
 [ext_resource type="Texture2D" uid="uid://bxcjgrllpwy11" path="res://icon.svg" id="2_cypye"]
@@ -9,6 +9,7 @@ size = Vector2(128, 128)
 [node name="Enemy" type="Area2D" unique_id=2078753937]
 script = ExtResource("1_yfjof")
 SPEED = 200
+metadata/enemy = ""
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=798343154]
 texture = ExtResource("2_cypye")

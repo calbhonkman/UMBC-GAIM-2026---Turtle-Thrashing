@@ -10,6 +10,9 @@
 [ext_resource type="Script" uid="uid://bx1idfwe4fxpi" path="res://scenes/spawner.gd" id="7_u5sy4"]
 [ext_resource type="Script" path="res://scenes/game_manager.gd" id="9_0tnpc"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_0tnpc"]
+font_size = 96
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_vtaks"]
 animations = [{
 "frames": [{
@@ -41,36 +44,42 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u5sy4"]
-radius = 223.32935
-
-[sub_resource type="LabelSettings" id="LabelSettings_0tnpc"]
-font_size = 96
+radius = 162.0
 
 [node name="Node2D" type="Node2D" unique_id=2020137742]
 
 [node name="Camera" type="Camera2D" parent="." unique_id=252486179]
-scale = Vector2(0.5, 0.5)
+
+[node name="Clock" type="Label" parent="Camera" unique_id=821680097]
+offset_left = -96.0
+offset_top = -540.0
+offset_right = 96.0
+offset_bottom = -408.0
+text = "5:00"
+label_settings = SubResource("LabelSettings_0tnpc")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1744978302]
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_yqjtg")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=1355100074]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_vtaks")
 
 [node name="Direction Indicator" type="Node2D" parent="Player" unique_id=1741467556]
 
 [node name="Sprite2D" type="Sprite2D" parent="Player/Direction Indicator" unique_id=1598154813]
-position = Vector2(350, 0)
-scale = Vector2(0.5, 0.5)
+position = Vector2(180, 0)
+scale = Vector2(0.25, 0.25)
 texture = ExtResource("3_lnu2h")
 
 [node name="Hitbox" type="Area2D" parent="Player" unique_id=1698332872]
 position = Vector2(50, -30)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hitbox" unique_id=825924628]
-scale = Vector2(1, 0.5)
+position = Vector2(-52, 13)
+scale = Vector2(0.5, 0.35)
 shape = SubResource("CircleShape2D_u5sy4")
 
 [node name="(Weapon) Punch" parent="Player" unique_id=1355873781 instance=ExtResource("7_gee14")]
@@ -83,15 +92,5 @@ script = ExtResource("7_u5sy4")
 [node name="GameManager" type="Node2D" parent="." unique_id=865760672]
 process_mode = 3
 script = ExtResource("9_0tnpc")
-
-[node name="Clock" type="Label" parent="." unique_id=821680097]
-offset_left = -98.0
-offset_top = -539.0
-offset_right = 93.0
-offset_bottom = -407.0
-text = "5:00"
-label_settings = SubResource("LabelSettings_0tnpc")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="area_entered" from="Player/Hitbox" to="Player" method="_on_area_2d_area_entered"]
