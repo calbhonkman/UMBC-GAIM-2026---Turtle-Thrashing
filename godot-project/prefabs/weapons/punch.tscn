@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://csgsdh6itco8"]
+
+[ext_resource type="Script" uid="uid://bt5emnfecomlv" path="res://scripts/punch.gd" id="1_aiwas"]
+[ext_resource type="Texture2D" uid="uid://c3nk04dplygky" path="res://assets/Turtle/Direct Attacks/TurtPunch.png" id="2_7xwvt"]
+[ext_resource type="Texture2D" uid="uid://dyot3gq62lbqn" path="res://assets/Turtle/Direct Attacks/TurtPunchFrame0001.png" id="3_g1u8m"]
+[ext_resource type="Texture2D" uid="uid://b1xw2r3mpbtyg" path="res://assets/Turtle/Direct Attacks/TurtPunchFrame0002.png" id="4_ncv4e"]
+[ext_resource type="Texture2D" uid="uid://cvijeb77m8ln0" path="res://assets/Turtle/Direct Attacks/TurtPunchFrame0003.png" id="5_nxudm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
+size = Vector2(160, 150)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lmy6u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7xwvt")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_7xwvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_g1u8m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ncv4e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_nxudm")
+}],
+"loop": true,
+"name": &"punch",
+"speed": 5.0
+}]
+
+[node name="Fist" type="Area2D" unique_id=238644860]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("1_aiwas")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=468740506]
+position = Vector2(12, -9)
+shape = SubResource("RectangleShape2D_iywne")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=521042213]
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_lmy6u")

@@ -1,7 +1,6 @@
 extends Area2D
 
 @onready var player = $"/root/Node2D/Player"
-const XP = preload("uid://blf6oam0dwfh5")
 
 @export var SPEED = 80
 
@@ -12,7 +11,4 @@ func _process(delta):
 		global_position += playerDirection * delta * SPEED
 
 func death():
-	var new_xp = XP.instantiate()
-	new_xp.global_position = self.global_position
-	add_child(new_xp)
 	queue_free()
