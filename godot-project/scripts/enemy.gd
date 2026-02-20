@@ -11,4 +11,10 @@ func _process(delta):
 		global_position += playerDirection * delta * SPEED
 
 func death():
+<<<<<<< Updated upstream
+=======
+	var new_xp = XP.instantiate()
+	new_xp.global_position = global_position
+	get_parent().add_child(new_xp)
+>>>>>>> Stashed changes
 	queue_free()

@@ -8,6 +8,13 @@
 [ext_resource type="Texture2D" uid="uid://vg1j3cyln3qy" path="res://assets/Turtle/TurtWalk2.png" id="4_0tnpc"]
 [ext_resource type="Script" uid="uid://5sq50khyu22b" path="res://scripts/weapon.gd" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://bx1idfwe4fxpi" path="res://scenes/spawner.gd" id="7_u5sy4"]
+<<<<<<< Updated upstream
+=======
+[ext_resource type="Script" uid="uid://bstu2wfytyykc" path="res://scenes/game_manager.gd" id="9_0tnpc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_0tnpc"]
+font_size = 96
+>>>>>>> Stashed changes
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vtaks"]
 animations = [{
@@ -83,4 +90,13 @@ shape = SubResource("CircleShape2D_iywne")
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=1043795800]
 script = ExtResource("7_u5sy4")
 
+<<<<<<< Updated upstream
 [connection signal="area_entered" from="Player/Area2D" to="Player" method="_on_area_2d_area_entered"]
+=======
+[node name="GameManager" type="Node2D" parent="." unique_id=865760672]
+process_mode = 3
+script = ExtResource("9_0tnpc")
+GAME_TIME = 1.0
+
+[connection signal="area_entered" from="Player/Hitbox" to="Player" method="_on_area_2d_area_entered"]
+>>>>>>> Stashed changes

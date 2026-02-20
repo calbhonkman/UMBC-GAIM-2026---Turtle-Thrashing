@@ -9,6 +9,10 @@ size = Vector2(128, 128)
 [node name="Enemy" type="Area2D" unique_id=2078753937]
 script = ExtResource("1_yfjof")
 SPEED = 200
+<<<<<<< Updated upstream
+=======
+metadata/enemy = "enemy"
+>>>>>>> Stashed changes
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=798343154]
 texture = ExtResource("2_cypye")

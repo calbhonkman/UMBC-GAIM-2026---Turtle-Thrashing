@@ -9,6 +9,11 @@ extends CharacterBody2D
 @export var HEALTH = 5
 @export var INVINCIBLE_TIME = 1.0
 var invincible_timer = 0
+<<<<<<< Updated upstream
+=======
+var experience = 0
+var level = 1
+>>>>>>> Stashed changes
 
 func _process(delta):
 	invincible_timer = max(0, invincible_timer - delta)
@@ -17,9 +22,22 @@ func _process(delta):
 	else:
 		sprite.modulate = Color(1,1,1,1)
 	
+<<<<<<< Updated upstream
 	var movement_vector = Input.get_vector("left","right","up","down")
 	camera.global_position = lerp(camera.global_position, global_position + movement_vector * CAMERA_DIST, delta)
 	if movement_vector.length() != 0:
+=======
+	if experience >= (level * 10 + ((level-1) * 10) / 4):
+		level += 1
+	
+	var movement_direction = Input.get_vector("left","right","up","down")
+	camera.global_position = global_position + movement_direction * CAMERA_DIST
+	if health <= 0:
+		sprite.play("death")
+		indicator.visible = false
+		get_tree().paused = true
+	elif movement_direction.length() != 0:
+>>>>>>> Stashed changes
 		sprite.play("walk")
 		indicator.visible = true
 		indicator.rotation = movement_vector.angle()
@@ -39,3 +57,10 @@ func _on_area_2d_area_entered(area: Area2D) -> void:
 			if HEALTH == 0:
 				sprite.play("death")
 		area.queue_free()
+<<<<<<< Updated upstream
+=======
+	# If hit by exp
+	elif area.has_meta("exp"):
+		experience += 1
+		area.queue_free()
+>>>>>>> Stashed changes
