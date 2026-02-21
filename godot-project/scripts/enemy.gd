@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var player = $"/root/Node2D/Player"
+const EXP = preload("uid://bln5qlwy18sjf")
 
 @export var SPEED = 80
 
@@ -11,10 +12,7 @@ func _process(delta):
 		global_position += playerDirection * delta * SPEED
 
 func death():
-<<<<<<< Updated upstream
-=======
-	var new_xp = XP.instantiate()
+	var new_xp = EXP.instantiate()
 	new_xp.global_position = global_position
 	get_parent().add_child(new_xp)
->>>>>>> Stashed changes
 	queue_free()
