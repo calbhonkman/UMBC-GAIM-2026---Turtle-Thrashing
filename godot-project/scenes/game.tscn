@@ -9,6 +9,15 @@
 [ext_resource type="Script" uid="uid://5sq50khyu22b" path="res://scripts/weapon.gd" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://bx1idfwe4fxpi" path="res://scripts/spawner.gd" id="7_u5sy4"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
+size = Vector2(50, 3000)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
+size = Vector2(3000, 50)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u5sy4"]
+radius = 210.0
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_vtaks"]
 animations = [{
 "frames": [{
@@ -36,26 +45,68 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 4.0
+"speed": 8.0
 }]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_u5sy4"]
-radius = 223.32935
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iywne"]
 radius = 600.0
 
 [node name="Node2D" type="Node2D" unique_id=2020137742]
 
+[node name="Island" type="StaticBody2D" parent="." unique_id=21348922]
+
+[node name="Water" type="ColorRect" parent="Island" unique_id=1342686333]
+offset_left = -2500.0
+offset_top = -2500.0
+offset_right = 2500.0
+offset_bottom = 2500.0
+color = Color(0, 0.17599994, 0.44, 1)
+
+[node name="Sand" type="ColorRect" parent="Island" unique_id=373943503]
+offset_left = -1500.0
+offset_top = -1500.0
+offset_right = 1500.0
+offset_bottom = 1500.0
+color = Color(1, 0.9235, 0.49, 1)
+
+[node name="Grass" type="ColorRect" parent="Island" unique_id=1271268807]
+offset_left = -1250.0
+offset_top = -1250.0
+offset_right = 1250.0
+offset_bottom = 1250.0
+color = Color(0.384, 0.64, 0.33279997, 1)
+
+[node name="WestWall" type="CollisionShape2D" parent="Island" unique_id=534014998]
+position = Vector2(-1525, 0)
+shape = SubResource("RectangleShape2D_gee14")
+
+[node name="EastWall" type="CollisionShape2D" parent="Island" unique_id=593522053]
+position = Vector2(1525, 0)
+shape = SubResource("RectangleShape2D_gee14")
+
+[node name="NorthWall" type="CollisionShape2D" parent="Island" unique_id=116907078]
+position = Vector2(0, -1525)
+shape = SubResource("RectangleShape2D_0tnpc")
+
+[node name="SouthWall" type="CollisionShape2D" parent="Island" unique_id=681089703]
+position = Vector2(0, 1525)
+shape = SubResource("RectangleShape2D_0tnpc")
+
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1744978302]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_yqjtg")
-CAMERA_DIST = 200
+SPEED = 300
+
+[node name="Hitbox" type="CollisionShape2D" parent="Player" unique_id=825924628]
+scale = Vector2(1, 0.55)
+shape = SubResource("CircleShape2D_u5sy4")
 
 [node name="Camera" type="Camera2D" parent="Player" unique_id=252486179]
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=1355100074]
+position = Vector2(-15, 5)
 sprite_frames = SubResource("SpriteFrames_vtaks")
+animation = &"walk"
 
 [node name="Indicator" type="Node2D" parent="Player" unique_id=1741467556]
 
@@ -63,13 +114,6 @@ sprite_frames = SubResource("SpriteFrames_vtaks")
 position = Vector2(350, 0)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("3_lnu2h")
-
-[node name="Hitbox" type="Area2D" parent="Player" unique_id=1698332872]
-position = Vector2(50, -30)
-
-[node name="Hitbox" type="CollisionShape2D" parent="Player/Hitbox" unique_id=825924628]
-scale = Vector2(1, 0.5)
-shape = SubResource("CircleShape2D_u5sy4")
 
 [node name="(Weapon) Punch" type="Area2D" parent="Player" unique_id=1650126049]
 script = ExtResource("4_lbhrr")
@@ -81,5 +125,3 @@ shape = SubResource("CircleShape2D_iywne")
 
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=1043795800]
 script = ExtResource("7_u5sy4")
-
-[connection signal="area_entered" from="Player/Hitbox" to="Player" method="_on_area_2d_area_entered"]

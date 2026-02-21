@@ -4,13 +4,13 @@
 [ext_resource type="Texture2D" uid="uid://be7omrm1wwpl1" path="res://assets/Enemies/BasicEnemies/PlaceholderRaccoon.png" id="2_yfjof"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cypye"]
-size = Vector2(28.25, 58)
+size = Vector2(80, 170)
 
 [node name="Area2D" type="Area2D" unique_id=1424500926]
 script = ExtResource("1_yfjof")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=517599166]
-position = Vector2(-0.99999994, -11)
+position = Vector2(-7, -35)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_yfjof")
 
