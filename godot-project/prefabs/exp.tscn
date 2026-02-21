@@ -4,6 +4,7 @@
 size = Vector2(22, 22)
 
 [node name="Area2D" type="Area2D" unique_id=2144851842]
+metadata/exp = ""
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1363188466]
 offset_left = -10.0

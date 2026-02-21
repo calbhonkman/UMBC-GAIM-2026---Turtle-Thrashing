@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://x8onaolkwe5v"]
 
+[ext_resource type="Texture2D" uid="uid://dbr7uorq2inv8" path="res://assets/DefaultGrassBG.png" id="1_0tnpc"]
 [ext_resource type="Script" uid="uid://c2q51iiaxua7n" path="res://scripts/player.gd" id="1_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://dd4kgnf0sr7pb" path="res://assets/Turtle/Turtle_Dead.png" id="2_gee14"]
 [ext_resource type="Texture2D" uid="uid://dmdftboxv07d5" path="res://assets/Turtle/Turtle_Idle.png" id="2_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://b0lhcesvxk5es" path="res://assets/Turtle/TurtWalk1.png" id="3_gee14"]
-[ext_resource type="Texture2D" uid="uid://dfjwoe1nwqe4t" path="res://assets/DirectionIndicator.png" id="3_lnu2h"]
 [ext_resource type="Texture2D" uid="uid://vg1j3cyln3qy" path="res://assets/Turtle/TurtWalk2.png" id="4_0tnpc"]
 [ext_resource type="Script" uid="uid://5sq50khyu22b" path="res://scripts/weapon.gd" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://bx1idfwe4fxpi" path="res://scripts/spawner.gd" id="7_u5sy4"]
@@ -17,6 +17,10 @@ size = Vector2(3000, 50)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u5sy4"]
 radius = 210.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_gee14"]
+font_size = 192
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vtaks"]
 animations = [{
@@ -69,12 +73,9 @@ offset_right = 1500.0
 offset_bottom = 1500.0
 color = Color(1, 0.9235, 0.49, 1)
 
-[node name="Grass" type="ColorRect" parent="Island" unique_id=1271268807]
-offset_left = -1250.0
-offset_top = -1250.0
-offset_right = 1250.0
-offset_bottom = 1250.0
-color = Color(0.384, 0.64, 0.33279997, 1)
+[node name="Grass" type="Sprite2D" parent="Island" unique_id=683618901]
+scale = Vector2(1.4, 2.5)
+texture = ExtResource("1_0tnpc")
 
 [node name="WestWall" type="CollisionShape2D" parent="Island" unique_id=534014998]
 position = Vector2(-1525, 0)
@@ -95,25 +96,31 @@ shape = SubResource("RectangleShape2D_0tnpc")
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1744978302]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_yqjtg")
-SPEED = 300
+SPEED = 300.0
 
-[node name="Hitbox" type="CollisionShape2D" parent="Player" unique_id=825924628]
+[node name="Hitbox (Movement)" type="CollisionShape2D" parent="Player" unique_id=825924628]
 scale = Vector2(1, 0.55)
 shape = SubResource("CircleShape2D_u5sy4")
 
 [node name="Camera" type="Camera2D" parent="Player" unique_id=252486179]
 
+[node name="Clock" type="Label" parent="Player/Camera" unique_id=530567819]
+z_index = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = -1080.0
+offset_right = 96.0
+offset_bottom = -948.0
+grow_horizontal = 2
+text = "5:00"
+label_settings = SubResource("LabelSettings_gee14")
+
 [node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=1355100074]
 position = Vector2(-15, 5)
 sprite_frames = SubResource("SpriteFrames_vtaks")
 animation = &"walk"
-
-[node name="Indicator" type="Node2D" parent="Player" unique_id=1741467556]
-
-[node name="Sprite2D" type="Sprite2D" parent="Player/Indicator" unique_id=1598154813]
-position = Vector2(350, 0)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("3_lnu2h")
 
 [node name="(Weapon) Punch" type="Area2D" parent="Player" unique_id=1650126049]
 script = ExtResource("4_lbhrr")
@@ -121,7 +128,16 @@ script = ExtResource("4_lbhrr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Punch" unique_id=1221786466]
 shape = SubResource("CircleShape2D_iywne")
 
+[node name="Hitbox" type="Area2D" parent="Player" unique_id=2047547949]
+
+[node name="Hitbox (Movement)" type="CollisionShape2D" parent="Player/Hitbox" unique_id=167426209]
+scale = Vector2(1, 0.55)
+shape = SubResource("CircleShape2D_u5sy4")
+
 [node name="MotherOfAllBullets" type="Node2D" parent="." unique_id=1494891267]
 
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=1043795800]
 script = ExtResource("7_u5sy4")
+SPAWN_AREA = 1400
+
+[connection signal="area_entered" from="Player/Hitbox" to="Player" method="_on_hitbox_area_entered"]
