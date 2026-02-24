@@ -153,6 +153,7 @@ script = ExtResource("7_u5sy4")
 SPAWN_AREA = 1400
 
 [node name="GameManager" type="Node2D" parent="." unique_id=28411718]
+process_mode = 3
 script = ExtResource("9_0tnpc")
 
 [connection signal="area_entered" from="Player/Hitbox (Entities)" to="Player" method="_on_hitbox_area_entered"]
