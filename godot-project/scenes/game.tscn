@@ -8,19 +8,17 @@
 [ext_resource type="Texture2D" uid="uid://vg1j3cyln3qy" path="res://assets/Turtle/TurtWalk2.png" id="4_0tnpc"]
 [ext_resource type="Script" uid="uid://5sq50khyu22b" path="res://scripts/weapon.gd" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://bx1idfwe4fxpi" path="res://scripts/spawner.gd" id="7_u5sy4"]
+[ext_resource type="Script" uid="uid://bstu2wfytyykc" path="res://scenes/game_manager.gd" id="9_0tnpc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gee14"]
+font_size = 192
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
 size = Vector2(50, 3000)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
 size = Vector2(3000, 50)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_u5sy4"]
-radius = 210.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_gee14"]
-font_size = 192
-font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vtaks"]
 animations = [{
@@ -52,10 +50,32 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_u5sy4"]
+radius = 210.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0tnpc"]
+radius = 600.0
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_iywne"]
 radius = 600.0
 
 [node name="Node2D" type="Node2D" unique_id=2020137742]
+
+[node name="Camera" type="Camera2D" parent="." unique_id=252486179]
+scale = Vector2(0.5, 0.5)
+
+[node name="Clock" type="Label" parent="Camera" unique_id=530567819]
+z_index = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = -1080.0
+offset_right = 96.0
+offset_bottom = -948.0
+grow_horizontal = 2
+text = "5:00"
+label_settings = SubResource("LabelSettings_gee14")
 
 [node name="Island" type="StaticBody2D" parent="." unique_id=21348922]
 
@@ -98,29 +118,25 @@ scale = Vector2(0.5, 0.5)
 script = ExtResource("1_yqjtg")
 SPEED = 300.0
 
-[node name="Hitbox (Movement)" type="CollisionShape2D" parent="Player" unique_id=825924628]
-scale = Vector2(1, 0.55)
-shape = SubResource("CircleShape2D_u5sy4")
-
-[node name="Camera" type="Camera2D" parent="Player" unique_id=252486179]
-
-[node name="Clock" type="Label" parent="Player/Camera" unique_id=530567819]
-z_index = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -96.0
-offset_top = -1080.0
-offset_right = 96.0
-offset_bottom = -948.0
-grow_horizontal = 2
-text = "5:00"
-label_settings = SubResource("LabelSettings_gee14")
-
 [node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=1355100074]
 position = Vector2(-15, 5)
 sprite_frames = SubResource("SpriteFrames_vtaks")
 animation = &"walk"
+
+[node name="Movement Collision" type="CollisionShape2D" parent="Player" unique_id=825924628]
+scale = Vector2(1, 0.55)
+shape = SubResource("CircleShape2D_u5sy4")
+
+[node name="Hitbox (Entities)" type="Area2D" parent="Player" unique_id=2047547949]
+
+[node name="Hitbox (Movement)" type="CollisionShape2D" parent="Player/Hitbox (Entities)" unique_id=167426209]
+scale = Vector2(1, 0.55)
+shape = SubResource("CircleShape2D_u5sy4")
+
+[node name="Pickup Area" type="Area2D" parent="Player" unique_id=1340889769]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Pickup Area" unique_id=1695875074]
+shape = SubResource("CircleShape2D_0tnpc")
 
 [node name="(Weapon) Punch" type="Area2D" parent="Player" unique_id=1650126049]
 script = ExtResource("4_lbhrr")
@@ -128,16 +144,13 @@ script = ExtResource("4_lbhrr")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Punch" unique_id=1221786466]
 shape = SubResource("CircleShape2D_iywne")
 
-[node name="Hitbox" type="Area2D" parent="Player" unique_id=2047547949]
-
-[node name="Hitbox (Movement)" type="CollisionShape2D" parent="Player/Hitbox" unique_id=167426209]
-scale = Vector2(1, 0.55)
-shape = SubResource("CircleShape2D_u5sy4")
-
 [node name="MotherOfAllBullets" type="Node2D" parent="." unique_id=1494891267]
 
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=1043795800]
 script = ExtResource("7_u5sy4")
 SPAWN_AREA = 1400
 
-[connection signal="area_entered" from="Player/Hitbox" to="Player" method="_on_hitbox_area_entered"]
+[node name="GameManager" type="Node2D" parent="." unique_id=28411718]
+script = ExtResource("9_0tnpc")
+
+[connection signal="area_entered" from="Player/Hitbox (Entities)" to="Player" method="_on_hitbox_area_entered"]

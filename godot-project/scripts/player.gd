@@ -1,11 +1,9 @@
 extends CharacterBody2D
 
 @onready var sprite = $Sprite
-@onready var camera = $Camera
-@onready var clock = $Camera/Clock
+@onready var pickup_area = $"Pickup Area"
 
 @export var SPEED: float = 200.0
-@export var CAMERA_LIMIT: float = 1600.0
 @export var MAX_HEALTH: int = 5
 @export var INVINCIBLE_TIME: float = 1.0
 
@@ -18,11 +16,6 @@ func _ready():
 	health = MAX_HEALTH
 
 func _process(delta):
-	var cam_limit_x = CAMERA_LIMIT - (get_viewport().get_visible_rect().size.x/2)
-	var cam_limit_y = CAMERA_LIMIT - (get_viewport().get_visible_rect().size.y/2)
-	camera.global_position.x = clampf(global_position.x, -1*cam_limit_x, cam_limit_x)
-	camera.global_position.y = clampf(global_position.y, -1*cam_limit_y, cam_limit_y)
-	
 	invincible_timer = max(0, invincible_timer - delta)
 	if invincible_timer > 0:
 		sprite.modulate = Color(1,1-sqrt(invincible_timer/INVINCIBLE_TIME),1-sqrt(invincible_timer/INVINCIBLE_TIME),1)
@@ -43,6 +36,12 @@ func _process(delta):
 		move_and_slide()
 	elif health > 0:
 		sprite.play("default")
+	
+	# Pickup Area
+	for area in pickup_area.get_overlapping_areas():
+		if area.has_meta("pickup"):
+			# Move Pickups (ex. EXP) towards the player here
+			pass
 
 func _on_hitbox_area_entered(area):
 	# If hit by an enemy
