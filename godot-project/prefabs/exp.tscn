@@ -1,13 +1,18 @@
-[gd_scene format=3 uid="uid://blf6oam0dwfh5"]
+[gd_scene format=3 uid="uid://bln5qlwy18sjf"]
 
-[ext_resource type="Script" uid="uid://n113b6hb4qqv" path="res://exp.gd" id="1_0nrib"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3fj8"]
+size = Vector2(22, 22)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_0nrib"]
+[node name="Area2D" type="Area2D" unique_id=2144851842]
+metadata/exp = ""
+metadata/pickup = ""
 
-[node name="Exp" type="Area2D" unique_id=846975370]
-script = ExtResource("1_0nrib")
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1363188466]
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 10.0
+offset_bottom = 10.0
+color = Color(0, 1, 1, 1)
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1483436095]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1143036603]
-shape = SubResource("CircleShape2D_0nrib")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1119357148]
+shape = SubResource("RectangleShape2D_a3fj8")

@@ -1,18 +1,55 @@
-[gd_scene format=3 uid="uid://dwacp3wkowvsi"]
+[gd_scene format=3 uid="uid://d1k32mfbnnud3"]
 
 [ext_resource type="Script" uid="uid://d2rsnatar30qh" path="res://scripts/enemy.gd" id="1_yfjof"]
-[ext_resource type="Texture2D" uid="uid://bxcjgrllpwy11" path="res://icon.svg" id="2_cypye"]
+[ext_resource type="Texture2D" uid="uid://6snm8yja7oaj" path="res://assets/Enemies/BasicEnemies/Snapping Turtle Enemy (Idle 1).png" id="2_qnk7q"]
+[ext_resource type="Texture2D" uid="uid://dpica1oa32ubq" path="res://assets/Enemies/BasicEnemies/Snapping Turtle Enemy (Idle 2).png" id="3_2nw32"]
+[ext_resource type="Texture2D" uid="uid://bytxhe87g5aax" path="res://assets/Enemies/BasicEnemies/Snapping Turtle Enemy (Idle 3).png" id="4_u6on0"]
+[ext_resource type="Texture2D" uid="uid://b03upn7q2u2k3" path="res://assets/Enemies/BasicEnemies/Snapping Turtle Enemy (Walk 1).png" id="5_ikd5g"]
+[ext_resource type="Texture2D" uid="uid://cpdrnpjx50wtg" path="res://assets/Enemies/BasicEnemies/Snapping Turtle Enemy (Walk 2).png" id="6_geowp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p57ef"]
-size = Vector2(128, 128)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cypye"]
+size = Vector2(271, 112)
 
-[node name="Enemy" type="Area2D" unique_id=2078753937]
+[sub_resource type="SpriteFrames" id="SpriteFrames_rnd4m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qnk7q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_2nw32")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_u6on0")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ikd5g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_geowp")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[node name="Area2D" type="Area2D" unique_id=1424500926]
 script = ExtResource("1_yfjof")
-SPEED = 200
 metadata/enemy = ""
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=798343154]
-texture = ExtResource("2_cypye")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=763433384]
+shape = SubResource("RectangleShape2D_cypye")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1206202284]
-shape = SubResource("RectangleShape2D_p57ef")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1819166314]
+position = Vector2(-3, 22)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_rnd4m")
+animation = &"walk"
+autoplay = "default"
+frame = 1
+frame_progress = 0.93696094
