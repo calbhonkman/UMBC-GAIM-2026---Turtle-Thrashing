@@ -37,7 +37,6 @@ func _process(delta):
 		# If an enemy is within range
 		if closest_enemy != null:
 			timer = 0
-			# See line 9 for BULLET
 			var new_bullet = BULLET.instantiate()
 			# The bullet won't exist until you set its parent
 			mother_of_all_bullets.add_child(new_bullet)

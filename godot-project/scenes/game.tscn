@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://vg1j3cyln3qy" path="res://assets/Turtle/TurtWalk2.png" id="4_0tnpc"]
 [ext_resource type="Script" uid="uid://5sq50khyu22b" path="res://scripts/weapon.gd" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://bx1idfwe4fxpi" path="res://scripts/spawner.gd" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://csoo2i5mmwmhc" path="res://prefabs/fist.tscn" id="8_vtaks"]
 [ext_resource type="Script" uid="uid://bstu2wfytyykc" path="res://scenes/game_manager.gd" id="9_0tnpc"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gee14"]
@@ -140,6 +141,7 @@ shape = SubResource("CircleShape2D_0tnpc")
 
 [node name="(Weapon) Punch" type="Area2D" parent="Player" unique_id=1650126049]
 script = ExtResource("4_lbhrr")
+BULLET = ExtResource("8_vtaks")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Punch" unique_id=1221786466]
 shape = SubResource("CircleShape2D_iywne")

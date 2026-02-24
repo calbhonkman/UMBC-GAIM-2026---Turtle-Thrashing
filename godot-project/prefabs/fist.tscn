@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://csoo2i5mmwmhc"]
 
-[ext_resource type="Script" path="res://scripts/fist.gd" id="1_vbem3"]
+[ext_resource type="Script" uid="uid://dihafxk46meib" path="res://scripts/fist.gd" id="1_vbem3"]
 [ext_resource type="Texture2D" uid="uid://c3nk04dplygky" path="res://assets/Turtle/Direct Attacks/TurtPunch.png" id="2_15iu4"]
 [ext_resource type="Texture2D" uid="uid://dyot3gq62lbqn" path="res://assets/Turtle/Direct Attacks/TurtPunchFrame0001.png" id="3_0yt16"]
 [ext_resource type="Texture2D" uid="uid://b1xw2r3mpbtyg" path="res://assets/Turtle/Direct Attacks/TurtPunchFrame0002.png" id="4_r5hlp"]

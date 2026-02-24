@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var sprite = $Sprite2D
+@onready var sprite = $AnimatedSprite2D
 
 @export var LIFETIME = 10.0
 @export var FADETIME = 0.3
@@ -33,5 +33,5 @@ func _process(delta):
 		if area == target:
 			isFading = true
 			timer = 0
-		if area.get_script().get_path() == "res://scripts/enemy.gd":
-			area.queue_free()
+		if area.get_script() and area.get_script().get_path() == "res://scripts/enemy.gd":
+			area.death()
