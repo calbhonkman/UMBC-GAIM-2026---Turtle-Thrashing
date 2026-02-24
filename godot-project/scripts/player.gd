@@ -40,8 +40,10 @@ func _process(delta):
 	# Pickup Area
 	for area in pickup_area.get_overlapping_areas():
 		if area.has_meta("pickup"):
+			var playerDirection = global_position - area.global_position
+			playerDirection = playerDirection / playerDirection.length()
+			area.global_position += playerDirection * delta * SPEED * 2
 			# Move Pickups (ex. EXP) towards the player here
-			pass
 
 func _on_hitbox_area_entered(area):
 	# If hit by an enemy
