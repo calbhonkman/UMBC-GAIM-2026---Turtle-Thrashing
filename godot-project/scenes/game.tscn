@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://bx1idfwe4fxpi" path="res://scripts/spawner.gd" id="7_u5sy4"]
 [ext_resource type="PackedScene" uid="uid://csoo2i5mmwmhc" path="res://prefabs/fist.tscn" id="8_vtaks"]
 [ext_resource type="Script" uid="uid://bstu2wfytyykc" path="res://scenes/game_manager.gd" id="9_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://w0qokvo1f2gx" path="res://prefabs/weapons/(bullet)_lightning.tscn" id="9_dinhu"]
+[ext_resource type="Script" uid="uid://c32p66nqvhstf" path="res://scenes/special_screen_shape.gd" id="9_kvpfn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gee14"]
 font_size = 192
@@ -59,6 +61,9 @@ radius = 600.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iywne"]
 radius = 600.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dinhu"]
+size = Vector2(1920, 1080)
 
 [node name="Node2D" type="Node2D" unique_id=2020137742]
 
@@ -114,6 +119,9 @@ shape = SubResource("RectangleShape2D_0tnpc")
 position = Vector2(0, 1525)
 shape = SubResource("RectangleShape2D_0tnpc")
 
+[node name="Area2D" parent="." unique_id=1574688434 instance=ExtResource("9_dinhu")]
+position = Vector2(-330, 6)
+
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1744978302]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_yqjtg")
@@ -142,9 +150,18 @@ shape = SubResource("CircleShape2D_0tnpc")
 [node name="(Weapon) Punch" type="Area2D" parent="Player" unique_id=1650126049]
 script = ExtResource("4_lbhrr")
 BULLET = ExtResource("8_vtaks")
+ATTACK_TYPE = "closest"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Punch" unique_id=1221786466]
 shape = SubResource("CircleShape2D_iywne")
+
+[node name="(Weapon) Lightning" type="Area2D" parent="Player" unique_id=1238629527]
+script = ExtResource("4_lbhrr")
+BULLET = ExtResource("9_dinhu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Lightning" unique_id=1843913089]
+shape = SubResource("RectangleShape2D_dinhu")
+script = ExtResource("9_kvpfn")
 
 [node name="MotherOfAllBullets" type="Node2D" parent="." unique_id=1494891267]
 

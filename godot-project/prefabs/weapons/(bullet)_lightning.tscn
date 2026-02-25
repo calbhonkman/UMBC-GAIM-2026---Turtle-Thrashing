@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://w0qokvo1f2gx"]
+
+[ext_resource type="Texture2D" uid="uid://xpcbgkk0aplf" path="res://assets/Turtle/Random Attacks/TurtBoltFrame0000.png" id="1_rtv81"]
+[ext_resource type="Script" uid="uid://dcgk8dp28npup" path="res://prefabs/lightning_cloud.gd" id="1_xfxyy"]
+[ext_resource type="Texture2D" uid="uid://40tlest6kqxw" path="res://assets/Turtle/Random Attacks/TurtBoltFrame0001.png" id="2_xfxyy"]
+[ext_resource type="Texture2D" uid="uid://cwlrc5lyb8ggi" path="res://assets/Turtle/Random Attacks/TurtBoltFrame0002.png" id="3_ojpk3"]
+[ext_resource type="Texture2D" uid="uid://cmx05mpdvx6" path="res://assets/Turtle/Random Attacks/TurtBoltFrame0003.png" id="4_kkuyf"]
+[ext_resource type="Texture2D" uid="uid://3hwde0n6o72y" path="res://assets/Turtle/Random Attacks/TurtBoltFrame0004.png" id="5_kohdp"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x14w0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_rtv81")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xfxyy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ojpk3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_kkuyf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_kohdp")
+}],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ojpk3"]
+radius = 23.0
+
+[node name="Area2D" type="Area2D" unique_id=1574688434]
+visible = false
+z_index = 1
+script = ExtResource("1_xfxyy")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1875368460]
+position = Vector2(5.0000005, -67.00001)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_x14w0")
+autoplay = "default"
+frame = 4
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1750741657]
+shape = SubResource("CircleShape2D_ojpk3")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

@@ -8,6 +8,7 @@ extends Area2D
 @export var COOLDOWN: float = 3.0
 # Thing that is being created by the weapon (fist, cloud, etc.)
 @export var BULLET: Resource
+@export var ATTACK_TYPE: String = "random"
 
 # Time (in seconds) since the last attack
 var timer = 0.0
@@ -21,24 +22,33 @@ func _process(delta):
 	
 	# Attack is ready
 	if timer >= COOLDOWN:
-		var closest_enemy = null
-		# Check for enemies within the player's attack range
-		for area in get_overlapping_areas():
-			if area.get_script() == null or area.get_script().get_path() != "res://scripts/enemy.gd":
-				# area is not an enemy
-				pass
-			elif closest_enemy == null:
-				# this is the first enemy that's been found
-				closest_enemy = area
-			elif (area.position - position).length() < (closest_enemy.position - position).length():
-				# this is not the first enemy that's been found
-				# but it is the closest
-				closest_enemy = area
-		# If an enemy is within range
-		if closest_enemy != null:
-			timer = 0
-			var new_bullet = BULLET.instantiate()
-			# The bullet won't exist until you set its parent
-			mother_of_all_bullets.add_child(new_bullet)
-			new_bullet.global_position = global_position
-			new_bullet.set_target(closest_enemy)
+		match(ATTACK_TYPE):
+			"random":
+				find_random_enemy()
+			"closest":
+				find_closest_enemy()
+
+func attack(target: Area2D):
+	var new_bullet = BULLET.instantiate()
+	# The bullet won't exist until you set its parent
+	mother_of_all_bullets.add_child(new_bullet)
+	new_bullet.global_position = global_position
+	new_bullet.set_target(target)
+
+func find_random_enemy():
+	var possible_targets = []
+	for area in get_overlapping_areas():
+		if area.has_meta("enemy"):
+			possible_targets.append(area)
+	if not possible_targets.is_empty():
+		attack(possible_targets[randi_range(0,possible_targets.size()-1)])
+		timer = 0.0
+
+func find_closest_enemy():
+	var closest_enemy = null
+	for area in get_overlapping_areas():
+		if area.has_meta("enemy") and (closest_enemy == null or (area.global_position-global_position).length() < (closest_enemy.global_position-global_position).length()):
+			closest_enemy = area
+	if closest_enemy != null:
+		attack(closest_enemy)
+		timer = 0.0

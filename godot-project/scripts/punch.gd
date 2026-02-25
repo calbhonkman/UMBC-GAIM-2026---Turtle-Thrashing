@@ -16,6 +16,7 @@ var isFading = false
 
 func set_target(t: Area2D):
 	target = t
+	visible = true
 
 func _process(delta):
 	timer += delta
@@ -41,5 +42,5 @@ func _process(delta):
 		if area == target:
 			isFading = true
 			timer = 0
-		if area.get_script() and area.get_script().get_path() == "res://scripts/enemy.gd":
+		if area.has_meta("enemy"):
 			area.death()
