@@ -7,9 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://b03upn7q2u2k3" path="res://assets/Enemies/BasicEnemies/Snapping Turtle Enemy (Walk 1).png" id="5_ikd5g"]
 [ext_resource type="Texture2D" uid="uid://cpdrnpjx50wtg" path="res://assets/Enemies/BasicEnemies/Snapping Turtle Enemy (Walk 2).png" id="6_geowp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cypye"]
-size = Vector2(271, 112)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_rnd4m"]
 animations = [{
 "frames": [{
@@ -38,18 +35,24 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qnk7q"]
+radius = 27.0
+height = 124.0
+
 [node name="Area2D" type="Area2D" unique_id=1424500926]
 script = ExtResource("1_yfjof")
+MAX_HEALTH = 5.0
 metadata/enemy = ""
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=763433384]
-shape = SubResource("RectangleShape2D_cypye")
-
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1819166314]
-position = Vector2(-3, 22)
-scale = Vector2(0.2, 0.2)
+position = Vector2(6, 11)
+scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_rnd4m")
 animation = &"walk"
 autoplay = "default"
 frame = 1
 frame_progress = 0.93696094
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=763433384]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_qnk7q")

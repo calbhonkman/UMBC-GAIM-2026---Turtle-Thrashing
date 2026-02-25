@@ -7,15 +7,17 @@
 [ext_resource type="Texture2D" uid="uid://b0lhcesvxk5es" path="res://assets/Turtle/TurtWalk1.png" id="3_gee14"]
 [ext_resource type="Texture2D" uid="uid://vg1j3cyln3qy" path="res://assets/Turtle/TurtWalk2.png" id="4_0tnpc"]
 [ext_resource type="Script" uid="uid://5sq50khyu22b" path="res://scripts/weapon.gd" id="4_lbhrr"]
-[ext_resource type="Script" uid="uid://bx1idfwe4fxpi" path="res://scripts/spawner.gd" id="7_u5sy4"]
-[ext_resource type="PackedScene" uid="uid://csoo2i5mmwmhc" path="res://prefabs/fist.tscn" id="8_vtaks"]
 [ext_resource type="Script" uid="uid://bstu2wfytyykc" path="res://scenes/game_manager.gd" id="9_0tnpc"]
 [ext_resource type="PackedScene" uid="uid://w0qokvo1f2gx" path="res://prefabs/weapons/(bullet)_lightning.tscn" id="9_dinhu"]
 [ext_resource type="Script" uid="uid://c32p66nqvhstf" path="res://scenes/special_screen_shape.gd" id="9_kvpfn"]
+[ext_resource type="PackedScene" uid="uid://csgsdh6itco8" path="res://prefabs/weapons/(bullet)_punch.tscn" id="9_kvuet"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gee14"]
 font_size = 192
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kvpfn"]
+font_size = 48
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
 size = Vector2(50, 3000)
@@ -53,14 +55,15 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_u5sy4"]
-radius = 210.0
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dinhu"]
+radius = 24.0
+height = 327.28
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tnpc"]
-radius = 600.0
+radius = 300.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iywne"]
-radius = 600.0
+radius = 300.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dinhu"]
 size = Vector2(1920, 1080)
@@ -68,10 +71,10 @@ size = Vector2(1920, 1080)
 [node name="Node2D" type="Node2D" unique_id=2020137742]
 
 [node name="Camera" type="Camera2D" parent="." unique_id=252486179]
+z_index = 1
 scale = Vector2(0.5, 0.5)
 
 [node name="Clock" type="Label" parent="Camera" unique_id=530567819]
-z_index = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -82,6 +85,34 @@ offset_bottom = -948.0
 grow_horizontal = 2
 text = "5:00"
 label_settings = SubResource("LabelSettings_gee14")
+
+[node name="Level" type="Label" parent="Camera" unique_id=533334256]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = -850.0
+offset_right = 80.0
+offset_bottom = -783.0
+grow_horizontal = 2
+text = "Level 1"
+label_settings = SubResource("LabelSettings_kvpfn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" type="Label" parent="Camera" unique_id=1388660572]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = -780.0
+offset_right = 80.0
+offset_bottom = -713.0
+grow_horizontal = 2
+text = "Level 1"
+label_settings = SubResource("LabelSettings_kvpfn")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Island" type="StaticBody2D" parent="." unique_id=21348922]
 
@@ -119,28 +150,22 @@ shape = SubResource("RectangleShape2D_0tnpc")
 position = Vector2(0, 1525)
 shape = SubResource("RectangleShape2D_0tnpc")
 
-[node name="Area2D" parent="." unique_id=1574688434 instance=ExtResource("9_dinhu")]
-position = Vector2(-330, 6)
-
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1744978302]
-scale = Vector2(0.5, 0.5)
 script = ExtResource("1_yqjtg")
 SPEED = 300.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=1355100074]
-position = Vector2(-15, 5)
+position = Vector2(-19, 5)
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_vtaks")
 animation = &"walk"
 
-[node name="Movement Collision" type="CollisionShape2D" parent="Player" unique_id=825924628]
-scale = Vector2(1, 0.55)
-shape = SubResource("CircleShape2D_u5sy4")
-
 [node name="Hitbox (Entities)" type="Area2D" parent="Player" unique_id=2047547949]
 
-[node name="Hitbox (Movement)" type="CollisionShape2D" parent="Player/Hitbox (Entities)" unique_id=167426209]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hitbox (Entities)" unique_id=1318562977]
+rotation = 1.5707964
 scale = Vector2(1, 0.55)
-shape = SubResource("CircleShape2D_u5sy4")
+shape = SubResource("CapsuleShape2D_dinhu")
 
 [node name="Pickup Area" type="Area2D" parent="Player" unique_id=1340889769]
 
@@ -149,7 +174,8 @@ shape = SubResource("CircleShape2D_0tnpc")
 
 [node name="(Weapon) Punch" type="Area2D" parent="Player" unique_id=1650126049]
 script = ExtResource("4_lbhrr")
-BULLET = ExtResource("8_vtaks")
+COOLDOWN = 2.0
+BULLET = ExtResource("9_kvuet")
 ATTACK_TYPE = "closest"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Punch" unique_id=1221786466]
@@ -157,20 +183,34 @@ shape = SubResource("CircleShape2D_iywne")
 
 [node name="(Weapon) Lightning" type="Area2D" parent="Player" unique_id=1238629527]
 script = ExtResource("4_lbhrr")
+DAMAGE = 5.0
 BULLET = ExtResource("9_dinhu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Lightning" unique_id=1843913089]
 shape = SubResource("RectangleShape2D_dinhu")
 script = ExtResource("9_kvpfn")
 
-[node name="MotherOfAllBullets" type="Node2D" parent="." unique_id=1494891267]
+[node name="Hitbox (Movement)" type="CollisionShape2D" parent="Player" unique_id=195191149]
+rotation = 1.5707964
+scale = Vector2(1, 0.55)
+shape = SubResource("CapsuleShape2D_dinhu")
 
-[node name="EnemySpawner" type="Node2D" parent="." unique_id=1043795800]
-script = ExtResource("7_u5sy4")
-SPAWN_AREA = 1400
+[node name="(Group) Bullets" type="Node2D" parent="." unique_id=1494891267]
+
+[node name="(Group) Enemies" type="Node2D" parent="." unique_id=1043795800]
 
 [node name="GameManager" type="Node2D" parent="." unique_id=28411718]
 process_mode = 3
 script = ExtResource("9_0tnpc")
+
+[node name="[Game Over]" type="Node2D" parent="GameManager" unique_id=180664184]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameManager/[Game Over]" unique_id=534324182]
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0, 0, 0, 0.5)
 
 [connection signal="area_entered" from="Player/Hitbox (Entities)" to="Player" method="_on_hitbox_area_entered"]

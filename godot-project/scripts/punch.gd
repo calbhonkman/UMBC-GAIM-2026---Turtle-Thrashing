@@ -9,6 +9,7 @@ extends Area2D
 
 var timer = 0
 var target = null
+var damage = 1.0
 var target_direction = Vector2.ZERO
 
 var isCharging = true
@@ -17,6 +18,9 @@ var isFading = false
 func set_target(t: Area2D):
 	target = t
 	visible = true
+
+func set_damage(d: float):
+	damage = d
 
 func _process(delta):
 	timer += delta
@@ -43,4 +47,4 @@ func _process(delta):
 			isFading = true
 			timer = 0
 		if area.has_meta("enemy"):
-			area.death()
+			area.damage(damage)

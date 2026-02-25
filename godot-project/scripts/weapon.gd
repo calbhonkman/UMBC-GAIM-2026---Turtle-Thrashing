@@ -2,8 +2,9 @@ extends Area2D
 
 # Parent container for the bullets/fists/etc
 # So that their movement isn't affected by the player's movement
-@onready var mother_of_all_bullets = $"../../MotherOfAllBullets"
+@onready var bullets_group = $"../../(Group) Bullets"
 
+@export var DAMAGE: float = 1.0
 # Time (in seconds) between each attack
 @export var COOLDOWN: float = 3.0
 # Thing that is being created by the weapon (fist, cloud, etc.)
@@ -31,9 +32,10 @@ func _process(delta):
 func attack(target: Area2D):
 	var new_bullet = BULLET.instantiate()
 	# The bullet won't exist until you set its parent
-	mother_of_all_bullets.add_child(new_bullet)
+	bullets_group.add_child(new_bullet)
 	new_bullet.global_position = global_position
 	new_bullet.set_target(target)
+	new_bullet.set_damage(DAMAGE)
 
 func find_random_enemy():
 	var possible_targets = []

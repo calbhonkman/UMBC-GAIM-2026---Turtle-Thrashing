@@ -22,7 +22,7 @@ func _process(delta):
 	else:
 		sprite.modulate = Color(1,1,1,1)
 	
-	if experience >= (level * 10 + ((level-1) * 10) / 4):
+	if experience >= 5 * (level * (level+1) / 2):
 		level += 1
 	
 	var movement_direction = Input.get_vector("left","right","up","down")
@@ -51,7 +51,7 @@ func _on_hitbox_area_entered(area):
 		if invincible_timer == 0:
 			health -= 1
 			invincible_timer = INVINCIBLE_TIME
-		area.death()
+		area.damage(INF)
 	# If hit by exp
 	elif area.has_meta("exp"):
 		experience += 1
