@@ -1,8 +1,11 @@
 extends Node2D
 
 @onready var player = $"../Player"
-@onready var camera = $Camera
+@onready var pickup_area = $"../Player/Pickup Area"
+@onready var weapon_punch = $"../Player/(Weapon) Punch"
+@onready var weapon_lightning = $"../Player/(Weapon) Lightning"
 
+@onready var camera = $Camera
 @onready var clock = $Camera/Clock
 @onready var level = $Camera/Level
 @onready var health = $Camera/Health
@@ -15,13 +18,15 @@ const ENEMY = preload("uid://d1k32mfbnnud3")
 @export var SPAWN_COOLDOWN = 1.0
 @export var SPAWN_AREA = 1500
 
-@onready var screen_paused = $"[Paused]"
-@onready var screen_level = $"[Level Up]"
-@onready var screen_lose = $"[Game Over]"
-@onready var screen_win = $"[You Win]"
+@onready var screen_paused = $"Camera/[Paused]"
+@onready var screen_level = $"Camera/[Level Up]"
+@onready var screen_lose = $"Camera/[Game Over]"
+@onready var screen_win = $"Camera/[You Win]"
 
 var game_timer = 0.0
 var next_spawn_time = 0.0
+
+var pausable = true
 
 func _ready():
 	game_timer = GAME_TIME * 60 # seconds
@@ -39,15 +44,19 @@ func _process(delta):
 	health.text = str(player.health) + " HP"
 	
 	if game_timer <= 0.0:
+		pausable = false
 		get_tree().paused = true
 		screen_win.visible = true
 	elif player.health <= 0:
+		pausable = false
 		get_tree().paused = true
 		screen_lose.visible = true
 	elif player.experience >= 5 * (player.level * (player.level+1) / 2):
+		player.level += 1
+		pausable = false
 		get_tree().paused = true
 		screen_level.visible = true
-	elif Input.is_action_just_pressed("pause"):
+	elif pausable and Input.is_action_just_pressed("pause"):
 		get_tree().paused = !get_tree().paused
 		screen_paused.visible = !screen_paused.visible
 	
@@ -62,7 +71,7 @@ func _process(delta):
 			enemies_group.add_child(new_enemy)
 			new_enemy.global_position = find_spawn_position()
 			new_enemy.scale_health(1 + (GAME_TIME - (game_timer / 60.0)))
-			next_spawn_time = ceil(game_timer) - SPAWN_COOLDOWN
+			next_spawn_time = next_spawn_time - (SPAWN_COOLDOWN / (1 + (GAME_TIME - (game_timer / 60.0))))
 
 func find_spawn_position():
 	# Screen size
@@ -99,13 +108,44 @@ func find_spawn_position():
 		_:
 			return player.global_position
 
-
 func _on_button_main_menu_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
 
-func _on_button_continue_pressed():
-	if player.experience >= 5 * (player.level * (player.level+1) / 2):
-		player.level += 1
+func resume():
+	screen_paused.visible = false
 	screen_level.visible = false
 	get_tree().paused = false
+	pausable = true
+
+func _on_button_continue_pressed():
+	resume()
+
+func _on_upgrade_player_health_pressed():
+	player.health = player.MAX_HEALTH
+	resume()
+func _on_upgrade_player_speed_pressed():
+	player.speed *= 1.25
+	resume()
+func _on_upgrade_player_range_pressed():
+	pickup_area.get_child(0).shape.radius *= 1.25
+	resume()
+func _on_upgrade_punch_amount_pressed():
+	weapon_punch.increase_amnt()
+	resume()
+func _on_upgrade_punch_damage_pressed():
+	weapon_punch.dmg += 2
+	resume()
+func _on_upgrade_punch_cooldown_pressed():
+	weapon_punch.cldwn *= 0.75
+	weapon_punch.DELAY *= 0.75
+	resume()
+func _on_upgrade_cloud_amount_pressed():
+	weapon_lightning.increase_amnt()
+	resume()
+func _on_upgrade_cloud_damage_pressed():
+	weapon_lightning.dmg += 1
+	resume()
+func _on_upgrade_cloud_size_pressed():
+	weapon_lightning.size_mod *= 1.25
+	resume()

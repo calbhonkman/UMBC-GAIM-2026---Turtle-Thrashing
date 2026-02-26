@@ -12,6 +12,15 @@
 [ext_resource type="Script" uid="uid://c32p66nqvhstf" path="res://scenes/special_screen_shape.gd" id="9_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://csgsdh6itco8" path="res://prefabs/weapons/(bullet)_punch.tscn" id="9_kvuet"]
 [ext_resource type="PackedScene" uid="uid://w0qokvo1f2gx" path="res://prefabs/weapons/(bullet)_lightning.tscn" id="10_dinhu"]
+[ext_resource type="Texture2D" uid="uid://b5dfl3h3yew3" path="res://assets/upgrades/upgrade_player_health.png" id="13_5newe"]
+[ext_resource type="Texture2D" uid="uid://dyxdmixl3oiav" path="res://assets/upgrades/upgrade_player_speed.png" id="14_37s47"]
+[ext_resource type="Texture2D" uid="uid://dcirxygljc1xc" path="res://assets/upgrades/upgrade_player_range.png" id="15_bt5mj"]
+[ext_resource type="Texture2D" uid="uid://cydk0tlhb6dt" path="res://assets/upgrades/upgrade_punch_amount.png" id="16_e1j6l"]
+[ext_resource type="Texture2D" uid="uid://bcscu3u7ecxjn" path="res://assets/upgrades/upgrade_punch_damage.png" id="17_pl11u"]
+[ext_resource type="Texture2D" uid="uid://cgqmdsr0et667" path="res://assets/upgrades/upgrade_punch_cooldown.png" id="18_bhx41"]
+[ext_resource type="Texture2D" uid="uid://d0xgpn7tdu75m" path="res://assets/upgrades/upgrade_lightning_amount.png" id="19_qnb83"]
+[ext_resource type="Texture2D" uid="uid://do76cfv61c1r8" path="res://assets/upgrades/upgrade_lightning_damage.png" id="20_sww3w"]
+[ext_resource type="Texture2D" uid="uid://dbfe1pyswjvsu" path="res://assets/upgrades/upgrade_lightning_size.png" id="21_suyxu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
 size = Vector2(50, 3000)
@@ -166,7 +175,6 @@ shape = SubResource("CapsuleShape2D_dinhu")
 [node name="GameManager" type="Node2D" parent="." unique_id=28411718]
 process_mode = 3
 z_index = 2
-position = Vector2(960, 540)
 script = ExtResource("9_0tnpc")
 
 [node name="Camera" type="Camera2D" parent="GameManager" unique_id=1356503637]
@@ -212,44 +220,18 @@ label_settings = SubResource("LabelSettings_kvpfn")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="[Game Over]" type="Node2D" parent="GameManager" unique_id=180664184]
+[node name="[Paused]" type="Node2D" parent="GameManager/Camera" unique_id=1393519186]
 visible = false
+scale = Vector2(2, 2)
 
-[node name="ColorRect" type="ColorRect" parent="GameManager/[Game Over]" unique_id=534324182]
+[node name="ColorRect" type="ColorRect" parent="GameManager/Camera/[Paused]" unique_id=1892859622]
 offset_left = -960.0
 offset_top = -540.0
 offset_right = 960.0
 offset_bottom = 540.0
 color = Color(0, 0, 0, 0.5)
 
-[node name="(Label) Game Over" type="Label" parent="GameManager/[Game Over]" unique_id=147010008]
-offset_left = -380.0
-offset_top = -271.0
-offset_right = 383.0
-offset_bottom = -139.0
-text = "Game Over"
-label_settings = SubResource("LabelSettings_dinhu")
-horizontal_alignment = 1
-
-[node name="(Button) Main Menu" type="Button" parent="GameManager/[Game Over]" unique_id=690430485]
-offset_left = -203.0
-offset_top = -65.0
-offset_right = 188.0
-offset_bottom = 76.0
-theme_override_font_sizes/font_size = 48
-text = "Main Menu"
-
-[node name="[Paused]" type="Node2D" parent="GameManager" unique_id=1393519186]
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="GameManager/[Paused]" unique_id=1892859622]
-offset_left = -960.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = 540.0
-color = Color(0, 0, 0, 0.5)
-
-[node name="(Label) Paused" type="Label" parent="GameManager/[Paused]" unique_id=423176673]
+[node name="(Label) Paused" type="Label" parent="GameManager/Camera/[Paused]" unique_id=423176673]
 offset_left = -380.0
 offset_top = -271.0
 offset_right = 383.0
@@ -258,34 +240,7 @@ text = "Paused"
 label_settings = SubResource("LabelSettings_dinhu")
 horizontal_alignment = 1
 
-[node name="(Button) Main Menu" type="Button" parent="GameManager/[Paused]" unique_id=774971146]
-offset_left = -203.0
-offset_top = -65.0
-offset_right = 188.0
-offset_bottom = 76.0
-theme_override_font_sizes/font_size = 48
-text = "Main Menu"
-
-[node name="[Level Up]" type="Node2D" parent="GameManager" unique_id=1735115605]
-visible = false
-
-[node name="ColorRect" type="ColorRect" parent="GameManager/[Level Up]" unique_id=512252080]
-offset_left = -960.0
-offset_top = -540.0
-offset_right = 960.0
-offset_bottom = 540.0
-color = Color(0, 0, 0, 0.5)
-
-[node name="(Label) Level Up" type="Label" parent="GameManager/[Level Up]" unique_id=1344943058]
-offset_left = -380.0
-offset_top = -271.0
-offset_right = 383.0
-offset_bottom = -139.0
-text = "Level Up!"
-label_settings = SubResource("LabelSettings_dinhu")
-horizontal_alignment = 1
-
-[node name="(Button) Continue" type="Button" parent="GameManager/[Level Up]" unique_id=361645290]
+[node name="(Button) Continue" type="Button" parent="GameManager/Camera/[Paused]" unique_id=361645290]
 offset_left = -203.0
 offset_top = -65.0
 offset_right = 188.0
@@ -293,17 +248,146 @@ offset_bottom = 76.0
 theme_override_font_sizes/font_size = 48
 text = "Continue"
 
-[node name="[You Win]" type="Node2D" parent="GameManager" unique_id=1211606250]
-visible = false
+[node name="(Button) Main Menu" type="Button" parent="GameManager/Camera/[Paused]" unique_id=774971146]
+offset_left = -203.0
+offset_top = 100.0
+offset_right = 188.0
+offset_bottom = 241.0
+theme_override_font_sizes/font_size = 48
+text = "Main Menu"
 
-[node name="ColorRect" type="ColorRect" parent="GameManager/[You Win]" unique_id=1384694160]
+[node name="[Level Up]" type="Node2D" parent="GameManager/Camera" unique_id=1735115605]
+visible = false
+scale = Vector2(2, 2)
+
+[node name="ColorRect" type="ColorRect" parent="GameManager/Camera/[Level Up]" unique_id=512252080]
 offset_left = -960.0
 offset_top = -540.0
 offset_right = 960.0
 offset_bottom = 540.0
 color = Color(0, 0, 0, 0.5)
 
-[node name="(Label) You Win" type="Label" parent="GameManager/[You Win]" unique_id=1232488267]
+[node name="(Label) Level Up" type="Label" parent="GameManager/Camera/[Level Up]" unique_id=1344943058]
+offset_left = -380.0
+offset_top = -421.0
+offset_right = 383.0
+offset_bottom = -289.0
+text = "Level Up!"
+label_settings = SubResource("LabelSettings_dinhu")
+horizontal_alignment = 1
+
+[node name="(Upgrade) Player Health" type="Button" parent="GameManager/Camera/[Level Up]" unique_id=171195452]
+offset_left = -400.0
+offset_top = -200.0
+offset_right = 8.0
+offset_bottom = 208.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("13_5newe")
+
+[node name="(Upgrade) Player Speed" type="Button" parent="GameManager/Camera/[Level Up]" unique_id=1659306863]
+offset_left = -400.0
+offset_top = 20.0
+offset_right = 8.0
+offset_bottom = 428.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("14_37s47")
+
+[node name="(Upgrade) Player Range" type="Button" parent="GameManager/Camera/[Level Up]" unique_id=1491822884]
+offset_left = -400.0
+offset_top = 240.0
+offset_right = 8.0
+offset_bottom = 648.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("15_bt5mj")
+
+[node name="(Upgrade) Punch Amount" type="Button" parent="GameManager/Camera/[Level Up]" unique_id=1379064279]
+offset_left = -100.0
+offset_top = -200.0
+offset_right = 308.0
+offset_bottom = 208.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("16_e1j6l")
+
+[node name="(Upgrade) Punch Damage" type="Button" parent="GameManager/Camera/[Level Up]" unique_id=144452535]
+offset_left = -100.0
+offset_top = 20.0
+offset_right = 308.0
+offset_bottom = 428.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("17_pl11u")
+
+[node name="(Upgrade) Punch Cooldown" type="Button" parent="GameManager/Camera/[Level Up]" unique_id=529860515]
+offset_left = -100.0
+offset_top = 240.0
+offset_right = 308.0
+offset_bottom = 648.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("18_bhx41")
+
+[node name="(Upgrade) Cloud Amount" type="Button" parent="GameManager/Camera/[Level Up]" unique_id=1867984973]
+offset_left = 200.0
+offset_top = -200.0
+offset_right = 608.0
+offset_bottom = 208.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("19_qnb83")
+
+[node name="(Upgrade) Cloud Damage" type="Button" parent="GameManager/Camera/[Level Up]" unique_id=321977233]
+offset_left = 200.0
+offset_top = 20.0
+offset_right = 608.0
+offset_bottom = 428.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("20_sww3w")
+
+[node name="(Upgrade) Cloud Size" type="Button" parent="GameManager/Camera/[Level Up]" unique_id=2080480219]
+offset_left = 200.0
+offset_top = 240.0
+offset_right = 608.0
+offset_bottom = 648.0
+scale = Vector2(0.5, 0.5)
+icon = ExtResource("21_suyxu")
+
+[node name="[Game Over]" type="Node2D" parent="GameManager/Camera" unique_id=180664184]
+visible = false
+scale = Vector2(2, 2)
+
+[node name="ColorRect" type="ColorRect" parent="GameManager/Camera/[Game Over]" unique_id=534324182]
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0, 0, 0, 0.5)
+
+[node name="(Label) Game Over" type="Label" parent="GameManager/Camera/[Game Over]" unique_id=147010008]
+offset_left = -380.0
+offset_top = -271.0
+offset_right = 383.0
+offset_bottom = -139.0
+text = "Game Over"
+label_settings = SubResource("LabelSettings_dinhu")
+horizontal_alignment = 1
+
+[node name="(Button) Main Menu" type="Button" parent="GameManager/Camera/[Game Over]" unique_id=690430485]
+offset_left = -203.0
+offset_top = -65.0
+offset_right = 188.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 48
+text = "Main Menu"
+
+[node name="[You Win]" type="Node2D" parent="GameManager/Camera" unique_id=1211606250]
+visible = false
+scale = Vector2(2, 2)
+
+[node name="ColorRect" type="ColorRect" parent="GameManager/Camera/[You Win]" unique_id=1384694160]
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0, 0, 0, 0.5)
+
+[node name="(Label) You Win" type="Label" parent="GameManager/Camera/[You Win]" unique_id=1232488267]
 offset_left = -380.0
 offset_top = -271.0
 offset_right = 383.0
@@ -312,7 +396,7 @@ text = "You Win!"
 label_settings = SubResource("LabelSettings_dinhu")
 horizontal_alignment = 1
 
-[node name="(Button) Main Menu" type="Button" parent="GameManager/[You Win]" unique_id=109030467]
+[node name="(Button) Main Menu" type="Button" parent="GameManager/Camera/[You Win]" unique_id=109030467]
 offset_left = -203.0
 offset_top = -65.0
 offset_right = 188.0
@@ -321,7 +405,16 @@ theme_override_font_sizes/font_size = 48
 text = "Main Menu"
 
 [connection signal="area_entered" from="Player/Hitbox (Entities)" to="Player" method="_on_hitbox_area_entered"]
-[connection signal="pressed" from="GameManager/[Game Over]/(Button) Main Menu" to="GameManager" method="_on_button_main_menu_pressed"]
-[connection signal="pressed" from="GameManager/[Paused]/(Button) Main Menu" to="GameManager" method="_on_button_main_menu_pressed"]
-[connection signal="pressed" from="GameManager/[Level Up]/(Button) Continue" to="GameManager" method="_on_button_continue_pressed"]
-[connection signal="pressed" from="GameManager/[You Win]/(Button) Main Menu" to="GameManager" method="_on_button_main_menu_pressed"]
+[connection signal="pressed" from="GameManager/Camera/[Paused]/(Button) Continue" to="GameManager" method="_on_button_continue_pressed"]
+[connection signal="pressed" from="GameManager/Camera/[Paused]/(Button) Main Menu" to="GameManager" method="_on_button_main_menu_pressed"]
+[connection signal="pressed" from="GameManager/Camera/[Level Up]/(Upgrade) Player Health" to="GameManager" method="_on_upgrade_player_health_pressed"]
+[connection signal="pressed" from="GameManager/Camera/[Level Up]/(Upgrade) Player Speed" to="GameManager" method="_on_upgrade_player_speed_pressed"]
+[connection signal="pressed" from="GameManager/Camera/[Level Up]/(Upgrade) Player Range" to="GameManager" method="_on_upgrade_player_range_pressed"]
+[connection signal="pressed" from="GameManager/Camera/[Level Up]/(Upgrade) Punch Amount" to="GameManager" method="_on_upgrade_punch_amount_pressed"]
+[connection signal="pressed" from="GameManager/Camera/[Level Up]/(Upgrade) Punch Damage" to="GameManager" method="_on_upgrade_punch_damage_pressed"]
+[connection signal="pressed" from="GameManager/Camera/[Level Up]/(Upgrade) Punch Cooldown" to="GameManager" method="_on_upgrade_punch_cooldown_pressed"]
+[connection signal="pressed" from="GameManager/Camera/[Level Up]/(Upgrade) Cloud Amount" to="GameManager" method="_on_upgrade_cloud_amount_pressed"]
+[connection signal="pressed" from="GameManager/Camera/[Level Up]/(Upgrade) Cloud Damage" to="GameManager" method="_on_upgrade_cloud_damage_pressed"]
+[connection signal="pressed" from="GameManager/Camera/[Level Up]/(Upgrade) Cloud Size" to="GameManager" method="_on_upgrade_cloud_size_pressed"]
+[connection signal="pressed" from="GameManager/Camera/[Game Over]/(Button) Main Menu" to="GameManager" method="_on_button_main_menu_pressed"]
+[connection signal="pressed" from="GameManager/Camera/[You Win]/(Button) Main Menu" to="GameManager" method="_on_button_main_menu_pressed"]

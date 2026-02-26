@@ -7,12 +7,14 @@ extends CharacterBody2D
 @export var MAX_HEALTH: int = 5
 @export var INVINCIBLE_TIME: float = 1.0
 
+var speed
 var health
 var invincible_timer = 0
 var experience = 0
 var level = 1
 
 func _ready():
+	speed = SPEED
 	health = MAX_HEALTH
 
 func _process(delta):
@@ -29,7 +31,7 @@ func _process(delta):
 	elif movement_direction.length() != 0:
 		sprite.play("walk")
 		sprite.scale.x = abs(sprite.scale.x) * movement_direction.x / abs(movement_direction.x) if movement_direction.x != 0 else sprite.scale.x
-		velocity = movement_direction * SPEED
+		velocity = movement_direction * speed
 		move_and_slide()
 	elif health > 0:
 		sprite.play("default")

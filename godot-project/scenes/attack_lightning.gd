@@ -5,13 +5,11 @@ extends Area2D
 @export var COOLDOWN: float = 1.0
 @export var AMOUNT: int = 1
 @export var BULLET: Resource
-@export var FADE_SPEED: float = 4.0
-@export var DELAY: float = 0.5
 
 var spd = 0.0
 var dmg = 0.0
 var cldwn = 0.0
-var delay = 0.0
+var size_mod = 1.0
 
 var amnt = 0
 var bullet = []
@@ -32,7 +30,6 @@ func _ready():
 		b_position.append(null)
 
 func _process(delta):
-	delay -= delta
 	for i in range(amnt):
 		b_cooldown[i] -= delta
 		if bullet[i]:
@@ -58,9 +55,9 @@ func _process(delta):
 				bullet[i] = BULLET.instantiate()
 				add_child(bullet[i])
 				bullet[i].global_position = global_position
+				bullet[i].scale *= size_mod
 				b_position[i] = bullet[i].global_position
 				b_cooldown[i] = cldwn
-				delay = DELAY
 
 func find_target():
 	var possible_targets = []
@@ -70,3 +67,10 @@ func find_target():
 	if not possible_targets.is_empty():
 		return possible_targets[randi_range(0,possible_targets.size()-1)]
 	return null
+
+func increase_amnt():
+	amnt += 1
+	bullet.append(null)
+	b_cooldown.append(0.0)
+	b_target.append(null)
+	b_position.append(null)

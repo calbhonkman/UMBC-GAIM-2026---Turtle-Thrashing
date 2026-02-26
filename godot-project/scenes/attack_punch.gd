@@ -7,6 +7,7 @@ extends Area2D
 @export var BULLET: Resource
 @export var FADE_SPEED: float = 4.0
 @export var DELAY: float = 0.5
+@export var KNOCKBACK: float = 50.0
 
 var spd = 0.0
 var dmg = 0.0
@@ -52,6 +53,8 @@ func _process(delta):
 						b_target[i] = null
 					if area not in b_prev[i] and area.has_meta("enemy"):
 						area.damage(dmg)
+						var knockback_dir = (area.global_position - bullet[i].global_position)
+						area.global_position += (knockback_dir / knockback_dir.length()) * KNOCKBACK
 					if area != null:
 						entered_areas.append(area)
 				b_prev[i] = entered_areas
@@ -81,3 +84,11 @@ func find_target():
 		if b_target.count(area) < 1 and area.has_meta("enemy") and (target_enemy == null or (area.global_position-global_position).length() < (target_enemy.global_position-global_position).length()):
 			target_enemy = area
 	return target_enemy
+
+func increase_amnt():
+	amnt += 1
+	bullet.append(null)
+	b_cooldown.append(0.0)
+	b_target.append(null)
+	b_position.append(null)
+	b_prev.append([])
