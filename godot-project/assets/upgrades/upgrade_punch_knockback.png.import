@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bcscu3u7ecxjn"
-path="res://.godot/imported/upgrade_punch_damage.png-52985c7e59b17fa7f88c8b3048d1fd31.ctex"
+uid="uid://tf65euoolnn4"
+path="res://.godot/imported/upgrade_punch_knockback.png-ad9651af989773bc7ff4ae8442c98e80.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/upgrades/upgrade_punch_damage.png"
-dest_files=["res://.godot/imported/upgrade_punch_damage.png-52985c7e59b17fa7f88c8b3048d1fd31.ctex"]
+source_file="res://assets/upgrades/upgrade_punch_knockback.png"
+dest_files=["res://.godot/imported/upgrade_punch_knockback.png-ad9651af989773bc7ff4ae8442c98e80.ctex"]
 
 [params]
 
