@@ -46,7 +46,10 @@ func _process(delta):
 
 func _on_hitbox_area_entered(area):
 	# If hit by an enemy
-	if area.has_meta("enemy"):
+	if area.has_meta("food"):
+		area.queue_free()
+		health += 1
+	elif area.has_meta("enemy"):
 		if invincible_timer == 0:
 			health -= 1
 			invincible_timer = INVINCIBLE_TIME

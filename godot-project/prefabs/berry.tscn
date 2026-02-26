@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://ct5pf58tx5o1e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_75s82"]
+size = Vector2(40, 40)
+
+[node name="Area2D" type="Area2D" unique_id=342656737]
+metadata/food = ""
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1481267871]
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+color = Color(1, 0, 0, 1)
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1686921982]
+offset_left = -6.0
+offset_top = -29.0
+offset_right = 6.0
+offset_bottom = -18.0
+color = Color(0, 1, 0, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=151755331]
+shape = SubResource("RectangleShape2D_75s82")

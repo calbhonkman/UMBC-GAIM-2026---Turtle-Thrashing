@@ -13,6 +13,8 @@ extends Node2D
 @export var CAMERA_LIMIT: float = 1600.0
 @export var GAME_TIME: float = 5.0 # minutes
 
+const BERRY = preload("uid://ct5pf58tx5o1e")
+
 @onready var enemies_group = $"../(Group) Enemies"
 const ENEMY = preload("uid://d1k32mfbnnud3")
 const BIGENEMY = preload("uid://dq43dbtcuu4m")
@@ -42,7 +44,7 @@ func _process(delta):
 	camera.global_position.y = clampf(player.global_position.y, -1*cam_limit_y, cam_limit_y)
 	
 	level.text = "Level " + str(player.level) + " (" + str(player.experience) + "/" + str(5 * (player.level * (player.level+1) / 2)) + ")"
-	health.text = str(player.health) + " HP"
+	health.text = str(player.health) + "/" + str(player.MAX_HEALTH) + " HP"
 	
 	if game_timer <= 0.0:
 		pausable = false
@@ -69,13 +71,16 @@ func _process(delta):
 		
 		if game_timer <= next_spawn_time:
 			var new_enemy = null
-			if randi_range(1,10) == 1:
+			if randi_range(1,20) == 1:
+				new_enemy = BERRY.instantiate()
+			elif randi_range(1,10) == 1:
 				new_enemy = BIGENEMY.instantiate()
 			else:
 				new_enemy = ENEMY.instantiate()
 			enemies_group.add_child(new_enemy)
 			new_enemy.global_position = find_spawn_position()
-			new_enemy.scale_health(1 + (GAME_TIME - (game_timer / 60.0)))
+			if new_enemy.get_script():
+				new_enemy.scale_health(1 + (GAME_TIME - (game_timer / 60.0)))
 			next_spawn_time = next_spawn_time - (SPAWN_COOLDOWN / (1 + (GAME_TIME - (game_timer / 60.0))/2))
 
 func find_spawn_position():
@@ -127,7 +132,7 @@ func _on_button_continue_pressed():
 	resume()
 
 func _on_upgrade_player_health_pressed():
-	player.health = player.MAX_HEALTH
+	player.health = max(player.health, player.MAX_HEALTH)
 	resume()
 func _on_upgrade_player_speed_pressed():
 	player.speed *= 1.25

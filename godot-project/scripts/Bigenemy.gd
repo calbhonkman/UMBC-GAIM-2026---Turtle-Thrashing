@@ -4,8 +4,8 @@ extends Area2D
 @onready var sprite = $Sprite2D
 const EXP = preload("uid://bln5qlwy18sjf")
 
-@export var MAX_HEALTH: float = 5.0
-@export var SPEED: float = 70.0
+@export var MAX_HEALTH: float = 10.0
+@export var SPEED: float = 60.0
 
 var health
 
