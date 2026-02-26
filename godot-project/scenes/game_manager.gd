@@ -15,6 +15,7 @@ extends Node2D
 
 @onready var enemies_group = $"../(Group) Enemies"
 const ENEMY = preload("uid://d1k32mfbnnud3")
+const BIGENEMY = preload("uid://dq43dbtcuu4m")
 @export var SPAWN_COOLDOWN = 1.0
 @export var SPAWN_AREA = 1500
 
@@ -67,7 +68,11 @@ func _process(delta):
 		clock.text = timer_minutes + ":" + timer_seconds
 		
 		if game_timer <= next_spawn_time:
-			var new_enemy = ENEMY.instantiate()
+			var new_enemy = null
+			if randi_range(1,10) == 1:
+				new_enemy = BIGENEMY.instantiate()
+			else:
+				new_enemy = ENEMY.instantiate()
 			enemies_group.add_child(new_enemy)
 			new_enemy.global_position = find_spawn_position()
 			new_enemy.scale_health(1 + (GAME_TIME - (game_timer / 60.0)))
