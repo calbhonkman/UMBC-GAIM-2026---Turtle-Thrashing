@@ -1,20 +1,24 @@
 extends Node2D
 
 @onready var player = $"../Player"
-@onready var camera = $"../Camera"
+@onready var camera = $Camera
 
-@onready var clock = $"../Camera/Clock"
-@onready var level = $"../Camera/Level"
-@onready var health = $"../Camera/Health"
+@onready var clock = $Camera/Clock
+@onready var level = $Camera/Level
+@onready var health = $Camera/Health
 
 @export var CAMERA_LIMIT: float = 1600.0
 @export var GAME_TIME: float = 5.0 # minutes
-
 
 @onready var enemies_group = $"../(Group) Enemies"
 const ENEMY = preload("uid://d1k32mfbnnud3")
 @export var SPAWN_COOLDOWN = 1.0
 @export var SPAWN_AREA = 1500
+
+@onready var screen_paused = $"[Paused]"
+@onready var screen_level = $"[Level Up]"
+@onready var screen_lose = $"[Game Over]"
+@onready var screen_win = $"[You Win]"
 
 var game_timer = 0.0
 var next_spawn_time = 0.0
@@ -24,6 +28,8 @@ func _ready():
 	next_spawn_time = game_timer
 
 func _process(delta):
+	global_position = player.global_position
+	
 	var cam_limit_x = CAMERA_LIMIT - (get_viewport().get_visible_rect().size.x/2)
 	var cam_limit_y = CAMERA_LIMIT - (get_viewport().get_visible_rect().size.y/2)
 	camera.global_position.x = clampf(player.global_position.x, -1*cam_limit_x, cam_limit_x)
@@ -34,6 +40,16 @@ func _process(delta):
 	
 	if game_timer <= 0.0:
 		get_tree().paused = true
+		screen_win.visible = true
+	elif player.health <= 0:
+		get_tree().paused = true
+		screen_lose.visible = true
+	elif player.experience >= 5 * (player.level * (player.level+1) / 2):
+		get_tree().paused = true
+		screen_level.visible = true
+	elif Input.is_action_just_pressed("pause"):
+		get_tree().paused = !get_tree().paused
+		screen_paused.visible = !screen_paused.visible
 	
 	if not get_tree().paused:
 		game_timer = clampf(game_timer - delta, 0, GAME_TIME * 60.0)
@@ -47,9 +63,6 @@ func _process(delta):
 			new_enemy.global_position = find_spawn_position()
 			new_enemy.scale_health(1 + (GAME_TIME - (game_timer / 60.0)))
 			next_spawn_time = ceil(game_timer) - SPAWN_COOLDOWN
-	
-	if Input.is_action_just_pressed("pause"):
-		get_tree().paused = !get_tree().paused
 
 func find_spawn_position():
 	# Screen size
@@ -85,3 +98,14 @@ func find_spawn_position():
 			return Vector2(p_pos.x-(s_size.x/2),randf_range(-1*SPAWN_AREA,SPAWN_AREA))
 		_:
 			return player.global_position
+
+
+func _on_button_main_menu_pressed():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
+
+func _on_button_continue_pressed():
+	if player.experience >= 5 * (player.level * (player.level+1) / 2):
+		player.level += 1
+	screen_level.visible = false
+	get_tree().paused = false

@@ -22,9 +22,6 @@ func _process(delta):
 	else:
 		sprite.modulate = Color(1,1,1,1)
 	
-	if experience >= 5 * (level * (level+1) / 2):
-		level += 1
-	
 	var movement_direction = Input.get_vector("left","right","up","down")
 	if health <= 0:
 		sprite.play("death")

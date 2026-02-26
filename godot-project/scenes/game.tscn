@@ -13,13 +13,6 @@
 [ext_resource type="PackedScene" uid="uid://csgsdh6itco8" path="res://prefabs/weapons/(bullet)_punch.tscn" id="9_kvuet"]
 [ext_resource type="PackedScene" uid="uid://w0qokvo1f2gx" path="res://prefabs/weapons/(bullet)_lightning.tscn" id="10_dinhu"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_gee14"]
-font_size = 192
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_kvpfn"]
-font_size = 48
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gee14"]
 size = Vector2(50, 3000)
 
@@ -69,51 +62,17 @@ radius = 300.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dinhu"]
 size = Vector2(1920, 1080)
 
+[sub_resource type="LabelSettings" id="LabelSettings_gee14"]
+font_size = 192
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kvpfn"]
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_dinhu"]
+font_size = 96
+
 [node name="Node2D" type="Node2D" unique_id=2020137742]
-
-[node name="Camera" type="Camera2D" parent="." unique_id=252486179]
-z_index = 2
-scale = Vector2(0.5, 0.5)
-
-[node name="Clock" type="Label" parent="Camera" unique_id=530567819]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -96.0
-offset_top = -1080.0
-offset_right = 96.0
-offset_bottom = -948.0
-grow_horizontal = 2
-text = "5:00"
-label_settings = SubResource("LabelSettings_gee14")
-
-[node name="Level" type="Label" parent="Camera" unique_id=533334256]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -80.0
-offset_top = -850.0
-offset_right = 80.0
-offset_bottom = -783.0
-grow_horizontal = 2
-text = "Level 1"
-label_settings = SubResource("LabelSettings_kvpfn")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Health" type="Label" parent="Camera" unique_id=1388660572]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -80.0
-offset_top = -780.0
-offset_right = 80.0
-offset_bottom = -713.0
-grow_horizontal = 2
-text = "Level 1"
-label_settings = SubResource("LabelSettings_kvpfn")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Island" type="StaticBody2D" parent="." unique_id=21348922]
 
@@ -206,7 +165,52 @@ shape = SubResource("CapsuleShape2D_dinhu")
 
 [node name="GameManager" type="Node2D" parent="." unique_id=28411718]
 process_mode = 3
+z_index = 2
+position = Vector2(960, 540)
 script = ExtResource("9_0tnpc")
+
+[node name="Camera" type="Camera2D" parent="GameManager" unique_id=1356503637]
+scale = Vector2(0.5, 0.5)
+
+[node name="Clock" type="Label" parent="GameManager/Camera" unique_id=1533942345]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -96.0
+offset_top = -1080.0
+offset_right = 96.0
+offset_bottom = -948.0
+grow_horizontal = 2
+text = "5:00"
+label_settings = SubResource("LabelSettings_gee14")
+
+[node name="Level" type="Label" parent="GameManager/Camera" unique_id=203818531]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = -850.0
+offset_right = 80.0
+offset_bottom = -783.0
+grow_horizontal = 2
+text = "Level 0 (0/0)"
+label_settings = SubResource("LabelSettings_kvpfn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" type="Label" parent="GameManager/Camera" unique_id=1489919871]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -80.0
+offset_top = -780.0
+offset_right = 80.0
+offset_bottom = -713.0
+grow_horizontal = 2
+text = "0 HP"
+label_settings = SubResource("LabelSettings_kvpfn")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="[Game Over]" type="Node2D" parent="GameManager" unique_id=180664184]
 visible = false
@@ -218,4 +222,106 @@ offset_right = 960.0
 offset_bottom = 540.0
 color = Color(0, 0, 0, 0.5)
 
+[node name="(Label) Game Over" type="Label" parent="GameManager/[Game Over]" unique_id=147010008]
+offset_left = -380.0
+offset_top = -271.0
+offset_right = 383.0
+offset_bottom = -139.0
+text = "Game Over"
+label_settings = SubResource("LabelSettings_dinhu")
+horizontal_alignment = 1
+
+[node name="(Button) Main Menu" type="Button" parent="GameManager/[Game Over]" unique_id=690430485]
+offset_left = -203.0
+offset_top = -65.0
+offset_right = 188.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 48
+text = "Main Menu"
+
+[node name="[Paused]" type="Node2D" parent="GameManager" unique_id=1393519186]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameManager/[Paused]" unique_id=1892859622]
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0, 0, 0, 0.5)
+
+[node name="(Label) Paused" type="Label" parent="GameManager/[Paused]" unique_id=423176673]
+offset_left = -380.0
+offset_top = -271.0
+offset_right = 383.0
+offset_bottom = -139.0
+text = "Paused"
+label_settings = SubResource("LabelSettings_dinhu")
+horizontal_alignment = 1
+
+[node name="(Button) Main Menu" type="Button" parent="GameManager/[Paused]" unique_id=774971146]
+offset_left = -203.0
+offset_top = -65.0
+offset_right = 188.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 48
+text = "Main Menu"
+
+[node name="[Level Up]" type="Node2D" parent="GameManager" unique_id=1735115605]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameManager/[Level Up]" unique_id=512252080]
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0, 0, 0, 0.5)
+
+[node name="(Label) Level Up" type="Label" parent="GameManager/[Level Up]" unique_id=1344943058]
+offset_left = -380.0
+offset_top = -271.0
+offset_right = 383.0
+offset_bottom = -139.0
+text = "Level Up!"
+label_settings = SubResource("LabelSettings_dinhu")
+horizontal_alignment = 1
+
+[node name="(Button) Continue" type="Button" parent="GameManager/[Level Up]" unique_id=361645290]
+offset_left = -203.0
+offset_top = -65.0
+offset_right = 188.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 48
+text = "Continue"
+
+[node name="[You Win]" type="Node2D" parent="GameManager" unique_id=1211606250]
+visible = false
+
+[node name="ColorRect" type="ColorRect" parent="GameManager/[You Win]" unique_id=1384694160]
+offset_left = -960.0
+offset_top = -540.0
+offset_right = 960.0
+offset_bottom = 540.0
+color = Color(0, 0, 0, 0.5)
+
+[node name="(Label) You Win" type="Label" parent="GameManager/[You Win]" unique_id=1232488267]
+offset_left = -380.0
+offset_top = -271.0
+offset_right = 383.0
+offset_bottom = -139.0
+text = "You Win!"
+label_settings = SubResource("LabelSettings_dinhu")
+horizontal_alignment = 1
+
+[node name="(Button) Main Menu" type="Button" parent="GameManager/[You Win]" unique_id=109030467]
+offset_left = -203.0
+offset_top = -65.0
+offset_right = 188.0
+offset_bottom = 76.0
+theme_override_font_sizes/font_size = 48
+text = "Main Menu"
+
 [connection signal="area_entered" from="Player/Hitbox (Entities)" to="Player" method="_on_hitbox_area_entered"]
+[connection signal="pressed" from="GameManager/[Game Over]/(Button) Main Menu" to="GameManager" method="_on_button_main_menu_pressed"]
+[connection signal="pressed" from="GameManager/[Paused]/(Button) Main Menu" to="GameManager" method="_on_button_main_menu_pressed"]
+[connection signal="pressed" from="GameManager/[Level Up]/(Button) Continue" to="GameManager" method="_on_button_continue_pressed"]
+[connection signal="pressed" from="GameManager/[You Win]/(Button) Main Menu" to="GameManager" method="_on_button_main_menu_pressed"]
