@@ -12,11 +12,15 @@
 [ext_resource type="Script" uid="uid://c32p66nqvhstf" path="res://scenes/special_screen_shape.gd" id="9_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://csgsdh6itco8" path="res://prefabs/weapons/(bullet)_punch.tscn" id="9_kvuet"]
 [ext_resource type="PackedScene" uid="uid://w0qokvo1f2gx" path="res://prefabs/weapons/(bullet)_lightning.tscn" id="10_dinhu"]
+[ext_resource type="Script" uid="uid://d3diaewcyfj0l" path="res://scenes/minion_shield.gd" id="12_bt5mj"]
 [ext_resource type="Texture2D" uid="uid://b5dfl3h3yew3" path="res://assets/upgrades/upgrade_player_health.png" id="13_5newe"]
+[ext_resource type="Texture2D" uid="uid://5nodvhabq0mg" path="res://assets/Turtle/Minions/ShieldTurtle.png" id="13_e1j6l"]
 [ext_resource type="Texture2D" uid="uid://dyxdmixl3oiav" path="res://assets/upgrades/upgrade_player_speed.png" id="14_37s47"]
+[ext_resource type="Script" uid="uid://cl403en7htnjl" path="res://scenes/weapon_laser.gd" id="14_e1j6l"]
 [ext_resource type="Texture2D" uid="uid://dcirxygljc1xc" path="res://assets/upgrades/upgrade_player_range.png" id="15_bt5mj"]
+[ext_resource type="PackedScene" uid="uid://le1ukfjocokb" path="res://prefabs/weapons/(bullet)_laser.tscn" id="15_pl11u"]
 [ext_resource type="Texture2D" uid="uid://cydk0tlhb6dt" path="res://assets/upgrades/upgrade_punch_amount.png" id="16_e1j6l"]
-[ext_resource type="Texture2D" uid="uid://bcscu3u7ecxjn" path="res://assets/upgrades/upgrade_punch_damage.png" id="17_pl11u"]
+[ext_resource type="Texture2D" uid="uid://tf65euoolnn4" path="res://assets/upgrades/upgrade_punch_knockback.png" id="17_5newe"]
 [ext_resource type="Texture2D" uid="uid://cgqmdsr0et667" path="res://assets/upgrades/upgrade_punch_cooldown.png" id="18_bhx41"]
 [ext_resource type="Texture2D" uid="uid://d0xgpn7tdu75m" path="res://assets/upgrades/upgrade_lightning_amount.png" id="19_qnb83"]
 [ext_resource type="Texture2D" uid="uid://do76cfv61c1r8" path="res://assets/upgrades/upgrade_lightning_damage.png" id="20_sww3w"]
@@ -60,16 +64,20 @@ animations = [{
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dinhu"]
 radius = 24.0
-height = 327.28
+height = 270.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tnpc"]
 radius = 300.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iywne"]
-radius = 300.0
+radius = 250.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dinhu"]
 size = Vector2(1920, 1080)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pl11u"]
+radius = 16.0
+height = 70.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_gee14"]
 font_size = 192
@@ -124,7 +132,7 @@ script = ExtResource("1_yqjtg")
 SPEED = 300.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=1355100074]
-position = Vector2(-19, 5)
+position = Vector2(0, 5)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_vtaks")
 animation = &"walk"
@@ -167,6 +175,32 @@ script = ExtResource("9_kvpfn")
 rotation = 1.5707964
 scale = Vector2(1, 0.55)
 shape = SubResource("CapsuleShape2D_dinhu")
+
+[node name="(Minion) Shield" type="Node2D" parent="Player" unique_id=197280404]
+rotation = 3.1415927
+script = ExtResource("12_bt5mj")
+
+[node name="Area2D" type="Area2D" parent="Player/(Minion) Shield" unique_id=1754672137]
+position = Vector2(150, 0)
+rotation = 1.5707964
+
+[node name="Sprite2D" type="Sprite2D" parent="Player/(Minion) Shield/Area2D" unique_id=305210915]
+position = Vector2(17.999987, 15.999998)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("13_e1j6l")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Minion) Shield/Area2D" unique_id=1838998279]
+position = Vector2(-1.335144e-05, 9.536743e-07)
+rotation = 1.3962634
+shape = SubResource("CapsuleShape2D_pl11u")
+
+[node name="(Weapon) Laser" type="Area2D" parent="Player" unique_id=1069287280]
+script = ExtResource("14_e1j6l")
+BULLET = ExtResource("15_pl11u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Laser" unique_id=814649257]
+shape = SubResource("RectangleShape2D_dinhu")
+script = ExtResource("9_kvpfn")
 
 [node name="(Group) Bullets" type="Node2D" parent="." unique_id=1494891267]
 
@@ -308,13 +342,13 @@ offset_bottom = 208.0
 scale = Vector2(0.5, 0.5)
 icon = ExtResource("16_e1j6l")
 
-[node name="(Upgrade) Punch Damage" type="Button" parent="GameManager/Camera/[Level Up]" unique_id=144452535]
+[node name="(Upgrade) Punch Knockback" type="Button" parent="GameManager/Camera/[Level Up]" unique_id=144452535]
 offset_left = -100.0
 offset_top = 20.0
 offset_right = 308.0
 offset_bottom = 428.0
 scale = Vector2(0.5, 0.5)
-icon = ExtResource("17_pl11u")
+icon = ExtResource("17_5newe")
 
 [node name="(Upgrade) Punch Cooldown" type="Button" parent="GameManager/Camera/[Level Up]" unique_id=529860515]
 offset_left = -100.0
@@ -411,7 +445,7 @@ text = "Main Menu"
 [connection signal="pressed" from="GameManager/Camera/[Level Up]/(Upgrade) Player Speed" to="GameManager" method="_on_upgrade_player_speed_pressed"]
 [connection signal="pressed" from="GameManager/Camera/[Level Up]/(Upgrade) Player Range" to="GameManager" method="_on_upgrade_player_range_pressed"]
 [connection signal="pressed" from="GameManager/Camera/[Level Up]/(Upgrade) Punch Amount" to="GameManager" method="_on_upgrade_punch_amount_pressed"]
-[connection signal="pressed" from="GameManager/Camera/[Level Up]/(Upgrade) Punch Damage" to="GameManager" method="_on_upgrade_punch_damage_pressed"]
+[connection signal="pressed" from="GameManager/Camera/[Level Up]/(Upgrade) Punch Knockback" to="GameManager" method="_on_upgrade_punch_knockback_pressed"]
 [connection signal="pressed" from="GameManager/Camera/[Level Up]/(Upgrade) Punch Cooldown" to="GameManager" method="_on_upgrade_punch_cooldown_pressed"]
 [connection signal="pressed" from="GameManager/Camera/[Level Up]/(Upgrade) Cloud Amount" to="GameManager" method="_on_upgrade_cloud_amount_pressed"]
 [connection signal="pressed" from="GameManager/Camera/[Level Up]/(Upgrade) Cloud Damage" to="GameManager" method="_on_upgrade_cloud_damage_pressed"]

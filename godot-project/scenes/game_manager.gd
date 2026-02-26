@@ -71,7 +71,7 @@ func _process(delta):
 			enemies_group.add_child(new_enemy)
 			new_enemy.global_position = find_spawn_position()
 			new_enemy.scale_health(1 + (GAME_TIME - (game_timer / 60.0)))
-			next_spawn_time = next_spawn_time - (SPAWN_COOLDOWN / (1 + (GAME_TIME - (game_timer / 60.0))))
+			next_spawn_time = next_spawn_time - (SPAWN_COOLDOWN / (1 + (GAME_TIME - (game_timer / 60.0))/2))
 
 func find_spawn_position():
 	# Screen size
@@ -133,8 +133,8 @@ func _on_upgrade_player_range_pressed():
 func _on_upgrade_punch_amount_pressed():
 	weapon_punch.increase_amnt()
 	resume()
-func _on_upgrade_punch_damage_pressed():
-	weapon_punch.dmg += 2
+func _on_upgrade_punch_knockback_pressed():
+	weapon_punch.KNOCKBACK *= 1.5
 	resume()
 func _on_upgrade_punch_cooldown_pressed():
 	weapon_punch.cldwn *= 0.75
@@ -144,7 +144,7 @@ func _on_upgrade_cloud_amount_pressed():
 	weapon_lightning.increase_amnt()
 	resume()
 func _on_upgrade_cloud_damage_pressed():
-	weapon_lightning.dmg += 1
+	weapon_lightning.dmg *= 1.5
 	resume()
 func _on_upgrade_cloud_size_pressed():
 	weapon_lightning.size_mod *= 1.25

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://le1ukfjocokb"]
+
+[ext_resource type="Texture2D" uid="uid://do5qcnqoi154j" path="res://assets/Turtle/Direct Attacks/TurtBEAM0000.png" id="1_8ltk1"]
+[ext_resource type="Texture2D" uid="uid://cyd2c1gajq4va" path="res://assets/Turtle/Direct Attacks/TurtBEAM0001.png" id="2_1adg4"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xwc2w"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_8ltk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1adg4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqgxj"]
+size = Vector2(40, 40)
+
+[node name="Area2D" type="Area2D" unique_id=626060781]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=788181597]
+position = Vector2(-1, 16)
+scale = Vector2(0.02, 0.14)
+sprite_frames = SubResource("SpriteFrames_xwc2w")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1480054210]
+shape = SubResource("RectangleShape2D_nqgxj")
