@@ -45,7 +45,7 @@ func _process(delta):
 			var new_enemy = ENEMY.instantiate()
 			enemies_group.add_child(new_enemy)
 			new_enemy.global_position = find_spawn_position()
-			new_enemy.scale_health((GAME_TIME * 60.0) / game_timer)
+			new_enemy.scale_health(1 + (GAME_TIME - (game_timer / 60.0)))
 			next_spawn_time = ceil(game_timer) - SPAWN_COOLDOWN
 	
 	if Input.is_action_just_pressed("pause"):

@@ -18,7 +18,6 @@ var bullet = []
 var b_cooldown = []
 var b_target = []
 var b_position = []
-var b_prev = []
 
 func _ready():
 	spd = SPEED
@@ -31,7 +30,6 @@ func _ready():
 		b_cooldown.append(0.0)
 		b_target.append(null)
 		b_position.append(null)
-		b_prev.append([])
 
 func _process(delta):
 	delay -= delta
@@ -39,33 +37,22 @@ func _process(delta):
 		b_cooldown[i] -= delta
 		if bullet[i]:
 			if b_target[i]:
-				var b_target_dir = (b_target[i].global_position - b_position[i])
-				b_target_dir = b_target_dir / b_target_dir.length()
-				bullet[i].rotation = b_target_dir.angle()
-				bullet[i].global_position += b_target_dir * delta * SPEED
+				bullet[i].global_position = b_target[i].global_position
 				b_position[i] = bullet[i].global_position
 				bullet[i].visible = true
-				
-				var entered_areas = []
-				for area in bullet[i].get_overlapping_areas():
-					if area == b_target[i]:
-						b_target[i] = null
-					if area not in b_prev[i] and area.has_meta("enemy"):
-						area.damage(dmg)
-					if area != null:
-						entered_areas.append(area)
-				b_prev[i] = entered_areas
-					
-			elif bullet[i].get_child(0).modulate.a > 0:
-				bullet[i].get_child(0).modulate.a -= delta * FADE_SPEED
-				bullet[i].global_position = b_position[i]
 			else:
+				bullet[i].global_position = b_position[i]
+			
+			if not bullet[i].get_child(0).is_playing():
+				for area in bullet[i].get_overlapping_areas():
+					if area.has_meta("enemy"):
+						area.damage(dmg)
 				bullet[i].queue_free()
 				bullet[i] = null
 				b_target[i] = null
 				b_position[i] = null
-				b_prev[i] = []
-		elif b_cooldown[i] <= 0.0 and delay <= 0.0:
+		
+		elif b_cooldown[i] <= 0.0: # and delay <= 0.0:
 			b_target[i] = find_target()
 			if b_target[i]:
 				bullet[i] = BULLET.instantiate()
@@ -76,8 +63,10 @@ func _process(delta):
 				delay = DELAY
 
 func find_target():
-	var target_enemy = null
+	var possible_targets = []
 	for area in get_overlapping_areas():
-		if b_target.count(area) < 1 and area.has_meta("enemy") and (target_enemy == null or (area.global_position-global_position).length() < (target_enemy.global_position-global_position).length()):
-			target_enemy = area
-	return target_enemy
+		if b_target.count(area) < 1 and area.has_meta("enemy"):
+			possible_targets.append(area)
+	if not possible_targets.is_empty():
+		return possible_targets[randi_range(0,possible_targets.size()-1)]
+	return null

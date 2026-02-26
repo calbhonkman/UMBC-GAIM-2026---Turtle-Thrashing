@@ -6,12 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://dmdftboxv07d5" path="res://assets/Turtle/Turtle_Idle.png" id="2_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://b0lhcesvxk5es" path="res://assets/Turtle/TurtWalk1.png" id="3_gee14"]
 [ext_resource type="Texture2D" uid="uid://vg1j3cyln3qy" path="res://assets/Turtle/TurtWalk2.png" id="4_0tnpc"]
-[ext_resource type="Script" uid="uid://5sq50khyu22b" path="res://scripts/weapon.gd" id="4_lbhrr"]
 [ext_resource type="Script" uid="uid://btydxe3n7bvhi" path="res://scenes/attack_punch.gd" id="7_kvpfn"]
 [ext_resource type="Script" uid="uid://bstu2wfytyykc" path="res://scenes/game_manager.gd" id="9_0tnpc"]
-[ext_resource type="PackedScene" uid="uid://w0qokvo1f2gx" path="res://prefabs/weapons/(bullet)_lightning.tscn" id="9_dinhu"]
+[ext_resource type="Script" uid="uid://cjnrhr8lp15vt" path="res://scenes/attack_lightning.gd" id="9_dinhu"]
 [ext_resource type="Script" uid="uid://c32p66nqvhstf" path="res://scenes/special_screen_shape.gd" id="9_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://csgsdh6itco8" path="res://prefabs/weapons/(bullet)_punch.tscn" id="9_kvuet"]
+[ext_resource type="PackedScene" uid="uid://w0qokvo1f2gx" path="res://prefabs/weapons/(bullet)_lightning.tscn" id="10_dinhu"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gee14"]
 font_size = 192
@@ -177,8 +177,8 @@ shape = SubResource("CircleShape2D_0tnpc")
 z_index = 1
 script = ExtResource("7_kvpfn")
 SPEED = 800.0
-DAMAGE = 3.0
-COOLDOWN = 3.0
+DAMAGE = 2.0
+COOLDOWN = 2.0
 BULLET = ExtResource("9_kvuet")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Punch" unique_id=1221786466]
@@ -186,9 +186,10 @@ shape = SubResource("CircleShape2D_iywne")
 
 [node name="(Weapon) Lightning" type="Area2D" parent="Player" unique_id=1238629527]
 z_index = 1
-script = ExtResource("4_lbhrr")
+script = ExtResource("9_dinhu")
 DAMAGE = 5.0
-BULLET = ExtResource("9_dinhu")
+COOLDOWN = 3.0
+BULLET = ExtResource("10_dinhu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Lightning" unique_id=1843913089]
 shape = SubResource("RectangleShape2D_dinhu")
