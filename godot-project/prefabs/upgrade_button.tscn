@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://o1ekysyg808j"]
+
+[node name="Upgrade Button" type="Button" unique_id=756521869]
+offset_left = -100.0
+offset_top = -100.0
+offset_right = 100.0
+offset_bottom = 100.0
+text = "Max Heath +1"

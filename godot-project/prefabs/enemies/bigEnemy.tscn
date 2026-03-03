@@ -35,6 +35,7 @@ radius = 61.031868
 [node name="BgEnemy" type="Area2D" unique_id=2078753937]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_biv0o")
+MAX_HEALTH = 3.0
 metadata/enemy = ""
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2074823387]

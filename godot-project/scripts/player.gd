@@ -5,7 +5,9 @@ extends CharacterBody2D
 
 @export var SPEED: float = 200.0
 @export var MAX_HEALTH: int = 5
-@export var INVINCIBLE_TIME: float = 1.0
+@export var INVINCIBLE_TIME: float = 0.5
+
+@export var upgrade_descriptions: Array[String]
 
 var speed
 var health
@@ -48,7 +50,7 @@ func _on_hitbox_area_entered(area):
 	# If hit by an enemy
 	if area.has_meta("food"):
 		area.queue_free()
-		health += 1
+		health = min(MAX_HEALTH, health+1)
 	elif area.has_meta("enemy"):
 		if invincible_timer == 0:
 			health -= 1
@@ -58,3 +60,16 @@ func _on_hitbox_area_entered(area):
 	elif area.has_meta("exp"):
 		experience += 1
 		area.queue_free()
+
+func get_upgrade():
+	return randi_range(0, upgrade_descriptions.size()-1)
+
+func upgrade(index: int):
+	match index:
+		0:
+			MAX_HEALTH += 1
+			health = MAX_HEALTH
+		1:
+			pickup_area.get_child(0).shape.radius *= 1.25
+		2:
+			SPEED *= 1.5
