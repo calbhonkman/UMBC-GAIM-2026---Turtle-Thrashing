@@ -1,9 +1,6 @@
 extends Node2D
 
 @onready var player = $"../Player"
-@onready var pickup_area = $"../Player/Pickup Area"
-@onready var weapon_punch = $"../Player/(Weapon) Punch"
-@onready var weapon_lightning = $"../Player/(Weapon) Lightning"
 
 @onready var camera = $Camera
 @onready var clock = $Camera/Clock
@@ -25,6 +22,13 @@ const BIGENEMY = preload("uid://dq43dbtcuu4m")
 @onready var screen_level = $"Camera/[Level Up]"
 @onready var screen_lose = $"Camera/[Game Over]"
 @onready var screen_win = $"Camera/[You Win]"
+
+
+const UPGRADE_BUTTON = preload("uid://o1ekysyg808j")
+@export var number_of_upgrades: int = 3
+@export var things_to_upgrade: Array[Node2D]
+var current_upgrades: Array[Vector2]
+var upgrade_buttons = []
 
 var game_timer = 0.0
 var next_spawn_time = 0.0
@@ -59,6 +63,7 @@ func _process(delta):
 		pausable = false
 		get_tree().paused = true
 		screen_level.visible = true
+		select_upgrades()
 	elif pausable and Input.is_action_just_pressed("pause"):
 		get_tree().paused = !get_tree().paused
 		screen_paused.visible = !screen_paused.visible
@@ -71,7 +76,7 @@ func _process(delta):
 		
 		if game_timer <= next_spawn_time:
 			var new_enemy = null
-			if randi_range(1,20) == 1:
+			if randi_range(1,30) == 1:
 				new_enemy = BERRY.instantiate()
 			elif randi_range(1,10) == 1:
 				new_enemy = BIGENEMY.instantiate()
@@ -92,7 +97,7 @@ func find_spawn_position():
 	var possible_directions = []
 	
 	# Check which directions have space for enemies
-	if (p_pos.y-(s_size.y/2) > -1*SPAWN_AREA):
+	if (p_pos.y-(s_size.y/2) > -1 * SPAWN_AREA):
 		possible_directions.append('North')
 	if (p_pos.x+(s_size.x/2) < SPAWN_AREA):
 		possible_directions.append('East')
@@ -122,40 +127,44 @@ func _on_button_main_menu_pressed():
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
 
+func _on_button_continue_pressed():
+	resume()
+
+func _on_button_upgrade_pressed(index):
+	things_to_upgrade[current_upgrades[index].x].upgrade(current_upgrades[index].y)
+	resume()
+
 func resume():
 	screen_paused.visible = false
 	screen_level.visible = false
 	get_tree().paused = false
 	pausable = true
 
-func _on_button_continue_pressed():
-	resume()
+func reset_upgrades():
+	current_upgrades.clear()
+	for button in upgrade_buttons:
+		button.queue_free()
+	upgrade_buttons.clear()
 
-func _on_upgrade_player_health_pressed():
-	player.health = max(player.health, player.MAX_HEALTH)
-	resume()
-func _on_upgrade_player_speed_pressed():
-	player.speed *= 1.25
-	resume()
-func _on_upgrade_player_range_pressed():
-	pickup_area.get_child(0).shape.radius *= 1.25
-	resume()
-func _on_upgrade_punch_amount_pressed():
-	weapon_punch.increase_amnt()
-	resume()
-func _on_upgrade_punch_knockback_pressed():
-	weapon_punch.KNOCKBACK *= 1.5
-	resume()
-func _on_upgrade_punch_cooldown_pressed():
-	weapon_punch.cldwn *= 0.75
-	weapon_punch.DELAY *= 0.75
-	resume()
-func _on_upgrade_cloud_amount_pressed():
-	weapon_lightning.increase_amnt()
-	resume()
-func _on_upgrade_cloud_damage_pressed():
-	weapon_lightning.dmg *= 1.5
-	resume()
-func _on_upgrade_cloud_size_pressed():
-	weapon_lightning.size_mod *= 1.25
-	resume()
+func select_upgrades():
+	reset_upgrades()
+	for i in range(number_of_upgrades):
+		# Make a button for the upgrade
+		upgrade_buttons.append(UPGRADE_BUTTON.instantiate())
+		screen_level.add_child(upgrade_buttons.back())
+		
+		# Assign an upgrade to the button
+		# ttu = things_to_upgrade
+		var ttu_index = randi_range(0, things_to_upgrade.size()-1)
+		current_upgrades.append(Vector2(ttu_index, things_to_upgrade[ttu_index].get_upgrade()))
+		upgrade_buttons.back().text = things_to_upgrade[ttu_index].upgrade_descriptions[current_upgrades.back().y]
+		upgrade_buttons.back().pressed.connect(_on_button_upgrade_pressed.bind(i))
+	position_upgrade_buttons()
+
+func position_upgrade_buttons():
+	var screen_size_x = get_viewport_rect().size.x
+	var camera_offset = camera.global_position.x - (screen_size_x / 2)
+	var button_width = upgrade_buttons[0].size.x
+	var pos_buffer = (screen_size_x - (number_of_upgrades * button_width)) / (number_of_upgrades + 1)
+	for i in range(upgrade_buttons.size()):
+		upgrade_buttons[i].global_position.x = camera_offset + (pos_buffer * (i+1)) + (button_width * i)

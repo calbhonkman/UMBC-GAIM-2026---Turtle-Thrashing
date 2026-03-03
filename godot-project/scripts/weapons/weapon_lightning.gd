@@ -6,31 +6,28 @@ extends Area2D
 @export var AMOUNT: int = 1
 @export var BULLET: Resource
 
-var spd = 0.0
-var dmg = 0.0
-var cldwn = 0.0
+@export var unlocked: bool = false
+@export var upgrade_descriptions: Array[String]
+
 var size_mod = 1.0
 
-var amnt = 0
 var bullet = []
 var b_cooldown = []
 var b_target = []
 var b_position = []
 
 func _ready():
-	spd = SPEED
-	dmg = DAMAGE
-	cldwn = COOLDOWN
-	amnt = AMOUNT
-	
-	for i in range(amnt):
+	for i in range(AMOUNT):
 		bullet.append(null)
 		b_cooldown.append(0.0)
 		b_target.append(null)
 		b_position.append(null)
 
 func _process(delta):
-	for i in range(amnt):
+	if unlocked == false:
+		return
+	
+	for i in range(AMOUNT):
 		b_cooldown[i] -= delta
 		if bullet[i]:
 			if b_target[i]:
@@ -43,7 +40,7 @@ func _process(delta):
 			if not bullet[i].get_child(0).is_playing():
 				for area in bullet[i].get_overlapping_areas():
 					if area.has_meta("enemy"):
-						area.damage(dmg)
+						area.damage(DAMAGE)
 				bullet[i].queue_free()
 				bullet[i] = null
 				b_target[i] = null
@@ -57,7 +54,7 @@ func _process(delta):
 				bullet[i].global_position = global_position
 				bullet[i].scale *= size_mod
 				b_position[i] = bullet[i].global_position
-				b_cooldown[i] = cldwn
+				b_cooldown[i] = COOLDOWN
 
 func find_target():
 	var possible_targets = []
@@ -68,9 +65,23 @@ func find_target():
 		return possible_targets[randi_range(0,possible_targets.size()-1)]
 	return null
 
-func increase_amnt():
-	amnt += 1
-	bullet.append(null)
-	b_cooldown.append(0.0)
-	b_target.append(null)
-	b_position.append(null)
+func get_upgrade():
+	if unlocked:
+		return randi_range(1, upgrade_descriptions.size()-1)
+	return 0
+
+func upgrade(index: int):
+	match index:
+		0:
+			unlocked = true
+			visible = true
+		1:
+			AMOUNT += 1
+			bullet.append(null)
+			b_cooldown.append(0.0)
+			b_target.append(null)
+			b_position.append(null)
+		2:
+			DAMAGE *= 1.5
+		3:
+			size_mod *= 1.25

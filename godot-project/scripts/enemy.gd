@@ -27,6 +27,6 @@ func damage(dmg: float):
 	health -= dmg
 	if health <= 0.0:
 		var new_xp = EXP.instantiate()
-		new_xp.global_position = global_position
 		get_parent().add_child(new_xp)
+		new_xp.global_position = global_position
 		queue_free()

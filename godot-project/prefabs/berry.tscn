@@ -5,6 +5,7 @@ size = Vector2(40, 40)
 
 [node name="Area2D" type="Area2D" unique_id=342656737]
 metadata/food = ""
+metadata/pickup = ""
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1481267871]
 offset_left = -20.0
