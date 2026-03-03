@@ -19,6 +19,9 @@ var b_target = null
 var b_lifetime = 0.0
 
 func _ready():
+	if unlocked:
+		visible = true
+	
 	b_cooldown = COOLDOWN
 
 func _process(delta):

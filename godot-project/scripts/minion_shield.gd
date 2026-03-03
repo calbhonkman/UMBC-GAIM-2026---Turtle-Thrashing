@@ -6,6 +6,10 @@ extends Node2D
 @export var unlocked: bool = false
 @export var upgrade_descriptions: Array[String]
 
+func _ready():
+	if unlocked:
+		visible = true
+
 func _process(delta):
 	if unlocked == false:
 		return

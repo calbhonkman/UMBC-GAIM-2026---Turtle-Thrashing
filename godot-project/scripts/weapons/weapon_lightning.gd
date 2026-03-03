@@ -17,6 +17,9 @@ var b_target = []
 var b_position = []
 
 func _ready():
+	if unlocked:
+		visible = true
+	
 	for i in range(AMOUNT):
 		bullet.append(null)
 		b_cooldown.append(0.0)
