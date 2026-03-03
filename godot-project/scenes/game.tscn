@@ -53,9 +53,14 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dinhu"]
-radius = 24.0
-height = 270.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ca42v"]
+size = Vector2(250, 150)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ca42v"]
+radius = 52.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rysoc"]
+radius = 21.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tnpc"]
 radius = 300.0
@@ -124,24 +129,27 @@ SPEED = 300.0
 upgrade_descriptions = Array[String](["Max Health +1", "Pickup Range +25%", "Movement Speed +50%"])
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=1355100074]
-position = Vector2(0, 5)
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_vtaks")
 animation = &"walk"
 
-[node name="Hitbox (Movement)" type="CollisionShape2D" parent="Player" unique_id=195191149]
-rotation = 1.5707964
-scale = Vector2(1, 0.55)
-shape = SubResource("CapsuleShape2D_dinhu")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1318562977]
+visible = false
+shape = SubResource("RectangleShape2D_ca42v")
 
 [node name="Hitbox (Entities)" type="Area2D" parent="Player" unique_id=2047547949]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Hitbox (Entities)" unique_id=1318562977]
-rotation = 1.5707964
-scale = Vector2(1, 0.55)
-shape = SubResource("CapsuleShape2D_dinhu")
+[node name="Hitbox (Shell)" type="CollisionShape2D" parent="Player/Hitbox (Entities)" unique_id=195191149]
+position = Vector2(-9, -10)
+scale = Vector2(1, 0.7)
+shape = SubResource("CircleShape2D_ca42v")
+
+[node name="Hitbox (Head)" type="CollisionShape2D" parent="Player/Hitbox (Entities)" unique_id=1449868337]
+position = Vector2(76, 4)
+shape = SubResource("CircleShape2D_rysoc")
 
 [node name="Pickup Area" type="Area2D" parent="Player" unique_id=1340889769]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Pickup Area" unique_id=1695875074]
 shape = SubResource("CircleShape2D_0tnpc")
@@ -170,6 +178,7 @@ shape = SubResource("RectangleShape2D_dinhu")
 script = ExtResource("9_kvpfn")
 
 [node name="(Weapon) Punch" type="Area2D" parent="Player" unique_id=1650126049]
+visible = false
 z_index = 1
 script = ExtResource("7_kvpfn")
 SPEED = 800.0
