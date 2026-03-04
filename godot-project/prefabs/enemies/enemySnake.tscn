@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dfuv28c2ne1eo"]
+
+[ext_resource type="Script" uid="uid://cvxcaq383ao6k" path="res://scripts/enemySnake.gd" id="1_qy1fp"]
+[ext_resource type="Texture2D" uid="uid://bf24y24ilcdeb" path="res://assets/Enemies/BasicEnemies/SnekMove0001.png" id="2_qy1fp"]
+[ext_resource type="Texture2D" uid="uid://d0wcexuc8tfjs" path="res://assets/Enemies/BasicEnemies/SnekMove0002.png" id="3_ct6j4"]
+[ext_resource type="Texture2D" uid="uid://dhlf5yqdsyyk2" path="res://assets/Enemies/BasicEnemies/SnekStartup.png" id="4_myie7"]
+[ext_resource type="Texture2D" uid="uid://dxkxvw45gn4xe" path="res://assets/Enemies/BasicEnemies/SnekCharge.png" id="5_1jl0s"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rnd4m"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_qy1fp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ct6j4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_myie7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ct6j4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qy1fp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_1jl0s")
+}],
+"loop": false,
+"name": &"lunge",
+"speed": 30.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qnk7q"]
+radius = 27.0
+height = 124.0
+
+[node name="Area2D" type="Area2D" unique_id=1424500926 groups=["Enemies"]]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_qy1fp")
+metadata/enemy = ""
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1819166314]
+position = Vector2(6, 11)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_rnd4m")
+animation = &"lunge"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=763433384]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_qnk7q")
