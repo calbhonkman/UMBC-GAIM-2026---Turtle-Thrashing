@@ -181,12 +181,9 @@ script = ExtResource("9_kvpfn")
 visible = false
 z_index = 1
 script = ExtResource("7_kvpfn")
-SPEED = 800.0
-DAMAGE = 2.0
-COOLDOWN = 2.0
 BULLET = ExtResource("9_kvuet")
 unlocked = true
-upgrade_descriptions = Array[String](["Unlock Punch", "Max Punches +1", "Punch Cooldown -25%", "Punch Knockback +50%"])
+upgrade_descriptions = Array[String](["Unlock Punch", "Punch Speed +25%", "Punch Cooldown -25%", "Punch Knockback +50%"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Punch" unique_id=1221786466]
 shape = SubResource("CircleShape2D_iywne")
