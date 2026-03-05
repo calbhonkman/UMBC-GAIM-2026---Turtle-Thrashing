@@ -39,12 +39,11 @@ animations = [{
 radius = 27.0
 height = 124.0
 
-[node name="Area2D" type="Area2D" unique_id=1424500926]
+[node name="Area2D" type="Area2D" unique_id=1424500926 groups=["Enemies"]]
 script = ExtResource("1_yfjof")
 metadata/enemy = ""
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1819166314]
-position = Vector2(6, 11)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_rnd4m")
 animation = &"walk"

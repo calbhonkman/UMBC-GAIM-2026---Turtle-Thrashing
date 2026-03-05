@@ -8,13 +8,14 @@ extends Node2D
 @onready var health = $Camera/Health
 
 @export var CAMERA_LIMIT: float = 1600.0
-@export var GAME_TIME: float = 5.0 # minutes
+@export var GAME_TIME: float = 99.0 # minutes
 
 const BERRY = preload("uid://ct5pf58tx5o1e")
 
 @onready var enemies_group = $"../(Group) Enemies"
 const ENEMY = preload("uid://d1k32mfbnnud3")
 const BIGENEMY = preload("uid://dq43dbtcuu4m")
+const SNAKE = preload("uid://dfuv28c2ne1eo")
 @export var SPAWN_COOLDOWN = 1.0
 @export var SPAWN_AREA = 1500
 
@@ -78,7 +79,9 @@ func _process(delta):
 			var new_enemy = null
 			if randi_range(1,30) == 1:
 				new_enemy = BERRY.instantiate()
-			elif randi_range(1,10) == 1:
+			elif randi_range(1,25) == 1:
+				new_enemy = SNAKE.instantiate()
+			elif randi_range(1,15) == 1:
 				new_enemy = BIGENEMY.instantiate()
 			else:
 				new_enemy = ENEMY.instantiate()

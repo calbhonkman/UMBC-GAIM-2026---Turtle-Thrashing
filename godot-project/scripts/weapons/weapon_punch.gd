@@ -1,10 +1,12 @@
 extends Area2D
 
-@export var SPEED: float = 500.0
-@export var DAMAGE: float = 1.0
-@export var COOLDOWN: float = 1.0
-@export var AMOUNT: int = 1
 @export var BULLET: Resource
+
+@export var AMOUNT: int = 1
+@export var SPEED: float = 800.0
+@export var DAMAGE: float = 1.0
+@export var COOLDOWN: float = 2.0
+@export var LIFETIME: float = 1.0
 @export var FADE_SPEED: float = 4.0
 @export var DELAY: float = 0.5
 @export var KNOCKBACK: float = 50.0
@@ -12,78 +14,76 @@ extends Area2D
 @export var unlocked: bool = false
 @export var upgrade_descriptions: Array[String]
 
-var delay = 0.0
+var cooldown = 0.0
 
-var bullet = []
-var b_cooldown = []
-var b_target = []
+var bullets = []
+var b_lifetime = []
+var b_direction = []
 var b_position = []
 var b_prev = []
 
 func _ready():
 	if unlocked:
 		visible = true
-	
-	for i in range(AMOUNT):
-		bullet.append(null)
-		b_cooldown.append(0.0)
-		b_target.append(null)
-		b_position.append(null)
-		b_prev.append([])
 
 func _process(delta):
 	if unlocked == false:
 		return
 	
-	delay -= delta
-	for i in range(AMOUNT):
-		b_cooldown[i] -= delta
-		if bullet[i]:
-			if b_target[i]:
-				var b_target_dir = (b_target[i].global_position - b_position[i])
-				b_target_dir = b_target_dir / b_target_dir.length()
-				bullet[i].rotation = b_target_dir.angle()
-				bullet[i].global_position += b_target_dir * delta * SPEED
-				b_position[i] = bullet[i].global_position
-				bullet[i].visible = true
-				
-				var entered_areas = []
-				for area in bullet[i].get_overlapping_areas():
-					if area == b_target[i]:
-						b_target[i] = null
-					if area not in b_prev[i] and area.has_meta("enemy"):
-						area.damage(DAMAGE)
-						var knockback_dir = (area.global_position - bullet[i].global_position)
-						area.global_position += (knockback_dir / knockback_dir.length()) * KNOCKBACK
-					if area != null:
-						entered_areas.append(area)
-				b_prev[i] = entered_areas
-					
-			elif bullet[i].get_child(0).modulate.a > 0:
-				bullet[i].get_child(0).modulate.a -= delta * FADE_SPEED
-				bullet[i].global_position = b_position[i]
-			else:
-				bullet[i].queue_free()
-				bullet[i] = null
-				b_target[i] = null
-				b_position[i] = null
-				b_prev[i] = []
-		elif b_cooldown[i] <= 0.0 and delay <= 0.0:
-			b_target[i] = find_target()
-			if b_target[i]:
-				bullet[i] = BULLET.instantiate()
-				add_child(bullet[i])
-				bullet[i].global_position = global_position
-				b_position[i] = bullet[i].global_position
-				b_cooldown[i] = COOLDOWN
-				delay = DELAY
+	cooldown -= delta
+	if cooldown <= 0.0 and is_enemy_in_area(self):
+		cooldown = COOLDOWN
+		spawn_bullet()
+	
+	# Kill old bullets
+	for i in range(bullets.size()-1, -1, -1):
+		b_lifetime[i] -= delta
+		if b_lifetime[i] <= 0.0:
+			var dead_bullet = bullets.pop_at(i)
+			dead_bullet.queue_free()
+			b_lifetime.remove_at(i)
+			b_direction.remove_at(i)
+			b_position.remove_at(i)
+			b_prev.remove_at(i)
+	
+	# Move remaining bullets
+	for i in range(bullets.size()):
+		bullets[i].global_position = b_position[i] + b_direction[i] * delta * max(0, pow(b_lifetime[i] / LIFETIME,2)) * SPEED
+		b_position[i] = bullets[i].global_position
+		
+		bullets[i].get_child(0).modulate = Color(1,1,1,max(0, pow(b_lifetime[i] / LIFETIME,2)))
+		
+		for area in bullets[i].get_overlapping_areas():
+			if area not in b_prev[i] and area.is_in_group("Enemies"):
+				b_prev[i].append(area)
+				area.damage(DAMAGE)
+				var knockback_dir = (area.global_position - global_position)
+				area.global_position += (knockback_dir / knockback_dir.length()) * KNOCKBACK
 
-func find_target():
-	var target_enemy = null
+
+func is_enemy_in_area(area: Area2D):
+	for body in area.get_overlapping_areas():
+		if body.is_in_group("Enemies"):
+			return true
+	return false
+
+func spawn_bullet():
+	var new_bullet = BULLET.instantiate()
+	add_child(new_bullet)
+	new_bullet.global_position = global_position
+	bullets.append(new_bullet)
+	b_lifetime.append(LIFETIME)
+	
+	# Will fire in the direction of the closest enemy
+	var nearest_enemy_pos = null
 	for area in get_overlapping_areas():
-		if b_target.count(area) < 1 and area.has_meta("enemy") and (target_enemy == null or (area.global_position-global_position).length() < (target_enemy.global_position-global_position).length()):
-			target_enemy = area
-	return target_enemy
+		if area.is_in_group("Enemies") and (nearest_enemy_pos == null or (area.global_position - global_position).length() < (nearest_enemy_pos - global_position).length()):
+			nearest_enemy_pos = area.global_position
+	b_direction.append((nearest_enemy_pos - global_position).normalized())
+	new_bullet.look_at(nearest_enemy_pos)
+	
+	b_position.append(global_position)
+	b_prev.append([])
 
 func get_upgrade():
 	if unlocked:
@@ -96,12 +96,7 @@ func upgrade(index: int):
 			unlocked = true
 			visible = true
 		1:
-			AMOUNT += 1
-			bullet.append(null)
-			b_cooldown.append(0.0)
-			b_target.append(null)
-			b_position.append(null)
-			b_prev.append([])
+			SPEED *= 1.25
 		2:
 			COOLDOWN *= 0.75
 			DELAY *= 0.75

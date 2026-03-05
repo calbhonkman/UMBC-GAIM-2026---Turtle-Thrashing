@@ -32,7 +32,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_biv0o"]
 radius = 61.031868
 
-[node name="BgEnemy" type="Area2D" unique_id=2078753937]
+[node name="BgEnemy" type="Area2D" unique_id=2078753937 groups=["Enemies"]]
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_biv0o")
 MAX_HEALTH = 3.0
