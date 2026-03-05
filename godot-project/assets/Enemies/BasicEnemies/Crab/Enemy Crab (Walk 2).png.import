@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cpfw1w23v0u45"
-path="res://.godot/imported/Enemy Crab (Walk 2).png-2f2cfb9cab27bdb474256c8844aedb22.ctex"
+path="res://.godot/imported/Enemy Crab (Walk 2).png-31f15f70071ef218363575fbdb064541.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemies/Crab/Enemy Crab (Walk 2).png"
-dest_files=["res://.godot/imported/Enemy Crab (Walk 2).png-2f2cfb9cab27bdb474256c8844aedb22.ctex"]
+source_file="res://assets/Enemies/BasicEnemies/Crab/Enemy Crab (Walk 2).png"
+dest_files=["res://.godot/imported/Enemy Crab (Walk 2).png-31f15f70071ef218363575fbdb064541.ctex"]
 
 [params]
 

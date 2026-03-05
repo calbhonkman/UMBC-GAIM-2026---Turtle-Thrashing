@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cvijeb77m8ln0"
-path="res://.godot/imported/TurtPunchFrame0003.png-efc1beb71427ba4a987cbe8c829b747c.ctex"
+path="res://.godot/imported/TurtPunchFrame0003.png-c00eb872281a2844fbd17011e83fa264.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Turtle/Direct Attacks/TurtPunchFrame0003.png"
-dest_files=["res://.godot/imported/TurtPunchFrame0003.png-efc1beb71427ba4a987cbe8c829b747c.ctex"]
+source_file="res://assets/Turtle/Direct Attacks/Punch/TurtPunchFrame0003.png"
+dest_files=["res://.godot/imported/TurtPunchFrame0003.png-c00eb872281a2844fbd17011e83fa264.ctex"]
 
 [params]
 

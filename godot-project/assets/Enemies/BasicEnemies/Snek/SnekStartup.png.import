@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhlf5yqdsyyk2"
-path="res://.godot/imported/SnekStartup.png-4065a5cfec89f743ff1f2fe136cd1971.ctex"
+path="res://.godot/imported/SnekStartup.png-6453350d4f348241eaf17eff005a9687.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemies/BasicEnemies/SnekStartup.png"
-dest_files=["res://.godot/imported/SnekStartup.png-4065a5cfec89f743ff1f2fe136cd1971.ctex"]
+source_file="res://assets/Enemies/BasicEnemies/Snek/SnekStartup.png"
+dest_files=["res://.godot/imported/SnekStartup.png-6453350d4f348241eaf17eff005a9687.ctex"]
 
 [params]
 

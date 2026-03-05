@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://be7omrm1wwpl1"
-path="res://.godot/imported/PlaceholderRaccoon.png-341cb98f0cfb8229ba5a1894d056141b.ctex"
+path="res://.godot/imported/PlaceholderRaccoon.png-dfa9dbeb438e381a63959b0e869c60ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemies/BasicEnemies/PlaceholderRaccoon.png"
-dest_files=["res://.godot/imported/PlaceholderRaccoon.png-341cb98f0cfb8229ba5a1894d056141b.ctex"]
+source_file="res://assets/Enemies/BasicEnemies/Raccoon/PlaceholderRaccoon.png"
+dest_files=["res://.godot/imported/PlaceholderRaccoon.png-dfa9dbeb438e381a63959b0e869c60ed.ctex"]
 
 [params]
 

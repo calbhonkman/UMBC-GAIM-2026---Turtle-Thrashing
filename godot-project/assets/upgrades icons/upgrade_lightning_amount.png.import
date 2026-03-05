@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0xgpn7tdu75m"
-path="res://.godot/imported/upgrade_lightning_amount.png-f91ecf9d06aef55d8b3ca42526ff4bc8.ctex"
+path="res://.godot/imported/upgrade_lightning_amount.png-e067643b4ccb619c90d5bb24e6a81822.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/upgrades/upgrade_lightning_amount.png"
-dest_files=["res://.godot/imported/upgrade_lightning_amount.png-f91ecf9d06aef55d8b3ca42526ff4bc8.ctex"]
+source_file="res://assets/upgrades icons/upgrade_lightning_amount.png"
+dest_files=["res://.godot/imported/upgrade_lightning_amount.png-e067643b4ccb619c90d5bb24e6a81822.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dpica1oa32ubq"
-path="res://.godot/imported/Snapping Turtle Enemy (Idle 2).png-ddbceeb6e5b572ba0df827d0cdf8c060.ctex"
+path="res://.godot/imported/Snapping Turtle Enemy (Idle 2).png-c357f7ad8c2f7bd9bda246a457022df4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemies/BasicEnemies/Snapping Turtle Enemy (Idle 2).png"
-dest_files=["res://.godot/imported/Snapping Turtle Enemy (Idle 2).png-ddbceeb6e5b572ba0df827d0cdf8c060.ctex"]
+source_file="res://assets/Enemies/BasicEnemies/SnappingTurtle/Snapping Turtle Enemy (Idle 2).png"
+dest_files=["res://.godot/imported/Snapping Turtle Enemy (Idle 2).png-c357f7ad8c2f7bd9bda246a457022df4.ctex"]
 
 [params]
 

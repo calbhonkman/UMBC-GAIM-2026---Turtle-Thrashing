@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://dxkxvw45gn4xe"
-path="res://.godot/imported/SnekCharge.png-3ff1b9a3bf7d6e6b6f8e91a389abdec3.ctex"
+path="res://.godot/imported/SnekCharge.png-9335994b4d9c56b7506045bc8a826823.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemies/BasicEnemies/SnekCharge.png"
-dest_files=["res://.godot/imported/SnekCharge.png-3ff1b9a3bf7d6e6b6f8e91a389abdec3.ctex"]
+source_file="res://assets/Enemies/BasicEnemies/Snek/SnekCharge.png"
+dest_files=["res://.godot/imported/SnekCharge.png-9335994b4d9c56b7506045bc8a826823.ctex"]
 
 [params]
 

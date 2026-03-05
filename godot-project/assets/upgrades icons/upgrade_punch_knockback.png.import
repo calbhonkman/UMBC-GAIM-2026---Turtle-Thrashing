@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://tf65euoolnn4"
-path="res://.godot/imported/upgrade_punch_knockback.png-ad9651af989773bc7ff4ae8442c98e80.ctex"
+path="res://.godot/imported/upgrade_punch_knockback.png-3e19a104a5f8287f0cca1415f3ab0e99.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/upgrades/upgrade_punch_knockback.png"
-dest_files=["res://.godot/imported/upgrade_punch_knockback.png-ad9651af989773bc7ff4ae8442c98e80.ctex"]
+source_file="res://assets/upgrades icons/upgrade_punch_knockback.png"
+dest_files=["res://.godot/imported/upgrade_punch_knockback.png-3e19a104a5f8287f0cca1415f3ab0e99.ctex"]
 
 [params]
 
