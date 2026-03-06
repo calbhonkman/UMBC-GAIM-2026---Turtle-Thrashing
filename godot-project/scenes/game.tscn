@@ -158,7 +158,7 @@ shape = SubResource("CircleShape2D_0tnpc")
 visible = false
 script = ExtResource("14_e1j6l")
 BULLET = ExtResource("15_pl11u")
-upgrade_descriptions = Array[String](["Unlock Laser", "Laser Width +50%"])
+upgrade_descriptions = Array[String](["Unlock Laser", "Laser Width +50%", "Laser Knockback x1.25"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Laser" unique_id=814649257]
 shape = SubResource("RectangleShape2D_dinhu")
