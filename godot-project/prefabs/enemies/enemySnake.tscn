@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://dfuv28c2ne1eo"]
 
 [ext_resource type="Script" uid="uid://cvxcaq383ao6k" path="res://scripts/enemySnake.gd" id="1_qy1fp"]
-[ext_resource type="Texture2D" uid="uid://bf24y24ilcdeb" path="res://assets/Enemies/BasicEnemies/SnekMove0001.png" id="2_qy1fp"]
-[ext_resource type="Texture2D" uid="uid://d0wcexuc8tfjs" path="res://assets/Enemies/BasicEnemies/SnekMove0002.png" id="3_ct6j4"]
-[ext_resource type="Texture2D" uid="uid://dhlf5yqdsyyk2" path="res://assets/Enemies/BasicEnemies/SnekStartup.png" id="4_myie7"]
-[ext_resource type="Texture2D" uid="uid://dxkxvw45gn4xe" path="res://assets/Enemies/BasicEnemies/SnekCharge.png" id="5_1jl0s"]
+[ext_resource type="Texture2D" uid="uid://bf24y24ilcdeb" path="res://assets/Enemies/BasicEnemies/Snek/SnekMove0001.png" id="2_qy1fp"]
+[ext_resource type="Texture2D" uid="uid://d0wcexuc8tfjs" path="res://assets/Enemies/BasicEnemies/Snek/SnekMove0002.png" id="3_ct6j4"]
+[ext_resource type="Texture2D" uid="uid://dhlf5yqdsyyk2" path="res://assets/Enemies/BasicEnemies/Snek/SnekStartup.png" id="4_myie7"]
+[ext_resource type="Texture2D" uid="uid://dxkxvw45gn4xe" path="res://assets/Enemies/BasicEnemies/Snek/SnekCharge.png" id="5_1jl0s"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_rnd4m"]
 animations = [{
@@ -19,8 +19,19 @@ animations = [{
 "texture": ExtResource("4_myie7")
 }],
 "loop": false,
-"name": &"default",
+"name": &"charge",
 "speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ct6j4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_qy1fp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -50,7 +61,6 @@ metadata/enemy = ""
 position = Vector2(6, 11)
 scale = Vector2(0.1, 0.1)
 sprite_frames = SubResource("SpriteFrames_rnd4m")
-animation = &"lunge"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=763433384]
