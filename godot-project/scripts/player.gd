@@ -3,8 +3,6 @@ extends CharacterBody2D
 @onready var sprite = $Sprite
 @onready var pickup_area = $"Pickup Area"
 
-@onready var sfx_xp_pickup = $"xp_pickup"
-
 @export var SPEED: float = 200.0
 @export var MAX_HEALTH: int = 5
 @export var INVINCIBLE_TIME: float = 0.5
@@ -61,7 +59,7 @@ func _on_hitbox_area_entered(area):
 	# If hit by exp
 	elif area.has_meta("exp"):
 		experience += 1
-		sfx_xp_pickup.play()
+		AudioManager.xp_pickup_sfx.play()
 		area.queue_free()
 
 func get_upgrade():

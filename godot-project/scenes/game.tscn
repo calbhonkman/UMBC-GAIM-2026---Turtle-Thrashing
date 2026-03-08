@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://btydxe3n7bvhi" path="res://scripts/weapons/weapon_punch.gd" id="7_kvpfn"]
 [ext_resource type="Script" uid="uid://bstu2wfytyykc" path="res://scripts/game_manager.gd" id="9_0tnpc"]
 [ext_resource type="Script" uid="uid://cjnrhr8lp15vt" path="res://scripts/weapons/weapon_lightning.gd" id="9_dinhu"]
-[ext_resource type="Script" uid="uid://c32p66nqvhstf" path="res://scripts/special_screen_shape.gd" id="9_kvpfn"]
+[ext_resource type="Script" path="res://scripts/special_screen_shape.gd" id="9_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://csgsdh6itco8" path="res://prefabs/weapons/(bullet)_punch.tscn" id="9_kvuet"]
 [ext_resource type="PackedScene" uid="uid://w0qokvo1f2gx" path="res://prefabs/weapons/(bullet)_lightning.tscn" id="10_dinhu"]
 [ext_resource type="Script" uid="uid://d3diaewcyfj0l" path="res://scripts/minion_shield.gd" id="12_bt5mj"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://cl403en7htnjl" path="res://scripts/weapons/weapon_laser.gd" id="14_e1j6l"]
 [ext_resource type="PackedScene" uid="uid://le1ukfjocokb" path="res://prefabs/weapons/(bullet)_laser.tscn" id="15_pl11u"]
 [ext_resource type="Texture2D" uid="uid://bcapu1vxsu637" path="res://assets/Turtle/health_icon.png" id="17_rysoc"]
+[ext_resource type="PackedScene" uid="uid://fnhiviwbuuj8" path="res://audio/audio_manager.tscn" id="18_ssvqc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
 size = Vector2(1312.9883, 50)
@@ -435,6 +436,8 @@ offset_right = 188.0
 offset_bottom = 76.0
 theme_override_font_sizes/font_size = 48
 text = "Main Menu"
+
+[node name="AudioManager" parent="." unique_id=1292916551 instance=ExtResource("18_ssvqc")]
 
 [connection signal="area_entered" from="Player/Hitbox (Entities)" to="Player" method="_on_hitbox_area_entered"]
 [connection signal="pressed" from="GameManager/Camera/[Paused]/(Button) Continue" to="GameManager" method="_on_button_continue_pressed"]

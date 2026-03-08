@@ -1,9 +1,15 @@
 [gd_scene format=3 uid="uid://fnhiviwbuuj8"]
 
 [ext_resource type="Script" uid="uid://booxrp6hjiu0t" path="res://audio/audio_manager.gd" id="1_drlug"]
+[ext_resource type="AudioStream" uid="uid://tba55j3wq7t4" path="res://audio/sfx/xp.wav" id="2_drlug"]
 
 [node name="AudioManager" type="Node2D" unique_id=1292916551]
 script = ExtResource("1_drlug")
 
 [node name="music" type="AudioStreamPlayer" parent="." unique_id=921189905]
 bus = &"Music"
+
+[node name="xp_pickup" type="AudioStreamPlayer" parent="." unique_id=966874373]
+stream = ExtResource("2_drlug")
+volume_db = -17.685
+bus = &"Sfx"
