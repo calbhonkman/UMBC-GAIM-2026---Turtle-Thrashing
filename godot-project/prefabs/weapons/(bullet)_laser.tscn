@@ -1,16 +1,20 @@
 [gd_scene format=3 uid="uid://le1ukfjocokb"]
 
-[ext_resource type="Texture2D" uid="uid://do5qcnqoi154j" path="res://assets/Turtle/Direct Attacks/TurtBEAM0000.png" id="1_8ltk1"]
-[ext_resource type="Texture2D" uid="uid://cyd2c1gajq4va" path="res://assets/Turtle/Direct Attacks/TurtBEAM0001.png" id="2_1adg4"]
+[ext_resource type="Texture2D" uid="uid://ctaecb0otoftl" path="res://assets/Turtle/Direct Attacks/BEAM/BEAM0001.png" id="1_1adg4"]
+[ext_resource type="Texture2D" uid="uid://b8368q03effcl" path="res://assets/Turtle/Direct Attacks/BEAM/BEAM0002.png" id="2_xwc2w"]
+[ext_resource type="Texture2D" uid="uid://d1o24wi2ubj4q" path="res://assets/Turtle/Direct Attacks/BEAM/BEAM0003.png" id="3_q30dg"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_xwc2w"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_dsbqb"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_8ltk1")
+"texture": ExtResource("1_1adg4")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_1adg4")
+"texture": ExtResource("2_xwc2w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_q30dg")
 }],
 "loop": true,
 "name": &"default",
@@ -18,16 +22,19 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqgxj"]
-size = Vector2(40, 40)
+size = Vector2(3000, 60)
 
 [node name="Area2D" type="Area2D" unique_id=626060781]
 z_index = 1
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=788181597]
-position = Vector2(-1, 16)
-scale = Vector2(0.02, 0.14)
-sprite_frames = SubResource("SpriteFrames_xwc2w")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1441923463]
+position = Vector2(1476, 3.814697e-06)
+scale = Vector2(0.67733324, 0.07333334)
+sprite_frames = SubResource("SpriteFrames_dsbqb")
 autoplay = "default"
+frame = 2
+frame_progress = 0.2958032
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1480054210]
+position = Vector2(1500, 0)
 shape = SubResource("RectangleShape2D_nqgxj")

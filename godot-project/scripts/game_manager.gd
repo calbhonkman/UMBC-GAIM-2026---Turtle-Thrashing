@@ -5,7 +5,7 @@ extends Node2D
 @onready var camera = $Camera
 @onready var clock = $Camera/Clock
 @onready var level = $Camera/Level
-@onready var health = $Camera/Health
+@onready var health = $"Camera/Health Icon/Health"
 
 @export var CAMERA_LIMIT: float = 1600.0
 @export var GAME_TIME: float = 99.0 # minutes
@@ -28,6 +28,7 @@ const SNAKE = preload("uid://dfuv28c2ne1eo")
 const UPGRADE_BUTTON = preload("uid://o1ekysyg808j")
 @export var number_of_upgrades: int = 3
 @export var things_to_upgrade: Array[Node2D]
+var list_of_upgrades = []
 var current_upgrades: Array[Vector2]
 var upgrade_buttons = []
 
@@ -49,7 +50,7 @@ func _process(delta):
 	camera.global_position.y = clampf(player.global_position.y, -1*cam_limit_y, cam_limit_y)
 	
 	level.text = "Level " + str(player.level) + " (" + str(player.experience) + "/" + str(5 * (player.level * (player.level+1) / 2)) + ")"
-	health.text = str(player.health) + "/" + str(player.MAX_HEALTH) + " HP"
+	health.text = str(player.health)
 	
 	if game_timer <= 0.0:
 		pausable = false
@@ -142,6 +143,12 @@ func resume():
 	screen_level.visible = false
 	get_tree().paused = false
 	pausable = true
+
+func update_list_of_upgrades():
+	var new_list = []
+	for t in range(things_to_upgrade.size()):
+		for u in range(things_to_upgrade[t].upgrade_descriptions.size()):
+			new_list.append(Vector2(t,u))
 
 func reset_upgrades():
 	current_upgrades.clear()
