@@ -1,7 +1,7 @@
 extends Area2D
 
 @onready var player = $"/root/Node2D/Player"
-@onready var sprite = $Sprite2D
+@onready var sprite = $AnimatedSprite2D
 const EXP = preload("uid://bln5qlwy18sjf")
 
 @export var MAX_HEALTH: float = 10.0

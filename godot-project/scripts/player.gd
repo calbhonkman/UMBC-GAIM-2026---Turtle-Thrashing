@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var SPEED: float = 200.0
 @export var MAX_HEALTH: int = 5
 @export var INVINCIBLE_TIME: float = 0.5
+@export var DAMAGE_KNOCKBACK: float = 100.0
 
 @export var upgrade_descriptions: Array[String]
 
@@ -55,7 +56,7 @@ func _on_hitbox_area_entered(area):
 		if invincible_timer == 0:
 			health -= 1
 			invincible_timer = INVINCIBLE_TIME
-		area.damage(INF)
+		area.global_position += ((area.global_position - global_position) / (area.global_position - global_position).length()) * DAMAGE_KNOCKBACK
 	# If hit by exp
 	elif area.has_meta("exp"):
 		experience += 1

@@ -1,18 +1,39 @@
 [gd_scene format=3 uid="uid://bln5qlwy18sjf"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_a3fj8"]
-size = Vector2(22, 22)
+[ext_resource type="Texture2D" uid="uid://dh75yc606m06d" path="res://assets/Exp/Turtexpframe0000.png" id="1_iqir6"]
+[ext_resource type="Texture2D" uid="uid://chbajn8vpeucs" path="res://assets/Exp/Turtexpframe0001.png" id="2_0hk7p"]
+[ext_resource type="Texture2D" uid="uid://c1wdqi08267lq" path="res://assets/Exp/Turtexpframe0002.png" id="3_yiiq5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jr6f6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_iqir6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_0hk7p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_yiiq5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ceffx"]
+size = Vector2(26, 14)
 
 [node name="Area2D" type="Area2D" unique_id=2144851842]
 metadata/exp = ""
 metadata/pickup = ""
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1363188466]
-offset_left = -10.0
-offset_top = -10.0
-offset_right = 10.0
-offset_bottom = 10.0
-color = Color(0, 1, 1, 1)
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=526308893]
+position = Vector2(1.9999999, 0)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_jr6f6")
+autoplay = "default"
+frame_progress = 0.045920994
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1119357148]
-shape = SubResource("RectangleShape2D_a3fj8")
+shape = SubResource("RectangleShape2D_ceffx")

@@ -1,17 +1,23 @@
 [gd_scene format=3 uid="uid://dq43dbtcuu4m"]
 
 [ext_resource type="Script" uid="uid://pw515t8r1iyb" path="res://scripts/Bigenemy.gd" id="1_biv0o"]
-[ext_resource type="Texture2D" uid="uid://dxk7qck0kvnio" path="res://assets/Enemies/Crab/Enemy Crab (Walk 1).png" id="2_pm37e"]
-[ext_resource type="Texture2D" uid="uid://cpfw1w23v0u45" path="res://assets/Enemies/Crab/Enemy Crab (Walk 2).png" id="3_bvm38"]
+[ext_resource type="Texture2D" uid="uid://6snm8yja7oaj" path="res://assets/Enemies/BasicEnemies/SnappingTurtle/Snapping Turtle Enemy (Idle 1).png" id="2_f6my7"]
+[ext_resource type="Texture2D" uid="uid://dpica1oa32ubq" path="res://assets/Enemies/BasicEnemies/SnappingTurtle/Snapping Turtle Enemy (Idle 2).png" id="3_ejuwc"]
+[ext_resource type="Texture2D" uid="uid://bytxhe87g5aax" path="res://assets/Enemies/BasicEnemies/SnappingTurtle/Snapping Turtle Enemy (Idle 3).png" id="4_12ndb"]
+[ext_resource type="Texture2D" uid="uid://b03upn7q2u2k3" path="res://assets/Enemies/BasicEnemies/SnappingTurtle/Snapping Turtle Enemy (Walk 1).png" id="5_lcv2s"]
+[ext_resource type="Texture2D" uid="uid://cpdrnpjx50wtg" path="res://assets/Enemies/BasicEnemies/SnappingTurtle/Snapping Turtle Enemy (Walk 2).png" id="6_4a1pa"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_jwmod"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_dmq2k"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_pm37e")
+"texture": ExtResource("2_f6my7")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_bvm38")
+"texture": ExtResource("3_ejuwc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_12ndb")
 }],
 "loop": true,
 "name": &"default",
@@ -19,18 +25,18 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_pm37e")
+"texture": ExtResource("5_lcv2s")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_bvm38")
+"texture": ExtResource("6_4a1pa")
 }],
 "loop": true,
 "name": &"walk",
 "speed": 8.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_biv0o"]
-radius = 61.031868
+[sub_resource type="CircleShape2D" id="CircleShape2D_f6my7"]
+radius = 82.79829
 
 [node name="BgEnemy" type="Area2D" unique_id=2078753937 groups=["Enemies"]]
 scale = Vector2(1.5, 1.5)
@@ -38,13 +44,13 @@ script = ExtResource("1_biv0o")
 MAX_HEALTH = 3.0
 metadata/enemy = ""
 
-[node name="Sprite2D" type="AnimatedSprite2D" parent="." unique_id=2074823387]
-position = Vector2(-3.333333, -16.666668)
-scale = Vector2(0.145, 0.145)
-sprite_frames = SubResource("SpriteFrames_jwmod")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1183113898]
+position = Vector2(-32.666668, 17.333334)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_dmq2k")
+animation = &"walk"
 autoplay = "default"
-frame_progress = 0.084978886
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1206202284]
-scale = Vector2(1, 0.45)
-shape = SubResource("CircleShape2D_biv0o")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=605949476]
+scale = Vector2(1, 0.9)
+shape = SubResource("CircleShape2D_f6my7")

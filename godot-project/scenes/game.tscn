@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://btydxe3n7bvhi" path="res://scripts/weapons/weapon_punch.gd" id="7_kvpfn"]
 [ext_resource type="Script" uid="uid://bstu2wfytyykc" path="res://scripts/game_manager.gd" id="9_0tnpc"]
 [ext_resource type="Script" uid="uid://cjnrhr8lp15vt" path="res://scripts/weapons/weapon_lightning.gd" id="9_dinhu"]
-[ext_resource type="Script" path="res://scripts/special_screen_shape.gd" id="9_kvpfn"]
+[ext_resource type="Script" uid="uid://c32p66nqvhstf" path="res://scripts/special_screen_shape.gd" id="9_kvpfn"]
 [ext_resource type="PackedScene" uid="uid://csgsdh6itco8" path="res://prefabs/weapons/(bullet)_punch.tscn" id="9_kvuet"]
 [ext_resource type="PackedScene" uid="uid://w0qokvo1f2gx" path="res://prefabs/weapons/(bullet)_lightning.tscn" id="10_dinhu"]
 [ext_resource type="Script" uid="uid://d3diaewcyfj0l" path="res://scripts/minion_shield.gd" id="12_bt5mj"]
