@@ -8,7 +8,8 @@ extends Node2D
 @onready var health = $"Camera/Health Icon/Health"
 
 @export var CAMERA_LIMIT: float = 1600.0
-@export var GAME_TIME: float = 99.0 # minutes
+@export var GAME_TIME: float = 5.0 # minutes
+@export var ENDLESS_MODE: bool = false
 
 const BERRY = preload("uid://ct5pf58tx5o1e")
 
@@ -37,8 +38,8 @@ var next_spawn_time = 0.0
 var pausable = true
 
 func _ready():
-	game_timer = GAME_TIME * 60 # seconds
-	next_spawn_time = game_timer
+	game_timer = 0.0
+	next_spawn_time = game_timer + 1.0
 
 func _process(delta):
 	global_position = player.global_position
@@ -51,7 +52,7 @@ func _process(delta):
 	level.text = "Level " + str(player.level) + " (" + str(player.experience) + "/" + str(5 * (player.level * (player.level+1) / 2)) + ")"
 	health.text = str(player.health)
 	
-	if game_timer <= 0.0:
+	if game_timer >= GAME_TIME * 60.0 and not ENDLESS_MODE:
 		pausable = false
 		get_tree().paused = true
 		screen_win.visible = true
@@ -70,26 +71,30 @@ func _process(delta):
 		screen_paused.visible = !screen_paused.visible
 	
 	if not get_tree().paused:
-		game_timer = clampf(game_timer - delta, 0, GAME_TIME * 60.0)
-		var timer_minutes = str(int(game_timer / 60.0))
-		var timer_seconds = ("0" if (fmod(game_timer, 60.0) < 10) else "") + str(int(fmod(game_timer, 60.0)))
+		game_timer += delta
+		var clock_time = game_timer if ENDLESS_MODE else clampf(GAME_TIME * 60.0 - game_timer, 0.0, GAME_TIME * 60.0)
+		var timer_minutes = str(int(clock_time / 60.0))
+		var timer_seconds = ("0" if (fmod(clock_time, 60.0) < 10) else "") + str(int(fmod(clock_time, 60.0)))
 		clock.text = timer_minutes + ":" + timer_seconds
 		
-		if game_timer <= next_spawn_time:
-			var new_enemy = null
-			if randi_range(1,30) == 1:
-				new_enemy = BERRY.instantiate()
-			elif randi_range(1,25) == 1:
-				new_enemy = SNAKE.instantiate()
-			elif randi_range(1,15) == 1:
-				new_enemy = BIGENEMY.instantiate()
+		if game_timer >= next_spawn_time:
+			if int(next_spawn_time) % 30 == 0:
+				spawn_enemy(BIGENEMY)
+				spawn_enemy(BIGENEMY)
+			elif int(next_spawn_time) % 10 == 0:
+				spawn_enemy(SNAKE)
+				spawn_enemy(SNAKE)
 			else:
-				new_enemy = ENEMY.instantiate()
-			enemies_group.add_child(new_enemy)
-			new_enemy.global_position = find_spawn_position()
-			if new_enemy.get_script():
-				new_enemy.scale_health(1 + (GAME_TIME - (game_timer / 60.0)))
-			next_spawn_time = next_spawn_time - (SPAWN_COOLDOWN / (1 + (GAME_TIME - (game_timer / 60.0))/2))
+				spawn_enemy(ENEMY)
+				spawn_enemy(ENEMY)
+			next_spawn_time += 1.0 # seconds
+
+func spawn_enemy(enemy: Resource):
+	var new_enemy = enemy.instantiate()
+	enemies_group.add_child(new_enemy)
+	new_enemy.global_position = find_spawn_position()
+	if new_enemy.get_script():
+		new_enemy.scale_health(1 + (game_timer / 60.0))
 
 func find_spawn_position():
 	# Screen size
@@ -162,7 +167,7 @@ func select_upgrades():
 		# Assign an upgrade to the button
 		var ttu_index = randi_range(0, ttu.size()-1)
 		current_upgrades.append(Vector2(things_to_upgrade.find(ttu[ttu_index]), ttu[ttu_index].get_upgrade()))
-		upgrade_buttons.back().text = ttu[ttu_index].upgrade_descriptions[current_upgrades.back().y]
+		upgrade_buttons.back().get_child(0).text = ttu[ttu_index].upgrade_descriptions[current_upgrades.back().y]
 		upgrade_buttons.back().pressed.connect(_on_button_upgrade_pressed.bind(i))
 		ttu.remove_at(ttu_index)
 	position_upgrade_buttons()
@@ -170,7 +175,7 @@ func select_upgrades():
 func position_upgrade_buttons():
 	var screen_size_x = get_viewport_rect().size.x
 	var camera_offset = camera.global_position.x - (screen_size_x / 2)
-	var button_width = upgrade_buttons[0].size.x
+	var button_width = upgrade_buttons[0].size.x * upgrade_buttons[0].scale.x
 	var pos_buffer = (screen_size_x - (number_of_upgrades * button_width)) / (number_of_upgrades + 1)
 	for i in range(upgrade_buttons.size()):
 		upgrade_buttons[i].global_position.x = camera_offset + (pos_buffer * (i+1)) + (button_width * i)

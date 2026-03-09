@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3aum0tmn3n0p"
-path="res://.godot/imported/TurtLightning0004.png-cd2b151137d35b3b1b9fa3429c9f98e1.ctex"
+uid="uid://doapnmcj2oplf"
+path="res://.godot/imported/Fire_03.png-6d89ed22a65449e8b2ef7c73812bd09d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Turtle/Random Attacks/TurtLightning0004.png"
-dest_files=["res://.godot/imported/TurtLightning0004.png-cd2b151137d35b3b1b9fa3429c9f98e1.ctex"]
+source_file="res://assets/Turtle/Random Attacks/Flamestarter/Fire_03.png"
+dest_files=["res://.godot/imported/Fire_03.png-6d89ed22a65449e8b2ef7c73812bd09d.ctex"]
 
 [params]
 

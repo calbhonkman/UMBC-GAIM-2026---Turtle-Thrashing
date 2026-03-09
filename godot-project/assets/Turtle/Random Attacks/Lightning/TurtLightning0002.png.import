@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5dfl3h3yew3"
-path="res://.godot/imported/upgrade_player_health.png-6bb1587312cb8aab14f99d251a15f0bf.ctex"
+uid="uid://btah3ib88htke"
+path="res://.godot/imported/TurtLightning0002.png-0182174d1abfe468be4fc000cd9d81cd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/upgrades icons/upgrade_player_health.png"
-dest_files=["res://.godot/imported/upgrade_player_health.png-6bb1587312cb8aab14f99d251a15f0bf.ctex"]
+source_file="res://assets/Turtle/Random Attacks/Lightning/TurtLightning0002.png"
+dest_files=["res://.godot/imported/TurtLightning0002.png-0182174d1abfe468be4fc000cd9d81cd.ctex"]
 
 [params]
 

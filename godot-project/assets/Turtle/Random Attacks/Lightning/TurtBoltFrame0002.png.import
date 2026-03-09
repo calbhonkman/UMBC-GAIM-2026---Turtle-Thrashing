@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d00yfhiphuo5w"
-path="res://.godot/imported/TurtLightning0003.png-b64e782ce9af12b135fb9a5942c883cf.ctex"
+uid="uid://cwlrc5lyb8ggi"
+path="res://.godot/imported/TurtBoltFrame0002.png-23e23bf5db28dc0680fa2ca437a7c4ee.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Turtle/Random Attacks/TurtLightning0003.png"
-dest_files=["res://.godot/imported/TurtLightning0003.png-b64e782ce9af12b135fb9a5942c883cf.ctex"]
+source_file="res://assets/Turtle/Random Attacks/Lightning/TurtBoltFrame0002.png"
+dest_files=["res://.godot/imported/TurtBoltFrame0002.png-23e23bf5db28dc0680fa2ca437a7c4ee.ctex"]
 
 [params]
 

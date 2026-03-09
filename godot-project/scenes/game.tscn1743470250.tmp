@@ -243,7 +243,7 @@ z_index = 1
 script = ExtResource("7_kvpfn")
 BULLET = ExtResource("9_kvuet")
 unlocked = true
-upgrade_descriptions = Array[String](["Unlock Punch", "Punch Speed +50%", "Punch Cooldown -25%", "Punch Size +50%"])
+upgrade_descriptions = Array[String](["Unlock Punch", "Punch Speed +25%", "Punch Cooldown -25%", "Punch Knockback +50%"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Punch" unique_id=1221786466]
 shape = SubResource("CircleShape2D_iywne")
@@ -253,6 +253,7 @@ visible = false
 z_index = 1
 script = ExtResource("14_264po")
 BULLET = ExtResource("15_1kice")
+unlocked = true
 upgrade_descriptions = Array[String](["Unlock Flamestarter", "Flamestarter Range +50%", "Flamestarter Damage +50%"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Firestarter" unique_id=1804428324]
@@ -286,7 +287,8 @@ shape = SubResource("CapsuleShape2D_pl11u")
 process_mode = 3
 z_index = 2
 script = ExtResource("9_0tnpc")
-things_to_upgrade = [NodePath("../Player"), NodePath("../Player/(Weapon) Laser"), NodePath("../Player/(Weapon) Lightning"), NodePath("../Player/(Weapon) Punch"), NodePath("../Player/(Weapon) Firestarter"), NodePath("../Player/(Minion) Shield")]
+GAME_TIME = 5.0
+things_to_upgrade = [NodePath("../Player"), NodePath("../Player/(Weapon) Laser"), NodePath("../Player/(Weapon) Lightning"), NodePath("../Player/(Weapon) Punch"), NodePath("../Player/(Minion) Shield")]
 
 [node name="Camera" type="Camera2D" parent="GameManager" unique_id=1356503637]
 limit_enabled = false

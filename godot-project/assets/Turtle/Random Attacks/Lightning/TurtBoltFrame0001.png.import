@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgqmdsr0et667"
-path="res://.godot/imported/upgrade_punch_cooldown.png-fb0e224e3780293a8aaaf063f72bc04d.ctex"
+uid="uid://40tlest6kqxw"
+path="res://.godot/imported/TurtBoltFrame0001.png-7b896c1dc5465aa619c73aa4b6835084.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/upgrades icons/upgrade_punch_cooldown.png"
-dest_files=["res://.godot/imported/upgrade_punch_cooldown.png-fb0e224e3780293a8aaaf063f72bc04d.ctex"]
+source_file="res://assets/Turtle/Random Attacks/Lightning/TurtBoltFrame0001.png"
+dest_files=["res://.godot/imported/TurtBoltFrame0001.png-7b896c1dc5465aa619c73aa4b6835084.ctex"]
 
 [params]
 

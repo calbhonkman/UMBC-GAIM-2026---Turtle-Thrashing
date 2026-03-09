@@ -1,8 +1,33 @@
 [gd_scene format=3 uid="uid://o1ekysyg808j"]
 
+[ext_resource type="Texture2D" uid="uid://d3ru825hawvf0" path="res://assets/Upgrade Icons/(icon)_template.png" id="1_ei70q"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l8567"]
+font_size = 72
+font_color = Color(0, 0, 0, 1)
+shadow_size = 4
+shadow_color = Color(0.29219002, 0.29219005, 0.29219002, 1)
+shadow_offset = Vector2(0, 1)
+
 [node name="Upgrade Button" type="Button" unique_id=756521869]
-offset_left = -100.0
-offset_top = -100.0
-offset_right = 100.0
-offset_bottom = 100.0
-text = "Max Heath +1"
+offset_left = -151.0
+offset_top = -210.0
+offset_right = 605.0
+offset_bottom = 844.0
+scale = Vector2(0.4, 0.4)
+icon = ExtResource("1_ei70q")
+
+[node name="Label" type="Label" parent="." unique_id=2033647177]
+layout_mode = 0
+offset_left = 79.99997
+offset_top = 79.99997
+offset_right = 671.0
+offset_bottom = 949.9999
+text = "The fire inside you begins to burn brighter.
+
+FLAMESTARTER RANGE +50%"
+label_settings = SubResource("LabelSettings_l8567")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+clip_text = true

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbfe1pyswjvsu"
-path="res://.godot/imported/upgrade_lightning_size.png-8a03296092f49852a35ae703018115b1.ctex"
+uid="uid://cmx05mpdvx6"
+path="res://.godot/imported/TurtBoltFrame0003.png-1086fce9cc65c8577bb99a04f9a44279.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/upgrades icons/upgrade_lightning_size.png"
-dest_files=["res://.godot/imported/upgrade_lightning_size.png-8a03296092f49852a35ae703018115b1.ctex"]
+source_file="res://assets/Turtle/Random Attacks/Lightning/TurtBoltFrame0003.png"
+dest_files=["res://.godot/imported/TurtBoltFrame0003.png-1086fce9cc65c8577bb99a04f9a44279.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dcirxygljc1xc"
-path="res://.godot/imported/upgrade_player_range.png-e16ec64f6983b02d9d5eb88a15b43d4f.ctex"
+uid="uid://6xkvqmlyvi7"
+path="res://.godot/imported/Fire_01.png-b60a320595716113d7a4666c0d5c09c7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/upgrades icons/upgrade_player_range.png"
-dest_files=["res://.godot/imported/upgrade_player_range.png-e16ec64f6983b02d9d5eb88a15b43d4f.ctex"]
+source_file="res://assets/Turtle/Random Attacks/Flamestarter/Fire_01.png"
+dest_files=["res://.godot/imported/Fire_01.png-b60a320595716113d7a4666c0d5c09c7.ctex"]
 
 [params]
 

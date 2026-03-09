@@ -2,19 +2,22 @@ extends Area2D
 
 @export var BULLET: Resource
 
-@export var AMOUNT: int = 1
-@export var SPEED: float = 800.0
-@export var DAMAGE: float = 1.0
-@export var COOLDOWN: float = 2.0
-@export var LIFETIME: float = 1.0
-@export var FADE_SPEED: float = 4.0
-@export var DELAY: float = 0.5
-@export var KNOCKBACK: float = 50.0
-
 @export var unlocked: bool = false
 @export var upgrade_descriptions: Array[String]
 
+@export var BASE_SPEED: float = 800.0
+@export var BASE_DAMAGE: float = 1.0
+@export var BASE_COOLDOWN: float = 2.0
+@export var BASE_DELAY: float = 0.5
+@export var LIFETIME: float = 1.0
+@export var FADE_SPEED: float = 4.0
+@export var KNOCKBACK: float = 50.0
+
+var speed = 0.0
+var damage = 0.0
 var cooldown = 0.0
+var delay = 0.0
+var size_mod = 1.0
 
 var bullets = []
 var b_lifetime = []
@@ -25,6 +28,11 @@ var b_prev = []
 func _ready():
 	if unlocked:
 		visible = true
+	
+	speed = BASE_SPEED
+	damage = BASE_DAMAGE
+	cooldown = BASE_COOLDOWN
+	delay = BASE_DELAY
 
 func _process(delta):
 	if unlocked == false:
@@ -32,7 +40,7 @@ func _process(delta):
 	
 	cooldown -= delta
 	if cooldown <= 0.0 and is_enemy_in_area(self):
-		cooldown = COOLDOWN
+		cooldown = BASE_COOLDOWN
 		spawn_bullet()
 	
 	# Kill old bullets
@@ -48,7 +56,7 @@ func _process(delta):
 	
 	# Move remaining bullets
 	for i in range(bullets.size()):
-		bullets[i].global_position = b_position[i] + b_direction[i] * delta * max(0, pow(b_lifetime[i] / LIFETIME,2)) * SPEED
+		bullets[i].global_position = b_position[i] + b_direction[i] * delta * max(0, pow(b_lifetime[i] / LIFETIME,2)) * speed
 		b_position[i] = bullets[i].global_position
 		
 		bullets[i].get_child(0).modulate = Color(1,1,1,max(0, pow(b_lifetime[i] / LIFETIME,2)))
@@ -56,7 +64,7 @@ func _process(delta):
 		for area in bullets[i].get_overlapping_areas():
 			if area not in b_prev[i] and area.is_in_group("Enemies"):
 				b_prev[i].append(area)
-				area.damage(DAMAGE)
+				area.damage(damage)
 				var knockback_dir = (area.global_position - global_position)
 				area.global_position += (knockback_dir / knockback_dir.length()) * KNOCKBACK
 
@@ -71,6 +79,7 @@ func spawn_bullet():
 	var new_bullet = BULLET.instantiate()
 	add_child(new_bullet)
 	new_bullet.global_position = global_position
+	new_bullet.scale *= size_mod
 	bullets.append(new_bullet)
 	b_lifetime.append(LIFETIME)
 	
@@ -96,9 +105,9 @@ func upgrade(index: int):
 			unlocked = true
 			visible = true
 		1:
-			SPEED *= 1.25
+			speed += BASE_SPEED * 0.5
 		2:
-			COOLDOWN *= 0.75
-			DELAY *= 0.75
+			BASE_COOLDOWN *= 0.75
+			BASE_DELAY *= 0.75
 		3:
-			KNOCKBACK *= 1.5
+			size_mod += 0.5
