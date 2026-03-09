@@ -6,7 +6,7 @@ extends Area2D
 const EXP = preload("uid://bln5qlwy18sjf")
 
 @export var MAX_HEALTH: float = 1.0
-@export var SPEED: float = 80.0
+@export var SPEED: float = 40.0
 
 var health
 

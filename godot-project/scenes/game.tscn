@@ -184,7 +184,6 @@ shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1744978302]
 script = ExtResource("1_yqjtg")
-SPEED = 300.0
 upgrade_descriptions = Array[String](["Max Health +1", "Pickup Range +25%", "Movement Speed +50%"])
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=1355100074]
@@ -324,7 +323,7 @@ offset_right = -157.0
 offset_bottom = -208.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "5"
+text = "50"
 label_settings = SubResource("LabelSettings_kvpfn")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -349,18 +348,18 @@ label_settings = SubResource("LabelSettings_dinhu")
 horizontal_alignment = 1
 
 [node name="(Button) Continue" type="Button" parent="GameManager/Camera/[Paused]" unique_id=361645290]
-offset_left = -203.0
-offset_top = -65.0
-offset_right = 188.0
-offset_bottom = 76.0
+offset_left = -453.0
+offset_top = 135.0
+offset_right = -62.0
+offset_bottom = 276.0
 theme_override_font_sizes/font_size = 48
 text = "Continue"
 
 [node name="(Button) Main Menu" type="Button" parent="GameManager/Camera/[Paused]" unique_id=774971146]
-offset_left = -203.0
-offset_top = 100.0
-offset_right = 188.0
-offset_bottom = 241.0
+offset_left = 47.0
+offset_top = 135.0
+offset_right = 438.0
+offset_bottom = 276.0
 theme_override_font_sizes/font_size = 48
 text = "Main Menu"
 
@@ -404,9 +403,9 @@ horizontal_alignment = 1
 
 [node name="(Button) Main Menu" type="Button" parent="GameManager/Camera/[Game Over]" unique_id=690430485]
 offset_left = -203.0
-offset_top = -65.0
+offset_top = 135.0
 offset_right = 188.0
-offset_bottom = 76.0
+offset_bottom = 276.0
 theme_override_font_sizes/font_size = 48
 text = "Main Menu"
 
@@ -431,9 +430,9 @@ horizontal_alignment = 1
 
 [node name="(Button) Main Menu" type="Button" parent="GameManager/Camera/[You Win]" unique_id=109030467]
 offset_left = -203.0
-offset_top = -65.0
+offset_top = 135.0
 offset_right = 188.0
-offset_bottom = 76.0
+offset_bottom = 276.0
 theme_override_font_sizes/font_size = 48
 text = "Main Menu"
 

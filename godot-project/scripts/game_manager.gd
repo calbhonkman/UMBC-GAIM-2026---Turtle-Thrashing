@@ -28,7 +28,6 @@ const SNAKE = preload("uid://dfuv28c2ne1eo")
 const UPGRADE_BUTTON = preload("uid://o1ekysyg808j")
 @export var number_of_upgrades: int = 3
 @export var things_to_upgrade: Array[Node2D]
-var list_of_upgrades = []
 var current_upgrades: Array[Vector2]
 var upgrade_buttons = []
 
@@ -135,7 +134,7 @@ func _on_button_continue_pressed():
 	resume()
 
 func _on_button_upgrade_pressed(index):
-	things_to_upgrade[current_upgrades[index].x].upgrade(current_upgrades[index].y)
+	things_to_upgrade[int(current_upgrades[index].x)].upgrade(int(current_upgrades[index].y))
 	resume()
 
 func resume():
@@ -143,12 +142,6 @@ func resume():
 	screen_level.visible = false
 	get_tree().paused = false
 	pausable = true
-
-func update_list_of_upgrades():
-	var new_list = []
-	for t in range(things_to_upgrade.size()):
-		for u in range(things_to_upgrade[t].upgrade_descriptions.size()):
-			new_list.append(Vector2(t,u))
 
 func reset_upgrades():
 	current_upgrades.clear()
@@ -158,17 +151,20 @@ func reset_upgrades():
 
 func select_upgrades():
 	reset_upgrades()
-	for i in range(number_of_upgrades):
+	
+	# ttu = things_to_upgrade
+	var ttu = things_to_upgrade.duplicate()
+	for i in range(min(number_of_upgrades, ttu.size())):
 		# Make a button for the upgrade
 		upgrade_buttons.append(UPGRADE_BUTTON.instantiate())
 		screen_level.add_child(upgrade_buttons.back())
 		
 		# Assign an upgrade to the button
-		# ttu = things_to_upgrade
-		var ttu_index = randi_range(0, things_to_upgrade.size()-1)
-		current_upgrades.append(Vector2(ttu_index, things_to_upgrade[ttu_index].get_upgrade()))
-		upgrade_buttons.back().text = things_to_upgrade[ttu_index].upgrade_descriptions[current_upgrades.back().y]
+		var ttu_index = randi_range(0, ttu.size()-1)
+		current_upgrades.append(Vector2(things_to_upgrade.find(ttu[ttu_index]), ttu[ttu_index].get_upgrade()))
+		upgrade_buttons.back().text = ttu[ttu_index].upgrade_descriptions[current_upgrades.back().y]
 		upgrade_buttons.back().pressed.connect(_on_button_upgrade_pressed.bind(i))
+		ttu.remove_at(ttu_index)
 	position_upgrade_buttons()
 
 func position_upgrade_buttons():
