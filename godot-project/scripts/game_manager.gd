@@ -17,6 +17,7 @@ const BERRY = preload("uid://ct5pf58tx5o1e")
 const ENEMY = preload("uid://d1k32mfbnnud3")
 const BIGENEMY = preload("uid://dq43dbtcuu4m")
 const SNAKE = preload("uid://dfuv28c2ne1eo")
+@export var ENEMIES: Array[Resource]
 @export var SPAWN_COOLDOWN = 1.0
 @export var SPAWN_AREA = 1500
 
@@ -35,6 +36,9 @@ var upgrade_buttons = []
 var game_timer = 0.0
 var next_spawn_time = 0.0
 
+var boss = null
+var boss_fight = false
+var boss_defeated = false
 var pausable = true
 
 func _ready():
@@ -52,23 +56,30 @@ func _process(delta):
 	level.text = "Level " + str(player.level) + " (" + str(player.experience) + "/" + str(5 * (player.level * (player.level+1) / 2)) + ")"
 	health.text = str(player.health)
 	
-	if game_timer >= GAME_TIME * 60.0 and not ENDLESS_MODE:
-		pausable = false
-		get_tree().paused = true
-		screen_win.visible = true
+	
+	if pausable and Input.is_action_just_pressed("pause"):
+		get_tree().paused = !get_tree().paused
+		screen_paused.visible = !screen_paused.visible
 	elif player.health <= 0:
 		pausable = false
 		get_tree().paused = true
 		screen_lose.visible = true
-	elif player.experience >= 5 * (player.level * (player.level+1) / 2):
+	elif not get_tree().paused and player.experience >= 5 * (player.level * (player.level+1) / 2):
 		player.level += 1
 		pausable = false
 		get_tree().paused = true
 		screen_level.visible = true
 		select_upgrades()
-	elif pausable and Input.is_action_just_pressed("pause"):
-		get_tree().paused = !get_tree().paused
-		screen_paused.visible = !screen_paused.visible
+	elif boss_fight:
+		if boss == null:
+			pausable = false
+			get_tree().paused = true
+			screen_win.visible = true
+	elif game_timer >= GAME_TIME * 60.0 and not ENDLESS_MODE:
+		# Unleash the Raccoon
+		clear_enemies()
+		boss = spawn_enemy(ENEMIES[3])
+		boss_fight = true
 	
 	if not get_tree().paused:
 		game_timer += delta
@@ -78,16 +89,29 @@ func _process(delta):
 		clock.text = timer_minutes + ":" + timer_seconds
 		
 		if game_timer >= next_spawn_time:
-			if int(next_spawn_time) % 30 == 0:
-				spawn_enemy(BIGENEMY)
-				spawn_enemy(BIGENEMY)
+			if boss_fight:
+				# Small Raccoon
+				spawn_enemy(ENEMIES[4])
+				spawn_enemy(ENEMIES[4])
+				spawn_enemy(ENEMIES[4])
+			elif int(next_spawn_time) % 30 == 0:
+				# Turtle
+				spawn_enemy(ENEMIES[2])
+				spawn_enemy(ENEMIES[2])
 			elif int(next_spawn_time) % 10 == 0:
-				spawn_enemy(SNAKE)
-				spawn_enemy(SNAKE)
+				# Snake
+				spawn_enemy(ENEMIES[1])
+				spawn_enemy(ENEMIES[1])
 			else:
-				spawn_enemy(ENEMY)
-				spawn_enemy(ENEMY)
+				# Crab
+				spawn_enemy(ENEMIES[0])
+				spawn_enemy(ENEMIES[0])
 			next_spawn_time += 1.0 # seconds
+
+func clear_enemies():
+	for child in enemies_group.get_children():
+		if child.is_in_group("Enemies"):
+			child.damage(INF)
 
 func spawn_enemy(enemy: Resource):
 	var new_enemy = enemy.instantiate()
@@ -95,6 +119,7 @@ func spawn_enemy(enemy: Resource):
 	new_enemy.global_position = find_spawn_position()
 	if new_enemy.get_script():
 		new_enemy.scale_health(1 + (game_timer / 60.0))
+	return new_enemy
 
 func find_spawn_position():
 	# Screen size

@@ -20,6 +20,11 @@
 [ext_resource type="PackedScene" uid="uid://le1ukfjocokb" path="res://prefabs/weapons/(bullet)_laser.tscn" id="15_pl11u"]
 [ext_resource type="Texture2D" uid="uid://bcapu1vxsu637" path="res://assets/Turtle/health_icon.png" id="17_rysoc"]
 [ext_resource type="PackedScene" uid="uid://fnhiviwbuuj8" path="res://audio/audio_manager.tscn" id="18_ssvqc"]
+[ext_resource type="PackedScene" uid="uid://d1k32mfbnnud3" path="res://prefabs/enemies/(enemy)_crab.tscn" id="19_e1j6l"]
+[ext_resource type="PackedScene" uid="uid://dfuv28c2ne1eo" path="res://prefabs/enemies/(enemy)_snake.tscn" id="20_pl11u"]
+[ext_resource type="PackedScene" uid="uid://dq43dbtcuu4m" path="res://prefabs/enemies/(enemy)_turtle.tscn" id="21_bhx41"]
+[ext_resource type="PackedScene" uid="uid://dw20u1c5v07qr" path="res://prefabs/enemies/(enemy)_raccoon.tscn" id="22_qnb83"]
+[ext_resource type="PackedScene" uid="uid://bsjban1wyxwl4" path="res://prefabs/enemies/(enemy)_raccoon_small.tscn" id="23_pl11u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
 size = Vector2(1312.9883, 50)
@@ -286,6 +291,7 @@ shape = SubResource("CapsuleShape2D_pl11u")
 process_mode = 3
 z_index = 2
 script = ExtResource("9_0tnpc")
+ENEMIES = Array[Resource]([ExtResource("19_e1j6l"), ExtResource("20_pl11u"), ExtResource("21_bhx41"), ExtResource("22_qnb83"), ExtResource("23_pl11u")])
 things_to_upgrade = [NodePath("../Player"), NodePath("../Player/(Weapon) Laser"), NodePath("../Player/(Weapon) Lightning"), NodePath("../Player/(Weapon) Punch"), NodePath("../Player/(Weapon) Firestarter"), NodePath("../Player/(Minion) Shield")]
 
 [node name="Camera" type="Camera2D" parent="GameManager" unique_id=1356503637]

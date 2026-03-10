@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bsjban1wyxwl4"]
+
+[ext_resource type="Texture2D" uid="uid://be7omrm1wwpl1" path="res://assets/Enemies/BasicEnemies/Raccoon/PlaceholderRaccoon.png" id="1_0eapx"]
+[ext_resource type="Script" uid="uid://chuyckdew80s1" path="res://scripts/enemies/(enemy)_raccoon_small.gd" id="1_d1sn1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d1sn1"]
+size = Vector2(52, 102)
+
+[node name="Area2D" type="Area2D" unique_id=1117095263 groups=["Enemies"]]
+script = ExtResource("1_d1sn1")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=108738922]
+position = Vector2(15, 5.9999995)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_0eapx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=144302053]
+shape = SubResource("RectangleShape2D_d1sn1")

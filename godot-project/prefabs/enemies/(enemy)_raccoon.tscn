@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://dw20u1c5v07qr"]
+
+[ext_resource type="Script" uid="uid://sst0smkwwtob" path="res://scripts/enemies/(enemy)_raccoon.gd" id="1_adqtt"]
+[ext_resource type="PackedScene" uid="uid://ytls3f7lukqs" path="res://prefabs/enemies/(bullet)_bowling.tscn" id="2_7jq4w"]
+[ext_resource type="Texture2D" uid="uid://qwj2ucr0u8e6" path="res://assets/Enemies/Bosses/Enemy_Raccoon (Attack 1).png" id="2_hdnla"]
+[ext_resource type="Texture2D" uid="uid://586htps24ngo" path="res://assets/Enemies/Bosses/Enemy_Raccoon (Attack 2).png" id="3_7jq4w"]
+[ext_resource type="Texture2D" uid="uid://b7wehnexsvlv" path="res://assets/Enemies/Bosses/Enemy_Raccoon (Prep 1).png" id="4_k201p"]
+[ext_resource type="Texture2D" uid="uid://dtkr743331i6g" path="res://assets/Enemies/Bosses/Enemy_Raccoon (Prep 2).png" id="5_wgl2k"]
+[ext_resource type="Texture2D" uid="uid://b56u8whpusoq1" path="res://assets/Enemies/Bosses/Enemy_Raccoon (Walk 1).png" id="6_v03tk"]
+[ext_resource type="Texture2D" uid="uid://io04eatkn4ad" path="res://assets/Enemies/Bosses/Enemy_Raccoon (Walk 2).png" id="7_uuflg"]
+[ext_resource type="Texture2D" uid="uid://qot565t2mhlu" path="res://assets/Enemies/Bosses/Enemy_Raccoon (Walk 3).png" id="8_8s66w"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ofi5x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_hdnla")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_7jq4w")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_k201p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_wgl2k")
+}],
+"loop": true,
+"name": &"charge",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_v03tk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_uuflg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_8s66w")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecehx"]
+size = Vector2(115, 200)
+
+[node name="Area2D" type="Area2D" unique_id=97836582 groups=["Enemies"]]
+script = ExtResource("1_adqtt")
+BULLET = ExtResource("2_7jq4w")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1010640560]
+position = Vector2(63, 10)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_ofi5x")
+animation = &"attack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1696238714]
+position = Vector2(-5, -8)
+shape = SubResource("RectangleShape2D_ecehx")

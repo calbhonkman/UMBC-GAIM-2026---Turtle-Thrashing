@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dfuv28c2ne1eo"]
 
-[ext_resource type="Script" uid="uid://cvxcaq383ao6k" path="res://scripts/enemies/enemySnake.gd" id="1_qy1fp"]
+[ext_resource type="Script" uid="uid://cvxcaq383ao6k" path="res://scripts/enemies/(enemy)_snake.gd" id="1_qy1fp"]
 [ext_resource type="Texture2D" uid="uid://bf24y24ilcdeb" path="res://assets/Enemies/BasicEnemies/Snek/SnekMove0001.png" id="2_qy1fp"]
 [ext_resource type="Texture2D" uid="uid://d0wcexuc8tfjs" path="res://assets/Enemies/BasicEnemies/Snek/SnekMove0002.png" id="3_ct6j4"]
 [ext_resource type="Texture2D" uid="uid://dhlf5yqdsyyk2" path="res://assets/Enemies/BasicEnemies/Snek/SnekStartup.png" id="4_myie7"]

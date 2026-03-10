@@ -1,23 +1,24 @@
 extends CharacterBody2D
 
 @onready var sprite = $Sprite
+@onready var hitbox = $"Hitbox (Entities)"
 @onready var pickup_area = $"Pickup Area"
 
-@export var SPEED: float = 200.0
+@export var BASE_SPEED: float = 200.0
 @export var MAX_HEALTH: int = 5
 @export var INVINCIBLE_TIME: float = 0.5
 @export var DAMAGE_KNOCKBACK: float = 100.0
 
 @export var upgrade_descriptions: Array[String]
 
-var speed
-var health
-var invincible_timer = 0
+var speed = 0
+var health = 0
+var invincible_timer = 0.0
 var experience = 0
 var level = 1
 
 func _ready():
-	speed = SPEED
+	speed = BASE_SPEED
 	health = MAX_HEALTH
 
 func _process(delta):
@@ -33,8 +34,9 @@ func _process(delta):
 		get_tree().paused = true
 	elif movement_direction.length() != 0:
 		sprite.play("walk")
-		sprite.scale.x = abs(sprite.scale.x) * movement_direction.x / abs(movement_direction.x) if movement_direction.x != 0 else sprite.scale.x
 		velocity = movement_direction * speed
+		sprite.scale.x = -1 * abs(sprite.scale.x) if velocity.x < 0 else abs(sprite.scale.x)
+		hitbox.scale.x = -1 * abs(hitbox.scale.x) if velocity.x < 0 else abs(hitbox.scale.x)
 		move_and_slide()
 	elif health > 0:
 		sprite.play("default")
@@ -44,7 +46,7 @@ func _process(delta):
 		if area.has_meta("pickup"):
 			var playerDirection = global_position - area.global_position
 			playerDirection = playerDirection / playerDirection.length()
-			area.global_position += playerDirection * delta * SPEED * 2
+			area.global_position += playerDirection * delta * speed * 2
 			# Move Pickups (ex. EXP) towards the player here
 
 func _on_hitbox_area_entered(area):
@@ -52,11 +54,16 @@ func _on_hitbox_area_entered(area):
 	if area.has_meta("food"):
 		area.queue_free()
 		health = min(MAX_HEALTH, health+1)
-	elif area.has_meta("enemy"):
+	elif area.is_in_group("Enemies"):
 		if invincible_timer == 0:
 			health -= 1
 			invincible_timer = INVINCIBLE_TIME
 		area.global_position += ((area.global_position - global_position) / (area.global_position - global_position).length()) * DAMAGE_KNOCKBACK
+	elif area.is_in_group("Enemy Bullets"):
+		if invincible_timer == 0:
+			health -= 1
+			invincible_timer = INVINCIBLE_TIME
+		area.queue_free()
 	# If hit by exp
 	elif area.has_meta("exp"):
 		experience += 1
@@ -74,4 +81,4 @@ func upgrade(index: int):
 		1:
 			pickup_area.get_child(0).shape.radius *= 1.25
 		2:
-			SPEED *= 1.5
+			speed += BASE_SPEED * 0.5

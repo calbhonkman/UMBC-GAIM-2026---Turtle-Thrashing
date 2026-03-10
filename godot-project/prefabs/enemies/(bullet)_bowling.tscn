@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://ytls3f7lukqs"]
+
+[ext_resource type="Texture2D" uid="uid://5qoxn4n5nii6" path="res://assets/Enemies/Bosses/Bowling Ball roll_01.png" id="1_1pujy"]
+[ext_resource type="Texture2D" uid="uid://o5cpdagohjt6" path="res://assets/Enemies/Bosses/Bowling Ball roll_02.png" id="2_1vvn6"]
+[ext_resource type="Texture2D" uid="uid://biw5t4nlp87yy" path="res://assets/Enemies/Bosses/Bowling Ball roll_03.png" id="3_y6u1t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_aylo3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1pujy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1vvn6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_y6u1t")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ib1pn"]
+radius = 45.0
+
+[node name="Area2D" type="Area2D" unique_id=224329759 groups=["Enemy Bullets"]]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=204911335]
+position = Vector2(5.0000005, 13.000001)
+scale = Vector2(0.1, 0.1)
+sprite_frames = SubResource("SpriteFrames_aylo3")
+autoplay = "default"
+frame_progress = 0.41764286
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=195806858]
+shape = SubResource("CircleShape2D_ib1pn")

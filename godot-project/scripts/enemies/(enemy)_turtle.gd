@@ -6,6 +6,7 @@ const EXP = preload("uid://bln5qlwy18sjf")
 
 @export var MAX_HEALTH: float = 10.0
 @export var SPEED: float = 30.0
+@export var EXP_AMOUNT: int = 5
 
 var health
 
@@ -23,7 +24,7 @@ func _process(delta):
 		sprite.play("walk")
 	
 	if dying:
-		for i in range(5):
+		for i in range(EXP_AMOUNT):
 			var new_xp = EXP.instantiate()
 			new_xp.global_position = global_position
 			get_parent().add_child(new_xp)

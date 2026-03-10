@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dq43dbtcuu4m"]
 
-[ext_resource type="Script" uid="uid://pw515t8r1iyb" path="res://scripts/enemies/Bigenemy.gd" id="1_biv0o"]
+[ext_resource type="Script" uid="uid://pw515t8r1iyb" path="res://scripts/enemies/(enemy)_turtle.gd" id="1_biv0o"]
 [ext_resource type="Texture2D" uid="uid://6snm8yja7oaj" path="res://assets/Enemies/BasicEnemies/SnappingTurtle/Snapping Turtle Enemy (Idle 1).png" id="2_f6my7"]
 [ext_resource type="Texture2D" uid="uid://dpica1oa32ubq" path="res://assets/Enemies/BasicEnemies/SnappingTurtle/Snapping Turtle Enemy (Idle 2).png" id="3_ejuwc"]
 [ext_resource type="Texture2D" uid="uid://bytxhe87g5aax" path="res://assets/Enemies/BasicEnemies/SnappingTurtle/Snapping Turtle Enemy (Idle 3).png" id="4_12ndb"]

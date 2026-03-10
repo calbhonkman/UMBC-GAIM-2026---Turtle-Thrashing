@@ -42,7 +42,7 @@ func _process(delta):
 			
 			if not bullet[i].get_child(0).is_playing():
 				for area in bullet[i].get_overlapping_areas():
-					if area.has_meta("enemy"):
+					if area.is_in_group("Enemies"):
 						area.damage(DAMAGE)
 				bullet[i].queue_free()
 				bullet[i] = null

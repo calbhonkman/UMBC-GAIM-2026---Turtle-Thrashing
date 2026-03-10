@@ -38,7 +38,7 @@ func _process(delta):
 		bullet.visible = true
 		
 		for area in bullet.get_overlapping_areas():
-			if area.has_meta("enemy"):
+			if area.is_in_group("Enemies"):
 				area.damage(DAMAGE * delta)
 				var knockback_dir = (area.global_position - player.global_position)
 				area.global_position += (knockback_dir / knockback_dir.length()) * KNOCKBACK * delta
