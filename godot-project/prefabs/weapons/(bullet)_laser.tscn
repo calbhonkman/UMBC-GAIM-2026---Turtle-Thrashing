@@ -22,14 +22,14 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nqgxj"]
-size = Vector2(3000, 60)
+size = Vector2(3000, 100)
 
 [node name="Area2D" type="Area2D" unique_id=626060781]
 z_index = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1441923463]
 position = Vector2(1476, 3.814697e-06)
-scale = Vector2(0.67733324, 0.07333334)
+scale = Vector2(0.677, 0.15)
 sprite_frames = SubResource("SpriteFrames_dsbqb")
 autoplay = "default"
 frame = 2

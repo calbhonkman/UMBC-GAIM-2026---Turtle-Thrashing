@@ -105,7 +105,7 @@ func upgrade(index: int):
 			unlocked = true
 			visible = true
 		1:
-			speed += BASE_SPEED * 0.5
+			damage += 0.5 * BASE_DAMAGE
 		2:
 			BASE_COOLDOWN *= 0.75
 			BASE_DELAY *= 0.75

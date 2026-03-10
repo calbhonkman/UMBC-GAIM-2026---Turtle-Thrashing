@@ -59,7 +59,7 @@ func upgrade(index: int):
 			visible = true
 		1:
 			# Firestarter Range +50%
-			range += 0.50 * BASE_RANGE
+			range += 0.25 * BASE_RANGE
 		2:
 			# Firestarter Damage +50%
-			damage += 0.50 * BASE_DAMAGE
+			damage += 0.25 * BASE_DAMAGE
