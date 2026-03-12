@@ -30,6 +30,7 @@ window/stretch/mode="viewport"
 
 Enemies=""
 "Enemy Bullets"=""
+Food=""
 
 [input]
 

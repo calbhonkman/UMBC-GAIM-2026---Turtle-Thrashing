@@ -5,7 +5,7 @@ extends Area2D
 @export var unlocked: bool = false
 @export var upgrade_descriptions: Array[String]
 
-@export var BASE_DAMAGE: float = 0.5
+@export var BASE_DAMAGE: float = 1.0
 @export var BASE_RANGE: float = 250.0
 
 var damage = 0.0
@@ -39,7 +39,9 @@ func _process(delta):
 			pass
 		elif b_target[i] and (b_target[i].global_position - global_position).length() <= range:
 			bullets[i].global_position = b_target[i].global_position
-			b_target[i].damage(damage * delta)
+			var distance_factor = 0.1 * (1 - (bullets[i].global_position - global_position).length() / range)
+			bullets[i].scale = Vector2(distance_factor, distance_factor)
+			b_target[i].damage(damage * delta * distance_factor)
 		else:
 			bullets[i].queue_free()
 			bullets.remove_at(i)
@@ -59,7 +61,7 @@ func upgrade(index: int):
 			visible = true
 		1:
 			# Firestarter Range +50%
-			range += 0.50 * BASE_RANGE
+			range += 0.25 * BASE_RANGE
 		2:
 			# Firestarter Damage +50%
-			damage += 0.50 * BASE_DAMAGE
+			damage += 0.25 * BASE_DAMAGE

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://venyw07uskjf"]
+
+[ext_resource type="Texture2D" uid="uid://bqc576g2j6vgi" path="res://assets/Cherry Health.png" id="1_k2eo3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6xfom"]
+radius = 30.0
+
+[node name="Area2D" type="Area2D" unique_id=1499291121 groups=["Food"]]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1208138635]
+position = Vector2(-9.999999, 9.999999)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_k2eo3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=846964862]
+shape = SubResource("CircleShape2D_6xfom")

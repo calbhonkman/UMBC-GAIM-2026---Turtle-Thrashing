@@ -1,16 +1,18 @@
 extends Area2D
 
-@export var DAMAGE: float = 0.5
-@export var COOLDOWN: float = 10.0
-@export var BULLET: Resource
-@export var LIFETIME: float = 5.0
-@export var KNOCKBACK: float = 200.0
-
-@onready var player = $".."
 
 @export var unlocked: bool = false
 @export var upgrade_descriptions: Array[String]
 
+@export var DAMAGE: float = 0.5
+@export var COOLDOWN: float = 10.0
+@export var BULLET: Resource
+@export var LIFETIME: float = 5.0
+@export var BASE_KNOCKBACK: float = 200.0
+
+@onready var player = $".."
+
+var knockback = 0.0
 var size_mod = 1.0
 
 var bullet = null
@@ -20,6 +22,8 @@ var b_lifetime = 0.0
 func _ready():
 	if unlocked:
 		visible = true
+	
+	knockback = BASE_KNOCKBACK
 	
 	b_cooldown = COOLDOWN
 
@@ -41,7 +45,7 @@ func _process(delta):
 			if area.is_in_group("Enemies"):
 				area.damage(DAMAGE * delta)
 				var knockback_dir = (area.global_position - player.global_position)
-				area.global_position += (knockback_dir / knockback_dir.length()) * KNOCKBACK * delta
+				area.global_position += (knockback_dir / knockback_dir.length()) * knockback * delta
 
 	
 	elif b_cooldown <= 0.0 and bullet == null:
@@ -63,4 +67,4 @@ func upgrade(index: int):
 		1:
 			size_mod += 1.0
 		2:
-			KNOCKBACK *= 1.25
+			knockback += 0.25 * BASE_KNOCKBACK

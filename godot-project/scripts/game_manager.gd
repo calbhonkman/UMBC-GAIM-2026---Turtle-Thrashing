@@ -11,7 +11,7 @@ extends Node2D
 @export var GAME_TIME: float = 5.0 # minutes
 @export var ENDLESS_MODE: bool = false
 
-const BERRY = preload("uid://ct5pf58tx5o1e")
+@export var FOOD: Array[Resource]
 
 @onready var enemies_group = $"../(Group) Enemies"
 const ENEMY = preload("uid://d1k32mfbnnud3")
@@ -100,7 +100,6 @@ func _process(delta):
 				spawn_enemy(ENEMIES[2])
 			elif int(next_spawn_time) % 10 == 0:
 				# Snake
-				spawn_enemy(ENEMIES[1])
 				spawn_enemy(ENEMIES[1])
 			else:
 				# Crab

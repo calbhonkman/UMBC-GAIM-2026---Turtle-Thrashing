@@ -4,6 +4,7 @@ extends Area2D
 @onready var sprite = $AnimatedSprite2D
 const EXP = preload("uid://bln5qlwy18sjf")
 
+@export var EXP_AMOUNT: int = 2
 @export var MAX_HEALTH: float = 1.0
 @export var LUNGE_SPEED: float = 300.0
 @export var REG_SPEED: float = 150.0
@@ -44,9 +45,10 @@ func _process(delta):
 		scale.x = -1 * abs(scale.x) if playerDirection.x > 0 else abs(scale.x)
 		
 	if dying:
-		var new_xp = EXP.instantiate()
-		get_parent().add_child(new_xp)
-		new_xp.global_position = global_position
+		for i in range(EXP_AMOUNT):
+			var new_xp = EXP.instantiate()
+			new_xp.global_position = global_position
+			get_parent().add_child(new_xp)
 		queue_free()
 
 func scale_health(s: float):

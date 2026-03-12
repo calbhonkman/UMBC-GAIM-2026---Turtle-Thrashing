@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://le1ukfjocokb" path="res://prefabs/weapons/(bullet)_laser.tscn" id="15_pl11u"]
 [ext_resource type="Texture2D" uid="uid://bcapu1vxsu637" path="res://assets/Turtle/health_icon.png" id="17_rysoc"]
 [ext_resource type="PackedScene" uid="uid://fnhiviwbuuj8" path="res://audio/audio_manager.tscn" id="18_ssvqc"]
+[ext_resource type="PackedScene" uid="uid://venyw07uskjf" path="res://prefabs/cherry.tscn" id="19_bhx41"]
 [ext_resource type="PackedScene" uid="uid://d1k32mfbnnud3" path="res://prefabs/enemies/(enemy)_crab.tscn" id="19_e1j6l"]
 [ext_resource type="PackedScene" uid="uid://dfuv28c2ne1eo" path="res://prefabs/enemies/(enemy)_snake.tscn" id="20_pl11u"]
 [ext_resource type="PackedScene" uid="uid://dq43dbtcuu4m" path="res://prefabs/enemies/(enemy)_turtle.tscn" id="21_bhx41"]
@@ -30,7 +31,7 @@
 size = Vector2(1312.9883, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rysoc"]
-size = Vector2(397.79932, 50)
+size = Vector2(253.19856, 50)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vtaks"]
 animations = [{
@@ -62,8 +63,8 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ca42v"]
-size = Vector2(250, 150)
+[sub_resource type="CircleShape2D" id="CircleShape2D_pl11u"]
+radius = 75.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ca42v"]
 radius = 52.0
@@ -110,83 +111,99 @@ scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_ca42v")
 
 [node name="NorthWall" type="CollisionShape2D" parent="Island" unique_id=1519303801]
-position = Vector2(-608, -1806)
+position = Vector2(-621.6666, -1893.333)
+rotation = 0.121797286
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall2" type="CollisionShape2D" parent="Island" unique_id=1404371838]
-position = Vector2(-1818.9999, -1483.9999)
-rotation = -0.47506228
+position = Vector2(-2311.6665, -1278.3334)
+rotation = -0.51608497
+shape = SubResource("RectangleShape2D_0tnpc")
+
+[node name="NorthWall18" type="CollisionShape2D" parent="Island" unique_id=909227449]
+position = Vector2(-1229.9999, -1913.3331)
+rotation = -0.5465888
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall3" type="CollisionShape2D" parent="Island" unique_id=217982617]
-position = Vector2(-2196, -1063)
-rotation = 0.506471
+position = Vector2(-2368.3333, -1045)
+rotation = 0.52491164
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall4" type="CollisionShape2D" parent="Island" unique_id=1976246661]
-position = Vector2(-2087, 62.99994)
-rotation = -0.7811184
+position = Vector2(-2359.9998, 36.666733)
+rotation = -0.5663373
+shape = SubResource("RectangleShape2D_0tnpc")
+
+[node name="NorthWall17" type="CollisionShape2D" parent="Island" unique_id=778373405]
+position = Vector2(-2296.6667, 168.33331)
+rotation = -1.0211073
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall16" type="CollisionShape2D" parent="Island" unique_id=1695993073]
-position = Vector2(-1632.0001, -575)
-rotation = -1.5850155
+position = Vector2(-1751.6666, -613.33344)
+rotation = -2.0928776
 scale = Vector2(0.99999994, 0.99999994)
 shape = SubResource("RectangleShape2D_rysoc")
 
+[node name="NorthWall19" type="CollisionShape2D" parent="Island" unique_id=1829678078]
+position = Vector2(-1751.6666, -421.6666)
+rotation = -1.0476354
+shape = SubResource("RectangleShape2D_rysoc")
+
 [node name="NorthWall5" type="CollisionShape2D" parent="Island" unique_id=141663997]
-position = Vector2(-2165, 581.6667)
-rotation = -1.7081805
+position = Vector2(-2178.3333, 695)
+rotation = -1.8385842
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall6" type="CollisionShape2D" parent="Island" unique_id=1403039320]
-position = Vector2(-1921.6666, 1315)
-rotation = -2.1113439
+position = Vector2(-1971.6664, 1326.6665)
+rotation = -2.143515
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall7" type="CollisionShape2D" parent="Island" unique_id=1588511696]
-position = Vector2(-1586.6666, 1813.3335)
-rotation = -3.0837636
+position = Vector2(-1671.6666, 1841.6669)
+rotation = -3.0743413
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall8" type="CollisionShape2D" parent="Island" unique_id=1712126714]
-position = Vector2(-481.66666, 2295)
-rotation = -2.3762033
+position = Vector2(-503.33337, 2260.0002)
+rotation = -2.4790916
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall9" type="CollisionShape2D" parent="Island" unique_id=262330601]
-position = Vector2(-56.666656, 2334.9998)
-rotation = -2.931364
+position = Vector2(-60.000008, 2371.6667)
+rotation = -3.0077944
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall10" type="CollisionShape2D" parent="Island" unique_id=1448824927]
-position = Vector2(973.3334, 2248.3333)
-rotation = -3.511371
+position = Vector2(913.3332, 2296.6665)
+rotation = -3.4909704
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall11" type="CollisionShape2D" parent="Island" unique_id=1514951125]
-position = Vector2(1958.3333, 1695)
+position = Vector2(2049.9995, 1676.6664)
 rotation = -3.7868316
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall12" type="CollisionShape2D" parent="Island" unique_id=1259689005]
-position = Vector2(2443, 708.99994)
+position = Vector2(2541.6665, 631.6667)
 rotation = -4.7160378
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall13" type="CollisionShape2D" parent="Island" unique_id=482913348]
-position = Vector2(2440, -552)
+position = Vector2(2541.6665, -686.66675)
 rotation = -4.7160378
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall14" type="CollisionShape2D" parent="Island" unique_id=212433254]
-position = Vector2(1829.9999, -1424)
-rotation = -5.9282055
+position = Vector2(1914.9999, -1534.9998)
+rotation = -5.9741387
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall15" type="CollisionShape2D" parent="Island" unique_id=2047528167]
-position = Vector2(647, -1713)
-rotation = -6.1582017
+position = Vector2(676.66656, -1770)
+rotation = -6.221928
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1744978302]
@@ -199,8 +216,8 @@ sprite_frames = SubResource("SpriteFrames_vtaks")
 animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1318562977]
-visible = false
-shape = SubResource("RectangleShape2D_ca42v")
+scale = Vector2(1, 0.7)
+shape = SubResource("CircleShape2D_pl11u")
 
 [node name="Hitbox (Entities)" type="Area2D" parent="Player" unique_id=2047547949]
 
@@ -222,8 +239,8 @@ shape = SubResource("CircleShape2D_0tnpc")
 [node name="(Weapon) Laser" type="Area2D" parent="Player" unique_id=1069287280]
 visible = false
 script = ExtResource("14_e1j6l")
-BULLET = ExtResource("15_pl11u")
 upgrade_descriptions = Array[String](["Unlock Laser", "Laser Width +50%", "Laser Knockback x1.25"])
+BULLET = ExtResource("15_pl11u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Laser" unique_id=814649257]
 shape = SubResource("RectangleShape2D_dinhu")
@@ -248,7 +265,7 @@ z_index = 1
 script = ExtResource("7_kvpfn")
 BULLET = ExtResource("9_kvuet")
 unlocked = true
-upgrade_descriptions = Array[String](["Unlock Punch", "Punch Speed +50%", "Punch Cooldown -25%", "Punch Size +50%"])
+upgrade_descriptions = Array[String](["Unlock Punch", "Punch Damage +50%", "Punch Cooldown -25%", "Punch Size +50%"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Punch" unique_id=1221786466]
 shape = SubResource("CircleShape2D_iywne")
@@ -258,7 +275,7 @@ visible = false
 z_index = 1
 script = ExtResource("14_264po")
 BULLET = ExtResource("15_1kice")
-upgrade_descriptions = Array[String](["Unlock Flamestarter", "Flamestarter Range +50%", "Flamestarter Damage +50%"])
+upgrade_descriptions = Array[String](["Unlock Flamestarter", "Flamestarter Range +25%", "Flamestarter Damage +25%"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Firestarter" unique_id=1804428324]
 shape = SubResource("CircleShape2D_iywne")
@@ -267,7 +284,7 @@ shape = SubResource("CircleShape2D_iywne")
 visible = false
 rotation = 3.1415927
 script = ExtResource("12_bt5mj")
-upgrade_descriptions = Array[String](["Unlock Shield", "Shield Speed +25%"])
+upgrade_descriptions = Array[String](["Unlock Shield", "Shield Speed +50%"])
 
 [node name="Area2D" type="Area2D" parent="Player/(Minion) Shield" unique_id=1754672137]
 position = Vector2(150, 0)
@@ -291,6 +308,7 @@ shape = SubResource("CapsuleShape2D_pl11u")
 process_mode = 3
 z_index = 2
 script = ExtResource("9_0tnpc")
+FOOD = Array[Resource]([ExtResource("19_bhx41")])
 ENEMIES = Array[Resource]([ExtResource("19_e1j6l"), ExtResource("20_pl11u"), ExtResource("21_bhx41"), ExtResource("22_qnb83"), ExtResource("23_pl11u")])
 things_to_upgrade = [NodePath("../Player"), NodePath("../Player/(Weapon) Laser"), NodePath("../Player/(Weapon) Lightning"), NodePath("../Player/(Weapon) Punch"), NodePath("../Player/(Weapon) Firestarter"), NodePath("../Player/(Minion) Shield")]
 
