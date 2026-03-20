@@ -24,8 +24,9 @@
 [ext_resource type="PackedScene" uid="uid://d1k32mfbnnud3" path="res://prefabs/enemies/(enemy)_crab.tscn" id="19_e1j6l"]
 [ext_resource type="PackedScene" uid="uid://dfuv28c2ne1eo" path="res://prefabs/enemies/(enemy)_snake.tscn" id="20_pl11u"]
 [ext_resource type="PackedScene" uid="uid://dq43dbtcuu4m" path="res://prefabs/enemies/(enemy)_turtle.tscn" id="21_bhx41"]
-[ext_resource type="PackedScene" uid="uid://dw20u1c5v07qr" path="res://prefabs/enemies/(enemy)_raccoon.tscn" id="22_qnb83"]
+[ext_resource type="PackedScene" uid="uid://dw20u1c5v07qr" path="res://prefabs/enemies/(boss)_raccoon.tscn" id="22_qnb83"]
 [ext_resource type="PackedScene" uid="uid://bsjban1wyxwl4" path="res://prefabs/enemies/(enemy)_raccoon_small.tscn" id="23_pl11u"]
+[ext_resource type="PackedScene" uid="uid://cfdlk4r0ys684" path="res://prefabs/enemies/(boss)_crab.tscn" id="25_qnb83"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
 size = Vector2(1312.9883, 50)
@@ -308,8 +309,9 @@ shape = SubResource("CapsuleShape2D_pl11u")
 process_mode = 3
 z_index = 2
 script = ExtResource("9_0tnpc")
+GAME_TIME = 6.0
 FOOD = Array[Resource]([ExtResource("19_bhx41")])
-ENEMIES = Array[Resource]([ExtResource("19_e1j6l"), ExtResource("20_pl11u"), ExtResource("21_bhx41"), ExtResource("22_qnb83"), ExtResource("23_pl11u")])
+ENEMIES = Array[Resource]([ExtResource("19_e1j6l"), ExtResource("20_pl11u"), ExtResource("21_bhx41"), ExtResource("22_qnb83"), ExtResource("23_pl11u"), ExtResource("25_qnb83")])
 things_to_upgrade = [NodePath("../Player"), NodePath("../Player/(Weapon) Laser"), NodePath("../Player/(Weapon) Lightning"), NodePath("../Player/(Weapon) Punch"), NodePath("../Player/(Weapon) Firestarter"), NodePath("../Player/(Minion) Shield")]
 
 [node name="Camera" type="Camera2D" parent="GameManager" unique_id=1356503637]

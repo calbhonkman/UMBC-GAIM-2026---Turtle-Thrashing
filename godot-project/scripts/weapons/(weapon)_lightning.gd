@@ -62,7 +62,7 @@ func _process(delta):
 func find_target():
 	var possible_targets = []
 	for area in get_overlapping_areas():
-		if b_target.count(area) < 1 and area.has_meta("enemy"):
+		if b_target.count(area) < 1 and area.is_in_group("Enemies"):
 			possible_targets.append(area)
 	if not possible_targets.is_empty():
 		return possible_targets[randi_range(0,possible_targets.size()-1)]

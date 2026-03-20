@@ -38,12 +38,15 @@ var next_spawn_time = 0.0
 
 var boss = null
 var boss_fight = false
-var boss_defeated = false
 var pausable = true
 
 func _ready():
 	game_timer = 0.0
 	next_spawn_time = game_timer + 1.0
+	
+	#clear_enemies()
+	#boss = spawn_enemy(ENEMIES[3])
+	#boss_fight = true
 
 func _process(delta):
 	global_position = player.global_position
@@ -55,7 +58,6 @@ func _process(delta):
 	
 	level.text = "Level " + str(player.level) + " (" + str(player.experience) + "/" + str(5 * (player.level * (player.level+1) / 2)) + ")"
 	health.text = str(player.health)
-	
 	
 	if pausable and Input.is_action_just_pressed("pause"):
 		get_tree().paused = !get_tree().paused
@@ -70,16 +72,14 @@ func _process(delta):
 		get_tree().paused = true
 		screen_level.visible = true
 		select_upgrades()
-	elif boss_fight:
-		if boss == null:
+	elif boss_fight and boss == null:
+		if game_timer >= GAME_TIME:
 			pausable = false
 			get_tree().paused = true
 			screen_win.visible = true
-	elif game_timer >= GAME_TIME * 60.0 and not ENDLESS_MODE:
-		# Unleash the Raccoon
-		clear_enemies()
-		boss = spawn_enemy(ENEMIES[3])
-		boss_fight = true
+		else:
+			boss_fight = false
+		
 	
 	if not get_tree().paused:
 		game_timer += delta
@@ -89,21 +89,28 @@ func _process(delta):
 		clock.text = timer_minutes + ":" + timer_seconds
 		
 		if game_timer >= next_spawn_time:
-			if boss_fight:
+			if boss_fight and boss.name == "(boss)_Raccoon":
 				# Small Raccoon
 				spawn_enemy(ENEMIES[4])
-				spawn_enemy(ENEMIES[4])
-				spawn_enemy(ENEMIES[4])
-			elif int(next_spawn_time) % 30 == 0:
+			if boss_fight and boss.name == "(boss)_Crab":
+				# Small Crab
+				spawn_enemy(ENEMIES[0])
+			elif int(next_spawn_time) % 180 == 0 and not ENDLESS_MODE:
+				# Unleash the Crab
+				clear_enemies()
+				boss = spawn_enemy(ENEMIES[5])
+				boss_fight = true
+			elif int(next_spawn_time) % 60 == 0:
+				spawn_enemy(FOOD[0])
+			elif int(next_spawn_time) % 20 == 0:
 				# Turtle
 				spawn_enemy(ENEMIES[2])
 				spawn_enemy(ENEMIES[2])
-			elif int(next_spawn_time) % 10 == 0:
+			elif int(next_spawn_time) % 15 == 0:
 				# Snake
 				spawn_enemy(ENEMIES[1])
 			else:
 				# Crab
-				spawn_enemy(ENEMIES[0])
 				spawn_enemy(ENEMIES[0])
 			next_spawn_time += 1.0 # seconds
 
