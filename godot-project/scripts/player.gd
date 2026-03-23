@@ -58,7 +58,8 @@ func _on_hitbox_area_entered(area):
 		if invincible_timer == 0:
 			health -= 1
 			invincible_timer = INVINCIBLE_TIME
-		area.global_position += ((area.global_position - global_position) / (area.global_position - global_position).length()) * DAMAGE_KNOCKBACK
+		if area.get_script():
+			area.global_position += ((area.global_position - global_position) / (area.global_position - global_position).length()) * DAMAGE_KNOCKBACK
 	elif area.is_in_group("Enemy Bullets"):
 		if invincible_timer == 0:
 			health -= 1
@@ -69,6 +70,11 @@ func _on_hitbox_area_entered(area):
 		experience += 1
 		AudioManager.xp_pickup_sfx.play()
 		area.queue_free()
+
+func damage(dmg: int):
+	if invincible_timer == 0:
+		health -= dmg
+		invincible_timer = INVINCIBLE_TIME
 
 func get_upgrade():
 	return randi_range(0, upgrade_descriptions.size()-1)

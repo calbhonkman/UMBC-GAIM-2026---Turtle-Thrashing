@@ -62,7 +62,7 @@ func _process(delta):
 		bullets[i].get_child(0).modulate = Color(1,1,1,max(0, pow(b_lifetime[i] / LIFETIME,2)))
 		
 		for area in bullets[i].get_overlapping_areas():
-			if area not in b_prev[i] and area.is_in_group("Enemies"):
+			if area not in b_prev[i] and area.is_in_group("Enemies") and area.get_script():
 				b_prev[i].append(area)
 				area.damage(damage)
 				var knockback_dir = (area.global_position - global_position)

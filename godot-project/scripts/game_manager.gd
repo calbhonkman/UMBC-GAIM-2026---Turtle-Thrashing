@@ -44,9 +44,10 @@ func _ready():
 	game_timer = 0.0
 	next_spawn_time = game_timer + 1.0
 	
-	#clear_enemies()
-	#boss = spawn_enemy(ENEMIES[3])
-	#boss_fight = true
+	# Unleash the Crab
+	clear_enemies()
+	boss = spawn_enemy(ENEMIES[5])
+	boss_fight = true
 
 func _process(delta):
 	global_position = player.global_position

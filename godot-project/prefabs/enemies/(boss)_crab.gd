@@ -2,13 +2,15 @@ extends Area2D
 
 @onready var player = $"/root/Node2D/Player"
 @onready var sprite = $AnimatedSprite2D
+@onready var hitbox_slam = $"(hitbox)_slam"
+@onready var hitbox_jump = $"(hitbox)_jump"
 const EXP = preload("uid://bln5qlwy18sjf")
 
 @export var MAX_HEALTH: float = 30
-@export var BASE_SPEED: float = 300.0
+@export var BASE_SPEED: float = 200.0
 @export var BASE_DAMAGE: float = 1.0
-@export var ATTACK_RANGE: float = 350.0
-@export var ATTACK_COOLDOWN: float = 6.0
+@export var ATTACK_RANGE: float = 150.0
+@export var ATTACK_COOLDOWN: float = 2.0
 @export var PREPARE_TIME: float = 1.0
 @export var ATTACK_TIME: float = 2.0
 
@@ -22,9 +24,9 @@ func _ready():
 	health = MAX_HEALTH
 	anti_knockback_position = global_position
 
-func _process(delta):	
+func _process(delta):
 	if player:
-		var player_vect = player.global_position - global_position
+		var player_vect = player.global_position - hitbox_slam.global_position
 		var player_dist = player_vect.length()
 		var player_dir = player_vect / player_dist
 		
@@ -39,21 +41,29 @@ func _process(delta):
 				if mode_timer <= 0.0:
 					mode = "hunting"
 			"hunting":
-				if player_dist > ATTACK_RANGE:
+				if player.hitbox in hitbox_slam.get_overlapping_areas():
+					mode = "slamming part one"
+					sprite.play("slam1")
+				else:
 					global_position += player_dir * BASE_SPEED * delta
 					anti_knockback_position = global_position
 					sprite.play("walk")
-				elif player_dist <= ATTACK_RANGE:
-					mode = "charging"
-					mode_timer = PREPARE_TIME
-					sprite.play("charge")
 			"charging":
 				if mode_timer <= 0.0:
-					mode = "slamming"
-					mode_timer = ATTACK_TIME
-					sprite.play("slam")
-			"slamming":
-				if mode_timer <= 0.0:
+					mode = "slamming part one"
+					sprite.play("slam1")
+			"slamming part one":
+				# The slam is split into two separate animations
+				# The actual moment of impact is the end of slam1
+				# This is the exact moment when damage is dealt
+				if not sprite.is_playing():
+					mode = "slamming part two"
+					for area in hitbox_slam.get_overlapping_areas():
+						if area == player.hitbox:
+							player.damage(1)
+					sprite.play("slam2")
+			"slamming part two":
+				if not sprite.is_playing():
 					mode = "default"
 					mode_timer = ATTACK_COOLDOWN
 					sprite.play("default")
