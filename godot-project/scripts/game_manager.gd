@@ -167,6 +167,7 @@ func find_spawn_position():
 
 func _on_button_main_menu_pressed():
 	get_tree().paused = false
+	AudioManager.music.stop()
 	get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
 
 func _on_button_continue_pressed():

@@ -74,7 +74,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("8_lwt42")
+}],
+"loop": false,
+"name": &"charge1",
+"speed": 8.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("9_cod3a")
 }, {
@@ -87,8 +92,8 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("12_22tme")
 }],
-"loop": false,
-"name": &"charge",
+"loop": true,
+"name": &"charge2",
 "speed": 8.0
 }, {
 "frames": [{
@@ -248,9 +253,9 @@ BASE_SPEED = 150.0
 position = Vector2(-48, -34)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_gkrs1")
-animation = &"slam2"
-frame = 5
-frame_progress = 1.0
+animation = &"charge2"
+frame = 1
+frame_progress = 0.113316864
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=155662765]
 shape = SubResource("RectangleShape2D_lq1tu")

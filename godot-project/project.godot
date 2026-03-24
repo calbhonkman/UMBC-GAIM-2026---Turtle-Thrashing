@@ -13,6 +13,7 @@ config_version=5
 config/name="Godot-Project"
 run/main_scene="uid://1w845eeqw7qm"
 config/features=PackedStringArray("4.6", "Forward Plus")
+boot_splash/show_image=false
 config/icon="res://icon.svg"
 
 [autoload]
