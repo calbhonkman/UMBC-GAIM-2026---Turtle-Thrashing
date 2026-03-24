@@ -67,8 +67,8 @@ func _process(delta):
 			if i < bosses.size() and bosses[i] == null:
 				bosses.remove_at(i)
 				i += -1
-				free_upgrade == true
-		if free_upgrade and (game_timer <= GAME_TIME * 60.0) or not bosses.is_empty():
+				free_upgrade = true
+		if free_upgrade and ((game_timer <= GAME_TIME * 60.0) or not bosses.is_empty()):
 			# Free upgrade
 			pausable = false
 			get_tree().paused = true
