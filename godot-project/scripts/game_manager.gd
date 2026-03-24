@@ -41,6 +41,7 @@ var boss_fight = false
 var pausable = true
 
 func _ready():
+	AudioManager.music.play()
 	game_timer = 0.0
 	next_spawn_time = game_timer + 1.0
 	
@@ -64,6 +65,7 @@ func _process(delta):
 		get_tree().paused = !get_tree().paused
 		screen_paused.visible = !screen_paused.visible
 	elif player.health <= 0:
+		AudioManager.music.stop()
 		pausable = false
 		get_tree().paused = true
 		screen_lose.visible = true

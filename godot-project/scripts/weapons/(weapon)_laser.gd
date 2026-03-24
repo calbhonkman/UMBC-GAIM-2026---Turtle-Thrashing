@@ -36,6 +36,7 @@ func _process(delta):
 		b_lifetime -= delta
 		if b_lifetime <= 0.0:
 			bullet.queue_free()
+			AudioManager.laser.stop()
 		
 		bullet.rotation = (get_global_mouse_position() - global_position).angle()
 		bullet.scale.y = size_mod
@@ -49,10 +50,12 @@ func _process(delta):
 
 	
 	elif b_cooldown <= 0.0 and bullet == null:
+		AudioManager.laser.play()
 		bullet = BULLET.instantiate()
 		add_child(bullet)
 		b_lifetime = LIFETIME
 		b_cooldown = COOLDOWN
+		
 
 func get_upgrade():
 	if unlocked:
