@@ -73,6 +73,7 @@ func _process(delta):
 		
 		for area in bullets[i].get_overlapping_areas():
 			if area not in b_prev[i] and area.is_in_group("Enemies"):
+				AudioManager.slap.play()
 				b_prev[i].append(area)
 				area.damage(damage)
 				if area.has_method("stun"):

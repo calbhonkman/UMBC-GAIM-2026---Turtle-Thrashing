@@ -3,8 +3,11 @@
 [ext_resource type="Script" uid="uid://booxrp6hjiu0t" path="res://audio/audio_manager.gd" id="1_drlug"]
 [ext_resource type="AudioStream" uid="uid://3oc3onksffrf" path="res://audio/music/turtlethrash_draft1.ogg" id="2_0i2i4"]
 [ext_resource type="AudioStream" uid="uid://tba55j3wq7t4" path="res://audio/sfx/xp.wav" id="2_drlug"]
-[ext_resource type="AudioStream" uid="uid://dhqm50a8asycg" path="res://audio/sfx/universfield-classic-punch-impact-352711.mp3" id="4_mhfhn"]
+[ext_resource type="AudioStream" uid="uid://beu5buoacp4td" path="res://audio/sfx/punch.wav" id="4_hlghp"]
 [ext_resource type="AudioStream" uid="uid://c78viuyi2arrn" path="res://audio/sfx/beam.wav" id="5_i1k7u"]
+[ext_resource type="AudioStream" uid="uid://bj6a6kot3ibb4" path="res://audio/sfx/cloud.wav" id="6_6wlj3"]
+[ext_resource type="AudioStream" uid="uid://q0aabd7k2bqb" path="res://audio/sfx/slap.wav" id="7_0xv67"]
+[ext_resource type="AudioStream" uid="uid://c7lhdskruce6d" path="res://audio/sfx/eat.wav" id="8_oyqdx"]
 
 [node name="AudioManager" type="Node2D" unique_id=1292916551]
 script = ExtResource("1_drlug")
@@ -20,7 +23,7 @@ volume_db = -17.685
 bus = &"Sfx"
 
 [node name="punch" type="AudioStreamPlayer" parent="." unique_id=85328837]
-stream = ExtResource("4_mhfhn")
+stream = ExtResource("4_hlghp")
 volume_db = -12.661
 bus = &"Sfx"
 
@@ -28,3 +31,16 @@ bus = &"Sfx"
 stream = ExtResource("5_i1k7u")
 volume_db = -10.852
 bus = &"Sfx"
+
+[node name="cloud" type="AudioStreamPlayer" parent="." unique_id=1461037281]
+stream = ExtResource("6_6wlj3")
+volume_db = -14.282
+bus = &"Sfx"
+
+[node name="slap" type="AudioStreamPlayer" parent="." unique_id=1213766493]
+stream = ExtResource("7_0xv67")
+volume_db = -6.225
+
+[node name="eat" type="AudioStreamPlayer" parent="." unique_id=979804591]
+stream = ExtResource("8_oyqdx")
+volume_db = -4.761

@@ -54,6 +54,7 @@ func _on_hitbox_area_entered(area):
 	if area.is_in_group("Food"):
 		area.queue_free()
 		health = min(MAX_HEALTH, health+1)
+		AudioManager.eat.play()
 	elif area.is_in_group("Enemies"):
 		if invincible_timer == 0:
 			health -= 1

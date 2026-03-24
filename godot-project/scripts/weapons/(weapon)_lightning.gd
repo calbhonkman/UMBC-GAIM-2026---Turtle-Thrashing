@@ -55,6 +55,7 @@ func _process(delta):
 		elif b_cooldown[i] <= 0.0: # and delay <= 0.0:
 			b_target[i] = find_target()
 			if b_target[i]:
+				AudioManager.cloud.play()
 				bullet[i] = BULLET.instantiate()
 				add_child(bullet[i])
 				bullet[i].global_position = global_position
