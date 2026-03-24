@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bjkelkyklrwiy"]
+
+[ext_resource type="Texture2D" uid="uid://cc8nduhop8s74" path="res://assets/Turtle/Direct Attacks/Slap/TurtSlap.png" id="1_pt70w"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_iywne"]
+size = Vector2(160, 150)
+
+[node name="Slap" type="Area2D" unique_id=238644860]
+scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=568077904]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_pt70w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=468740506]
+position = Vector2(12, -9)
+shape = SubResource("RectangleShape2D_iywne")

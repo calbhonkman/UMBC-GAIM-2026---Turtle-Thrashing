@@ -22,6 +22,9 @@ var mode = "default"
 var mode_timer = 0
 var anti_knockback_position = null
 
+var stunned = false
+var stun_timer = 0.0
+
 var bullets = []
 var b_direction = []
 var b_position = []
@@ -110,3 +113,8 @@ func damage(dmg: float):
 	print(health)
 	if health <= 0.0:
 		mode = "dying"
+
+func stun(time: float):
+	if stunned != true:
+		stunned = true
+		stun_timer = time

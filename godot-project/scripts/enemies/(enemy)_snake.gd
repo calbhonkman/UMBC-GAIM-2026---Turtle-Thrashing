@@ -16,33 +16,41 @@ var health
 var mode_timer = 0
 var lungeDirection = global_position
 var dying = false
+var stunned = false
+var stun_timer = 0.0
 
 func _ready():
 	health = MAX_HEALTH
 
 func _process(delta):
 	if player:
-		var playerDirection = player.global_position - global_position
-		playerDirection = playerDirection / playerDirection.length()
-		mode_timer = max(0, mode_timer - delta)
-		if (player.global_position - global_position).length() < LUNGE_RANGE:
-			if(lunge == true):
-				global_position += lungeDirection * delta * LUNGE_SPEED
-				if(mode_timer == 0):
-					lunge = false
-					mode_timer = LUNGE_COOLDOWN
-					sprite.play("charge")
+		if stunned:
+			stun_timer -= delta
+			if stun_timer <= 0:
+				stunned = false
+				sprite.modulate = Color(1,1,1,1)
+		else: 	
+			var playerDirection = player.global_position - global_position
+			playerDirection = playerDirection / playerDirection.length()
+			mode_timer = max(0, mode_timer - delta)
+			if (player.global_position - global_position).length() < LUNGE_RANGE:
+				if(lunge == true):
+					global_position += lungeDirection * delta * LUNGE_SPEED
+					if(mode_timer == 0):
+						lunge = false
+						mode_timer = LUNGE_COOLDOWN
+						sprite.play("charge")
+				else:
+					if(mode_timer == 0):
+						lunge = true
+						mode_timer = LUNGE_COOLDOWN
+						sprite.play("lunge")
+						lungeDirection = playerDirection
 			else:
-				if(mode_timer == 0):
-					lunge = true
-					mode_timer = LUNGE_COOLDOWN
-					sprite.play("lunge")
-					lungeDirection = playerDirection
-		else:
-			lunge = false
-			global_position += playerDirection * delta * REG_SPEED
-			sprite.play("default")
-		scale.x = -1 * abs(scale.x) if playerDirection.x > 0 else abs(scale.x)
+				lunge = false
+				global_position += playerDirection * delta * REG_SPEED
+				sprite.play("default")
+			scale.x = -1 * abs(scale.x) if playerDirection.x > 0 else abs(scale.x)
 		
 	if dying:
 		for i in range(EXP_AMOUNT):
@@ -58,3 +66,9 @@ func damage(dmg: float):
 	health -= dmg
 	if health <= 0.0:
 		dying = true
+
+func stun(time: float):
+	if stunned != true:
+		stunned = true
+		stun_timer = time
+		sprite.modulate = Color(0.788, 0.788, 0.0, 1.0)

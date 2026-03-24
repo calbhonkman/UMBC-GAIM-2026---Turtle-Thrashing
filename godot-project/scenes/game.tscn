@@ -15,9 +15,11 @@
 [ext_resource type="Script" uid="uid://d3diaewcyfj0l" path="res://scripts/weapons/(minion)_shield.gd" id="12_bt5mj"]
 [ext_resource type="Texture2D" uid="uid://5nodvhabq0mg" path="res://assets/Turtle/Minions/ShieldTurtle.png" id="13_e1j6l"]
 [ext_resource type="Script" uid="uid://ba7xodmvwpqyv" path="res://scripts/weapons/(weapon)_flamestarter.gd" id="14_264po"]
+[ext_resource type="Script" uid="uid://djppaegdlouul" path="res://scripts/weapons/(weapon)_slap.gd" id="14_bhx41"]
 [ext_resource type="Script" uid="uid://cl403en7htnjl" path="res://scripts/weapons/(weapon)_laser.gd" id="14_e1j6l"]
 [ext_resource type="PackedScene" uid="uid://ntiukiv8fvqy" path="res://prefabs/weapons/(bullet)_flamestarter.tscn" id="15_1kice"]
 [ext_resource type="PackedScene" uid="uid://le1ukfjocokb" path="res://prefabs/weapons/(bullet)_laser.tscn" id="15_pl11u"]
+[ext_resource type="PackedScene" uid="uid://bjkelkyklrwiy" path="res://prefabs/weapons/(bullet)_slap.tscn" id="15_qnb83"]
 [ext_resource type="Texture2D" uid="uid://bcapu1vxsu637" path="res://assets/Turtle/health_icon.png" id="17_rysoc"]
 [ext_resource type="PackedScene" uid="uid://fnhiviwbuuj8" path="res://audio/audio_manager.tscn" id="18_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://venyw07uskjf" path="res://prefabs/cherry.tscn" id="19_bhx41"]
@@ -271,6 +273,16 @@ upgrade_descriptions = Array[String](["Unlock Punch", "Punch Damage +50%", "Punc
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Punch" unique_id=1221786466]
 shape = SubResource("CircleShape2D_iywne")
 
+[node name="(Weapon) Slap" type="Area2D" parent="Player" unique_id=1180534717]
+visible = false
+z_index = 1
+script = ExtResource("14_bhx41")
+BULLET = ExtResource("15_qnb83")
+upgrade_descriptions = Array[String](["Unlock Slap", "Slap Stun Duration +25%", "Slap Coldown -25%", "Slap Size +50%"])
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Slap" unique_id=286922218]
+shape = SubResource("CircleShape2D_iywne")
+
 [node name="(Weapon) Firestarter" type="Area2D" parent="Player" unique_id=1209843731]
 visible = false
 z_index = 1
@@ -312,7 +324,7 @@ script = ExtResource("9_0tnpc")
 GAME_TIME = 6.0
 FOOD = Array[Resource]([ExtResource("19_bhx41")])
 ENEMIES = Array[Resource]([ExtResource("19_e1j6l"), ExtResource("20_pl11u"), ExtResource("21_bhx41"), ExtResource("22_qnb83"), ExtResource("23_pl11u"), ExtResource("25_qnb83")])
-things_to_upgrade = [NodePath("../Player"), NodePath("../Player/(Weapon) Laser"), NodePath("../Player/(Weapon) Lightning"), NodePath("../Player/(Weapon) Punch"), NodePath("../Player/(Weapon) Firestarter"), NodePath("../Player/(Minion) Shield")]
+things_to_upgrade = [NodePath("../Player"), NodePath("../Player/(Weapon) Laser"), NodePath("../Player/(Weapon) Lightning"), NodePath("../Player/(Weapon) Punch"), NodePath("../Player/(Weapon) Firestarter"), NodePath("../Player/(Minion) Shield"), NodePath("../Player/(Weapon) Slap")]
 
 [node name="Camera" type="Camera2D" parent="GameManager" unique_id=1356503637]
 limit_enabled = false
