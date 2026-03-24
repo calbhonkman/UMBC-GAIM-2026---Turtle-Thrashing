@@ -25,6 +25,7 @@ animations = [{
 radius = 45.0
 
 [node name="Area2D" type="Area2D" unique_id=224329759 groups=["Enemy Bullets"]]
+metadata/bullet_type = "Bowling"
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=204911335]
 position = Vector2(5.0000005, 13.000001)

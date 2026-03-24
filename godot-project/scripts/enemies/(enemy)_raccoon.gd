@@ -4,17 +4,18 @@ extends Area2D
 @onready var sprite = $AnimatedSprite2D
 const EXP = preload("uid://bln5qlwy18sjf")
 
-@export var MAX_HEALTH: float = 30
+@export var MAX_HEALTH: float = 15
 @export var BASE_SPEED: float = 300.0
 @export var BASE_DAMAGE: float = 1.0
 @export var ATTACK_RANGE: float = 350.0
-@export var ATTACK_COOLDOWN: float = 6.0
+@export var ATTACK_COOLDOWN: float = 4.0
 @export var PREPARE_TIME: float = 1.0
-@export var ATTACK_TIME: float = 2.0
+@export var ATTACK_TIME: float = 1.0
 @export var ATTACK_AMOUNT: int = 3
-@export var BULLET: Resource
+@export var BULLETS: Array[Resource]
+@export var RACCOON: Resource
 @export var BULLET_SPEED: float = 500.0
-@export var BULLET_LIFETIME: float = 10.0
+@export var BULLET_LIFETIME: float = 3.0
 
 var health = 1
 
@@ -35,7 +36,7 @@ func _ready():
 	health = MAX_HEALTH
 	anti_knockback_position = global_position
 
-func _process(delta):	
+func _process(delta):
 	if player:
 		var player_vect = player.global_position - global_position
 		var player_dist = player_vect.length()
@@ -72,7 +73,10 @@ func _process(delta):
 					mode_timer = ATTACK_COOLDOWN
 					sprite.play("default")
 				elif mode_timer <= (ATTACK_AMOUNT - b_amount) * (ATTACK_TIME / ATTACK_AMOUNT):
-					bullets.append(BULLET.instantiate())
+					if randi_range(1,20) == 1:
+						bullets.append(BULLETS[2].instantiate())
+					else:
+						bullets.append(BULLETS[randi_range(0,1)].instantiate())
 					add_child(bullets.back())
 					b_direction.append(player_dir)
 					b_position.append(global_position)
@@ -89,6 +93,10 @@ func _process(delta):
 				if i < bullets.size():
 					b_lifetime[i] -= delta
 					if bullets[i] and b_lifetime[i] <= 0.0:
+						if bullets[i].get_meta("bullet_type") == "Raccoon":
+							var new_enemy = RACCOON.instantiate()
+							$"/root/Node2D/(Group) Enemies".add_child(new_enemy)
+							new_enemy.global_position = bullets[i].global_position
 						bullets[i].queue_free()
 					if bullets[i] == null:
 						bullets.remove_at(i)
@@ -101,9 +109,9 @@ func _process(delta):
 						b_position[i] = bullets[i].global_position
 						bullets[i].scale.x = -1 * abs(bullets[i].scale.x) if b_direction[i].x < 0 else abs(bullets[i].scale.x)
 						for area in bullets[i].get_overlapping_areas():
-							if area != self and area.is_in_group("Enemies"):
+							if bullets[i].get_meta("bullet_type") == "Bowling" and area != self and area.is_in_group("Enemies"):
 								area.damage(INF)
-								b_direction[i] = (player.global_position - bullets[i].global_position) / (player.global_position - bullets[i].global_position)
+								b_direction[i] = (player.global_position - b_position[i]) / (player.global_position - b_position[i]).length()
 
 func scale_health(s: float):
 	health = MAX_HEALTH * s

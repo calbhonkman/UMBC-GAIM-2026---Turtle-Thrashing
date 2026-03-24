@@ -1,8 +1,8 @@
 extends Area2D
 
 @export var SPEED: float = 500.0
-@export var DAMAGE: float = 1.0
-@export var COOLDOWN: float = 1.0
+@export var BASE_DAMAGE: float = 2.0
+@export var COOLDOWN: float = 3.0
 @export var AMOUNT: int = 1
 @export var BULLET: Resource
 
@@ -10,6 +10,7 @@ extends Area2D
 @export var upgrade_descriptions: Array[String]
 
 var size_mod = 1.0
+var damage = 0
 
 var bullet = []
 var b_cooldown = []
@@ -19,6 +20,8 @@ var b_position = []
 func _ready():
 	if unlocked:
 		visible = true
+	
+	damage = BASE_DAMAGE
 	
 	for i in range(AMOUNT):
 		bullet.append(null)
@@ -43,7 +46,7 @@ func _process(delta):
 			if not bullet[i].get_child(0).is_playing():
 				for area in bullet[i].get_overlapping_areas():
 					if area.is_in_group("Enemies"):
-						area.damage(DAMAGE)
+						area.damage(damage)
 				bullet[i].queue_free()
 				bullet[i] = null
 				b_target[i] = null
@@ -85,6 +88,6 @@ func upgrade(index: int):
 			b_target.append(null)
 			b_position.append(null)
 		2:
-			DAMAGE *= 1.5
+			damage += 0.5 * BASE_DAMAGE
 		3:
-			size_mod *= 1.25
+			size_mod += 0.5

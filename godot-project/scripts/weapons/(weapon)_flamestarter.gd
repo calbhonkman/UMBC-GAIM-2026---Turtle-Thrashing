@@ -5,7 +5,7 @@ extends Area2D
 @export var unlocked: bool = false
 @export var upgrade_descriptions: Array[String]
 
-@export var BASE_DAMAGE: float = 1.0
+@export var BASE_DAMAGE: float = 2.0
 @export var BASE_RANGE: float = 250.0
 
 var damage = 0.0

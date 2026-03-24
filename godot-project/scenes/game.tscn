@@ -253,10 +253,8 @@ script = ExtResource("9_kvpfn")
 visible = false
 z_index = 1
 script = ExtResource("9_dinhu")
-DAMAGE = 5.0
-COOLDOWN = 3.0
 BULLET = ExtResource("10_dinhu")
-upgrade_descriptions = Array[String](["Unlock Cloud", "Max Clouds +1", "Cloud Damage x1.5", "Cloud Size x1.25"])
+upgrade_descriptions = Array[String](["Unlock Cloud", "Max Clouds +1", "Cloud Damage +50%", "Cloud Size +50%"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Lightning" unique_id=1843913089]
 shape = SubResource("RectangleShape2D_dinhu")
@@ -323,7 +321,8 @@ z_index = 2
 script = ExtResource("9_0tnpc")
 GAME_TIME = 6.0
 FOOD = Array[Resource]([ExtResource("19_bhx41")])
-ENEMIES = Array[Resource]([ExtResource("19_e1j6l"), ExtResource("20_pl11u"), ExtResource("21_bhx41"), ExtResource("22_qnb83"), ExtResource("23_pl11u"), ExtResource("25_qnb83")])
+ENEMIES = Array[Resource]([ExtResource("19_e1j6l"), ExtResource("20_pl11u"), ExtResource("21_bhx41"), ExtResource("23_pl11u")])
+ELITES = Array[Resource]([ExtResource("22_qnb83"), ExtResource("25_qnb83")])
 things_to_upgrade = [NodePath("../Player"), NodePath("../Player/(Weapon) Laser"), NodePath("../Player/(Weapon) Lightning"), NodePath("../Player/(Weapon) Punch"), NodePath("../Player/(Weapon) Firestarter"), NodePath("../Player/(Minion) Shield"), NodePath("../Player/(Weapon) Slap")]
 
 [node name="Camera" type="Camera2D" parent="GameManager" unique_id=1356503637]

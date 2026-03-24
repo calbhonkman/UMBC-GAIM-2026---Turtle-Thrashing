@@ -23,7 +23,9 @@
 [ext_resource type="Texture2D" uid="uid://dt1fpkbwghwfi" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0006.png" id="21_fbhm3"]
 [ext_resource type="Texture2D" uid="uid://dbcp10ksqh5xu" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0007.png" id="22_xlp5x"]
 [ext_resource type="Texture2D" uid="uid://4tp65uhqt14t" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0008.png" id="23_82u4y"]
+[ext_resource type="Texture2D" uid="uid://dejo1oww7hwln" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Shadow.png" id="23_fbhm3"]
 [ext_resource type="Texture2D" uid="uid://cdviqmjyiqeig" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0009.png" id="24_i45ok"]
+[ext_resource type="Texture2D" uid="uid://clnnw50lfyqy1" path="res://assets/Enemies/Elites/Big Meaty Crab/Warning.png" id="24_xlp5x"]
 [ext_resource type="Texture2D" uid="uid://syyqat58642v" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0010.png" id="25_1daf5"]
 [ext_resource type="Texture2D" uid="uid://c5bpmgc6b2i37" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0011.png" id="26_ke82u"]
 [ext_resource type="Texture2D" uid="uid://cn75g5bwvpwj" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0012.png" id="27_ncri0"]
@@ -131,7 +133,31 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("22_xlp5x")
+}],
+"loop": false,
+"name": &"jump1",
+"speed": 8.0
 }, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_fbhm3")
+}],
+"loop": true,
+"name": &"jump1.5",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_fbhm3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_xlp5x")
+}],
+"loop": true,
+"name": &"jump1.5.5",
+"speed": 8.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("23_82u4y")
 }, {
@@ -163,7 +189,7 @@ animations = [{
 "texture": ExtResource("32_0pmif")
 }],
 "loop": false,
-"name": &"jump",
+"name": &"jump2",
 "speed": 8.0
 }, {
 "frames": [{
@@ -242,8 +268,6 @@ size = Vector2(223, 165)
 [sub_resource type="CircleShape2D" id="CircleShape2D_8m1vc"]
 radius = 120.957275
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mkph3"]
-
 [node name="(boss)_Crab" type="Area2D" unique_id=2044177891 groups=["Enemies"]]
 script = ExtResource("1_4a8of")
 MAX_HEALTH = 15.0
@@ -253,9 +277,7 @@ BASE_SPEED = 150.0
 position = Vector2(-48, -34)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_gkrs1")
-animation = &"charge2"
-frame = 1
-frame_progress = 0.113316864
+animation = &"jump1.5.5"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=155662765]
 shape = SubResource("RectangleShape2D_lq1tu")
@@ -267,8 +289,3 @@ position = Vector2(37, 223)
 rotation = 0.9250245
 scale = Vector2(1, 0.45)
 shape = SubResource("CircleShape2D_8m1vc")
-
-[node name="(hitbox)_jump" type="Area2D" parent="." unique_id=1215733209]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="(hitbox)_jump" unique_id=1189946054]
-shape = SubResource("CircleShape2D_mkph3")

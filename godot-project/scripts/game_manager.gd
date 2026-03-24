@@ -18,6 +18,7 @@ const ENEMY = preload("uid://d1k32mfbnnud3")
 const BIGENEMY = preload("uid://dq43dbtcuu4m")
 const SNAKE = preload("uid://dfuv28c2ne1eo")
 @export var ENEMIES: Array[Resource]
+@export var ELITES: Array[Resource]
 @export var SPAWN_COOLDOWN = 1.0
 @export var SPAWN_AREA = 1500
 
@@ -36,21 +37,20 @@ var upgrade_buttons = []
 var game_timer = 0.0
 var next_spawn_time = 0.0
 
-var boss = null
+var remaining_elites = []
+var bosses = []
 var boss_fight = false
 var pausable = true
 
 func _ready():
-	AudioManager.music.play()
 	game_timer = 0.0
 	next_spawn_time = game_timer + 1.0
 	
-	# Unleash the Crab
-	clear_enemies()
-	boss = spawn_enemy(ENEMIES[5])
-	boss_fight = true
+	remaining_elites = ELITES
 
 func _process(delta):
+	if not get_tree().paused and not AudioManager.music.playing:
+		AudioManager.music.play()
 	global_position = player.global_position
 	
 	var cam_limit_x = CAMERA_LIMIT - (get_viewport().get_visible_rect().size.x/2)
@@ -60,6 +60,17 @@ func _process(delta):
 	
 	level.text = "Level " + str(player.level) + " (" + str(player.experience) + "/" + str(5 * (player.level * (player.level+1) / 2)) + ")"
 	health.text = str(player.health)
+	
+	if not bosses.is_empty():
+		for i in range(bosses.size()):
+			if i < bosses.size() and bosses[i] == null:
+				bosses.remove_at(i)
+				i += -1
+				# Free upgrade
+				pausable = false
+				get_tree().paused = true
+				screen_level.visible = true
+				select_upgrades()
 	
 	if pausable and Input.is_action_just_pressed("pause"):
 		get_tree().paused = !get_tree().paused
@@ -75,8 +86,8 @@ func _process(delta):
 		get_tree().paused = true
 		screen_level.visible = true
 		select_upgrades()
-	elif boss_fight and boss == null:
-		if game_timer >= GAME_TIME:
+	elif boss_fight and bosses.is_empty():
+		if game_timer >= GAME_TIME * 60.0:
 			pausable = false
 			get_tree().paused = true
 			screen_win.visible = true
@@ -92,16 +103,18 @@ func _process(delta):
 		clock.text = timer_minutes + ":" + timer_seconds
 		
 		if game_timer >= next_spawn_time:
-			if boss_fight and boss.name == "(boss)_Raccoon":
-				# Small Raccoon
-				spawn_enemy(ENEMIES[4])
-			if boss_fight and boss.name == "(boss)_Crab":
-				# Small Crab
-				spawn_enemy(ENEMIES[0])
+			if boss_fight:
+				for boss in bosses:
+					if boss.name == "(boss)_Raccoon":
+						# Small Raccoon
+						spawn_enemy(ENEMIES[3])
+					if boss.name == "(boss)_Crab":
+						# Small Crab
+						spawn_enemy(ENEMIES[0])
 			elif int(next_spawn_time) % 180 == 0 and not ENDLESS_MODE:
-				# Unleash the Crab
+				# !! ELITE !!
 				clear_enemies()
-				boss = spawn_enemy(ENEMIES[5])
+				bosses.append(spawn_enemy(remaining_elites.pop_at(randi_range(0, len(remaining_elites)-1))))
 				boss_fight = true
 			elif int(next_spawn_time) % 60 == 0:
 				spawn_enemy(FOOD[0])
