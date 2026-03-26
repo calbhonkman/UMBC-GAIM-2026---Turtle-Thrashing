@@ -56,10 +56,10 @@ func _process(delta):
 	
 	# Move remaining bullets
 	for i in range(bullets.size()):
-		bullets[i].global_position = b_position[i] + b_direction[i] * delta * max(0, pow(b_lifetime[i] / LIFETIME,2)) * speed
+		bullets[i].global_position = b_position[i] + b_direction[i] * delta * max(0, pow(b_lifetime[i] / LIFETIME,1)) * speed
 		b_position[i] = bullets[i].global_position
 		
-		bullets[i].get_child(0).modulate = Color(1,1,1,max(0, pow(b_lifetime[i] / LIFETIME,2)))
+		bullets[i].get_child(0).modulate = Color(1,1,1,max(0, pow(b_lifetime[i] / LIFETIME, 1)))
 		
 		for area in bullets[i].get_overlapping_areas():
 			if area not in b_prev[i] and area.is_in_group("Enemies") and area.get_script():
@@ -95,10 +95,29 @@ func spawn_bullet():
 	b_position.append(global_position)
 	b_prev.append([])
 
-func get_upgrade():
-	if unlocked:
-		return randi_range(1, upgrade_descriptions.size()-1)
-	return 0
+func get_random_upgrade(index):
+	if not unlocked:
+		return Vector2(index, 0)
+	else:
+		return Vector2(index, randi_range(1, 3))
+
+func get_upgrade_description(index: int):
+	var desc = "[outline_size=10][outline_color=black][b]Punch[/b][br]"
+	match index:
+		0:
+			desc += "[i][color=#8f8f8f]You can now throw powerful turtle punches.[/color][/i]"
+			desc += "[br]Unlocks the Punch weapon."
+		1:
+			desc += "[i][color=#8f8f8f]Your punches now hit harder.[/color][/i]"
+			desc += "[br]Increases Punch Damage ([color=#8FFFFF]" + str(round(damage * 100) / 100.0) + " -> " + str(round(damage * 1.5 * 100) / 100.0) + "[/color])."
+		2:
+			desc += "[i][color=#8f8f8f]Your punches now land faster.[/color][/i]"
+			desc += "[br]Decreases Punch Cooldown ([color=#8FFFFF]" + str(round(BASE_COOLDOWN * 100) / 100.0) + "s -> " + str(round(BASE_COOLDOWN * 0.75 * 100) / 100.0) + "s[/color])."
+		3:
+			desc += "[i][color=#8f8f8f]Your punches suddenly grow in size.[/color][/i]"
+			desc += "[br]Increases Punch Size ([color=#8FFFFF]" + str(round(size_mod * 100) / 100.0) + "x -> " + str(round(size_mod * 1.25 * 100) / 100.0) + "x[/color])."
+	desc += "[/outline_color][/outline_size]"
+	return desc
 
 func upgrade(index: int):
 	match index:
@@ -106,9 +125,9 @@ func upgrade(index: int):
 			unlocked = true
 			visible = true
 		1:
-			damage += 0.5 * BASE_DAMAGE
+			damage *= 1.5
 		2:
 			BASE_COOLDOWN *= 0.75
 			BASE_DELAY *= 0.75
 		3:
-			size_mod += 0.5
+			size_mod *= 1.25

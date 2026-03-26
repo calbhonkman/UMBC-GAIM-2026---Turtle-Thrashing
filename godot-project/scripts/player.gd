@@ -4,21 +4,22 @@ extends CharacterBody2D
 @onready var hitbox = $"Hitbox (Entities)"
 @onready var pickup_area = $"Pickup Area"
 
-@export var BASE_SPEED: float = 200.0
 @export var MAX_HEALTH: int = 5
+@export var BASE_SPEED: float = 200.0
 @export var INVINCIBLE_TIME: float = 0.5
 @export var DAMAGE_KNOCKBACK: float = 100.0
 
 @export var upgrade_descriptions: Array[String]
 
-var speed = 0
+var pickup_range_mod = 1.0
+
+var speed_mod = 1.0
 var health = 0
 var invincible_timer = 0.0
 var experience = 0
 var level = 1
 
 func _ready():
-	speed = BASE_SPEED
 	health = MAX_HEALTH
 
 func _process(delta):
@@ -34,7 +35,7 @@ func _process(delta):
 		get_tree().paused = true
 	elif movement_direction.length() != 0:
 		sprite.play("walk")
-		velocity = movement_direction * speed
+		velocity = movement_direction * BASE_SPEED * speed_mod
 		sprite.scale.x = -1 * abs(sprite.scale.x) if velocity.x < 0 else abs(sprite.scale.x)
 		hitbox.scale.x = -1 * abs(hitbox.scale.x) if velocity.x < 0 else abs(hitbox.scale.x)
 		move_and_slide()
@@ -46,7 +47,7 @@ func _process(delta):
 		if area.has_meta("pickup") or area.is_in_group("Food"):
 			var playerDirection = global_position - area.global_position
 			playerDirection = playerDirection / playerDirection.length()
-			area.global_position += playerDirection * delta * speed * 2
+			area.global_position += playerDirection * delta * BASE_SPEED * speed_mod * 2
 			# Move Pickups (ex. EXP) towards the player here
 
 func _on_hitbox_area_entered(area):
@@ -77,8 +78,24 @@ func damage(dmg: int):
 		health -= dmg
 		invincible_timer = INVINCIBLE_TIME
 
-func get_upgrade():
-	return randi_range(0, upgrade_descriptions.size()-1)
+func get_random_upgrade(index):
+	return Vector2(index, randi_range(0, 2))
+
+func get_upgrade_description(index: int):
+	var desc = "[outline_size=10][outline_color=black][b][color=#8FBF00]Turtle[/color][/b][br]"
+	match index:
+		0:
+			desc += "[i][color=#8f8f8f]All this running around has improved your stamina[/color][/i]"
+			desc += "[br]Increases Max Health ([color=#8FFFFF]" + str(MAX_HEALTH) + " -> " + str(MAX_HEALTH + 1) + "[/color])."
+			desc += "[br]Restores Health to Max ([color=#8FFFFF]" + str(MAX_HEALTH + 1) + "[/color])."
+		1:
+			desc += "[i][color=#8f8f8f]The force is now stronger with this one.[/color][/i]"
+			desc += "[br]Increases Pickup Range ([color=#8FFFFF]" + str(round(pickup_range_mod * 100) / 100.0) + "x -> " + str(round(pickup_range_mod * 1.25 * 100) / 100.0) + "x[/color])."
+		2:
+			desc += "[i][color=#8f8f8f]\"Gotta go faster.\"[/color][/i]"
+			desc += "[br]Increases Movement Speed ([color=#8FFFFF]" + str(round(speed_mod * 100) / 100.0) + "x -> " + str(round(speed_mod * 1.25 * 100) / 100.0) + "x[/color])."
+	desc += "[/outline_color][/outline_size]"
+	return desc
 
 func upgrade(index: int):
 	match index:
@@ -86,6 +103,8 @@ func upgrade(index: int):
 			MAX_HEALTH += 1
 			health = MAX_HEALTH
 		1:
-			pickup_area.get_child(0).shape.radius *= 1.25
+			pickup_area.get_child(0).shape.radius /= pickup_range_mod
+			pickup_range_mod *= 1.25
+			pickup_area.get_child(0).shape.radius *= pickup_range_mod
 		2:
-			speed += BASE_SPEED * 0.5
+			speed_mod *= 1.25

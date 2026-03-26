@@ -29,6 +29,8 @@
 [ext_resource type="PackedScene" uid="uid://dw20u1c5v07qr" path="res://prefabs/enemies/(boss)_raccoon.tscn" id="22_qnb83"]
 [ext_resource type="PackedScene" uid="uid://bsjban1wyxwl4" path="res://prefabs/enemies/(enemy)_raccoon_small.tscn" id="23_pl11u"]
 [ext_resource type="PackedScene" uid="uid://cfdlk4r0ys684" path="res://prefabs/enemies/(boss)_crab.tscn" id="25_qnb83"]
+[ext_resource type="Script" uid="uid://cypit3nrwog1x" path="res://scenes/level_up.gd" id="29_sgl2t"]
+[ext_resource type="Texture2D" uid="uid://rj6ytl075hcn" path="res://assets/Upgrade Icons/(icon)_flamestarter.png" id="30_qouja"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
 size = Vector2(1312.9883, 50)
@@ -276,7 +278,7 @@ visible = false
 z_index = 1
 script = ExtResource("14_bhx41")
 BULLET = ExtResource("15_qnb83")
-upgrade_descriptions = Array[String](["Unlock Slap", "Slap Stun Duration +25%", "Slap Coldown -25%", "Slap Size +50%"])
+upgrade_descriptions = Array[String](["Unlock Slap", "Slap Stun Duration +25%", "Slap Cooldown -25%", "Slap Size +50%"])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Slap" unique_id=286922218]
 shape = SubResource("CircleShape2D_iywne")
@@ -315,7 +317,7 @@ shape = SubResource("CapsuleShape2D_pl11u")
 
 [node name="(Group) Enemies" type="Node2D" parent="." unique_id=1043795800]
 
-[node name="GameManager" type="Node2D" parent="." unique_id=28411718 node_paths=PackedStringArray("things_to_upgrade")]
+[node name="GameManager" type="Node2D" parent="." unique_id=28411718]
 process_mode = 3
 z_index = 2
 script = ExtResource("9_0tnpc")
@@ -323,7 +325,6 @@ GAME_TIME = 6.0
 FOOD = Array[Resource]([ExtResource("19_bhx41")])
 ENEMIES = Array[Resource]([ExtResource("19_e1j6l"), ExtResource("20_pl11u"), ExtResource("21_bhx41"), ExtResource("23_pl11u")])
 ELITES = Array[Resource]([ExtResource("22_qnb83"), ExtResource("25_qnb83")])
-things_to_upgrade = [NodePath("../Player"), NodePath("../Player/(Weapon) Laser"), NodePath("../Player/(Weapon) Lightning"), NodePath("../Player/(Weapon) Punch"), NodePath("../Player/(Weapon) Firestarter"), NodePath("../Player/(Minion) Shield"), NodePath("../Player/(Weapon) Slap")]
 
 [node name="Camera" type="Camera2D" parent="GameManager" unique_id=1356503637]
 limit_enabled = false
@@ -412,8 +413,11 @@ offset_bottom = 276.0
 theme_override_font_sizes/font_size = 48
 text = "Main Menu"
 
-[node name="[Level Up]" type="Node2D" parent="GameManager/Camera" unique_id=1735115605]
+[node name="[Level Up]" type="Node2D" parent="GameManager/Camera" unique_id=1735115605 node_paths=PackedStringArray("upgradeables", "upgrade_buttons")]
 visible = false
+script = ExtResource("29_sgl2t")
+upgradeables = [NodePath("../../../Player"), NodePath("../../../Player/(Weapon) Laser"), NodePath("../../../Player/(Weapon) Lightning"), NodePath("../../../Player/(Weapon) Punch")]
+upgrade_buttons = [NodePath("Option #1"), NodePath("Option #2"), NodePath("Option #3")]
 
 [node name="ColorRect" type="ColorRect" parent="GameManager/Camera/[Level Up]" unique_id=512252080]
 offset_left = -960.0
@@ -422,14 +426,81 @@ offset_right = 960.0
 offset_bottom = 540.0
 color = Color(0, 0, 0, 0.5)
 
+[node name="ColorRect2" type="ColorRect" parent="GameManager/Camera/[Level Up]" unique_id=154247273]
+offset_left = -240.0
+offset_top = -525.0
+offset_right = 240.0
+offset_bottom = -385.0
+color = Color(0, 0, 0, 1)
+
 [node name="(Label) Level Up" type="Label" parent="GameManager/Camera/[Level Up]" unique_id=1344943058]
-offset_left = -380.0
-offset_top = -421.0
-offset_right = 383.0
-offset_bottom = -289.0
+offset_left = -240.0
+offset_top = -525.0
+offset_right = 240.0
+offset_bottom = -385.0
 text = "Level Up!"
 label_settings = SubResource("LabelSettings_dinhu")
 horizontal_alignment = 1
+
+[node name="Upgrade Description" type="RichTextLabel" parent="GameManager/Camera/[Level Up]" unique_id=1418790222]
+texture_filter = 4
+offset_left = -500.0
+offset_top = -350.0
+offset_right = 500.0
+offset_bottom = -110.0
+theme_override_font_sizes/normal_font_size = 32
+theme_override_font_sizes/bold_font_size = 48
+theme_override_font_sizes/bold_italics_font_size = 48
+theme_override_font_sizes/italics_font_size = 32
+theme_override_font_sizes/mono_font_size = 32
+bbcode_enabled = true
+text = "[outline_size=10][outline_color=black][b][color=#BF0000]Flamestarter[/color][/b][br]Increase Damage (2 -> 3)[/outline_color][/outline_size]"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Option #1" type="Button" parent="GameManager/Camera/[Level Up]" unique_id=393101563]
+offset_left = -551.2
+offset_top = -80.0
+offset_right = 204.79999
+offset_bottom = 974.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/icon_normal_color = Color(0.56078434, 0.56078434, 0.56078434, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+toggle_mode = true
+icon = ExtResource("30_qouja")
+flat = true
+
+[node name="Option #2" type="Button" parent="GameManager/Camera/[Level Up]" unique_id=1975306926]
+offset_left = -151.2
+offset_top = -80.0
+offset_right = 604.8
+offset_bottom = 974.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/icon_normal_color = Color(0.56078434, 0.56078434, 0.56078434, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+toggle_mode = true
+icon = ExtResource("30_qouja")
+flat = true
+
+[node name="Option #3" type="Button" parent="GameManager/Camera/[Level Up]" unique_id=1690346800]
+offset_left = 248.8
+offset_top = -80.0
+offset_right = 1004.8
+offset_bottom = 974.0
+scale = Vector2(0.4, 0.4)
+theme_override_colors/icon_normal_color = Color(0.56078434, 0.56078434, 0.56078434, 1)
+theme_override_colors/icon_pressed_color = Color(1, 1, 1, 1)
+toggle_mode = true
+icon = ExtResource("30_qouja")
+flat = true
+
+[node name="Confirm" type="Button" parent="GameManager/Camera/[Level Up]" unique_id=1066428527]
+offset_left = -183.5
+offset_top = 370.0
+offset_right = 183.5
+offset_bottom = 504.0
+theme_override_font_sizes/font_size = 72
+text = "Confirm"
 
 [node name="[Game Over]" type="Node2D" parent="GameManager/Camera" unique_id=180664184]
 visible = false
@@ -490,5 +561,6 @@ text = "Main Menu"
 [connection signal="area_entered" from="Player/Hitbox (Entities)" to="Player" method="_on_hitbox_area_entered"]
 [connection signal="pressed" from="GameManager/Camera/[Paused]/(Button) Continue" to="GameManager" method="_on_button_continue_pressed"]
 [connection signal="pressed" from="GameManager/Camera/[Paused]/(Button) Main Menu" to="GameManager" method="_on_button_main_menu_pressed"]
+[connection signal="pressed" from="GameManager/Camera/[Level Up]/Confirm" to="GameManager/Camera/[Level Up]" method="_on_confirm_pressed"]
 [connection signal="pressed" from="GameManager/Camera/[Game Over]/(Button) Main Menu" to="GameManager" method="_on_button_main_menu_pressed"]
 [connection signal="pressed" from="GameManager/Camera/[You Win]/(Button) Main Menu" to="GameManager" method="_on_button_main_menu_pressed"]

@@ -72,10 +72,29 @@ func find_target():
 		return possible_targets[randi_range(0,possible_targets.size()-1)]
 	return null
 
-func get_upgrade():
-	if unlocked:
-		return randi_range(1, upgrade_descriptions.size()-1)
-	return 0
+func get_random_upgrade(index):
+	if not unlocked:
+		return Vector2(index, 0)
+	else:
+		return Vector2(index, randi_range(1, 3))
+
+func get_upgrade_description(index: int):
+	var desc = "[outline_size=10][outline_color=black][b][color=#FFFF00]Lightning[/color][/b][br]"
+	match index:
+		0:
+			desc += "[i][color=#8f8f8f]You can now smite your foes.[/color][/i]"
+			desc += "[br]Unlocks the Lightning weapon."
+		1:
+			desc += "[i][color=#8f8f8f]More clouds suddenly form.[/color][/i]"
+			desc += "[br]Increases Lightning Strikes ([color=#8FFFFF]" + str(AMOUNT) + " -> " + str(AMOUNT + 1) + "[/color])."
+		2:
+			desc += "[i][color=#8f8f8f]Your lightning now hits harder.[/color][/i]"
+			desc += "[br]Increases Lightning Damage ([color=#8FFFFF]" + str(round(damage * 100) / 100.0) + " -> " + str(round(damage * 1.5 * 100) / 100.0) + "[/color])."
+		3:
+			desc += "[i][color=#8f8f8f]Your clouds suddenly grow in size.[/color][/i]"
+			desc += "[br]Increases Lightning Strike Area ([color=#8FFFFF]" + str(round(size_mod * 100) / 100.0) + "x -> " + str(round(size_mod * 1.5 * 100) / 100.0) + "x[/color])."
+	desc += "[/outline_color][/outline_size]"
+	return desc
 
 func upgrade(index: int):
 	match index:
@@ -89,6 +108,6 @@ func upgrade(index: int):
 			b_target.append(null)
 			b_position.append(null)
 		2:
-			damage += 0.5 * BASE_DAMAGE
+			damage *= 1.5
 		3:
-			size_mod += 0.5
+			size_mod *= 1.5

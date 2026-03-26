@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://csgsdh6itco8"]
 
-[ext_resource type="Texture2D" uid="uid://c3nk04dplygky" path="res://assets/Turtle/Direct Attacks/TurtPunch.png" id="2_7xwvt"]
-[ext_resource type="Texture2D" uid="uid://dyot3gq62lbqn" path="res://assets/Turtle/Direct Attacks/TurtPunchFrame0001.png" id="3_g1u8m"]
-[ext_resource type="Texture2D" uid="uid://b1xw2r3mpbtyg" path="res://assets/Turtle/Direct Attacks/TurtPunchFrame0002.png" id="4_ncv4e"]
-[ext_resource type="Texture2D" uid="uid://cvijeb77m8ln0" path="res://assets/Turtle/Direct Attacks/TurtPunchFrame0003.png" id="5_nxudm"]
+[ext_resource type="Texture2D" uid="uid://c3nk04dplygky" path="res://assets/Turtle/Direct Attacks/Punch/TurtPunch.png" id="2_7xwvt"]
+[ext_resource type="Texture2D" uid="uid://dyot3gq62lbqn" path="res://assets/Turtle/Direct Attacks/Punch/TurtPunchFrame0001.png" id="3_g1u8m"]
+[ext_resource type="Texture2D" uid="uid://b1xw2r3mpbtyg" path="res://assets/Turtle/Direct Attacks/Punch/TurtPunchFrame0002.png" id="4_ncv4e"]
+[ext_resource type="Texture2D" uid="uid://cvijeb77m8ln0" path="res://assets/Turtle/Direct Attacks/Punch/TurtPunchFrame0003.png" id="5_nxudm"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lmy6u"]
 animations = [{
