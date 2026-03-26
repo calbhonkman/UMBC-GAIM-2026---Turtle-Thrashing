@@ -9,7 +9,7 @@ extends Area2D
 @export var BASE_RANGE: float = 250.0
 
 var damage = 0.0
-var range = 0.0
+var range_mod = 1.0
 
 var bullets = []
 var b_target = []
@@ -48,10 +48,27 @@ func _process(delta):
 			b_target.remove_at(i)
 			i += -1
 
-func get_upgrade():
-	if unlocked:
-		return randi_range(1, upgrade_descriptions.size()-1)
-	return 0
+func get_random_upgrade(index):
+	if not unlocked:
+		return Vector2(index, 0)
+	else:
+		return Vector2(index, randi_range(1, 2))
+
+func get_upgrade_description(index: int):
+	var desc = "[outline_size=10][outline_color=black]"
+	desc += "[b][color=#FF0000]Flamestarter[/color][/b][br]"
+	match index:
+		0:
+			desc += "[i][color=#8f8f8f]You can now burn nearby enemies.[/color][/i]"
+			desc += "[br]Unlocks the Flamestarter weapon."
+		1:
+			desc += "[i][color=#8f8f8f]The flames of rage spread further.[/color][/i]"
+			desc += "[br]Increases Flamestarter Range ([color=#8FFFFF]" + str(round(range_mod * 100) / 100.0) + " -> " + str(round(range_mod * 1.25 * 100) / 100.0) + "[/color])."
+		2:
+			desc += "[i][color=#8f8f8f]The flames of rage burn brighter.[/color][/i]"
+			desc += "[br]Increases Flamestarter Damage ([color=#8FFFFF]" + str(round(damage * 100) / 100.0) + " -> " + str(round(damage * 1.5 * 100) / 100.0) + "[/color])."
+	desc += "[/outline_color][/outline_size]"
+	return desc
 
 func upgrade(index: int):
 	match index:
@@ -60,8 +77,8 @@ func upgrade(index: int):
 			unlocked = true
 			visible = true
 		1:
-			# Firestarter Range +50%
-			range += 0.25 * BASE_RANGE
+			# Firestarter Range +25%
+			range_mod *= 1.25
 		2:
 			# Firestarter Damage +50%
-			damage += 0.25 * BASE_DAMAGE
+			damage *= 1.5

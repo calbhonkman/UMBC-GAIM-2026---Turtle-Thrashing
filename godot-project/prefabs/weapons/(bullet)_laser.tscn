@@ -28,7 +28,7 @@ size = Vector2(3000, 100)
 z_index = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1441923463]
-modulate = Color(1, 1, 1, 0.5)
+modulate = Color(1, 1, 1, 0.70000005)
 position = Vector2(1476, 3.814697e-06)
 scale = Vector2(0.677, 0.15)
 sprite_frames = SubResource("SpriteFrames_dsbqb")

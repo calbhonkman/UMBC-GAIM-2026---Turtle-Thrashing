@@ -82,7 +82,8 @@ func get_random_upgrade(index):
 	return Vector2(index, randi_range(0, 2))
 
 func get_upgrade_description(index: int):
-	var desc = "[outline_size=10][outline_color=black][b][color=#8FBF00]Turtle[/color][/b][br]"
+	var desc = "[outline_size=10][outline_color=black]"
+	desc += "[b][color=#8FBF00]Turtle[/color][/b][br]"
 	match index:
 		0:
 			desc += "[i][color=#8f8f8f]All this running around has improved your stamina[/color][/i]"

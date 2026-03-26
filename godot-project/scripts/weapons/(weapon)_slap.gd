@@ -113,10 +113,30 @@ func spawn_bullet():
 	b_position.append(global_position)
 	b_prev.append([])
 
-func get_upgrade():
-	if unlocked:
-		return randi_range(1, upgrade_descriptions.size()-1)
-	return 0
+func get_random_upgrade(index):
+	if not unlocked:
+		return Vector2(index, 0)
+	else:
+		return Vector2(index, randi_range(1, 3))
+
+func get_upgrade_description(index: int):
+	var desc = "[outline_size=10][outline_color=black]"
+	desc += "[b]Slap[/b][br]"
+	match index:
+		0:
+			desc += "[i][color=#8f8f8f]You can now stun enemies with slaps.[/color][/i]"
+			desc += "[br]Unlocks the Slap weapon."
+		1:
+			desc += "[i][color=#8f8f8f]Your slaps now stun for longer.[/color][/i]"
+			desc += "[br]Increases Slap Stun Duration ([color=#8FFFFF]" + str(round(stun_duration * 100) / 100.0) + " -> " + str(round(stun_duration * 1.25 * 100) / 100.0) + "[/color])."
+		2:
+			desc += "[i][color=#8f8f8f]Your slaps now land faster.[/color][/i]"
+			desc += "[br]Decreases Slap Cooldown ([color=#8FFFFF]" + str(round(BASE_COOLDOWN * 100) / 100.0) + "s -> " + str(round(BASE_COOLDOWN * 0.75 * 100) / 100.0) + "s[/color])."
+		3:
+			desc += "[i][color=#8f8f8f]Your slaps suddenly grow in size.[/color][/i]"
+			desc += "[br]Increases Slap Size ([color=#8FFFFF]" + str(round(size_mod * 100) / 100.0) + "x -> " + str(round(size_mod * 1.25 * 100) / 100.0) + "x[/color])."
+	desc += "[/outline_color][/outline_size]"
+	return desc
 
 func upgrade(index: int):
 	match index:
@@ -124,9 +144,9 @@ func upgrade(index: int):
 			unlocked = true
 			visible = true
 		1:
-			stun_duration += BASE_STUN_DURATION * 0.25
+			stun_duration *= 1.25
 		2:
 			BASE_COOLDOWN *= 0.75
 			BASE_DELAY *= 0.75
 		3:
-			size_mod += 0.5
+			size_mod *= 1.25

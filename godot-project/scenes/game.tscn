@@ -283,14 +283,17 @@ upgrade_descriptions = Array[String](["Unlock Slap", "Slap Stun Duration +25%", 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Slap" unique_id=286922218]
 shape = SubResource("CircleShape2D_iywne")
 
-[node name="(Weapon) Firestarter" type="Area2D" parent="Player" unique_id=1209843731]
+[node name="(Weapon) Flamestarter" type="Area2D" parent="Player" unique_id=1209843731]
 visible = false
 z_index = 1
 script = ExtResource("14_264po")
 BULLET = ExtResource("15_1kice")
+unlocked = null
 upgrade_descriptions = Array[String](["Unlock Flamestarter", "Flamestarter Range +25%", "Flamestarter Damage +25%"])
+BASE_DAMAGE = null
+BASE_RANGE = null
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Firestarter" unique_id=1804428324]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Flamestarter" unique_id=1804428324]
 shape = SubResource("CircleShape2D_iywne")
 
 [node name="(Minion) Shield" type="Node2D" parent="Player" unique_id=197280404]
@@ -416,7 +419,7 @@ text = "Main Menu"
 [node name="[Level Up]" type="Node2D" parent="GameManager/Camera" unique_id=1735115605 node_paths=PackedStringArray("upgradeables", "upgrade_buttons")]
 visible = false
 script = ExtResource("29_sgl2t")
-upgradeables = [NodePath("../../../Player"), NodePath("../../../Player/(Weapon) Laser"), NodePath("../../../Player/(Weapon) Lightning"), NodePath("../../../Player/(Weapon) Punch")]
+upgradeables = [NodePath("../../../Player"), NodePath("../../../Player/(Weapon) Laser"), NodePath("../../../Player/(Weapon) Lightning"), NodePath("../../../Player/(Weapon) Punch"), NodePath("../../../Player/(Weapon) Slap"), NodePath("../../../Player/(Weapon) Flamestarter"), NodePath("../../../Player/(Minion) Shield")]
 upgrade_buttons = [NodePath("Option #1"), NodePath("Option #2"), NodePath("Option #3")]
 
 [node name="ColorRect" type="ColorRect" parent="GameManager/Camera/[Level Up]" unique_id=512252080]

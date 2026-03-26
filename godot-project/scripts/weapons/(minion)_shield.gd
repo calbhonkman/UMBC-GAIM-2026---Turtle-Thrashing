@@ -24,10 +24,24 @@ func _process(delta):
 			var knockback_dir = (area.global_position - global_position)
 			area.global_position += (knockback_dir / knockback_dir.length()) * KNOCKBACK
 
-func get_upgrade():
-	if unlocked:
-		return randi_range(1, upgrade_descriptions.size()-1)
-	return 0
+func get_random_upgrade(index):
+	if not unlocked:
+		return Vector2(index, 0)
+	else:
+		return Vector2(index, randi_range(1, 1))
+
+func get_upgrade_description(index: int):
+	var desc = "[outline_size=10][outline_color=black]"
+	desc += "[b][color=#008FFF]Shield[/color][/b][br]"
+	match index:
+		0:
+			desc += "[i][color=#8f8f8f]A new friend to help repel threats.[/color][/i]"
+			desc += "[br]Unlocks the Shield minion."
+		1:
+			desc += "[i][color=#8f8f8f]Spiiinnnnnnnn..... [/color][/i]"
+			desc += "[br]Increases Shield Rotation Speed ([color=#8FFFFF]" + str(round(rotation_speed * 100) / 100.0) + " -> " + str(round(rotation_speed * 1.5 * 100) / 100.0) + "[/color])."
+	desc += "[/outline_color][/outline_size]"
+	return desc
 
 func upgrade(index: int):
 	match index:
@@ -35,4 +49,4 @@ func upgrade(index: int):
 			unlocked = true
 			visible = true
 		1:
-			rotation_speed += 0.50 * BASE_ROTATION_SPEED
+			rotation_speed *= 1.5
