@@ -1,12 +1,22 @@
 [gd_scene format=3 uid="uid://bln5qlwy18sjf"]
 
+<<<<<<< Updated upstream
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a3fj8"]
 size = Vector2(22, 22)
+=======
+[ext_resource type="Texture2D" uid="uid://f8pnb8yw0cx0" path="res://assets/Exp/Turtle EXP.png" id="1_em5ll"]
+[ext_resource type="Script" uid="uid://2ee4a3acvjen" path="res://prefabs/exp_sprite.gd" id="2_iqir6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0hk7p"]
+radius = 5.0
+height = 26.0
+>>>>>>> Stashed changes
 
 [node name="Area2D" type="Area2D" unique_id=2144851842]
 metadata/exp = ""
 metadata/pickup = ""
 
+<<<<<<< Updated upstream
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1363188466]
 offset_left = -10.0
 offset_top = -10.0
@@ -16,3 +26,14 @@ color = Color(0, 1, 1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1119357148]
 shape = SubResource("RectangleShape2D_a3fj8")
+=======
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1144756268]
+position = Vector2(0, 0.1)
+scale = Vector2(0.096875, 0.096875)
+texture = ExtResource("1_em5ll")
+script = ExtResource("2_iqir6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1119357148]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_0hk7p")
+>>>>>>> Stashed changes
