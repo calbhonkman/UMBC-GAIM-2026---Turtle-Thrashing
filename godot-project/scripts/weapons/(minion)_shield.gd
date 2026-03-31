@@ -6,17 +6,18 @@ extends Node2D
 @export var unlocked: bool = false
 @export var upgrade_descriptions: Array[String]
 
-var rotation_speed_mod = 1.0
+var rotation_speed = 0.0
 
 func _ready():
 	if unlocked:
 		visible = true
+	rotation_speed = BASE_ROTATION_SPEED
 
 func _process(delta):
 	if unlocked == false:
 		return
 	
-	rotation += BASE_ROTATION_SPEED * rotation_speed_mod * delta
+	rotation += rotation_speed * delta
 	
 	for area in get_child(0).get_overlapping_areas():
 		if area.has_meta("enemy"):
@@ -38,7 +39,7 @@ func get_upgrade_description(index: int):
 			desc += "[br]Unlocks the Shield minion."
 		1:
 			desc += "[i][color=#8f8f8f]Spiiinnnnnnnn..... [/color][/i]"
-			desc += "[br]Increases Shield Rotation Speed ([color=#8FFFFF]" + str(round(rotation_speed_mod * 100) / 100.0) + "x -> " + str(round(rotation_speed_mod * 1.5 * 100) / 100.0) + "x[/color])."
+			desc += "[br]Increases Shield Rotation Speed ([color=#8FFFFF]" + str(round(rotation_speed * 100) / 100.0) + " -> " + str(round(rotation_speed * 1.5 * 100) / 100.0) + "[/color])."
 	desc += "[/outline_color][/outline_size]"
 	return desc
 
@@ -48,4 +49,4 @@ func upgrade(index: int):
 			unlocked = true
 			visible = true
 		1:
-			rotation_speed_mod *= 1.5
+			rotation_speed *= 1.5

@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://ntiukiv8fvqy"]
+
+[ext_resource type="Texture2D" uid="uid://6xkvqmlyvi7" path="res://assets/Turtle/Random Attacks/Flamestarter/Fire_01.png" id="1_15q4a"]
+[ext_resource type="Texture2D" uid="uid://bt1j7uuuh2w02" path="res://assets/Turtle/Random Attacks/Flamestarter/Fire_02.png" id="2_87ue2"]
+[ext_resource type="Texture2D" uid="uid://doapnmcj2oplf" path="res://assets/Turtle/Random Attacks/Flamestarter/Fire_03.png" id="3_wfel8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dd87j"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_15q4a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_87ue2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wfel8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=1612572327]
+modulate = Color(1, 1, 1, 0.8)
+scale = Vector2(0.05, 0.05)
+sprite_frames = SubResource("SpriteFrames_dd87j")
+autoplay = "default"

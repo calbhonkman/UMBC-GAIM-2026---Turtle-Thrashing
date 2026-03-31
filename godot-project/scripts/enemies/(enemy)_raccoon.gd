@@ -4,22 +4,9 @@ extends Area2D
 @onready var sprite = $AnimatedSprite2D
 const EXP = preload("uid://bln5qlwy18sjf")
 
-@export var MAX_HEALTH: float = 15.0
-var health: float = MAX_HEALTH
-
-@export var BASE_MOVE_SPEED: float = 300.0
-var move_speed: float = BASE_MOVE_SPEED
-
-var stunned: bool = false
-@export var STUN_RESIST: float = 100.0 # Percent
-var stun_timer: float = 0.0 # Seconds
-
-var dying: bool = false
-@export var DYING_TIME: float = 0.5
-var dying_timer: float = DYING_TIME
-@export var EXP_AMOUNT: int = 1
-
-# Other enemies may not have these variables
+@export var MAX_HEALTH: float = 15
+@export var BASE_SPEED: float = 300.0
+@export var BASE_DAMAGE: float = 1.0
 @export var ATTACK_RANGE: float = 350.0
 @export var ATTACK_COOLDOWN: float = 4.0
 @export var PREPARE_TIME: float = 1.0
@@ -29,30 +16,28 @@ var dying_timer: float = DYING_TIME
 @export var RACCOON: Resource
 @export var BULLET_SPEED: float = 500.0
 @export var BULLET_LIFETIME: float = 3.0
-var anti_knockback_position = null
+
+var health = 1
+
 var mode = "default"
 var mode_timer = 0
+var anti_knockback_position = null
+
+var stunned = false
+var stun_timer = 0.0
+
 var bullets = []
 var b_direction = []
 var b_position = []
 var b_lifetime = []
 var b_amount = 0
 
+func _ready():
+	health = MAX_HEALTH
+	anti_knockback_position = global_position
+
 func _process(delta):
-	scale = Vector2(1,1) * (0.75 + clamp(0.25 * health / MAX_HEALTH, 0.0, 0.25))
-	if dying and dying_timer > 0.0:
-		monitorable = false
-		monitoring = false
-		dying_timer -= delta
-		scale = Vector2(1,1) * clamp(0.75 * dying_timer / DYING_TIME, 0.0, 0.75)
-		sprite.modulate = Color(1,0,0,clamp(0.5 * dying_timer / DYING_TIME, 0.0, 0.5))
-	elif dying and dying_timer <= 0.0:
-		for i in EXP_AMOUNT:
-			var new_xp = EXP.instantiate()
-			get_parent().add_child(new_xp)
-			new_xp.global_position = global_position
-		queue_free()
-	elif player:
+	if player:
 		var player_vect = player.global_position - global_position
 		var player_dist = player_vect.length()
 		var player_dir = player_vect / player_dist
@@ -69,7 +54,7 @@ func _process(delta):
 					mode = "hunting"
 			"hunting":
 				if player_dist > ATTACK_RANGE:
-					global_position += player_dir * move_speed * delta
+					global_position += player_dir * BASE_SPEED * delta
 					anti_knockback_position = global_position
 					sprite.play("walk")
 				elif player_dist <= ATTACK_RANGE:
@@ -124,7 +109,7 @@ func _process(delta):
 						b_position[i] = bullets[i].global_position
 						bullets[i].scale.x = -1 * abs(bullets[i].scale.x) if b_direction[i].x < 0 else abs(bullets[i].scale.x)
 						for area in bullets[i].get_overlapping_areas():
-							if bullets[i].has_meta("bullet_type") and bullets[i].get_meta("bullet_type") == "Bowling" and area != self and area.is_in_group("Enemies"):
+							if bullets[i].get_meta("bullet_type") == "Bowling" and area != self and area.is_in_group("Enemies"):
 								area.damage(INF)
 								b_direction[i] = (player.global_position - b_position[i]) / (player.global_position - b_position[i]).length()
 

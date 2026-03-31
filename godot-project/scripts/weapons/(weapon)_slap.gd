@@ -7,9 +7,9 @@ extends Area2D
 
 @export var BASE_SPEED: float = 800.0
 @export var BASE_DAMAGE: float = 0.5
-@export var BASE_COOLDOWN: float = 2.0
+@export var BASE_COOLDOWN: float = 1.5
 @export var BASE_DELAY: float = 0.5
-@export var BASE_STUN_DURATION: float = 0.4
+@export var BASE_STUN_DURATION: float = 0.5
 @export var LIFETIME: float = 0.5
 @export var FADE_SPEED: float = 4.0
 @export var KNOCKBACK: float = 50.0
@@ -128,7 +128,7 @@ func get_upgrade_description(index: int):
 			desc += "[br]Unlocks the Slap weapon."
 		1:
 			desc += "[i][color=#8f8f8f]Your slaps now stun for longer.[/color][/i]"
-			desc += "[br]Increases Slap Stun Duration ([color=#8FFFFF]" + str(round(stun_duration * 100) / 100.0) + "s -> " + str(round(stun_duration * 1.25 * 100) / 100.0) + "s[/color])."
+			desc += "[br]Increases Slap Stun Duration ([color=#8FFFFF]" + str(round(stun_duration * 100) / 100.0) + " -> " + str(round(stun_duration * 1.25 * 100) / 100.0) + "[/color])."
 		2:
 			desc += "[i][color=#8f8f8f]Your slaps now land faster.[/color][/i]"
 			desc += "[br]Decreases Slap Cooldown ([color=#8FFFFF]" + str(round(BASE_COOLDOWN * 100) / 100.0) + "s -> " + str(round(BASE_COOLDOWN * 0.75 * 100) / 100.0) + "s[/color])."
