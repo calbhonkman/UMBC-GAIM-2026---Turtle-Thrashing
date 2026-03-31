@@ -2,8 +2,6 @@ extends Node2D
 
 @onready var upgrade_description = $"Upgrade Description"
 
-const UPGRADE_BUTTON = preload("uid://o1ekysyg808j")
-
 @export var num_upgrade_option: int = 3
 @export var upgradeables: Array[Node2D]
 @export var upgrade_buttons: Array[Button]

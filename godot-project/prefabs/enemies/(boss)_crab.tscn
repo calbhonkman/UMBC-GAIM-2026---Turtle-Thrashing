@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cfdlk4r0ys684"]
 
-[ext_resource type="Script" uid="uid://c6k501y0lwk6h" path="res://prefabs/enemies/(boss)_crab.gd" id="1_4a8of"]
+[ext_resource type="Script" uid="uid://c6k501y0lwk6h" path="res://scripts/enemies/(elite)_crab.gd" id="1_4a8of"]
 [ext_resource type="Texture2D" uid="uid://uxkkywocd2fp" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Charge0001.png" id="2_xpubl"]
 [ext_resource type="Texture2D" uid="uid://crr7g7p88cufb" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Charge0002.png" id="3_h8s8d"]
 [ext_resource type="Texture2D" uid="uid://b3blep6l8o4we" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Charge0003.png" id="4_in8ms"]
