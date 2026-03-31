@@ -11,6 +11,7 @@ extends CharacterBody2D
 @export var DAMAGE_KNOCKBACK: float = 100.0
 
 @export var upgrade_descriptions: Array[String]
+@export var upgrade_icon: Resource
 
 var pickup_range_mod = 1.0
 
@@ -89,14 +90,14 @@ func get_upgrade_description(index: int):
 	desc += "[b][color=#8FBF00]Turtle[/color][/b][br]"
 	match index:
 		0:
-			desc += "[i][color=#8f8f8f]All this running around has improved your stamina[/color][/i]"
+			desc += "[i][color=#8f8f8f]You can do this all day.[/color][/i]"
 			desc += "[br]Increases Max Health ([color=#8FFFFF]" + str(MAX_HEALTH) + " -> " + str(MAX_HEALTH + 1) + "[/color])."
 			desc += "[br]Restores Health to Max ([color=#8FFFFF]" + str(MAX_HEALTH + 1) + "[/color])."
 		1:
-			desc += "[i][color=#8f8f8f]The force is now stronger with this one.[/color][/i]"
+			desc += "[i][color=#8f8f8f]The force is stronger with this one.[/color][/i]"
 			desc += "[br]Increases Pickup Range ([color=#8FFFFF]" + str(round(pickup_range_mod * 100) / 100.0) + "x -> " + str(round(pickup_range_mod * 1.25 * 100) / 100.0) + "x[/color])."
 		2:
-			desc += "[i][color=#8f8f8f]\"Gotta go faster.\"[/color][/i]"
+			desc += "[i][color=#8f8f8f]Gotta go faster.[/color][/i]"
 			desc += "[br]Increases Movement Speed ([color=#8FFFFF]" + str(round(speed_mod * 100) / 100.0) + "x -> " + str(round(speed_mod * 1.25 * 100) / 100.0) + "x[/color])."
 	desc += "[/outline_color][/outline_size]"
 	return desc

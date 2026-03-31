@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4p8bmf4nox7n"
-path="res://.godot/imported/Lightnin’.png-04ae00ed20a569a83d06f76799567a8f.ctex"
+uid="uid://d1nyiljcd5xns"
+path="res://.godot/imported/(icon)_Punch.png-128c711f53efc0e1bb92f3e98516ce7f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Upgrade Icons/Lightnin’.png"
-dest_files=["res://.godot/imported/Lightnin’.png-04ae00ed20a569a83d06f76799567a8f.ctex"]
+source_file="res://assets/Turtle/Upgrade Icons/(icon)_Punch.png"
+dest_files=["res://.godot/imported/(icon)_Punch.png-128c711f53efc0e1bb92f3e98516ce7f.ctex"]
 
 [params]
 

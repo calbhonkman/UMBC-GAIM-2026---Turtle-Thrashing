@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rj6ytl075hcn"
-path="res://.godot/imported/(icon)_flamestarter.png-6235f795e75e378de1bd2d1d3f14ca34.ctex"
+uid="uid://cjob8cu5mmcmy"
+path="res://.godot/imported/(icon)_Laser.png-5678eced4582169da2b6183cc7de9986.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Upgrade Icons/(icon)_flamestarter.png"
-dest_files=["res://.godot/imported/(icon)_flamestarter.png-6235f795e75e378de1bd2d1d3f14ca34.ctex"]
+source_file="res://assets/Turtle/Upgrade Icons/(icon)_Laser.png"
+dest_files=["res://.godot/imported/(icon)_Laser.png-5678eced4582169da2b6183cc7de9986.ctex"]
 
 [params]
 

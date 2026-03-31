@@ -33,6 +33,8 @@ func _process(delta):
 
 func prepare_to_upgrade():
 	select_upgrades()
+	for i in upgrade_buttons.size():
+		upgrade_buttons[i].icon = upgradeables[selected_upgrades[i].x].upgrade_icon
 	visible = true
 	ready_to_upgrade = true
 
@@ -43,7 +45,6 @@ func select_upgrades():
 		var rand_index = randi_range(0, available_upgradeables.size()-1)
 		var rand_upgradeable = available_upgradeables.pop_at(rand_index)
 		selected_upgrades.append(rand_upgradeable.get_random_upgrade(upgradeables.find(rand_upgradeable)))
-	return selected_upgrades
 
 func _on_confirm_pressed():
 	if chosen_upgrade:

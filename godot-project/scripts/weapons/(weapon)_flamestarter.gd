@@ -4,8 +4,9 @@ extends Area2D
 
 @export var unlocked: bool = false
 @export var upgrade_descriptions: Array[String]
+@export var upgrade_icon: Resource
 
-@export var BASE_DAMAGE: float = 0.5
+@export var BASE_DAMAGE: float = 0.25
 @export var BASE_RANGE: float = 200.0
 @export var RANGE_BUFFER: float = 50.0
 
@@ -57,13 +58,13 @@ func get_upgrade_description(index: int):
 	desc += "[b][color=#FF0000]Flamestarter[/color][/b][br]"
 	match index:
 		0:
-			desc += "[i][color=#8f8f8f]You can now burn nearby enemies.[/color][/i]"
-			desc += "[br]Unlocks the Flamestarter weapon."
+			desc += "Unlocks the Flamestarter weapon."
+			desc += "[br]Burns nearby enemies over time."
 		1:
-			desc += "[i][color=#8f8f8f]The flames of rage spread further.[/color][/i]"
+			desc += "[i][color=#8f8f8f]Your Flamestarter now affects a wider area.[/color][/i]"
 			desc += "[br]Increases Flamestarter Range ([color=#8FFFFF]" + str(round(range_mod * 100) / 100.0) + " -> " + str(round(range_mod * 1.25 * 100) / 100.0) + "[/color])."
 		2:
-			desc += "[i][color=#8f8f8f]The flames of rage burn brighter.[/color][/i]"
+			desc += "[i][color=#8f8f8f]Your Flamestarter now does more damage.[/color][/i]"
 			desc += "[br]Increases Flamestarter Damage ([color=#8FFFFF]" + str(round(damage * 100) / 100.0) + " -> " + str(round(damage * 1.5 * 100) / 100.0) + "[/color])."
 	desc += "[/outline_color][/outline_size]"
 	return desc

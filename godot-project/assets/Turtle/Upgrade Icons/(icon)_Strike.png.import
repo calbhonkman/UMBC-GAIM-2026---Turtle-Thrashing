@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3t6mqic8iboo"
-path="res://.godot/imported/Summon Wizard.png-c317d29d126067e2ed8101172aae1153.ctex"
+uid="uid://b8t302tafcdoh"
+path="res://.godot/imported/(icon)_Strike.png-45ff86d719e2709c8908fca2b64938d7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Upgrade Icons/Summon Wizard.png"
-dest_files=["res://.godot/imported/Summon Wizard.png-c317d29d126067e2ed8101172aae1153.ctex"]
+source_file="res://assets/Turtle/Upgrade Icons/(icon)_Strike.png"
+dest_files=["res://.godot/imported/(icon)_Strike.png-45ff86d719e2709c8908fca2b64938d7.ctex"]
 
 [params]
 

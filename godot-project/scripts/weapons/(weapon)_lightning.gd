@@ -8,6 +8,7 @@ extends Area2D
 
 @export var unlocked: bool = false
 @export var upgrade_descriptions: Array[String]
+@export var upgrade_icon: Resource
 
 var size_mod = 1.0
 var damage = 0
@@ -83,17 +84,17 @@ func get_upgrade_description(index: int):
 	desc += "[b][color=#FFFF00]Lightning[/color][/b][br]"
 	match index:
 		0:
-			desc += "[i][color=#8f8f8f]You can now smite your foes.[/color][/i]"
-			desc += "[br]Unlocks the Lightning weapon."
+			desc += "Unlocks the Lightning weapon."
+			desc += "[br]Zaps a random enemy onscreen with lightning."
 		1:
-			desc += "[i][color=#8f8f8f]More clouds suddenly form.[/color][/i]"
+			desc += "[i][color=#8f8f8f]Your Lightning now strikes more enemies.[/color][/i]"
 			desc += "[br]Increases Lightning Strikes ([color=#8FFFFF]" + str(AMOUNT) + " -> " + str(AMOUNT + 1) + "[/color])."
 		2:
-			desc += "[i][color=#8f8f8f]Your lightning now hits harder.[/color][/i]"
+			desc += "[i][color=#8f8f8f]Your Lightning now does more damage.[/color][/i]"
 			desc += "[br]Increases Lightning Damage ([color=#8FFFFF]" + str(round(damage * 100) / 100.0) + " -> " + str(round(damage * 1.5 * 100) / 100.0) + "[/color])."
 		3:
-			desc += "[i][color=#8f8f8f]Your clouds suddenly grow in size.[/color][/i]"
-			desc += "[br]Increases Lightning Strike Area ([color=#8FFFFF]" + str(round(size_mod * 100) / 100.0) + "x -> " + str(round(size_mod * 1.5 * 100) / 100.0) + "x[/color])."
+			desc += "[i][color=#8f8f8f]Your Lightning now strikes a larger area.[/color][/i]"
+			desc += "[br]Increases Lightning Strike Size ([color=#8FFFFF]" + str(round(size_mod * 100) / 100.0) + "x -> " + str(round(size_mod * 1.5 * 100) / 100.0) + "x[/color])."
 	desc += "[/outline_color][/outline_size]"
 	return desc
 

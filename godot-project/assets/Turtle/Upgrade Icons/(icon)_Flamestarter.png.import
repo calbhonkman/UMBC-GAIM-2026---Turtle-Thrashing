@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1vm37ixkvruj"
-path="res://.godot/imported/ssssssSTRIKE.png-0e2e8f4142541d5a7ea3979c4522b78d.ctex"
+uid="uid://bmxp74jc2q5bw"
+path="res://.godot/imported/(icon)_Flamestarter.png-7dd4b71e6e9b626030087b86cb974b5c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Upgrade Icons/ssssssSTRIKE.png"
-dest_files=["res://.godot/imported/ssssssSTRIKE.png-0e2e8f4142541d5a7ea3979c4522b78d.ctex"]
+source_file="res://assets/Turtle/Upgrade Icons/(icon)_Flamestarter.png"
+dest_files=["res://.godot/imported/(icon)_Flamestarter.png-7dd4b71e6e9b626030087b86cb974b5c.ctex"]
 
 [params]
 

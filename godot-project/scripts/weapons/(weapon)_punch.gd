@@ -4,6 +4,7 @@ extends Area2D
 
 @export var unlocked: bool = false
 @export var upgrade_descriptions: Array[String]
+@export var upgrade_icon: Resource
 
 @export var BASE_SPEED: float = 800.0
 @export var BASE_DAMAGE: float = 1.0
@@ -106,16 +107,16 @@ func get_upgrade_description(index: int):
 	desc += "[b]Punch[/b][br]"
 	match index:
 		0:
-			desc += "[i][color=#8f8f8f]You can now throw powerful turtle punches.[/color][/i]"
-			desc += "[br]Unlocks the Punch weapon."
+			desc += "Unlocks the Punch weapon."
+			desc += "[br]Throws a punch at the nearest enemy."
 		1:
-			desc += "[i][color=#8f8f8f]Your punches now hit harder.[/color][/i]"
+			desc += "[i][color=#8f8f8f]Your Punch now does more damage.[/color][/i]"
 			desc += "[br]Increases Punch Damage ([color=#8FFFFF]" + str(round(damage * 100) / 100.0) + " -> " + str(round(damage * 1.5 * 100) / 100.0) + "[/color])."
 		2:
-			desc += "[i][color=#8f8f8f]Your punches now land faster.[/color][/i]"
+			desc += "[i][color=#8f8f8f]Your Punch now fires more often.[/color][/i]"
 			desc += "[br]Decreases Punch Cooldown ([color=#8FFFFF]" + str(round(BASE_COOLDOWN * 100) / 100.0) + "s -> " + str(round(BASE_COOLDOWN * 0.75 * 100) / 100.0) + "s[/color])."
 		3:
-			desc += "[i][color=#8f8f8f]Your punches suddenly grow in size.[/color][/i]"
+			desc += "[i][color=#8f8f8f]Your Punch now strikes a larger area.[/color][/i]"
 			desc += "[br]Increases Punch Size ([color=#8FFFFF]" + str(round(size_mod * 100) / 100.0) + "x -> " + str(round(size_mod * 1.25 * 100) / 100.0) + "x[/color])."
 	desc += "[/outline_color][/outline_size]"
 	return desc
