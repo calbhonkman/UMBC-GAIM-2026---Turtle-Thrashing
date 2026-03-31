@@ -16,7 +16,7 @@ var b_target = []
 
 func _ready():
 	damage = BASE_DAMAGE
-	range = BASE_RANGE
+	range_mod = BASE_RANGE
 	
 	if unlocked:
 		visible = true

@@ -288,10 +288,7 @@ visible = false
 z_index = 1
 script = ExtResource("14_264po")
 BULLET = ExtResource("15_1kice")
-unlocked = null
 upgrade_descriptions = Array[String](["Unlock Flamestarter", "Flamestarter Range +25%", "Flamestarter Damage +25%"])
-BASE_DAMAGE = null
-BASE_RANGE = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Flamestarter" unique_id=1804428324]
 shape = SubResource("CircleShape2D_iywne")
