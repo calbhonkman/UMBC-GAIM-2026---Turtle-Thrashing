@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var sprite = $Sprite
 @onready var hitbox = $"Hitbox (Entities)"
 @onready var pickup_area = $"Pickup Area"
+@onready var damage_vignette = $"/root/Node2D/GameManager/Camera/Damage Vignette"
 
 @export var MAX_HEALTH: int = 5
 @export var BASE_SPEED: float = 200.0
@@ -24,10 +25,12 @@ func _ready():
 
 func _process(delta):
 	invincible_timer = max(0, invincible_timer - delta)
-	if invincible_timer > 0:
+	if invincible_timer > 0 and health > 0:
 		sprite.modulate = Color(1,1-sqrt(invincible_timer/INVINCIBLE_TIME),1-sqrt(invincible_timer/INVINCIBLE_TIME),1)
+		damage_vignette.modulate = Color(1,1,1,sqrt(invincible_timer/INVINCIBLE_TIME))
 	else:
 		sprite.modulate = Color(1,1,1,1)
+		damage_vignette.modulate = Color(1,1,1,0)
 	
 	var movement_direction = Input.get_vector("left","right","up","down")
 	if health <= 0:

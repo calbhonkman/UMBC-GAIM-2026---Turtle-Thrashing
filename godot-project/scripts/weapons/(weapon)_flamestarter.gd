@@ -5,8 +5,9 @@ extends Area2D
 @export var unlocked: bool = false
 @export var upgrade_descriptions: Array[String]
 
-@export var BASE_DAMAGE: float = 2.0
-@export var BASE_RANGE: float = 250.0
+@export var BASE_DAMAGE: float = 0.5
+@export var BASE_RANGE: float = 200.0
+@export var RANGE_BUFFER: float = 50.0
 
 var damage = 0.0
 var range_mod = 1.0
@@ -16,7 +17,6 @@ var b_target = []
 
 func _ready():
 	damage = BASE_DAMAGE
-	range_mod = BASE_RANGE
 	
 	if unlocked:
 		visible = true
@@ -25,7 +25,7 @@ func _process(delta):
 	if unlocked == false:
 		return
 	
-	get_child(0).shape.radius = range
+	get_child(0).shape.radius = BASE_RANGE * range_mod
 	
 	for area in get_overlapping_areas():
 		if area.is_in_group("Enemies") and area not in b_target:
@@ -37,11 +37,9 @@ func _process(delta):
 	for i in range(bullets.size()):
 		if i >= b_target.size():
 			pass
-		elif b_target[i] and (b_target[i].global_position - global_position).length() <= range:
+		elif b_target[i] and (b_target[i].global_position - global_position).length() <= (BASE_RANGE * range_mod) + RANGE_BUFFER:
 			bullets[i].global_position = b_target[i].global_position
-			var distance_factor = 0.1 * (1 - (bullets[i].global_position - global_position).length() / range)
-			bullets[i].scale = Vector2(distance_factor, distance_factor)
-			b_target[i].damage(damage * delta * distance_factor)
+			b_target[i].damage(damage * delta)
 		else:
 			bullets[i].queue_free()
 			bullets.remove_at(i)

@@ -29,8 +29,9 @@
 [ext_resource type="PackedScene" uid="uid://dw20u1c5v07qr" path="res://prefabs/enemies/(boss)_raccoon.tscn" id="22_qnb83"]
 [ext_resource type="PackedScene" uid="uid://bsjban1wyxwl4" path="res://prefabs/enemies/(enemy)_raccoon_small.tscn" id="23_pl11u"]
 [ext_resource type="PackedScene" uid="uid://cfdlk4r0ys684" path="res://prefabs/enemies/(boss)_crab.tscn" id="25_qnb83"]
-[ext_resource type="Script" uid="uid://cypit3nrwog1x" path="res://scenes/level_up.gd" id="29_sgl2t"]
+[ext_resource type="Script" uid="uid://cypit3nrwog1x" path="res://scripts/level_up.gd" id="29_sgl2t"]
 [ext_resource type="Texture2D" uid="uid://rj6ytl075hcn" path="res://assets/Upgrade Icons/(icon)_flamestarter.png" id="30_qouja"]
+[ext_resource type="Texture2D" uid="uid://bi547l6xmt1jk" path="res://assets/Damage Vignette.png" id="31_v2yb1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
 size = Vector2(1312.9883, 50)
@@ -555,6 +556,10 @@ offset_right = 188.0
 offset_bottom = 276.0
 theme_override_font_sizes/font_size = 48
 text = "Main Menu"
+
+[node name="Damage Vignette" type="Sprite2D" parent="GameManager/Camera" unique_id=1740525009]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("31_v2yb1")
 
 [node name="AudioManager" parent="." unique_id=1292916551 instance=ExtResource("18_ssvqc")]
 
