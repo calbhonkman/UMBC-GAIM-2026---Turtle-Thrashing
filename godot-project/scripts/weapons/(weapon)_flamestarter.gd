@@ -41,7 +41,7 @@ func _process(delta):
 	for i in range(bullets.size()):
 		if i >= b_target.size():
 			pass
-		elif b_target[i] and (b_target[i].global_position - global_position).length() <= (BASE_RANGE * range_mod) + RANGE_BUFFER:
+		elif b_target[i] and b_target[i].monitorable and (b_target[i].global_position - global_position).length() <= (BASE_RANGE * range_mod) + RANGE_BUFFER:
 			bullets[i].global_position = b_target[i].global_position
 			b_timer[i] += delta
 			if b_timer[i] >= DAMAGE_TIME:
