@@ -77,6 +77,7 @@ func _process(delta):
 				AudioManager.slap.play()
 				b_prev[i].append(area)
 				area.damage(damage)
+				$"/root/Node2D/GameManager".create_damage_particle(area.global_position, damage)
 				if area.has_method("stun"):
 					area.stun(stun_duration)
 				var knockback_dir = (area.global_position - bullets[i].global_position)

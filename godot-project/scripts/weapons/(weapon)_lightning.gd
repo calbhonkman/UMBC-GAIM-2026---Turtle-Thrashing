@@ -48,6 +48,7 @@ func _process(delta):
 				for area in bullet[i].get_overlapping_areas():
 					if area.is_in_group("Enemies"):
 						area.damage(damage)
+						$"/root/Node2D/GameManager".create_damage_particle(area.global_position, damage)
 				bullet[i].queue_free()
 				bullet[i] = null
 				b_target[i] = null

@@ -66,6 +66,7 @@ func _process(delta):
 			if area not in b_prev[i] and area.is_in_group("Enemies") and area.get_script():
 				b_prev[i].append(area)
 				area.damage(damage)
+				$"/root/Node2D/GameManager".create_damage_particle(area.global_position, damage)
 				AudioManager.punch.play()
 				var knockback_dir = (area.global_position - global_position)
 				area.global_position += (knockback_dir / knockback_dir.length()) * KNOCKBACK

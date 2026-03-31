@@ -6,15 +6,17 @@ extends Area2D
 @export var upgrade_descriptions: Array[String]
 @export var upgrade_icon: Resource
 
-@export var BASE_DAMAGE: float = 0.25
+@export var BASE_DAMAGE: float = 0.2
 @export var BASE_RANGE: float = 200.0
 @export var RANGE_BUFFER: float = 50.0
+@export var DAMAGE_TIME: float = 0.5
 
 var damage = 0.0
 var range_mod = 1.0
 
 var bullets = []
 var b_target = []
+var b_timer = []
 
 func _ready():
 	damage = BASE_DAMAGE
@@ -33,6 +35,7 @@ func _process(delta):
 			bullets.append(BULLET.instantiate())
 			add_child(bullets.back())
 			b_target.append(area)
+			b_timer.append(0.0)
 			bullets.back().global_position = area.global_position
 	
 	for i in range(bullets.size()):
@@ -40,7 +43,11 @@ func _process(delta):
 			pass
 		elif b_target[i] and (b_target[i].global_position - global_position).length() <= (BASE_RANGE * range_mod) + RANGE_BUFFER:
 			bullets[i].global_position = b_target[i].global_position
-			b_target[i].damage(damage * delta)
+			b_timer[i] += delta
+			if b_timer[i] >= DAMAGE_TIME:
+				b_target[i].damage(damage)
+				$"/root/Node2D/GameManager".create_damage_particle(b_target[i].global_position, damage)
+				b_timer[i] += -1 * DAMAGE_TIME
 		else:
 			bullets[i].queue_free()
 			bullets.remove_at(i)
