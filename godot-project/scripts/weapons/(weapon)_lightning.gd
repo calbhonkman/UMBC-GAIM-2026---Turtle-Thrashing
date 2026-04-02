@@ -11,7 +11,7 @@ extends Area2D
 @export var upgrade_icon: Resource
 
 var size_mod = 1.0
-var damage = 0
+var damage = BASE_DAMAGE
 
 var bullet = []
 var b_cooldown = []
@@ -21,8 +21,6 @@ var b_position = []
 func _ready():
 	if unlocked:
 		visible = true
-	
-	damage = BASE_DAMAGE
 	
 	for i in range(AMOUNT):
 		bullet.append(null)
@@ -43,26 +41,15 @@ func _process(delta):
 				bullet[i].visible = true
 			else:
 				bullet[i].global_position = b_position[i]
-			
-			if not bullet[i].get_child(0).is_playing():
-				for area in bullet[i].get_overlapping_areas():
-					if area.is_in_group("Enemies"):
-						area.damage(damage)
-						$"/root/Node2D/GameManager".create_damage_particle(area.global_position, damage)
-				bullet[i].queue_free()
-				bullet[i] = null
-				b_target[i] = null
-				b_position[i] = null
-		
 		elif b_cooldown[i] <= 0.0: # and delay <= 0.0:
 			b_target[i] = find_target()
 			if b_target[i]:
-				AudioManager.cloud.play()
 				bullet[i] = BULLET.instantiate()
 				add_child(bullet[i])
-				bullet[i].global_position = global_position
-				bullet[i].scale *= size_mod
+				bullet[i].global_position = b_target[i].global_position
 				b_position[i] = bullet[i].global_position
+				bullet[i].scale *= size_mod
+				bullet[i].damage = damage
 				b_cooldown[i] = COOLDOWN
 
 func find_target():

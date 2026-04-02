@@ -334,7 +334,7 @@ shape = SubResource("CapsuleShape2D_pl11u")
 
 [node name="GameManager" type="Node2D" parent="." unique_id=28411718]
 process_mode = 3
-z_index = 2
+z_index = 4
 script = ExtResource("9_0tnpc")
 GAME_TIME = 6.0
 FOOD = Array[Resource]([ExtResource("19_bhx41")])

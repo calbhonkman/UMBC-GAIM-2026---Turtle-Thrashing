@@ -45,10 +45,7 @@ func select_upgrades():
 		selected_upgrades.append(rand_upgradeable.get_random_upgrade(upgradeables.find(rand_upgradeable)))
 
 func _on_confirm_pressed():
-	print("A")
 	if chosen_upgrade != null:
-		print(chosen_upgrade.x)
-		print(chosen_upgrade.y)
 		upgradeables[chosen_upgrade.x].upgrade(chosen_upgrade.y)
 		for button in upgrade_buttons:
 			button.button_pressed = false
