@@ -140,16 +140,21 @@ func _process(delta):
 					global_position += charge_direction * (3.0 * move_speed) * delta
 					anti_knockback_position = global_position
 			"dying":
-				var new_xp = EXP.instantiate()
-				get_parent().add_child(new_xp)
-				new_xp.global_position = global_position
-				queue_free()
+				if not sprite.is_playing():
+					sprite.play("death2")
+					mode = "dead"
+			"dead":
+				if not sprite.is_playing():
+					queue_free()
 
 func scale_health(s: float):
 	health = MAX_HEALTH * s
 
 func damage(dmg: float):
+	if mode == "dying" or mode == "dead":
+		return
 	health -= dmg
 	print(health)
 	if health <= 0.0:
 		mode = "dying"
+		sprite.play("death1")

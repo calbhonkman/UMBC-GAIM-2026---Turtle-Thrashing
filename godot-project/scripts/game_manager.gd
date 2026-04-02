@@ -157,4 +157,4 @@ func create_damage_particle(dmg_position, damage):
 	var new_damage_particle = DAMAGE_PARTICLE.instantiate()
 	enemies_group.add_child(new_damage_particle)
 	new_damage_particle.global_position = dmg_position - (new_damage_particle.get_size() / 2.0)
-	new_damage_particle.text = "[font_size=" + str(16 * max(1.0, damage)) + "][color=red][b][i]" + str(round(damage * 100) / 100.0) + "[/i][/b][/color][/font_size]"
+	new_damage_particle.text = "[font_size=" + str(12 * max(2.0, damage)) + "][color=red][b][i]" + str(round(damage * 100) / 100.0) + "[/i][/b][/color][/font_size]"
