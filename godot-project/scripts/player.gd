@@ -48,7 +48,7 @@ func _process(delta):
 	
 	# Pickup Area
 	for area in pickup_area.get_overlapping_areas():
-		if area.has_meta("pickup") or area.is_in_group("Food"):
+		if area.has_meta("pickup") or (area.is_in_group("Food") and health < MAX_HEALTH):
 			var playerDirection = global_position - area.global_position
 			playerDirection = playerDirection / playerDirection.length()
 			area.global_position += playerDirection * delta * BASE_SPEED * speed_mod * 2
@@ -56,7 +56,7 @@ func _process(delta):
 
 func _on_hitbox_area_entered(area):
 	# If hit by an enemy
-	if area.is_in_group("Food"):
+	if area.is_in_group("Food") and health < MAX_HEALTH:
 		area.queue_free()
 		health = min(MAX_HEALTH, health+1)
 		AudioManager.eat.play()

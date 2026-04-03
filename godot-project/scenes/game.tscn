@@ -220,6 +220,7 @@ rotation = -6.221928
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1744978302]
+z_index = 1
 script = ExtResource("1_yqjtg")
 upgrade_descriptions = Array[String](["Max Health +1", "Pickup Range +25%", "Movement Speed +50%"])
 upgrade_icon = ExtResource("3_v2yb1")
@@ -336,7 +337,6 @@ shape = SubResource("CapsuleShape2D_pl11u")
 process_mode = 3
 z_index = 4
 script = ExtResource("9_0tnpc")
-GAME_TIME = 6.0
 FOOD = Array[Resource]([ExtResource("19_bhx41")])
 ENEMIES = Array[Resource]([ExtResource("19_e1j6l"), ExtResource("20_pl11u"), ExtResource("21_bhx41"), ExtResource("23_pl11u")])
 ELITES = Array[Resource]([ExtResource("22_qnb83"), ExtResource("25_qnb83")])
