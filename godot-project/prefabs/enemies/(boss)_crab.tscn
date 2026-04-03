@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cfdlk4r0ys684"]
 
-[ext_resource type="Script" uid="uid://c6k501y0lwk6h" path="res://prefabs/enemies/(boss)_crab.gd" id="1_4a8of"]
+[ext_resource type="Script" uid="uid://c6k501y0lwk6h" path="res://scripts/enemies/(elite)_crab.gd" id="1_4a8of"]
 [ext_resource type="Texture2D" uid="uid://uxkkywocd2fp" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Charge0001.png" id="2_xpubl"]
 [ext_resource type="Texture2D" uid="uid://crr7g7p88cufb" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Charge0002.png" id="3_h8s8d"]
 [ext_resource type="Texture2D" uid="uid://b3blep6l8o4we" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Charge0003.png" id="4_in8ms"]
@@ -12,23 +12,39 @@
 [ext_resource type="Texture2D" uid="uid://dmseg55stq7nm" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Charge0009.png" id="10_2ajx1"]
 [ext_resource type="Texture2D" uid="uid://raf772yvvq55" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Charge0010.png" id="11_10jb2"]
 [ext_resource type="Texture2D" uid="uid://druke18f2t8k8" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Charge0011.png" id="12_22tme"]
+[ext_resource type="Texture2D" uid="uid://cn2damkfvgbrq" path="res://assets/Enemies/Elites/Big Meaty Crab/MBCrab_Death0001.png" id="13_8gx0c"]
 [ext_resource type="Texture2D" uid="uid://r0bu7avefkny" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Idle0001.png" id="13_rfg3k"]
+[ext_resource type="Texture2D" uid="uid://cbnqgcnumhjrh" path="res://assets/Enemies/Elites/Big Meaty Crab/MBCrab_Death0002.png" id="14_lfe1v"]
 [ext_resource type="Texture2D" uid="uid://hrn3le5uj62m" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Idle0002.png" id="14_xn8ts"]
+[ext_resource type="Texture2D" uid="uid://d3py01mjh7w3q" path="res://assets/Enemies/Elites/Big Meaty Crab/MBCrab_Death0003.png" id="15_1eqfi"]
 [ext_resource type="Texture2D" uid="uid://c4wngrkvflaeb" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Idle0003.png" id="15_yej7l"]
 [ext_resource type="Texture2D" uid="uid://ba4gh3t22wnid" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0001.png" id="16_14p4p"]
+[ext_resource type="Texture2D" uid="uid://d3xkr1runxq1i" path="res://assets/Enemies/Elites/Big Meaty Crab/MBCrab_Death0004.png" id="16_25l5a"]
+[ext_resource type="Texture2D" uid="uid://cjfvnaminnbl0" path="res://assets/Enemies/Elites/Big Meaty Crab/MBCrab_Death0005.png" id="17_dlp0w"]
 [ext_resource type="Texture2D" uid="uid://s0lxsk0i4wya" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0002.png" id="17_jn87i"]
+[ext_resource type="Texture2D" uid="uid://vq24s8vsnnjl" path="res://assets/Enemies/Elites/Big Meaty Crab/MBCrab_Death0006.png" id="18_lkqs3"]
 [ext_resource type="Texture2D" uid="uid://duja3nh5u6wtp" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0003.png" id="18_xph3s"]
 [ext_resource type="Texture2D" uid="uid://d6bxyfnup7cc" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0004.png" id="19_8m1vc"]
+[ext_resource type="Texture2D" uid="uid://c3j4hd3jvbi25" path="res://assets/Enemies/Elites/Big Meaty Crab/MBCrab_Death0007.png" id="19_ppngl"]
 [ext_resource type="Texture2D" uid="uid://6swqw66f6mou" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0005.png" id="20_mkph3"]
+[ext_resource type="Texture2D" uid="uid://dgsqeo2wcvcld" path="res://assets/Enemies/Elites/Big Meaty Crab/MBCrab_Death0008.png" id="20_smtm0"]
+[ext_resource type="Texture2D" uid="uid://dlmrgnqw3baun" path="res://assets/Enemies/Elites/Big Meaty Crab/MBCrab_Death0009.png" id="21_dwnyt"]
 [ext_resource type="Texture2D" uid="uid://dt1fpkbwghwfi" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0006.png" id="21_fbhm3"]
+[ext_resource type="Texture2D" uid="uid://b2465ja7d1jlf" path="res://assets/Enemies/Elites/Big Meaty Crab/MBCrab_DeathPoof0001.png" id="22_0dkde"]
 [ext_resource type="Texture2D" uid="uid://dbcp10ksqh5xu" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0007.png" id="22_xlp5x"]
 [ext_resource type="Texture2D" uid="uid://4tp65uhqt14t" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0008.png" id="23_82u4y"]
 [ext_resource type="Texture2D" uid="uid://dejo1oww7hwln" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Shadow.png" id="23_fbhm3"]
+[ext_resource type="Texture2D" uid="uid://c3e7eajqbp853" path="res://assets/Enemies/Elites/Big Meaty Crab/MBCrab_DeathPoof0002.png" id="23_igpsk"]
+[ext_resource type="Texture2D" uid="uid://cknhijcoc44hq" path="res://assets/Enemies/Elites/Big Meaty Crab/MBCrab_DeathPoof0003.png" id="24_5f61s"]
 [ext_resource type="Texture2D" uid="uid://cdviqmjyiqeig" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0009.png" id="24_i45ok"]
 [ext_resource type="Texture2D" uid="uid://clnnw50lfyqy1" path="res://assets/Enemies/Elites/Big Meaty Crab/Warning.png" id="24_xlp5x"]
 [ext_resource type="Texture2D" uid="uid://syyqat58642v" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0010.png" id="25_1daf5"]
+[ext_resource type="Texture2D" uid="uid://684r324ma76l" path="res://assets/Enemies/Elites/Big Meaty Crab/MBCrab_DeathPoof0004.png" id="25_cyrws"]
+[ext_resource type="Texture2D" uid="uid://ca0c1ho12lkdm" path="res://assets/Enemies/Elites/Big Meaty Crab/MBCrab_DeathPoof0005.png" id="26_8tmp1"]
 [ext_resource type="Texture2D" uid="uid://c5bpmgc6b2i37" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0011.png" id="26_ke82u"]
+[ext_resource type="Texture2D" uid="uid://cb2idlmh6iyl4" path="res://assets/Enemies/Elites/Big Meaty Crab/MBCrab_DeathPoof0006.png" id="27_2nqv7"]
 [ext_resource type="Texture2D" uid="uid://cn75g5bwvpwj" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0012.png" id="27_ncri0"]
+[ext_resource type="Texture2D" uid="uid://c3jn82upjtal4" path="res://assets/Enemies/Elites/Big Meaty Crab/MBCrab_DeathPoof0007.png" id="28_g3nhs"]
 [ext_resource type="Texture2D" uid="uid://rx7itsei53dh" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0013.png" id="28_sursi"]
 [ext_resource type="Texture2D" uid="uid://v0pk1q03h5b1" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0014.png" id="29_775kj"]
 [ext_resource type="Texture2D" uid="uid://dx5xlp8u4hq3g" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Jump0015.png" id="30_nesm8"]
@@ -96,6 +112,64 @@ animations = [{
 }],
 "loop": true,
 "name": &"charge2",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_8gx0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_lfe1v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_1eqfi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_25l5a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_dlp0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_lkqs3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ppngl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_smtm0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_dwnyt")
+}],
+"loop": false,
+"name": &"death1",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_0dkde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_igpsk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_5f61s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_cyrws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_8tmp1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_2nqv7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_g3nhs")
+}],
+"loop": false,
+"name": &"death2",
 "speed": 8.0
 }, {
 "frames": [{
@@ -270,14 +344,12 @@ radius = 120.957275
 
 [node name="(boss)_Crab" type="Area2D" unique_id=2044177891 groups=["Enemies"]]
 script = ExtResource("1_4a8of")
-MAX_HEALTH = 15.0
-BASE_SPEED = 150.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=227461755]
 position = Vector2(-48, -34)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_gkrs1")
-animation = &"jump1.5.5"
+animation = &"death1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=155662765]
 shape = SubResource("RectangleShape2D_lq1tu")

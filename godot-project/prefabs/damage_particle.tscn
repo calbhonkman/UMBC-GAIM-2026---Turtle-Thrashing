@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dum7dfhvymdrp"]
+
+[ext_resource type="Script" uid="uid://b4dr3dwqvd2nu" path="res://damage_particle.gd" id="1_btisn"]
+
+[node name="RichTextLabel" type="RichTextLabel" unique_id=775277694]
+offset_left = -500.0
+offset_top = -250.0
+offset_right = 500.0
+offset_bottom = 250.0
+bbcode_enabled = true
+text = "[color=red][b][i][font_size=16]1.0[/font_size][/i][/b][/color]"
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_btisn")

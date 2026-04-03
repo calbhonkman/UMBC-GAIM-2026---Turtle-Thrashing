@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://3hwde0n6o72y"
-path="res://.godot/imported/TurtBoltFrame0004.png-6b5c431d84f08f7ae1612e2547b229c8.ctex"
+uid="uid://c3j4hd3jvbi25"
+path="res://.godot/imported/MBCrab_Death0007.png-22e56b91adb2e2643132f6ec2ca3eaff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Turtle/Random Attacks/Lightning/TurtBoltFrame0004.png"
-dest_files=["res://.godot/imported/TurtBoltFrame0004.png-6b5c431d84f08f7ae1612e2547b229c8.ctex"]
+source_file="res://assets/Enemies/Elites/Big Meaty Crab/MBCrab_Death0007.png"
+dest_files=["res://.godot/imported/MBCrab_Death0007.png-22e56b91adb2e2643132f6ec2ca3eaff.ctex"]
 
 [params]
 

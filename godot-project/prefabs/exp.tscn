@@ -1,39 +1,21 @@
 [gd_scene format=3 uid="uid://bln5qlwy18sjf"]
 
-[ext_resource type="Texture2D" uid="uid://dh75yc606m06d" path="res://assets/Exp/Turtexpframe0000.png" id="1_iqir6"]
-[ext_resource type="Texture2D" uid="uid://chbajn8vpeucs" path="res://assets/Exp/Turtexpframe0001.png" id="2_0hk7p"]
-[ext_resource type="Texture2D" uid="uid://c1wdqi08267lq" path="res://assets/Exp/Turtexpframe0002.png" id="3_yiiq5"]
+[ext_resource type="Script" uid="uid://2ee4a3acvjen" path="res://scripts/exp_sprite.gd" id="1_em5ll"]
+[ext_resource type="Texture2D" uid="uid://f8pnb8yw0cx0" path="res://assets/Turtle EXP.png" id="2_iqir6"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_jr6f6"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_iqir6")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_0hk7p")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_yiiq5")
-}],
-"loop": true,
-"name": &"default",
-"speed": 8.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ceffx"]
-size = Vector2(26, 14)
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0hk7p"]
+radius = 6.0
+height = 26.0
 
 [node name="Area2D" type="Area2D" unique_id=2144851842]
 metadata/exp = ""
 metadata/pickup = ""
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=526308893]
-position = Vector2(1.9999999, 0)
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=705336410]
 scale = Vector2(0.1, 0.1)
-sprite_frames = SubResource("SpriteFrames_jr6f6")
-autoplay = "default"
-frame_progress = 0.045920994
+texture = ExtResource("2_iqir6")
+script = ExtResource("1_em5ll")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1119357148]
-shape = SubResource("RectangleShape2D_ceffx")
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_0hk7p")

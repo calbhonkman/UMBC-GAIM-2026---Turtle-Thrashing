@@ -5,6 +5,7 @@ extends Node2D
 
 @export var unlocked: bool = false
 @export var upgrade_descriptions: Array[String]
+@export var upgrade_icon: Resource
 
 var rotation_speed = 0.0
 
@@ -35,10 +36,10 @@ func get_upgrade_description(index: int):
 	desc += "[b][color=#008FFF]Shield[/color][/b][br]"
 	match index:
 		0:
-			desc += "[i][color=#8f8f8f]A new friend to help repel threats.[/color][/i]"
-			desc += "[br]Unlocks the Shield minion."
+			desc += "Unlocks the Shield minion."
+			desc += "[br]Rotates around you to keep enemies away."
 		1:
-			desc += "[i][color=#8f8f8f]Spiiinnnnnnnn..... [/color][/i]"
+			desc += "[i][color=#8f8f8f]Your Shield now rotates faster.[/color][/i]"
 			desc += "[br]Increases Shield Rotation Speed ([color=#8FFFFF]" + str(round(rotation_speed * 100) / 100.0) + " -> " + str(round(rotation_speed * 1.5 * 100) / 100.0) + "[/color])."
 	desc += "[/outline_color][/outline_size]"
 	return desc

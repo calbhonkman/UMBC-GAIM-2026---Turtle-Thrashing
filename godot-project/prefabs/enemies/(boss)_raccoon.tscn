@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dw20u1c5v07qr"]
 
-[ext_resource type="Script" uid="uid://sst0smkwwtob" path="res://scripts/enemies/(enemy)_raccoon.gd" id="1_adqtt"]
+[ext_resource type="Script" uid="uid://sst0smkwwtob" path="res://scripts/enemies/(elite)_raccoon.gd" id="1_adqtt"]
 [ext_resource type="PackedScene" uid="uid://ytls3f7lukqs" path="res://prefabs/enemies/(bullet)_bowling.tscn" id="2_7jq4w"]
 [ext_resource type="Texture2D" uid="uid://qwj2ucr0u8e6" path="res://assets/Enemies/Bosses/Enemy_Raccoon (Attack 1).png" id="2_hdnla"]
 [ext_resource type="Texture2D" uid="uid://586htps24ngo" path="res://assets/Enemies/Bosses/Enemy_Raccoon (Attack 2).png" id="3_7jq4w"]

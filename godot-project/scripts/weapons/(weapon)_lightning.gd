@@ -8,9 +8,10 @@ extends Area2D
 
 @export var unlocked: bool = false
 @export var upgrade_descriptions: Array[String]
+@export var upgrade_icon: Resource
 
 var size_mod = 1.0
-var damage = 0
+var damage = BASE_DAMAGE
 
 var bullet = []
 var b_cooldown = []
@@ -20,8 +21,6 @@ var b_position = []
 func _ready():
 	if unlocked:
 		visible = true
-	
-	damage = BASE_DAMAGE
 	
 	for i in range(AMOUNT):
 		bullet.append(null)
@@ -42,25 +41,15 @@ func _process(delta):
 				bullet[i].visible = true
 			else:
 				bullet[i].global_position = b_position[i]
-			
-			if not bullet[i].get_child(0).is_playing():
-				for area in bullet[i].get_overlapping_areas():
-					if area.is_in_group("Enemies"):
-						area.damage(damage)
-				bullet[i].queue_free()
-				bullet[i] = null
-				b_target[i] = null
-				b_position[i] = null
-		
 		elif b_cooldown[i] <= 0.0: # and delay <= 0.0:
 			b_target[i] = find_target()
 			if b_target[i]:
-				AudioManager.cloud.play()
 				bullet[i] = BULLET.instantiate()
 				add_child(bullet[i])
-				bullet[i].global_position = global_position
-				bullet[i].scale *= size_mod
+				bullet[i].global_position = b_target[i].global_position
 				b_position[i] = bullet[i].global_position
+				bullet[i].scale *= size_mod
+				bullet[i].damage = damage
 				b_cooldown[i] = COOLDOWN
 
 func find_target():
@@ -83,17 +72,17 @@ func get_upgrade_description(index: int):
 	desc += "[b][color=#FFFF00]Lightning[/color][/b][br]"
 	match index:
 		0:
-			desc += "[i][color=#8f8f8f]You can now smite your foes.[/color][/i]"
-			desc += "[br]Unlocks the Lightning weapon."
+			desc += "Unlocks the Lightning weapon."
+			desc += "[br]Zaps a random enemy onscreen with lightning."
 		1:
-			desc += "[i][color=#8f8f8f]More clouds suddenly form.[/color][/i]"
+			desc += "[i][color=#8f8f8f]Your Lightning now strikes more enemies.[/color][/i]"
 			desc += "[br]Increases Lightning Strikes ([color=#8FFFFF]" + str(AMOUNT) + " -> " + str(AMOUNT + 1) + "[/color])."
 		2:
-			desc += "[i][color=#8f8f8f]Your lightning now hits harder.[/color][/i]"
+			desc += "[i][color=#8f8f8f]Your Lightning now does more damage.[/color][/i]"
 			desc += "[br]Increases Lightning Damage ([color=#8FFFFF]" + str(round(damage * 100) / 100.0) + " -> " + str(round(damage * 1.5 * 100) / 100.0) + "[/color])."
 		3:
-			desc += "[i][color=#8f8f8f]Your clouds suddenly grow in size.[/color][/i]"
-			desc += "[br]Increases Lightning Strike Area ([color=#8FFFFF]" + str(round(size_mod * 100) / 100.0) + "x -> " + str(round(size_mod * 1.5 * 100) / 100.0) + "x[/color])."
+			desc += "[i][color=#8f8f8f]Your Lightning now strikes a larger area.[/color][/i]"
+			desc += "[br]Increases Lightning Strike Size ([color=#8FFFFF]" + str(round(size_mod * 100) / 100.0) + "x -> " + str(round(size_mod * 1.5 * 100) / 100.0) + "x[/color])."
 	desc += "[/outline_color][/outline_size]"
 	return desc
 

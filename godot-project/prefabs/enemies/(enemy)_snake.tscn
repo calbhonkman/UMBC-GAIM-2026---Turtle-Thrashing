@@ -49,18 +49,17 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qnk7q"]
-radius = 7.9999995
-height = 339.99997
+radius = 12.0
+height = 510.0
 
 [node name="Area2D" type="Area2D" unique_id=1424500926 groups=["Enemies"]]
-scale = Vector2(1.5, 1.5)
 script = ExtResource("1_qy1fp")
 metadata/enemy = ""
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1819166314]
 position = Vector2(-4.6666665, -2.0000005)
 rotation = 0.3228859
-scale = Vector2(0.1, 0.1)
+scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_rnd4m")
 autoplay = "default"
 frame_progress = 0.66031295

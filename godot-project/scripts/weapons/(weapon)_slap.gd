@@ -4,6 +4,7 @@ extends Area2D
 
 @export var unlocked: bool = false
 @export var upgrade_descriptions: Array[String]
+@export var upgrade_icon: Resource
 
 @export var BASE_SPEED: float = 800.0
 @export var BASE_DAMAGE: float = 0.5
@@ -76,6 +77,7 @@ func _process(delta):
 				AudioManager.slap.play()
 				b_prev[i].append(area)
 				area.damage(damage)
+				$"/root/Node2D/GameManager".create_damage_particle(area.global_position, damage)
 				if area.has_method("stun"):
 					area.stun(stun_duration)
 				var knockback_dir = (area.global_position - bullets[i].global_position)
@@ -124,16 +126,16 @@ func get_upgrade_description(index: int):
 	desc += "[b]Slap[/b][br]"
 	match index:
 		0:
-			desc += "[i][color=#8f8f8f]You can now stun enemies with slaps.[/color][/i]"
-			desc += "[br]Unlocks the Slap weapon."
+			desc += "Unlocks the Slap weapon."
+			desc += "[br]Swipes at nearby enemies to stun them."
 		1:
-			desc += "[i][color=#8f8f8f]Your slaps now stun for longer.[/color][/i]"
+			desc += "[i][color=#8f8f8f]Your Slap now stuns for longer.[/color][/i]"
 			desc += "[br]Increases Slap Stun Duration ([color=#8FFFFF]" + str(round(stun_duration * 100) / 100.0) + " -> " + str(round(stun_duration * 1.25 * 100) / 100.0) + "[/color])."
 		2:
-			desc += "[i][color=#8f8f8f]Your slaps now land faster.[/color][/i]"
+			desc += "[i][color=#8f8f8f]Your Slap now fires more often.[/color][/i]"
 			desc += "[br]Decreases Slap Cooldown ([color=#8FFFFF]" + str(round(BASE_COOLDOWN * 100) / 100.0) + "s -> " + str(round(BASE_COOLDOWN * 0.75 * 100) / 100.0) + "s[/color])."
 		3:
-			desc += "[i][color=#8f8f8f]Your slaps suddenly grow in size.[/color][/i]"
+			desc += "[i][color=#8f8f8f]Your Slap now strikes a larger area.[/color][/i]"
 			desc += "[br]Increases Slap Size ([color=#8FFFFF]" + str(round(size_mod * 100) / 100.0) + "x -> " + str(round(size_mod * 1.25 * 100) / 100.0) + "x[/color])."
 	desc += "[/outline_color][/outline_size]"
 	return desc

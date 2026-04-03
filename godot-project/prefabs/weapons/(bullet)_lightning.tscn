@@ -1,47 +1,122 @@
 [gd_scene format=3 uid="uid://w0qokvo1f2gx"]
 
-[ext_resource type="Texture2D" uid="uid://xpcbgkk0aplf" path="res://assets/Turtle/Random Attacks/Lightning/TurtBoltFrame0000.png" id="1_rtv81"]
-[ext_resource type="Texture2D" uid="uid://40tlest6kqxw" path="res://assets/Turtle/Random Attacks/Lightning/TurtBoltFrame0001.png" id="2_xfxyy"]
-[ext_resource type="Texture2D" uid="uid://cwlrc5lyb8ggi" path="res://assets/Turtle/Random Attacks/Lightning/TurtBoltFrame0002.png" id="3_ojpk3"]
-[ext_resource type="Texture2D" uid="uid://cmx05mpdvx6" path="res://assets/Turtle/Random Attacks/Lightning/TurtBoltFrame0003.png" id="4_kkuyf"]
-[ext_resource type="Texture2D" uid="uid://3hwde0n6o72y" path="res://assets/Turtle/Random Attacks/Lightning/TurtBoltFrame0004.png" id="5_kohdp"]
+[ext_resource type="Script" uid="uid://bun7b1eo2jygn" path="res://prefabs/weapons/(bullet)_lightning.gd" id="1_r0qnq"]
+[ext_resource type="Texture2D" uid="uid://bpw2jpxj4sif6" path="res://assets/Turtle/Random Attacks/Lightning/TurtLightningCloud0002.png" id="1_sw70o"]
+[ext_resource type="Texture2D" uid="uid://dayjs0ptfwix4" path="res://assets/Turtle/Random Attacks/Lightning/TurtLightningCloud0003.png" id="2_r0qnq"]
+[ext_resource type="Texture2D" uid="uid://clrt2xstu0ym8" path="res://assets/Turtle/Random Attacks/Lightning/TurtLightningCloud0004.png" id="3_pn1kg"]
+[ext_resource type="Texture2D" uid="uid://jla6i5xug1f" path="res://assets/Turtle/Random Attacks/Lightning/TurtLightningCloud0005.png" id="4_hxfyb"]
+[ext_resource type="Texture2D" uid="uid://cbg530qikivyu" path="res://assets/Turtle/Random Attacks/Lightning/TurtLightningCloud0007.png" id="5_5cb8v"]
+[ext_resource type="Texture2D" uid="uid://dblvcnha8gxmj" path="res://assets/Turtle/Random Attacks/Lightning/TurtLightningCloud0008.png" id="6_7f4ky"]
+[ext_resource type="Texture2D" uid="uid://uyi2x8l375ep" path="res://assets/Turtle/Random Attacks/Lightning/TurtLightningCloud0001.png" id="7_b6g20"]
+[ext_resource type="Texture2D" uid="uid://cipaiu3n47hcm" path="res://assets/Turtle/Random Attacks/Lightning/TurtLightningBolt0001.png" id="8_a051k"]
+[ext_resource type="Texture2D" uid="uid://cp28bhcfwyjyp" path="res://assets/Turtle/Random Attacks/Lightning/TurtLightningBolt0002.png" id="9_6p4hq"]
+[ext_resource type="Texture2D" uid="uid://blfe3046runqu" path="res://assets/Turtle/Random Attacks/Lightning/TurtLightningBolt0003.png" id="10_vkfp7"]
+[ext_resource type="Texture2D" uid="uid://dr3wnyr1e3eu8" path="res://assets/Turtle/Random Attacks/Lightning/TurtLightningBolt0004.png" id="11_r8w8x"]
+[ext_resource type="Texture2D" uid="uid://b4x01tqq7k81e" path="res://assets/Turtle/Random Attacks/Lightning/TurtLightningBolt0005.png" id="12_26yca"]
+[ext_resource type="Texture2D" uid="uid://rnupi2tnlbvb" path="res://assets/Turtle/Random Attacks/Lightning/TurtLightningBolt0006.png" id="13_v5fgx"]
+[ext_resource type="Texture2D" uid="uid://deme41vq1vmsl" path="res://assets/Turtle/Random Attacks/Lightning/TurtLightningBolt0007.png" id="14_duvna"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_x14w0"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_rtv81")
+"texture": ExtResource("1_sw70o")
 }, {
 "duration": 1.0,
-"texture": ExtResource("2_xfxyy")
+"texture": ExtResource("2_r0qnq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_ojpk3")
+"texture": ExtResource("3_pn1kg")
+}],
+"loop": false,
+"name": &"cloud1",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_hxfyb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("4_kkuyf")
+"texture": ExtResource("5_5cb8v")
 }, {
 "duration": 1.0,
-"texture": ExtResource("5_kohdp")
+"texture": ExtResource("6_7f4ky")
+}],
+"loop": false,
+"name": &"cloud2",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_b6g20")
 }],
 "loop": false,
 "name": &"default",
 "speed": 8.0
 }]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_kscnk"]
+animations = [{
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_a051k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_6p4hq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_vkfp7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_r8w8x")
+}],
+"loop": false,
+"name": &"strike1",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_26yca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_v5fgx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_duvna")
+}],
+"loop": false,
+"name": &"strike2",
+"speed": 8.0
+}]
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_ojpk3"]
-radius = 23.0
+radius = 49.09175
 
 [node name="Area2D" type="Area2D" unique_id=1574688434]
-visible = false
 z_index = 1
+script = ExtResource("1_r0qnq")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1875368460]
-position = Vector2(5.0000005, -67.00001)
+[node name="Cloud" type="AnimatedSprite2D" parent="." unique_id=1875368460]
+z_index = 1
+position = Vector2(7.9999995, -126)
 scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_x14w0")
+animation = &"cloud1"
 autoplay = "default"
-frame = 4
+
+[node name="Strike" type="AnimatedSprite2D" parent="." unique_id=219745164]
+modulate = Color(1, 1, 1, 0.70000005)
+position = Vector2(0, -30)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_kscnk")
+animation = &"strike1"
+autoplay = "default"
+frame = 3
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1750741657]
