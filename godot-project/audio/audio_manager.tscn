@@ -16,6 +16,8 @@
 [ext_resource type="AudioStream" uid="uid://652fan4463dg" path="res://audio/voiceAndJingles/crabJingle.wav" id="14_ji21h"]
 [ext_resource type="AudioStream" uid="uid://dphts7nq3sqwb" path="res://audio/voiceAndJingles/eelJingle.wav" id="15_sgp2o"]
 [ext_resource type="AudioStream" uid="uid://b4skiu18au37m" path="res://audio/voiceAndJingles/raccoonKingJingle.wav" id="16_qus7j"]
+[ext_resource type="AudioStream" uid="uid://dy2fjja54qmtv" path="res://audio/sfx/roar.wav" id="17_qus7j"]
+[ext_resource type="AudioStream" uid="uid://52wq8vsmkgm0" path="res://audio/sfx/suck.wav" id="18_tu6k2"]
 
 [node name="AudioManager" type="Node2D" unique_id=1292916551]
 script = ExtResource("1_drlug")
@@ -80,7 +82,7 @@ bus = &"Sfx"
 
 [node name="crabJingle" type="AudioStreamPlayer" parent="." unique_id=21430267]
 stream = ExtResource("14_ji21h")
-volume_db = -6.958
+volume_db = -4.242
 bus = &"VoiceJingles"
 
 [node name="eelJingle" type="AudioStreamPlayer" parent="." unique_id=1303719987]
@@ -90,5 +92,15 @@ bus = &"VoiceJingles"
 
 [node name="raccoonJingle" type="AudioStreamPlayer" parent="." unique_id=1088673230]
 stream = ExtResource("16_qus7j")
-volume_db = -7.324
+volume_db = -5.772
 bus = &"VoiceJingles"
+
+[node name="roar" type="AudioStreamPlayer" parent="." unique_id=1459058579]
+stream = ExtResource("17_qus7j")
+volume_db = -10.62
+bus = &"Sfx"
+
+[node name="suck" type="AudioStreamPlayer" parent="." unique_id=214758860]
+stream = ExtResource("18_tu6k2")
+volume_db = -13.183
+bus = &"Sfx"

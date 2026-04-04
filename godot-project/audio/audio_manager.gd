@@ -15,6 +15,8 @@ extends Node2D
 @onready var rulerTwang = $rulerTwang
 @onready var poof = $poof
 @onready var stampede = $stampede
+@onready var roar = $roar
+@onready var suck = $suck
 
 #Voices/Jingles
 @onready var crabJingle = $crabJingle

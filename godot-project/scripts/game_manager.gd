@@ -109,7 +109,7 @@ func _process(delta):
 				spawn_enemy(ENEMIES[2])
 			elif spawn_counter % 15 == 0:
 				# Snake
-				spawn_enemy(ENEMIES[1])
+				spawn_enemy(ENEMIES[4])
 			else:
 				# Crab
 				spawn_enemy(ENEMIES[0])

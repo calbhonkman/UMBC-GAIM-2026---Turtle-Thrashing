@@ -39,6 +39,7 @@
 [ext_resource type="Script" uid="uid://cypit3nrwog1x" path="res://scripts/level_up.gd" id="29_sgl2t"]
 [ext_resource type="Texture2D" uid="uid://b7a6bfks24i60" path="res://assets/Turtle/Upgrade Icons/(icon)_BLANK.png" id="30_wljb1"]
 [ext_resource type="Texture2D" uid="uid://bi547l6xmt1jk" path="res://assets/Damage Vignette.png" id="31_v2yb1"]
+[ext_resource type="PackedScene" uid="uid://h840sm3fnray" path="res://prefabs/enemies/(enemy)_bush.tscn" id="33_8ool0"]
 [ext_resource type="Script" uid="uid://b7jd3dyuq3laq" path="res://scenes/master_slider.gd" id="36_m4url"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
@@ -220,7 +221,7 @@ position = Vector2(676.66656, -1770)
 rotation = -6.221928
 shape = SubResource("RectangleShape2D_0tnpc")
 
-[node name="Player" type="CharacterBody2D" parent="." unique_id=1744978302]
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1744978302 groups=["Player"]]
 z_index = 1
 script = ExtResource("1_yqjtg")
 upgrade_descriptions = Array[String](["Max Health +1", "Pickup Range +25%", "Movement Speed +50%"])
@@ -231,7 +232,7 @@ scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_vtaks")
 animation = &"walk"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1318562977]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1318562977 groups=["Player"]]
 scale = Vector2(1, 0.7)
 shape = SubResource("CircleShape2D_pl11u")
 
@@ -339,7 +340,7 @@ process_mode = 3
 z_index = 4
 script = ExtResource("9_0tnpc")
 FOOD = Array[Resource]([ExtResource("19_bhx41")])
-ENEMIES = Array[Resource]([ExtResource("19_e1j6l"), ExtResource("20_pl11u"), ExtResource("21_bhx41"), ExtResource("23_pl11u")])
+ENEMIES = Array[Resource]([ExtResource("19_e1j6l"), ExtResource("20_pl11u"), ExtResource("21_bhx41"), ExtResource("23_pl11u"), ExtResource("33_8ool0")])
 ELITES = Array[Resource]([ExtResource("22_qnb83"), ExtResource("25_qnb83")])
 
 [node name="Camera" type="Camera2D" parent="GameManager" unique_id=1356503637]
