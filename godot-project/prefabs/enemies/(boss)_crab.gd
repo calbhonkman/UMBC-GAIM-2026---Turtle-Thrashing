@@ -31,6 +31,7 @@ var anti_knockback_position = null
 func _ready():
 	health = MAX_HEALTH
 	anti_knockback_position = global_position
+	AudioManager.crabJingle.play()
 
 func _process(delta):
 	if player:
@@ -75,6 +76,7 @@ func _process(delta):
 						if area == player.hitbox:
 							player.damage(1)
 					sprite.play("slam2")
+					AudioManager.slam.play()
 			"slamming part two":
 				if not sprite.is_playing():
 					mode = "default"
@@ -102,6 +104,7 @@ func _process(delta):
 						if area == player.hitbox:
 							player.damage(1)
 					sprite.play("jump2")
+					AudioManager.slam.play()
 			"jumping part two":
 				if not sprite.is_playing():
 					mode = "default"
@@ -111,11 +114,13 @@ func _process(delta):
 					mode = "charging part two"
 					mode_timer = CHARGE_DURATION
 					sprite.play("charge2")
+					AudioManager.stampede.play()
 			"charging part two":
 				if mode_timer <= 0.0:
 					mode = "default"
 					mode_timer = CHARGE_COOLDOWN
 					sprite.play("default")
+					AudioManager.stampede.stop()
 				else:
 					global_position += charge_direction * (3.0 * BASE_SPEED) * delta
 					anti_knockback_position = global_position

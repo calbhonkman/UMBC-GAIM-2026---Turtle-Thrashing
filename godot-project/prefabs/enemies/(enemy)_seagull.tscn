@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://cjwmklbpd0qqs"]
+
+[ext_resource type="Script" path="res://scripts/enemies/(enemy)_seagull.gd" id="1_314as"]
+[ext_resource type="Texture2D" uid="uid://b7cb0wvoluasd" path="res://assets/Enemies/BasicEnemies/Seagull/Bird shadow.png" id="2_jwc44"]
+[ext_resource type="Texture2D" uid="uid://8ygf0q303pyc" path="res://assets/Enemies/BasicEnemies/Seagull/Bird dive bomb.png" id="3_5d6mm"]
+[ext_resource type="Texture2D" uid="uid://dxirir0ix8x2e" path="res://assets/Enemies/BasicEnemies/Seagull/Bird dirt land.png" id="4_jwc44"]
+[ext_resource type="Texture2D" uid="uid://diciawdrw86kp" path="res://assets/Enemies/BasicEnemies/Seagull/Bird dirt escape/Bird dirt escape_046.png" id="4_qgmfd"]
+[ext_resource type="Texture2D" uid="uid://bdo4c0jhmixmp" path="res://assets/Enemies/BasicEnemies/Seagull/Bird dirt escape/Bird dirt escape_001.png" id="5_ukbtu"]
+[ext_resource type="Texture2D" uid="uid://47r5q5y3oat2" path="res://assets/Enemies/BasicEnemies/Seagull/Bird dirt escape/Bird dirt escape_023.png" id="7_qgmfd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17m8f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jwc44")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5d6mm")
+}],
+"loop": true,
+"name": &"dive",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_qgmfd")
+}],
+"loop": true,
+"name": &"escape",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jwc44")
+}],
+"loop": true,
+"name": &"land",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ukbtu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qgmfd")
+}],
+"loop": true,
+"name": &"struggle",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8w3ar"]
+radius = 30.52
+
+[node name="Area2D" type="Area2D" unique_id=1424500926 groups=["Enemies"]]
+script = ExtResource("1_314as")
+metadata/enemy = ""
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2025924635]
+position = Vector2(-2, -8)
+scale = Vector2(0.07, 0.07)
+sprite_frames = SubResource("SpriteFrames_17m8f")
+animation = &"struggle"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=85199956]
+scale = Vector2(1, 0.45)
+shape = SubResource("CircleShape2D_8w3ar")

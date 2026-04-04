@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dy0b5qc2ofh0e"
+path="res://.godot/imported/ruler twang.wav-f7387bd9d872fcee8bfc7d9ec3c58cde.sample"
+
+[deps]
+
+source_file="res://audio/sfx/ruler twang.wav"
+dest_files=["res://.godot/imported/ruler twang.wav-f7387bd9d872fcee8bfc7d9ec3c58cde.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

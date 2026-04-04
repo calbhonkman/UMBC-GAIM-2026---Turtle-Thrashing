@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqc576g2j6vgi"
-path="res://.godot/imported/Cherry Health.png-17090b0522e0596bc1b17bab6bf98f9b.ctex"
+uid="uid://b0sfyq3kp5x6o"
+path="res://.godot/imported/Bush attack1.PNG-466bb603b228fa8c45c88d77e2ec03a9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Cherry Health.png"
-dest_files=["res://.godot/imported/Cherry Health.png-17090b0522e0596bc1b17bab6bf98f9b.ctex"]
+source_file="res://assets/Enemies/BasicEnemies/Bush/Bush attack1.PNG"
+dest_files=["res://.godot/imported/Bush attack1.PNG-466bb603b228fa8c45c88d77e2ec03a9.ctex"]
 
 [params]
 

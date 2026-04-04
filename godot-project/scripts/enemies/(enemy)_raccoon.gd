@@ -83,6 +83,7 @@ func _process(delta):
 					b_lifetime.append(BULLET_LIFETIME)
 					b_amount += 1
 			"dying":
+				AudioManager.poof.play()
 				var new_xp = EXP.instantiate()
 				get_parent().add_child(new_xp)
 				new_xp.global_position = global_position

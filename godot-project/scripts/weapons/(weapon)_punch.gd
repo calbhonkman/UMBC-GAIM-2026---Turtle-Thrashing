@@ -79,6 +79,7 @@ func is_enemy_in_area(area: Area2D):
 	return false
 
 func spawn_bullet():
+	AudioManager.whoosh.play()
 	var new_bullet = BULLET.instantiate()
 	add_child(new_bullet)
 	new_bullet.global_position = global_position

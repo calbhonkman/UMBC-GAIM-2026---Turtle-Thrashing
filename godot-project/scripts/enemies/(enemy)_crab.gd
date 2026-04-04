@@ -28,6 +28,7 @@ func _process(delta):
 		scale = Vector2(1,1) * clamp(0.75 * dying_timer / DYING_TIME, 0.0, 0.75)
 		sprite.modulate = Color(1,0,0,clamp(0.5 * dying_timer / DYING_TIME, 0.0, 0.5))
 	elif dying and dying_timer <= 0.0:
+		AudioManager.poof.play()
 		for i in EXP_AMOUNT:
 			var new_xp = EXP.instantiate()
 			get_parent().add_child(new_xp)

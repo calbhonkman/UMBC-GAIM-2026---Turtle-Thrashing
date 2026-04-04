@@ -8,6 +8,14 @@
 [ext_resource type="AudioStream" uid="uid://bj6a6kot3ibb4" path="res://audio/sfx/cloud.wav" id="6_6wlj3"]
 [ext_resource type="AudioStream" uid="uid://q0aabd7k2bqb" path="res://audio/sfx/slap.wav" id="7_0xv67"]
 [ext_resource type="AudioStream" uid="uid://c7lhdskruce6d" path="res://audio/sfx/eat.wav" id="8_oyqdx"]
+[ext_resource type="AudioStream" uid="uid://dgkvbe34ptu3w" path="res://audio/sfx/slam.wav" id="9_0xv67"]
+[ext_resource type="AudioStream" uid="uid://cbbwpfxrei7jv" path="res://audio/sfx/whoosh.wav" id="10_oyqdx"]
+[ext_resource type="AudioStream" uid="uid://dy0b5qc2ofh0e" path="res://audio/sfx/ruler twang.wav" id="11_h3g62"]
+[ext_resource type="AudioStream" uid="uid://dvmm8biprm6dw" path="res://audio/sfx/poof.wav" id="12_gnfy0"]
+[ext_resource type="AudioStream" uid="uid://b34o066lcir1i" path="res://audio/sfx/stampede.wav" id="13_pyj8m"]
+[ext_resource type="AudioStream" uid="uid://652fan4463dg" path="res://audio/voiceAndJingles/crabJingle.wav" id="14_ji21h"]
+[ext_resource type="AudioStream" uid="uid://dphts7nq3sqwb" path="res://audio/voiceAndJingles/eelJingle.wav" id="15_sgp2o"]
+[ext_resource type="AudioStream" uid="uid://b4skiu18au37m" path="res://audio/voiceAndJingles/raccoonKingJingle.wav" id="16_qus7j"]
 
 [node name="AudioManager" type="Node2D" unique_id=1292916551]
 script = ExtResource("1_drlug")
@@ -44,3 +52,40 @@ volume_db = -6.225
 [node name="eat" type="AudioStreamPlayer" parent="." unique_id=979804591]
 stream = ExtResource("8_oyqdx")
 volume_db = -4.761
+
+[node name="slam" type="AudioStreamPlayer" parent="." unique_id=1643878307]
+stream = ExtResource("9_0xv67")
+volume_db = -12.408
+bus = &"Sfx"
+
+[node name="whoosh" type="AudioStreamPlayer" parent="." unique_id=1342948152]
+stream = ExtResource("10_oyqdx")
+volume_db = -11.352
+bus = &"Sfx"
+
+[node name="rulerTwang" type="AudioStreamPlayer" parent="." unique_id=960177998]
+stream = ExtResource("11_h3g62")
+volume_db = -10.323
+bus = &"Sfx"
+
+[node name="poof" type="AudioStreamPlayer" parent="." unique_id=286992195]
+stream = ExtResource("12_gnfy0")
+volume_db = -12.085
+bus = &"Sfx"
+
+[node name="stampede" type="AudioStreamPlayer" parent="." unique_id=590623958]
+stream = ExtResource("13_pyj8m")
+volume_db = -12.817
+bus = &"Sfx"
+
+[node name="crabJingle" type="AudioStreamPlayer" parent="." unique_id=21430267]
+stream = ExtResource("14_ji21h")
+volume_db = -6.958
+
+[node name="eelJingle" type="AudioStreamPlayer" parent="." unique_id=1303719987]
+stream = ExtResource("15_sgp2o")
+volume_db = -6.225
+
+[node name="raccoonJingle" type="AudioStreamPlayer" parent="." unique_id=1088673230]
+stream = ExtResource("16_qus7j")
+volume_db = -7.324

@@ -19,6 +19,9 @@ var dying: bool = false
 var dying_timer: float = DYING_TIME
 @export var EXP_AMOUNT: int = 1
 
+func _ready():
+	AudioManager.raccoonJingle.play()
+
 # Other enemies may not have these variables:
 @export var ATTACK_RANGE: float = 350.0
 @export var ATTACK_COOLDOWN: float = 4.0
