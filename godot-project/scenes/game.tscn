@@ -39,6 +39,7 @@
 [ext_resource type="Script" uid="uid://cypit3nrwog1x" path="res://scripts/level_up.gd" id="29_sgl2t"]
 [ext_resource type="Texture2D" uid="uid://b7a6bfks24i60" path="res://assets/Turtle/Upgrade Icons/(icon)_BLANK.png" id="30_wljb1"]
 [ext_resource type="Texture2D" uid="uid://bi547l6xmt1jk" path="res://assets/Damage Vignette.png" id="31_v2yb1"]
+[ext_resource type="Script" uid="uid://b7jd3dyuq3laq" path="res://scenes/master_slider.gd" id="36_m4url"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
 size = Vector2(1312.9883, 50)
@@ -427,6 +428,104 @@ offset_right = 438.0
 offset_bottom = 276.0
 theme_override_font_sizes/font_size = 48
 text = "Main Menu"
+
+[node name="Volume Sliders" type="Node2D" parent="GameManager/Camera/[Paused]" unique_id=855284335]
+
+[node name="Master Slider" type="HSlider" parent="GameManager/Camera/[Paused]/Volume Sliders" unique_id=238248232]
+offset_left = 664.0
+offset_top = -494.0
+offset_right = 850.0
+offset_bottom = -478.0
+max_value = 1.0
+step = 0.001
+script = ExtResource("36_m4url")
+bus_name = "Master"
+
+[node name="Music Slider" type="HSlider" parent="GameManager/Camera/[Paused]/Volume Sliders" unique_id=696589319]
+offset_left = 664.0
+offset_top = -456.0
+offset_right = 850.0
+offset_bottom = -440.0
+max_value = 1.0
+step = 0.001
+script = ExtResource("36_m4url")
+bus_name = "Music"
+
+[node name="SFX Slider" type="HSlider" parent="GameManager/Camera/[Paused]/Volume Sliders" unique_id=1956064427]
+offset_left = 664.0
+offset_top = -419.0
+offset_right = 850.0
+offset_bottom = -403.0
+max_value = 1.0
+step = 0.001
+script = ExtResource("36_m4url")
+bus_name = "Sfx"
+
+[node name="Voice_Jingle Slider" type="HSlider" parent="GameManager/Camera/[Paused]/Volume Sliders" unique_id=1567752302]
+offset_left = 664.0
+offset_top = -381.0
+offset_right = 850.0
+offset_bottom = -365.0
+max_value = 1.0
+step = 0.001
+script = ExtResource("36_m4url")
+bus_name = "VoiceJingles"
+
+[node name="Master" type="Label" parent="GameManager/Camera/[Paused]/Volume Sliders" unique_id=178594055]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 671.0
+offset_top = -529.0
+offset_right = 847.0
+offset_bottom = -495.0
+grow_horizontal = 2
+text = "Master Volume"
+label_settings = SubResource("LabelSettings_ssvqc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Music" type="Label" parent="GameManager/Camera/[Paused]/Volume Sliders" unique_id=407057039]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 671.0
+offset_top = -485.0
+offset_right = 847.0
+offset_bottom = -451.0
+grow_horizontal = 2
+text = "Music Volume"
+label_settings = SubResource("LabelSettings_ssvqc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Sfx" type="Label" parent="GameManager/Camera/[Paused]/Volume Sliders" unique_id=1066419529]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 671.0
+offset_top = -447.0
+offset_right = 847.0
+offset_bottom = -413.0
+grow_horizontal = 2
+text = "Sfx Volume"
+label_settings = SubResource("LabelSettings_ssvqc")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Voice_Jingle" type="Label" parent="GameManager/Camera/[Paused]/Volume Sliders" unique_id=572837903]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 644.5
+offset_top = -410.0
+offset_right = 873.5
+offset_bottom = -376.0
+grow_horizontal = 2
+text = "Voice/Jingle Volume"
+label_settings = SubResource("LabelSettings_ssvqc")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="[Level Up]" type="Node2D" parent="GameManager/Camera" unique_id=1735115605 node_paths=PackedStringArray("upgradeables", "upgrade_buttons")]
 visible = false
