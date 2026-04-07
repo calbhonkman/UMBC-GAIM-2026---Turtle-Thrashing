@@ -34,6 +34,7 @@ var target_position
 @export var LAND_TIME: float = 2.0
 @export var STRUGGLE_TIME: float = 5.0
 @export var DIVE_SPEED: float = 1000.0
+var anti_knockback_position = null
 
 func _ready():
 	dive_box.disabled = true
@@ -100,14 +101,18 @@ func _process(delta):
 					mode_timer = max(0, mode_timer - delta)
 					if mode_timer == 0:
 						mode = "struggle"
+						anti_knockback_position = global_position
 						mode_timer = STRUGGLE_TIME
 						sprite.play("struggle")
 				"struggle":
 					mode_timer = max(0, mode_timer - delta)
 					if mode_timer == 0:
 						mode = "escape"
+						anti_knockback_position = null
 						hitbox.disabled = true
 						sprite.play("escape")
+					else:
+						global_position = anti_knockback_position
 				"escape":
 					await sprite.animation_finished
 					mode_timer = COOLDOWN_TIME

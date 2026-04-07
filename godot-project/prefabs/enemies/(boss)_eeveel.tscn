@@ -50,7 +50,7 @@ radius = 78.160095
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3nyoy"]
 size = Vector2(565, 314)
 
-[node name="Area2D" type="Area2D" unique_id=1711400772 groups=["Enemies"]]
+[node name="(boss)_Eeveel" type="Area2D" unique_id=1711400772 groups=["Enemies"]]
 script = ExtResource("1_42qmj")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1910162732]

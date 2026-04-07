@@ -33,7 +33,7 @@ var mode = "default"
 var mode_timer = 0.0
 
 const LIGHTNING = preload("uid://2rpf5ee3ixmd")
-@export var STRIKE_COOLDOWN: float = 0.5
+@export var STRIKE_COOLDOWN: float = 1.0
 var strike_timer = 0.0
 
 func _ready():
