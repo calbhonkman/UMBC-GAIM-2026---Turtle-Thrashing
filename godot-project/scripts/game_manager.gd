@@ -40,11 +40,16 @@ var boss = null
 
 var pausable = true
 
+@export var EXP_HUE_SPEED: float = 2.0
+var exp_hue: float = 0.0
+
 func _ready():
 	remaining_elites = ELITES.duplicate()
 
 func _process(delta):
-	if not get_tree().paused and not AudioManager.music.playing:
+	exp_hue = wrapf(exp_hue + (EXP_HUE_SPEED * delta), 0.0, 1.0)
+	
+	if not AudioManager.music.playing:
 		AudioManager.music.play()
 	
 	var cam_limit_x = CAMERA_LIMIT - (get_viewport().get_visible_rect().size.x/2)
@@ -91,47 +96,65 @@ func _process(delta):
 		
 		if game_timer >= (WAVE_TIME * current_wave) and boss == null:
 			clear_enemies()
-			boss = spawn_enemy(remaining_elites.pop_at(randi_range(0, remaining_elites.size()-1)))
+			boss = spawn(remaining_elites.pop_at(randi_range(0, remaining_elites.size()-1)))
 			boss_fight = true
 		
 		if game_timer >= next_spawn_time:
-			if boss_fight and boss.name == "(boss)_Raccoon":
-				# Small Raccoon
-				spawn_enemy(ENEMIES[3])
-			elif boss_fight and boss.name == "(boss)_Crab":
-				# Small Crab
-				spawn_enemy(ENEMIES[0])
-			elif spawn_counter % 60 == 0:
-				spawn_enemy(FOOD[0])
-			elif spawn_counter % 20 == 0:
-				# Turtle
-				spawn_enemy(ENEMIES[2])
-				spawn_enemy(ENEMIES[2])
-			elif spawn_counter % 15 == 0:
-				# Snake
-				spawn_enemy(ENEMIES[4])
+			if boss_fight:
+				if boss.name == "(boss)_Raccoon":
+					# Small Raccoon
+					spawn(ENEMIES[3])
+				elif boss.name == "(boss)_Crab":
+					# Small Crab
+					spawn(ENEMIES[0])
 			else:
-				# Crab
-				spawn_enemy(ENEMIES[0])
+				if spawn_counter % 60 == 0:
+					spawn(FOOD[0])
+				if current_wave >= 1 and spawn_counter % 20 == 0:
+					if current_wave == 1:
+						spawn(ENEMIES[1]) # Snake
+					if current_wave == 2:
+						spawn(ENEMIES[5]) # Seagull
+						spawn(ENEMIES[5]) # Seagull
+						spawn(ENEMIES[5]) # Seagull
+					if current_wave == 3:
+						spawn(ENEMIES[4]) # Bush
+				if current_wave >= 2 and spawn_counter % 15 == 0:
+					if current_wave == 2:
+						spawn(ENEMIES[2]) # Turtle
+					if current_wave == 3:
+						spawn(ENEMIES[5]) # Seagull
+						spawn(ENEMIES[5]) # Seagull
+						spawn(ENEMIES[5]) # Seagull
+				elif current_wave >= 2 and spawn_counter % 10 == 0:
+					if current_wave == 2:
+						spawn(ENEMIES[1]) # Snake
+					if current_wave == 3:
+						spawn(ENEMIES[2]) # Turtle
+				elif current_wave >= 3 and spawn_counter % 5 == 0:
+					spawn(ENEMIES[1]) # Snake
+				else:
+					spawn(ENEMIES[0]) # Crab
 
 func clear_enemies():
 	for child in enemies_group.get_children():
 		if child.is_in_group("Enemies"):
 			child.queue_free()
 
-func spawn_enemy(enemy: Resource):
-	var new_enemy = enemy.instantiate()
-	enemies_group.add_child(new_enemy)
-	new_enemy.global_position = player.global_position + (SPAWN_AREA * Vector2.LEFT).rotated(randf_range(0, 2*PI))
-	if new_enemy.get_script():
-		new_enemy.scale_health(1 + (game_timer / 60.0))
+func spawn(entity: Resource):
+	var new_spawn = entity.instantiate()
+	enemies_group.add_child(new_spawn)
+	new_spawn.global_position = player.global_position + (SPAWN_AREA * Vector2.LEFT).rotated(randf_range(0, 2*PI))
+	if new_spawn.get_script():
+		new_spawn.scale_health(1 + (game_timer / 60.0))
 	next_spawn_time += 1.0 - (0.5 * current_wave / NUM_WAVES)
 	spawn_counter += 1
-	return new_enemy
+	return new_spawn
 
 func _on_button_main_menu_pressed():
 	get_tree().paused = false
-	AudioManager.music.stop()
+	for child in AudioManager.get_children():
+		child.stop()
 	get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
 
 func _on_button_continue_pressed():

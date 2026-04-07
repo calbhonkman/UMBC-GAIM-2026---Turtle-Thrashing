@@ -40,7 +40,6 @@ radius = 82.79829
 
 [node name="BgEnemy" type="Area2D" unique_id=2078753937 groups=["Enemies"]]
 script = ExtResource("1_biv0o")
-MAX_HEALTH = 3.0
 metadata/enemy = ""
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1183113898]

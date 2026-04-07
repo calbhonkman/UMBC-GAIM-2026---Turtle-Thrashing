@@ -9,7 +9,7 @@ extends Area2D
 @export var CAMERA_LIMIT: float = 1600.0
 const EXP = preload("uid://bln5qlwy18sjf")
 
-@export var MAX_HEALTH: float = 1.0
+@export var MAX_HEALTH: float = 2.0
 var health: float = MAX_HEALTH
 
 @export var BASE_MOVE_SPEED: float = 40.0
@@ -52,7 +52,7 @@ func _process(delta):
 		sprite.modulate = Color(1,0,0,clamp(0.5 * dying_timer / DYING_TIME, 0.0, 0.5))
 	elif dying and dying_timer <= 0.0:
 		AudioManager.poof.play()
-		for i in EXP_AMOUNT:
+		for i in round(MAX_HEALTH):
 			var new_xp = EXP.instantiate()
 			get_parent().add_child(new_xp)
 			new_xp.global_position = global_position
@@ -82,7 +82,6 @@ func _process(delta):
 					if mode_timer == 0:
 						rotation = 90
 						mode = "dive"
-						hitbox.disabled = false
 						warning_sprite.visible = false
 						sprite.visible = true
 						sprite.play("default")
@@ -94,6 +93,7 @@ func _process(delta):
 						rotation = 0
 						mode = "land"
 						mode_timer = LAND_TIME
+						hitbox.disabled = false
 						sprite.play("land")
 						AudioManager.rulerTwang.play()
 				"land":
@@ -112,6 +112,7 @@ func _process(delta):
 					await sprite.animation_finished
 					mode_timer = COOLDOWN_TIME
 					mode = "default"
+					hitbox.disabled = true
 					sprite.visible = false
 
 func scale_health(s: float):

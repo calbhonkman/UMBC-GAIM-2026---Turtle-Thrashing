@@ -6,7 +6,7 @@ extends Area2D
 @onready var hitbox_suck = $"(hitbox)_suck/CollisionShape2D"
 const EXP = preload("uid://bln5qlwy18sjf")
 
-@export var MAX_HEALTH: float = 2.0
+@export var MAX_HEALTH: float = 4.0
 var health: float = MAX_HEALTH
 
 @export var BASE_MOVE_SPEED: float = 20.0
@@ -22,9 +22,9 @@ var dying_timer: float = DYING_TIME
 @export var EXP_AMOUNT: int = 1
 
 # Other enemies may not have these variables:
-@export var SUCK_STRENGTH: float = 100
-@export var SUCK_RANGE: float = 125.0
-@export var HOSTILE_RANGE: float = 350.0
+@export var SUCK_STRENGTH: float = 150.0
+@export var SUCK_RANGE: float = 150.0
+@export var HOSTILE_RANGE: float = 400.0
 @export var HOSTILE_SPEED: float = 150.0
 var mode = "default"
 
@@ -41,7 +41,7 @@ func _process(delta):
 		sprite.modulate = Color(1,0,0,clamp(0.5 * dying_timer / DYING_TIME, 0.0, 0.5))
 	elif dying and dying_timer <= 0.0:
 		AudioManager.poof.play()
-		for i in EXP_AMOUNT:
+		for i in round(MAX_HEALTH):
 			var new_xp = EXP.instantiate()
 			get_parent().add_child(new_xp)
 			new_xp.global_position = global_position
@@ -61,11 +61,11 @@ func _process(delta):
 				"default":
 					global_position += playerDirection * delta * move_speed
 					sprite.play("default")
-					if (player.global_position - global_position).length() < HOSTILE_RANGE:
+					if (player.global_position - global_position).length() <= HOSTILE_RANGE:
 						mode = "unleash hostile"
 						AudioManager.roar.play()
 						sprite.play("unleash")
-					elif abs(player.global_position.y - global_position.y) < SUCK_RANGE:
+					elif abs(player.global_position.y - global_position.y) <= SUCK_RANGE:
 						mode = "unleash suck"
 						AudioManager.suck.play()
 						sprite.play("unleash")
@@ -77,7 +77,7 @@ func _process(delta):
 					_go_to_suck()
 				"hostile":
 					global_position += playerDirection * delta * HOSTILE_SPEED
-					if abs(player.global_position.y - global_position.y) > HOSTILE_RANGE:
+					if (player.global_position - global_position).length() > HOSTILE_RANGE:
 						hitbox_suck.disabled = true
 						mode = "retract"
 						sprite.play("retract")

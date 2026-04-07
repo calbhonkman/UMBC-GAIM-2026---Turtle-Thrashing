@@ -99,8 +99,7 @@ func _process(delta):
 					global_position += player_dir * move_speed * delta * 1.5
 					anti_knockback_position = global_position
 			"dead":
-				if not sprite.is_playing():
-					queue_free()
+				queue_free()
 
 func scale_health(s: float):
 	health = MAX_HEALTH * s

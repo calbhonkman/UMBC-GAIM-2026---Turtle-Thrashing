@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://52wq8vsmkgm0" path="res://audio/sfx/suck.wav" id="18_tu6k2"]
 
 [node name="AudioManager" type="Node2D" unique_id=1292916551]
+process_mode = 3
 script = ExtResource("1_drlug")
 
 [node name="music" type="AudioStreamPlayer" parent="." unique_id=921189905]
