@@ -57,7 +57,7 @@ func _process(delta):
 					mode = "hunting"
 					sprite.play("walk")
 			"hunting":
-				if player.hitbox in hitbox_slam.get_overlapping_areas():
+				if (player.global_position - hitbox_slam.global_position).length() < ($"(hitbox)_slam/CollisionShape2D".shape.radius / 2.0):
 					mode = "slamming part one"
 					sprite.play("slam1")
 				elif (abs(player_vect.x) >= (get_viewport_rect().size.x / 2)) or (abs(player_vect.y) >= (get_viewport_rect().size.y / 2)):

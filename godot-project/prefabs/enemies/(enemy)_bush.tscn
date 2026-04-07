@@ -91,7 +91,7 @@ radius = 69.0
 height = 342.22226
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ddjay"]
-size = Vector2(934.25, 442.22223)
+size = Vector2(1860.125, 442.22223)
 
 [node name="Area2D" type="Area2D" unique_id=1424500926 groups=["Enemies"]]
 script = ExtResource("1_ubuuv")
@@ -112,6 +112,6 @@ shape = SubResource("CapsuleShape2D_ddjay")
 position = Vector2(37, 223)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="(hitbox)_suck" unique_id=913178873]
-position = Vector2(494.875, -217.00002)
+position = Vector2(956.9375, -227.00002)
 scale = Vector2(1, 0.45)
 shape = SubResource("RectangleShape2D_ddjay")

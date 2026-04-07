@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://ntiukiv8fvqy"]
 
 [ext_resource type="Texture2D" uid="uid://6xkvqmlyvi7" path="res://assets/Turtle/Random Attacks/Flamestarter/Fire_01.png" id="1_15q4a"]
-[ext_resource type="Script" uid="uid://oed8i3jyhko0" path="res://prefabs/weapons/(bullet)_flamestarter.gd" id="1_87ue2"]
+[ext_resource type="Script" uid="uid://oed8i3jyhko0" path="res://scripts/weapons/(bullet)_flamestarter.gd" id="1_87ue2"]
 [ext_resource type="Texture2D" uid="uid://bt1j7uuuh2w02" path="res://assets/Turtle/Random Attacks/Flamestarter/Fire_02.png" id="2_87ue2"]
 [ext_resource type="Texture2D" uid="uid://doapnmcj2oplf" path="res://assets/Turtle/Random Attacks/Flamestarter/Fire_03.png" id="3_wfel8"]
 

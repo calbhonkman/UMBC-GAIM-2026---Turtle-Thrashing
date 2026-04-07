@@ -35,6 +35,7 @@ radius = 56.008926
 script = ExtResource("1_g2mf7")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1300365747]
+modulate = Color(1, 1, 1, 0.70000005)
 z_index = 1
 position = Vector2(0, -110)
 scale = Vector2(0.2, 0.2)
