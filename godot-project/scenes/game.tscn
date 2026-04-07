@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://b7a6bfks24i60" path="res://assets/Turtle/Upgrade Icons/(icon)_BLANK.png" id="30_wljb1"]
 [ext_resource type="Texture2D" uid="uid://bi547l6xmt1jk" path="res://assets/Damage Vignette.png" id="31_v2yb1"]
 [ext_resource type="PackedScene" uid="uid://h840sm3fnray" path="res://prefabs/enemies/(enemy)_bush.tscn" id="33_8ool0"]
+[ext_resource type="PackedScene" uid="uid://cjwmklbpd0qqs" path="res://prefabs/enemies/(enemy)_seagull.tscn" id="34_pr1ej"]
 [ext_resource type="Script" uid="uid://b7jd3dyuq3laq" path="res://scenes/master_slider.gd" id="36_m4url"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
@@ -340,7 +341,7 @@ process_mode = 3
 z_index = 4
 script = ExtResource("9_0tnpc")
 FOOD = Array[Resource]([ExtResource("19_bhx41")])
-ENEMIES = Array[Resource]([ExtResource("19_e1j6l"), ExtResource("20_pl11u"), ExtResource("21_bhx41"), ExtResource("23_pl11u"), ExtResource("33_8ool0")])
+ENEMIES = Array[Resource]([ExtResource("19_e1j6l"), ExtResource("20_pl11u"), ExtResource("21_bhx41"), ExtResource("23_pl11u"), ExtResource("33_8ool0"), ExtResource("34_pr1ej")])
 ELITES = Array[Resource]([ExtResource("22_qnb83"), ExtResource("25_qnb83")])
 
 [node name="Camera" type="Camera2D" parent="GameManager" unique_id=1356503637]

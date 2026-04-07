@@ -47,7 +47,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("8_27g3v")
 }],
-"loop": true,
+"loop": false,
 "name": &"escape",
 "speed": 8.0
 }, {
@@ -95,11 +95,9 @@ metadata/enemy = ""
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2025924635]
 position = Vector2(-2, -8)
-scale = Vector2(0.07, 0.07)
+scale = Vector2(0.115, 0.115)
 sprite_frames = SubResource("SpriteFrames_17m8f")
-animation = &"escape"
 autoplay = "default"
-frame_progress = 0.47930804
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=85199956]
 position = Vector2(-5, -16)
@@ -108,7 +106,7 @@ shape = SubResource("CapsuleShape2D_7sb6d")
 
 [node name="WarningSprite" type="AnimatedSprite2D" parent="." unique_id=1839267535]
 position = Vector2(-17, -11.000001)
-scale = Vector2(0.165, 0.165)
+scale = Vector2(0.235, 0.235)
 sprite_frames = SubResource("SpriteFrames_7sb6d")
 
 [node name="DiveBox" type="CollisionShape2D" parent="." unique_id=199897782]

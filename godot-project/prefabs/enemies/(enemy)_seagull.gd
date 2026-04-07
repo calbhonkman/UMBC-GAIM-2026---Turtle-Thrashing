@@ -5,6 +5,8 @@ extends Area2D
 @onready var warning_sprite = $WarningSprite
 @onready var dive_box = $DiveBox
 @onready var hitbox = $CollisionShape2D
+@onready var camera = $"/root/Node2D/GameManager/Camera"
+@export var CAMERA_LIMIT: float = 1600.0
 const EXP = preload("uid://bln5qlwy18sjf")
 
 @export var MAX_HEALTH: float = 1.0
@@ -25,11 +27,20 @@ var dying_timer: float = DYING_TIME
 # Other enemies may not have these variables:
 var mode = "default"
 var mode_timer
+var dive_area: Rect2
+var target_position
+@export var COOLDOWN_TIME: float = 5.0
+@export var WARNING_TIME: float = 2.0
+@export var LAND_TIME: float = 2.0
 @export var STRUGGLE_TIME: float = 5.0
 @export var DIVE_SPEED: float = 1000.0
 
 func _ready():
+	dive_box.disabled = true
 	hitbox.disabled = true
+	sprite.visible = false
+	warning_sprite.visible = false
+	mode_timer = COOLDOWN_TIME
 
 func _process(delta):
 	scale = Vector2(1,1) * (0.75 + clamp(0.25 * health / MAX_HEALTH, 0.0, 0.25))
@@ -53,11 +64,55 @@ func _process(delta):
 				stunned = false
 				sprite.modulate = Color(1,1,1,1)
 		else: 	
-			var playerDirection = player.global_position - global_position
-			playerDirection = playerDirection / playerDirection.length()
-			global_position += playerDirection * delta * move_speed
-			sprite.scale.x = -1 * abs(sprite.scale.x) * playerDirection.x / abs(playerDirection.x) if playerDirection.x != 0 else sprite.scale.x
-			sprite.play("walk")
+			match mode:
+				"default":
+					mode_timer = max(0, mode_timer - delta)
+					if mode_timer == 0:
+						mode = "target"
+						dive_box.global_position = player.global_position
+						dive_area = dive_box.shape.get_rect()
+						var x = randi_range(dive_area.position.x, dive_area.position.x + dive_area.size.x)
+						var y = randi_range(dive_area.position.y, dive_area.position.y + dive_area.size.y)
+						target_position = dive_box.global_position + Vector2(x,y)
+						warning_sprite.global_position = target_position
+						warning_sprite.visible = true
+						mode_timer = WARNING_TIME
+				"target":
+					mode_timer = max(0, mode_timer - delta)
+					if mode_timer == 0:
+						rotation = 90
+						mode = "dive"
+						hitbox.disabled = false
+						warning_sprite.visible = false
+						sprite.visible = true
+						sprite.play("default")
+						global_position.y = camera.global_position.y - CAMERA_LIMIT / 2
+						global_position.x = target_position.x
+				"dive":
+					global_position.y += DIVE_SPEED * delta
+					if global_position.y >= target_position.y:
+						rotation = 0
+						mode = "land"
+						mode_timer = LAND_TIME
+						sprite.play("land")
+						AudioManager.rulerTwang.play()
+				"land":
+					mode_timer = max(0, mode_timer - delta)
+					if mode_timer == 0:
+						mode = "struggle"
+						mode_timer = STRUGGLE_TIME
+						sprite.play("struggle")
+				"struggle":
+					mode_timer = max(0, mode_timer - delta)
+					if mode_timer == 0:
+						mode = "escape"
+						hitbox.disabled = true
+						sprite.play("escape")
+				"escape":
+					await sprite.animation_finished
+					mode_timer = COOLDOWN_TIME
+					mode = "default"
+					sprite.visible = false
 
 func scale_health(s: float):
 	MAX_HEALTH *= s
