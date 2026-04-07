@@ -35,6 +35,7 @@ func prepare_to_upgrade():
 		upgrade_buttons[i].icon = upgradeables[selected_upgrades[i].x].upgrade_icon
 	visible = true
 	ready_to_upgrade = true
+	AudioManager.levelUp.play()
 
 func select_upgrades():
 	selected_upgrades = []

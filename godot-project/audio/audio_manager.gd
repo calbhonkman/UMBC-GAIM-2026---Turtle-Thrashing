@@ -17,8 +17,10 @@ extends Node2D
 @onready var stampede = $stampede
 @onready var roar = $roar
 @onready var suck = $suck
+@onready var hurt = $hurt
 
 #Voices/Jingles
 @onready var crabJingle = $crabJingle
 @onready var eelJingle = $eelJingle
 @onready var raccoonJingle = $raccoonJingle
+@onready var levelUp = $levelUp
