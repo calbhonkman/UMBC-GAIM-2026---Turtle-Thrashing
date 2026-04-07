@@ -19,9 +19,6 @@ var dying: bool = false
 var dying_timer: float = DYING_TIME
 @export var EXP_AMOUNT: int = 1
 
-func _ready():
-	AudioManager.raccoonJingle.play()
-
 # Other enemies may not have these variables:
 @export var ATTACK_RANGE: float = 350.0
 @export var ATTACK_COOLDOWN: float = 4.0
@@ -40,6 +37,9 @@ var b_direction = []
 var b_position = []
 var b_lifetime = []
 var b_amount = 0
+
+func _ready():
+	AudioManager.raccoonJingle.play()
 
 func _process(delta):
 	scale = Vector2(1,1) * (0.75 + clamp(0.25 * health / MAX_HEALTH, 0.0, 0.25))

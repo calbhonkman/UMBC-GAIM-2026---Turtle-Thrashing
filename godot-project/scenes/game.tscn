@@ -42,6 +42,7 @@
 [ext_resource type="PackedScene" uid="uid://h840sm3fnray" path="res://prefabs/enemies/(enemy)_bush.tscn" id="33_8ool0"]
 [ext_resource type="PackedScene" uid="uid://cjwmklbpd0qqs" path="res://prefabs/enemies/(enemy)_seagull.tscn" id="34_pr1ej"]
 [ext_resource type="Script" uid="uid://b7jd3dyuq3laq" path="res://scenes/master_slider.gd" id="36_m4url"]
+[ext_resource type="PackedScene" uid="uid://bfchoqlyg23ad" path="res://prefabs/enemies/(boss)_eeveel.tscn" id="37_05nbr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
 size = Vector2(1312.9883, 50)
@@ -95,7 +96,7 @@ radius = 300.0
 size = Vector2(1920, 1080)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_iywne"]
-radius = 250.0
+radius = 300.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pl11u"]
 radius = 16.0
@@ -279,7 +280,6 @@ shape = SubResource("RectangleShape2D_dinhu")
 script = ExtResource("9_kvpfn")
 
 [node name="(Weapon) Punch" type="Area2D" parent="Player" unique_id=1650126049]
-visible = false
 z_index = 1
 script = ExtResource("7_kvpfn")
 BULLET = ExtResource("9_kvuet")
@@ -343,7 +343,7 @@ z_index = 4
 script = ExtResource("9_0tnpc")
 FOOD = Array[Resource]([ExtResource("19_bhx41")])
 ENEMIES = Array[Resource]([ExtResource("19_e1j6l"), ExtResource("20_pl11u"), ExtResource("21_bhx41"), ExtResource("23_pl11u"), ExtResource("33_8ool0"), ExtResource("34_pr1ej")])
-ELITES = Array[Resource]([ExtResource("22_qnb83"), ExtResource("25_qnb83")])
+ELITES = Array[Resource]([ExtResource("22_qnb83"), ExtResource("25_qnb83"), ExtResource("37_05nbr")])
 
 [node name="Camera" type="Camera2D" parent="GameManager" unique_id=1356503637]
 limit_enabled = false

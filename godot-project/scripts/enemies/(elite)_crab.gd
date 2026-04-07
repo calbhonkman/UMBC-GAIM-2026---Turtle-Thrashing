@@ -7,31 +7,26 @@ const EXP = preload("uid://bln5qlwy18sjf")
 @export var MAX_HEALTH: float = 15.0
 var health: float = MAX_HEALTH
 
-@export var BASE_MOVE_SPEED: float = 200.0
+@export var BASE_MOVE_SPEED: float = 300.0
 var move_speed: float = BASE_MOVE_SPEED
 
 var stunned: bool = false
-@export var STUN_RESIST: float = 0.0 # Percent
+@export var STUN_RESIST: float = 100.0 # Percent
 var stun_timer: float = 0.0 # Seconds
-
-var dying: bool = false
-@export var DYING_TIME: float = 0.5
-var dying_timer: float = DYING_TIME
-@export var EXP_AMOUNT: int = 1
 
 # Other enemies might not have these variables:
 @onready var hitbox = $CollisionShape2D
 @onready var hitbox_slam = $"(hitbox)_slam"
 @export var BASE_DAMAGE: float = 1.0
 @export var ATTACK_RANGE: float = 150.0
-@export var ATTACK_COOLDOWN: float = 2.0
-@export var CHARGE_PREP_TIME: float = 1.5
-@export var CHARGE_DURATION: float = 2.0
-@export var CHARGE_COOLDOWN: float = 2.0
+@export var ATTACK_COOLDOWN: float = 1.0
+@export var CHARGE_PREP_TIME: float = 1.0
+@export var CHARGE_DURATION: float = 0.5
+@export var CHARGE_COOLDOWN: float = 0.5
 @export var JUMP_DISTANCE: float = 1000
 @export var JUMP_AIR_TIME: float = 3.0
 @export var JUMP_WARNING_TIME: float = 1.5
-@export var JUMP_COOLDOWN: float = 2.0
+@export var JUMP_COOLDOWN: float = 1.0
 @export var ATTACK_TIME: float = 2.0
 var charge_direction = Vector2.ZERO
 var anti_knockback_position = null
@@ -39,21 +34,12 @@ var jump_landing_position = null
 var mode = "default"
 var mode_timer = 0
 
+func _ready():
+	AudioManager.crabJingle.play()
+
 func _process(delta):
 	scale = Vector2(1,1) * (0.75 + clamp(0.25 * health / MAX_HEALTH, 0.0, 0.25))
-	if dying and dying_timer > 0.0:
-		monitorable = false
-		monitoring = false
-		dying_timer -= delta
-		scale = Vector2(1,1) * clamp(0.75 * dying_timer / DYING_TIME, 0.0, 0.75)
-		sprite.modulate = Color(1,0,0,clamp(0.5 * dying_timer / DYING_TIME, 0.0, 0.5))
-	elif dying and dying_timer <= 0.0:
-		for i in EXP_AMOUNT:
-			var new_xp = EXP.instantiate()
-			get_parent().add_child(new_xp)
-			new_xp.global_position = global_position
-		queue_free()
-	elif player:
+	if player:
 		var player_vect = player.global_position - hitbox_slam.global_position
 		var player_dist = player_vect.length()
 		var player_dir = player_vect / player_dist
@@ -77,13 +63,13 @@ func _process(delta):
 				elif (abs(player_vect.x) >= (get_viewport_rect().size.x / 2)) or (abs(player_vect.y) >= (get_viewport_rect().size.y / 2)):
 					mode = "jumping part one"
 					sprite.play("jump1")
-				elif player_vect.y >= 0.0:
+				elif player_vect.y >= 0.0 or abs(player_vect.y) < abs(player_vect.x):
 					global_position += player_dir * move_speed * delta
 					anti_knockback_position = global_position
 				elif mode_timer <= 0.0:
 					mode = "charging part one"
 					mode_timer = CHARGE_PREP_TIME
-					charge_direction = player_dir
+					charge_direction = Vector2.UP
 					sprite.play("charge1")
 			"slamming part one":
 				# The slam is split into two separate animations

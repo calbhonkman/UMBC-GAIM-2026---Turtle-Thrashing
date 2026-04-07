@@ -82,7 +82,7 @@ bus = &"Sfx"
 
 [node name="crabJingle" type="AudioStreamPlayer" parent="." unique_id=21430267]
 stream = ExtResource("14_ji21h")
-volume_db = -4.242
+volume_db = -13.973
 bus = &"VoiceJingles"
 
 [node name="eelJingle" type="AudioStreamPlayer" parent="." unique_id=1303719987]

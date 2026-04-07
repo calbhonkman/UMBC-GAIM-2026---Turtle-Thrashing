@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://h840sm3fnray"]
 
-[ext_resource type="Script" uid="uid://b3lwermuhd5r5" path="res://prefabs/enemies/(enemy)_bush.gd" id="1_ubuuv"]
+[ext_resource type="Script" uid="uid://b3lwermuhd5r5" path="res://scripts/enemies/(enemy)_bush.gd" id="1_ubuuv"]
 [ext_resource type="Texture2D" uid="uid://b0sfyq3kp5x6o" path="res://assets/Enemies/BasicEnemies/Bush/Bush attack1.PNG" id="2_ddjay"]
 [ext_resource type="Texture2D" uid="uid://cm6g1lgkfldtm" path="res://assets/Enemies/BasicEnemies/Bush/Bush walk1.PNG" id="2_nfhws"]
 [ext_resource type="Texture2D" uid="uid://0vmfpehs3uek" path="res://assets/Enemies/BasicEnemies/Bush/Bush attack2 .PNG" id="3_j4tid"]
