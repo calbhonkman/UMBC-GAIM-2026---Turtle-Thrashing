@@ -15,6 +15,7 @@ const DAMAGE_PARTICLE = preload("uid://dum7dfhvymdrp")
 @export var NUM_WAVES: int = 4
 var game_timer: float = 0.0
 var current_wave: int = 1
+var spawn_timer: float = 0.0
 var next_spawn_time: float = 0.0
 var spawn_counter: int = 0
 
@@ -95,16 +96,19 @@ func _process(delta):
 		clock.text = timer_minutes + ":" + timer_seconds
 		
 		if game_timer >= (WAVE_TIME * current_wave) and boss == null:
-			clear_enemies()
 			boss = spawn(remaining_elites.pop_at(randi_range(0, remaining_elites.size()-1)))
 			boss_fight = true
 		
-		if game_timer >= next_spawn_time:
+		spawn_timer += delta
+		if spawn_timer >= next_spawn_time:
 			if boss_fight:
 				if boss.name == "(boss)_Raccoon":
 					# Small Raccoon
 					spawn(ENEMIES[3])
 				elif boss.name == "(boss)_Crab":
+					# Small Crab
+					spawn(ENEMIES[0])
+				elif boss.name == "(boss)_Eeveel":
 					# Small Crab
 					spawn(ENEMIES[0])
 			else:
