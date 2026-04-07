@@ -107,6 +107,7 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ssvqc"]
 font_size = 24
+font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_kvpfn"]
 font_size = 192
@@ -391,7 +392,7 @@ offset_right = -157.0
 offset_bottom = -208.5
 grow_horizontal = 2
 grow_vertical = 2
-text = "50"
+text = "5"
 label_settings = SubResource("LabelSettings_kvpfn")
 horizontal_alignment = 1
 vertical_alignment = 1
