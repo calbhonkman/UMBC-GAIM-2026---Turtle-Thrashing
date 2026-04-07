@@ -17,7 +17,7 @@ var game_timer: float = 0.0
 var current_wave: int = 1
 var spawn_timer: float = 0.0
 var next_spawn_time: float = 0.0
-var spawn_counter: int = 0
+var spawn_counter: int = 1
 
 @export var FOOD: Array[Resource]
 
