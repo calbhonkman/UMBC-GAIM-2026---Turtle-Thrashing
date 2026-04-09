@@ -85,7 +85,7 @@ label_settings = SubResource("LabelSettings_r3g3c")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HowToPlay2" type="Label" parent="." unique_id=334267187]
+[node name="Health" type="Label" parent="." unique_id=334267187]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -96,6 +96,31 @@ offset_bottom = 232.0
 grow_horizontal = 2
 text = "<- This is your Health.
 Don't let it go down to 0!"
+label_settings = SubResource("LabelSettings_3vvtq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credits" type="Label" parent="." unique_id=1381186985]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 1346.0
+offset_top = 27.0
+offset_right = 2024.0
+offset_bottom = 600.0
+grow_horizontal = 2
+text = "Lead:
+Karlos Lorenzo Veloso
+
+Programmers:
+Damon Gullion
+Caleb Moesner
+
+Artists:
+Jasmine Kareem-Robinson
+Daniel Noonan
+Liam Scott
+Adam Tran"
 label_settings = SubResource("LabelSettings_3vvtq")
 horizontal_alignment = 1
 vertical_alignment = 1
