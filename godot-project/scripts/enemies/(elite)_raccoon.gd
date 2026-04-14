@@ -40,7 +40,7 @@ var b_amount = 0
 
 func _ready():
 	#Test
-	AudioManager.raccoonJingle.play()
+	AudioManager.raccoonKingJingle.play()
 
 func _process(delta):
 	scale = Vector2(1,1) * (0.75 + clamp(0.25 * health / MAX_HEALTH, 0.0, 0.25))

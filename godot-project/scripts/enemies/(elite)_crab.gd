@@ -81,6 +81,7 @@ func _process(delta):
 						if area == player.hitbox:
 							player.damage(1)
 					sprite.play("slam2")
+					AudioManager.slam.play()
 			"slamming part two":
 				if not sprite.is_playing():
 					mode = "default"
@@ -108,6 +109,7 @@ func _process(delta):
 						if area == player.hitbox:
 							player.damage(1)
 					sprite.play("jump2")
+					AudioManager.slam.play()
 			"jumping part two":
 				if not sprite.is_playing():
 					mode = "default"

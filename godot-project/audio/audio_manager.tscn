@@ -93,7 +93,7 @@ stream = ExtResource("15_sgp2o")
 volume_db = -6.225
 bus = &"VoiceJingles"
 
-[node name="raccoonJingle" type="AudioStreamPlayer" parent="." unique_id=1088673230]
+[node name="raccoonKingJingle" type="AudioStreamPlayer" parent="." unique_id=1088673230]
 stream = ExtResource("16_qus7j")
 volume_db = -5.772
 bus = &"VoiceJingles"
@@ -113,7 +113,5 @@ stream = ExtResource("19_2qk0m")
 volume_db = -11.427
 bus = &"VoiceJingles"
 
-[node name="hurt" type="AudioStreamPlayer" parent="." unique_id=48369195]
+[node name="playerHurt" type="AudioStreamPlayer" parent="." unique_id=1936957669]
 stream = ExtResource("20_gs81p")
-volume_db = -13.549
-bus = &"Sfx"

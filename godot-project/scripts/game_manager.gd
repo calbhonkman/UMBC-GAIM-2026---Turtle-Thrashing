@@ -64,6 +64,7 @@ func _process(delta):
 	if pausable and Input.is_action_just_pressed("pause"):
 		get_tree().paused = !get_tree().paused
 		screen_paused.visible = !screen_paused.visible
+		AudioManager.pause_all_sounds()
 	
 	if player.health <= 0:
 		AudioManager.music.stop()
@@ -75,6 +76,7 @@ func _process(delta):
 		player.level += 1
 		pausable = false
 		get_tree().paused = true
+		AudioManager.pause_all_sounds()
 		screen_level.prepare_to_upgrade()
 	
 	if boss_fight and boss == null:
@@ -169,6 +171,7 @@ func resume():
 	screen_level.visible = false
 	get_tree().paused = false
 	pausable = true
+	AudioManager.resume_all_sounds()
 
 func create_damage_particle(dmg_position, damage):
 	var new_damage_particle = DAMAGE_PARTICLE.instantiate()

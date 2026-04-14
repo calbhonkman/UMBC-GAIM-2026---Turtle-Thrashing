@@ -51,3 +51,4 @@ func _on_confirm_pressed():
 		for button in upgrade_buttons:
 			button.button_pressed = false
 		get_parent().get_parent().resume()
+		AudioManager.resume_all_sounds()
