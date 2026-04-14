@@ -3,11 +3,7 @@
 [ext_resource type="Script" uid="uid://dtd5y8l7gj8xj" path="res://scripts/mainmenu.gd" id="1_5mbse"]
 [ext_resource type="Texture2D" uid="uid://lpvkw4g1v1p3" path="res://assets/Splash_v3.webp" id="2_natt5"]
 [ext_resource type="Texture2D" uid="uid://cck0lk0eonuq5" path="res://assets/IslandBG_GreenishHue.png" id="3_r3g3c"]
-[ext_resource type="Texture2D" uid="uid://bcapu1vxsu637" path="res://assets/Turtle/health_icon.png" id="4_3vvtq"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_s5g8n"]
-font_size = 192
-font_color = Color(0, 0, 0, 1)
+[ext_resource type="Texture2D" uid="uid://dnh504hpdwomo" path="res://assets/Player_Health.png" id="4_3vvtq"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r3g3c"]
 font_size = 48
@@ -17,11 +13,15 @@ font_color = Color(0, 0, 0, 1)
 font_size = 32
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_s5g8n"]
+font_size = 256
+font_color = Color(0, 0, 0, 1)
+
 [node name="Node2D" type="Node2D" unique_id=1445423648]
 script = ExtResource("1_5mbse")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=576675734]
-position = Vector2(960, 300)
+position = Vector2(960, 350)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_natt5")
 
@@ -46,29 +46,6 @@ offset_right = 1299.0
 offset_bottom = 753.0
 theme_override_font_sizes/font_size = 48
 text = "Quit"
-
-[node name="Health Icon" type="Sprite2D" parent="." unique_id=1777847384]
-modulate = Color(0.408365, 0.53, 0.2597, 1)
-position = Vector2(117.00001, 129.99998)
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("4_3vvtq")
-
-[node name="Health" type="Label" parent="Health Icon" unique_id=714859641]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -377.0
-offset_top = -475.5
-offset_right = -157.0
-offset_bottom = -208.5
-grow_horizontal = 2
-grow_vertical = 2
-text = "5"
-label_settings = SubResource("LabelSettings_s5g8n")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="HowToPlay" type="Label" parent="." unique_id=209598707]
 anchors_preset = 5
@@ -124,6 +101,29 @@ Adam Tran"
 label_settings = SubResource("LabelSettings_3vvtq")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Health Icon" type="Sprite2D" parent="." unique_id=695678023]
+position = Vector2(110, 110)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_3vvtq")
+
+[node name="Health" type="Label" parent="Health Icon" unique_id=541946740]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -552.50006
+offset_top = -555.0
+offset_right = -259.50006
+offset_bottom = -206.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "5"
+label_settings = SubResource("LabelSettings_s5g8n")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Play (Button)" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Quit (Button)" to="." method="_on_quit_button_pressed"]

@@ -1,7 +1,8 @@
 extends Node2D
 
 @export var BASE_ROTATION_SPEED: float = 2.0
-@export var KNOCKBACK: float = 50.0
+@export var STUN_DURATION: float = 0.25
+@export var KNOCKBACK: float = 10.0
 
 @export var unlocked: bool = false
 @export var upgrade_descriptions: Array[String]
@@ -22,8 +23,10 @@ func _process(delta):
 	
 	for area in get_child(0).get_overlapping_areas():
 		if area.has_meta("enemy"):
-			var knockback_dir = (area.global_position - global_position)
-			area.global_position += (knockback_dir / knockback_dir.length()) * KNOCKBACK
+			var knockback_dir = (area.global_position - global_position) / (area.global_position - global_position).length()
+			area.global_position += knockback_dir * KNOCKBACK
+			if area.has_method("stun"):
+				area.stun(STUN_DURATION)
 
 func get_random_upgrade(index):
 	if not unlocked:

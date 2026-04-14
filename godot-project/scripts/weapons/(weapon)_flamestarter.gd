@@ -9,7 +9,7 @@ extends Area2D
 @export var BASE_DAMAGE: float = 0.2
 @export var BASE_RANGE: float = 200.0
 @export var RANGE_BUFFER: float = 50.0
-@export var DAMAGE_TIME: float = 0.5
+@export var DAMAGE_TIME: float = 1.0
 
 var damage = 0.0
 var range_mod = 1.0
@@ -35,7 +35,7 @@ func _process(delta):
 			bullets.append(BULLET.instantiate())
 			add_child(bullets.back())
 			b_target.append(area)
-			b_timer.append(0.0)
+			b_timer.append(DAMAGE_TIME)
 			bullets.back().global_position = area.global_position
 	
 	for i in range(bullets.size()):
