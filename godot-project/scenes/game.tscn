@@ -110,13 +110,6 @@ font_color = Color(0, 0, 0, 1)
 font_size = 24
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_kvpfn"]
-font_size = 256
-font_color = Color(0, 0, 0, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_dinhu"]
-font_size = 96
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_0sl42"]
 animations = [{
 "frames": [{
@@ -147,6 +140,13 @@ animations = [{
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_458eo"]
 bg_color = Color(0.98039216, 0.011764706, 0.19607843, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_kvpfn"]
+font_size = 256
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dinhu"]
+font_size = 96
 
 [node name="Node2D" type="Node2D" unique_id=2020137742]
 
@@ -412,6 +412,23 @@ text = "Level 0 (0/0)"
 label_settings = SubResource("LabelSettings_ssvqc")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="BossHealthBar" type="Node2D" parent="GameManager/Camera" unique_id=732824693]
+script = ExtResource("43_oaba0")
+
+[node name="BarSprite" type="AnimatedSprite2D" parent="GameManager/Camera/BossHealthBar" unique_id=300496195]
+position = Vector2(-12, 436)
+sprite_frames = SubResource("SpriteFrames_0sl42")
+animation = &"crab"
+
+[node name="ProgressBar" type="ProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=1582023764]
+offset_left = -538.0
+offset_top = 457.0
+offset_right = 543.0
+offset_bottom = 499.0
+theme_override_styles/background = SubResource("StyleBoxTexture_oaba0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_458eo")
+value = 100.0
 
 [node name="Health Icon" type="Sprite2D" parent="GameManager/Camera" unique_id=384984612]
 position = Vector2(-850, -430)
@@ -712,31 +729,6 @@ text = "Main Menu"
 visible = false
 modulate = Color(1, 1, 1, 0)
 texture = ExtResource("31_v2yb1")
-
-[node name="BossHealthBar" type="Node2D" parent="GameManager/Camera" unique_id=732824693]
-script = ExtResource("43_oaba0")
-
-[node name="ColorRect" type="ColorRect" parent="GameManager/Camera/BossHealthBar" unique_id=2028131343]
-visible = false
-offset_left = -536.0
-offset_top = 458.0
-offset_right = 543.0
-offset_bottom = 498.0
-color = Color(0.8530257, 3.8263947e-06, 8.663535e-07, 1)
-
-[node name="BarSprite" type="AnimatedSprite2D" parent="GameManager/Camera/BossHealthBar" unique_id=300496195]
-position = Vector2(-12, 436)
-sprite_frames = SubResource("SpriteFrames_0sl42")
-animation = &"crab"
-
-[node name="ProgressBar" type="ProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=1582023764]
-offset_left = -540.0
-offset_top = 455.0
-offset_right = 551.0
-offset_bottom = 501.0
-theme_override_styles/background = SubResource("StyleBoxTexture_oaba0")
-theme_override_styles/fill = SubResource("StyleBoxFlat_458eo")
-value = 60.0
 
 [node name="AudioManager" parent="." unique_id=1292916551 instance=ExtResource("18_ssvqc")]
 

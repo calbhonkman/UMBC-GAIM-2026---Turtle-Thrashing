@@ -9,7 +9,7 @@ var max_health
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if visible == true:
-		bossBar.value = int(currBoss.health / max_health) * 100
+		bossBar.value = int(currBoss.health / max_health * 100)
 
 func newElite(boss):
 	currBoss = boss
