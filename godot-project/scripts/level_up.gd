@@ -35,6 +35,7 @@ func prepare_to_upgrade():
 		upgrade_buttons[i].icon = upgradeables[selected_upgrades[i].x].upgrade_icon
 	visible = true
 	ready_to_upgrade = true
+	AudioManager.levelUp.play()
 
 func select_upgrades():
 	selected_upgrades = []
@@ -50,3 +51,4 @@ func _on_confirm_pressed():
 		for button in upgrade_buttons:
 			button.button_pressed = false
 		get_parent().get_parent().resume()
+		AudioManager.resume_all_sounds()

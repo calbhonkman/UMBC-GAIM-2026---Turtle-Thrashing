@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://bfchoqlyg23ad"]
+
+[ext_resource type="Script" uid="uid://cw7edk8iv1sul" path="res://scripts/enemies/(elite)_eeveel.gd" id="1_42qmj"]
+[ext_resource type="Texture2D" uid="uid://blvm8ca3kyqdt" path="res://assets/Enemies/Elites/Eeveel/Eeveel buildup+attack/Eeveel buildup+attack_001.png" id="2_a2k80"]
+[ext_resource type="Texture2D" uid="uid://hwnrc4mfq53l" path="res://assets/Enemies/Elites/Eeveel/Eeveel buildup+attack/Eeveel buildup+attack_002.png" id="3_cjm5d"]
+[ext_resource type="Texture2D" uid="uid://cxdvugrcb2uu7" path="res://assets/Enemies/Elites/Eeveel/Base Eeveel.png" id="4_iao8l"]
+[ext_resource type="Texture2D" uid="uid://dguj7pnv6ulys" path="res://assets/Enemies/Elites/Eeveel/Eeveel buildup+attack/Eeveel buildup+attack_031.png" id="5_a33qy"]
+[ext_resource type="Texture2D" uid="uid://d3lujork05cd7" path="res://assets/Enemies/Elites/Eeveel/Eeveel buildup+attack/Eeveel buildup+attack_032.png" id="6_po5f5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n67ta"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a2k80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cjm5d")
+}],
+"loop": true,
+"name": &"charge",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_iao8l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_a33qy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_po5f5")
+}],
+"loop": true,
+"name": &"discharge",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_74bk0"]
+radius = 60.0
+height = 381.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_or3ip"]
+radius = 78.160095
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3nyoy"]
+size = Vector2(565, 314)
+
+[node name="(boss)_Eeveel" type="Area2D" unique_id=1711400772 groups=["Enemies"]]
+script = ExtResource("1_42qmj")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1910162732]
+position = Vector2(-17, -68)
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_n67ta")
+animation = &"discharge"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1028948672]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_74bk0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=935527318]
+position = Vector2(145, -15)
+shape = SubResource("CircleShape2D_or3ip")
+
+[node name="Hitbox_(Discharge)" type="CollisionShape2D" parent="." unique_id=269731234]
+position = Vector2(-16.5, -68)
+shape = SubResource("RectangleShape2D_3nyoy")
+disabled = true

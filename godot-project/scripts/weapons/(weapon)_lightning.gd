@@ -36,18 +36,16 @@ func _process(delta):
 		b_cooldown[i] -= delta
 		if bullet[i]:
 			if b_target[i]:
-				bullet[i].global_position = b_target[i].global_position
-				b_position[i] = bullet[i].global_position
-				bullet[i].visible = true
-			else:
-				bullet[i].global_position = b_position[i]
+				b_position[i] = b_target[i].global_position
+			bullet[i].global_position = b_position[i]
+			bullet[i].visible = true
 		elif b_cooldown[i] <= 0.0: # and delay <= 0.0:
 			b_target[i] = find_target()
 			if b_target[i]:
 				bullet[i] = BULLET.instantiate()
 				add_child(bullet[i])
-				bullet[i].global_position = b_target[i].global_position
-				b_position[i] = bullet[i].global_position
+				b_position[i] = b_target[i].global_position
+				bullet[i].global_position = b_position[i]
 				bullet[i].scale *= size_mod
 				bullet[i].damage = damage
 				b_cooldown[i] = COOLDOWN

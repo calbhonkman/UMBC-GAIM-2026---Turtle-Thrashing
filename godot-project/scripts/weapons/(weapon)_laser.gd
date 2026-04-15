@@ -5,12 +5,12 @@ extends Area2D
 @export var upgrade_descriptions: Array[String]
 @export var upgrade_icon: Resource
 
-@export var BASE_DAMAGE: float = 0.2
+@export var BASE_DAMAGE: float = 0.25
 @export var COOLDOWN: float = 10.0
 @export var BULLET: Resource
 @export var LIFETIME: float = 5.0
 @export var BASE_KNOCKBACK: float = 50
-@export var DAMAGE_TIME: float = 0.5
+@export var DAMAGE_TIME: float = 0.50
 
 @onready var player = $".."
 
@@ -51,7 +51,7 @@ func _process(delta):
 					new_targets.append(area)
 					if area not in b_target:
 						b_target.append(area)
-						b_timer.append(0.0)
+						b_timer.append(DAMAGE_TIME)
 			
 			for i in b_target.size():
 				if i >= b_target.size():

@@ -7,7 +7,7 @@ extends Area2D
 @export var upgrade_icon: Resource
 
 @export var BASE_SPEED: float = 800.0
-@export var BASE_DAMAGE: float = 0.5
+@export var BASE_DAMAGE: float = 1.0
 @export var BASE_COOLDOWN: float = 1.5
 @export var BASE_DELAY: float = 0.5
 @export var BASE_STUN_DURATION: float = 0.5
@@ -130,10 +130,10 @@ func get_upgrade_description(index: int):
 			desc += "[br]Swipes at nearby enemies to stun them."
 		1:
 			desc += "[i][color=#8f8f8f]Your Slap now stuns for longer.[/color][/i]"
-			desc += "[br]Increases Slap Stun Duration ([color=#8FFFFF]" + str(round(stun_duration * 100) / 100.0) + " -> " + str(round(stun_duration * 1.25 * 100) / 100.0) + "[/color])."
+			desc += "[br]Increases Slap Stun Duration ([color=#8FFFFF]" + str(round(stun_duration * 100) / 100.0) + " -> " + str(round(stun_duration * 1.5 * 100) / 100.0) + "[/color])."
 		2:
 			desc += "[i][color=#8f8f8f]Your Slap now fires more often.[/color][/i]"
-			desc += "[br]Decreases Slap Cooldown ([color=#8FFFFF]" + str(round(BASE_COOLDOWN * 100) / 100.0) + "s -> " + str(round(BASE_COOLDOWN * 0.75 * 100) / 100.0) + "s[/color])."
+			desc += "[br]Decreases Slap Cooldown ([color=#8FFFFF]" + str(round(BASE_COOLDOWN * 100) / 100.0) + "s -> " + str(round(BASE_COOLDOWN * 0.875 * 100) / 100.0) + "s[/color])."
 		3:
 			desc += "[i][color=#8f8f8f]Your Slap now strikes a larger area.[/color][/i]"
 			desc += "[br]Increases Slap Size ([color=#8FFFFF]" + str(round(size_mod * 100) / 100.0) + "x -> " + str(round(size_mod * 1.25 * 100) / 100.0) + "x[/color])."
@@ -146,9 +146,9 @@ func upgrade(index: int):
 			unlocked = true
 			visible = true
 		1:
-			stun_duration *= 1.25
+			stun_duration *= 1.5
 		2:
-			BASE_COOLDOWN *= 0.75
-			BASE_DELAY *= 0.75
+			BASE_COOLDOWN *= 0.875
+			BASE_DELAY *= 0.875
 		3:
 			size_mod *= 1.25

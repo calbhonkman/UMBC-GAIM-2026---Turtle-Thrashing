@@ -1,30 +1,129 @@
 [gd_scene format=3 uid="uid://1w845eeqw7qm"]
 
 [ext_resource type="Script" uid="uid://dtd5y8l7gj8xj" path="res://scripts/mainmenu.gd" id="1_5mbse"]
-[ext_resource type="Texture2D" uid="uid://cie3loxsd1fv0" path="res://assets/Project_Title.webp" id="2_natt5"]
+[ext_resource type="Texture2D" uid="uid://lpvkw4g1v1p3" path="res://assets/Splash_v3.webp" id="2_natt5"]
+[ext_resource type="Texture2D" uid="uid://cck0lk0eonuq5" path="res://assets/IslandBG_GreenishHue.png" id="3_r3g3c"]
+[ext_resource type="Texture2D" uid="uid://dnh504hpdwomo" path="res://assets/Player_Health.png" id="4_3vvtq"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_r3g3c"]
+font_size = 48
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3vvtq"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_s5g8n"]
+font_size = 256
+font_color = Color(0, 0, 0, 1)
 
 [node name="Node2D" type="Node2D" unique_id=1445423648]
 script = ExtResource("1_5mbse")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=576675734]
-position = Vector2(960, 540)
+position = Vector2(960, 350)
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_natt5")
 
+[node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1099482368]
+z_index = -2
+position = Vector2(960, 480)
+scale = Vector2(0.36, 0.36)
+texture = ExtResource("3_r3g3c")
+
 [node name="Play (Button)" type="Button" parent="." unique_id=171000035]
-offset_left = 474.0
-offset_top = 450.0
-offset_right = 754.0
-offset_bottom = 560.0
+offset_left = 619.0
+offset_top = 643.0
+offset_right = 899.0
+offset_bottom = 753.0
 theme_override_font_sizes/font_size = 48
 text = "Play"
 
 [node name="Quit (Button)" type="Button" parent="." unique_id=706965802]
-offset_left = 1090.0
-offset_top = 450.0
-offset_right = 1370.0
-offset_bottom = 560.0
+offset_left = 1019.0
+offset_top = 643.0
+offset_right = 1299.0
+offset_bottom = 753.0
 theme_override_font_sizes/font_size = 48
 text = "Quit"
+
+[node name="HowToPlay" type="Label" parent="." unique_id=209598707]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -202.0
+offset_top = 758.0
+offset_right = 2117.0
+offset_bottom = 1018.6665
+grow_horizontal = 2
+text = "Use WASD or the ARROW KEYS to move around.
+Move close to enemies to attack them, but not too close!"
+label_settings = SubResource("LabelSettings_r3g3c")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health" type="Label" parent="." unique_id=334267187]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 87.0
+offset_top = -75.0
+offset_right = 765.0
+offset_bottom = 232.0
+grow_horizontal = 2
+text = "<- This is your Health.
+Don't let it go down to 0!"
+label_settings = SubResource("LabelSettings_3vvtq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Credits" type="Label" parent="." unique_id=1381186985]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 1346.0
+offset_top = 27.0
+offset_right = 2024.0
+offset_bottom = 600.0
+grow_horizontal = 2
+text = "Lead:
+Karlos Lorenzo Veloso
+
+Programmers:
+Damon Gullion
+Caleb Moesner
+
+Artists:
+Jasmine Kareem-Robinson
+Daniel Noonan
+Liam Scott
+Adam Tran"
+label_settings = SubResource("LabelSettings_3vvtq")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Health Icon" type="Sprite2D" parent="." unique_id=695678023]
+position = Vector2(110, 110)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("4_3vvtq")
+
+[node name="Health" type="Label" parent="Health Icon" unique_id=541946740]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -552.50006
+offset_top = -555.0
+offset_right = -259.50006
+offset_bottom = -206.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "5"
+label_settings = SubResource("LabelSettings_s5g8n")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="Play (Button)" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Quit (Button)" to="." method="_on_quit_button_pressed"]

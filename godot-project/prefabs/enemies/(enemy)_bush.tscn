@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://h840sm3fnray"]
 
-[ext_resource type="Script" uid="uid://b3lwermuhd5r5" path="res://prefabs/enemies/(enemy)_bush.gd" id="1_ubuuv"]
+[ext_resource type="Script" uid="uid://b3lwermuhd5r5" path="res://scripts/enemies/(enemy)_bush.gd" id="1_ubuuv"]
 [ext_resource type="Texture2D" uid="uid://b0sfyq3kp5x6o" path="res://assets/Enemies/BasicEnemies/Bush/Bush attack1.PNG" id="2_ddjay"]
 [ext_resource type="Texture2D" uid="uid://cm6g1lgkfldtm" path="res://assets/Enemies/BasicEnemies/Bush/Bush walk1.PNG" id="2_nfhws"]
 [ext_resource type="Texture2D" uid="uid://0vmfpehs3uek" path="res://assets/Enemies/BasicEnemies/Bush/Bush attack2 .PNG" id="3_j4tid"]
@@ -91,7 +91,7 @@ radius = 69.0
 height = 342.22226
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ddjay"]
-size = Vector2(934.25, 442.22223)
+size = Vector2(1860.125, 442.22223)
 
 [node name="Area2D" type="Area2D" unique_id=1424500926 groups=["Enemies"]]
 script = ExtResource("1_ubuuv")
@@ -100,6 +100,7 @@ metadata/enemy = ""
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2025924635]
 scale = Vector2(0.265, 0.265)
 sprite_frames = SubResource("SpriteFrames_17m8f")
+animation = &"retract"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=85199956]
@@ -111,6 +112,6 @@ shape = SubResource("CapsuleShape2D_ddjay")
 position = Vector2(37, 223)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="(hitbox)_suck" unique_id=913178873]
-position = Vector2(494.875, -217.00002)
+position = Vector2(956.9375, -227.00002)
 scale = Vector2(1, 0.45)
 shape = SubResource("RectangleShape2D_ddjay")

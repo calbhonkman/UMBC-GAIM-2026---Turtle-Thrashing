@@ -4,7 +4,7 @@ extends Area2D
 @onready var sprite = $AnimatedSprite2D
 const EXP = preload("uid://bln5qlwy18sjf")
 
-@export var MAX_HEALTH: float = 1.0
+@export var MAX_HEALTH: float = 2.0
 var health: float = MAX_HEALTH
 
 @export var BASE_MOVE_SPEED: float = 150.0
@@ -37,7 +37,7 @@ func _process(delta):
 		sprite.modulate = Color(1,0,0,clamp(0.5 * dying_timer / DYING_TIME, 0.0, 0.5))
 	elif dying and dying_timer <= 0.0:
 		AudioManager.poof.play()
-		for i in EXP_AMOUNT:
+		for i in round(MAX_HEALTH):
 			var new_xp = EXP.instantiate()
 			get_parent().add_child(new_xp)
 			new_xp.global_position = global_position

@@ -110,7 +110,7 @@ func _process(delta):
 						b_position[i] = bullets[i].global_position
 						bullets[i].scale.x = -1 * abs(bullets[i].scale.x) if b_direction[i].x < 0 else abs(bullets[i].scale.x)
 						for area in bullets[i].get_overlapping_areas():
-							if bullets[i].get_meta("bullet_type") == "Bowling" and area != self and area.is_in_group("Enemies"):
+							if bullets[i].get_meta("bullet_type") and bullets[i].get_meta("bullet_type") == "Bowling" and area != self and area.is_in_group("Enemies"):
 								area.damage(INF)
 								b_direction[i] = (player.global_position - b_position[i]) / (player.global_position - b_position[i]).length()
 

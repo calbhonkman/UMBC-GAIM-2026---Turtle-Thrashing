@@ -81,6 +81,7 @@ func damage(dmg: int):
 	if invincible_timer == 0:
 		health -= dmg
 		invincible_timer = INVINCIBLE_TIME
+		AudioManager.playerHurt.play()
 
 func get_random_upgrade(index):
 	return Vector2(index, randi_range(0, 2))
