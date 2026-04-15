@@ -41,6 +41,11 @@
 [ext_resource type="Texture2D" uid="uid://bi547l6xmt1jk" path="res://assets/Damage Vignette.png" id="31_v2yb1"]
 [ext_resource type="PackedScene" uid="uid://h840sm3fnray" path="res://prefabs/enemies/(enemy)_bush.tscn" id="33_8ool0"]
 [ext_resource type="Script" uid="uid://b7jd3dyuq3laq" path="res://scenes/master_slider.gd" id="36_m4url"]
+[ext_resource type="PackedScene" uid="uid://bfchoqlyg23ad" path="res://prefabs/enemies/(boss)_eeveel.tscn" id="37_05nbr"]
+[ext_resource type="Texture2D" uid="uid://dnh504hpdwomo" path="res://assets/Player_Health.png" id="38_0sl42"]
+[ext_resource type="Texture2D" uid="uid://cde5isw6cdpwk" path="res://assets/Game Over Screen.png" id="42_0sl42"]
+[ext_resource type="Script" uid="uid://bm07s0umyx3r2" path="res://scenes/boss_health_bar.gd" id="43_oaba0"]
+[ext_resource type="Texture2D" uid="uid://c376tooy8drjp" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_HealthBorder.png" id="44_oaba0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
 size = Vector2(1312.9883, 50)
@@ -114,6 +119,37 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="LabelSettings" id="LabelSettings_dinhu"]
 font_size = 96
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_0sl42"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("44_oaba0")
+}],
+"loop": false,
+"name": &"crab",
+"speed": 8.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"eel",
+"speed": 8.0
+}, {
+"frames": [],
+"loop": false,
+"name": &"raccoon",
+"speed": 8.0
+}]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oaba0"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_458eo"]
+bg_color = Color(0.98039216, 0.011764706, 0.19607843, 1)
+
 [node name="Node2D" type="Node2D" unique_id=2020137742]
 
 [node name="Island" type="StaticBody2D" parent="." unique_id=21348922]
@@ -140,11 +176,6 @@ position = Vector2(-1229.9999, -1913.3331)
 rotation = -0.5465888
 shape = SubResource("RectangleShape2D_0tnpc")
 
-[node name="NorthWall3" type="CollisionShape2D" parent="Island" unique_id=217982617]
-position = Vector2(-2368.3333, -1045)
-rotation = 0.52491164
-shape = SubResource("RectangleShape2D_0tnpc")
-
 [node name="NorthWall4" type="CollisionShape2D" parent="Island" unique_id=1976246661]
 position = Vector2(-2359.9998, 36.666733)
 rotation = -0.5663373
@@ -153,6 +184,11 @@ shape = SubResource("RectangleShape2D_0tnpc")
 [node name="NorthWall17" type="CollisionShape2D" parent="Island" unique_id=778373405]
 position = Vector2(-2296.6667, 168.33331)
 rotation = -1.0211073
+shape = SubResource("RectangleShape2D_0tnpc")
+
+[node name="NorthWall3" type="CollisionShape2D" parent="Island" unique_id=217982617]
+position = Vector2(-2368.3333, -1045)
+rotation = 0.52491164
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall16" type="CollisionShape2D" parent="Island" unique_id=1695993073]
@@ -674,6 +710,31 @@ text = "Main Menu"
 [node name="Damage Vignette" type="Sprite2D" parent="GameManager/Camera" unique_id=1740525009]
 modulate = Color(1, 1, 1, 0)
 texture = ExtResource("31_v2yb1")
+
+[node name="BossHealthBar" type="Node2D" parent="GameManager/Camera" unique_id=732824693]
+script = ExtResource("43_oaba0")
+
+[node name="ColorRect" type="ColorRect" parent="GameManager/Camera/BossHealthBar" unique_id=2028131343]
+visible = false
+offset_left = -536.0
+offset_top = 458.0
+offset_right = 543.0
+offset_bottom = 498.0
+color = Color(0.8530257, 3.8263947e-06, 8.663535e-07, 1)
+
+[node name="BarSprite" type="AnimatedSprite2D" parent="GameManager/Camera/BossHealthBar" unique_id=300496195]
+position = Vector2(-12, 436)
+sprite_frames = SubResource("SpriteFrames_0sl42")
+animation = &"crab"
+
+[node name="ProgressBar" type="ProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=1582023764]
+offset_left = -540.0
+offset_top = 455.0
+offset_right = 551.0
+offset_bottom = 501.0
+theme_override_styles/background = SubResource("StyleBoxTexture_oaba0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_458eo")
+value = 60.0
 
 [node name="AudioManager" parent="." unique_id=1292916551 instance=ExtResource("18_ssvqc")]
 

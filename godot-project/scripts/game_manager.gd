@@ -6,6 +6,7 @@ extends Node2D
 @onready var clock = $Camera/Clock
 @onready var level = $Camera/Level
 @onready var health = $"Camera/Health Icon/Health"
+@onready var bossHealthBar = $"Camera/BossHealthBar"
 
 const DAMAGE_PARTICLE = preload("uid://dum7dfhvymdrp")
 
@@ -42,6 +43,7 @@ var pausable = true
 
 func _ready():
 	remaining_elites = ELITES.duplicate()
+	bossHealthBar.visible = false
 
 func _process(delta):
 	if not get_tree().paused and not AudioManager.music.playing:
@@ -81,6 +83,7 @@ func _process(delta):
 			boss = null
 		current_wave += 1
 		boss_fight = false
+		bossHealthBar.visible = false
 	
 	if not get_tree().paused:
 		game_timer = (round(game_timer / WAVE_TIME) * WAVE_TIME) if boss_fight else game_timer + delta
@@ -93,6 +96,8 @@ func _process(delta):
 			clear_enemies()
 			boss = spawn_enemy(remaining_elites.pop_at(randi_range(0, remaining_elites.size()-1)))
 			boss_fight = true
+			bossHealthBar.visible = true
+			bossHealthBar.newElite(boss)
 		
 		if game_timer >= next_spawn_time:
 			if boss_fight and boss.name == "(boss)_Raccoon":
