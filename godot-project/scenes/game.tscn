@@ -43,6 +43,7 @@
 [ext_resource type="Script" uid="uid://b7jd3dyuq3laq" path="res://scenes/master_slider.gd" id="36_m4url"]
 [ext_resource type="PackedScene" uid="uid://bfchoqlyg23ad" path="res://prefabs/enemies/(boss)_eeveel.tscn" id="37_05nbr"]
 [ext_resource type="Texture2D" uid="uid://dnh504hpdwomo" path="res://assets/Player_Health.png" id="38_0sl42"]
+[ext_resource type="Texture2D" uid="uid://bifmwi4ai4yqa" path="res://assets/Player_Health_Danger.png" id="41_h3rex"]
 [ext_resource type="Texture2D" uid="uid://cde5isw6cdpwk" path="res://assets/Game Over Screen.png" id="42_0sl42"]
 [ext_resource type="Script" uid="uid://bm07s0umyx3r2" path="res://scenes/boss_health_bar.gd" id="43_oaba0"]
 [ext_resource type="Texture2D" uid="uid://c376tooy8drjp" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_HealthBorder.png" id="44_oaba0"]
@@ -295,6 +296,7 @@ shape = SubResource("CircleShape2D_0tnpc")
 [node name="(Weapon) Laser" type="Area2D" parent="Player" unique_id=1069287280]
 visible = false
 script = ExtResource("14_e1j6l")
+unlocked = true
 upgrade_descriptions = Array[String](["Unlock Laser", "Laser Width +50%", "Laser Knockback x1.25"])
 upgrade_icon = ExtResource("9_nepv3")
 BULLET = ExtResource("15_pl11u")
@@ -353,6 +355,7 @@ shape = SubResource("CircleShape2D_iywne")
 visible = false
 rotation = 3.1415927
 script = ExtResource("12_bt5mj")
+unlocked = true
 upgrade_descriptions = Array[String](["Unlock Shield", "Shield Speed +50%"])
 upgrade_icon = ExtResource("25_7025r")
 
@@ -430,10 +433,16 @@ theme_override_styles/background = SubResource("StyleBoxTexture_oaba0")
 theme_override_styles/fill = SubResource("StyleBoxFlat_458eo")
 value = 100.0
 
-[node name="Health Icon" type="Sprite2D" parent="GameManager/Camera" unique_id=384984612]
-position = Vector2(-850, -430)
+[node name="Health Icon" type="Node2D" parent="GameManager/Camera" unique_id=2140580713]
+position = Vector2(-800, -380)
 scale = Vector2(0.25, 0.25)
+
+[node name="Healthy" type="Sprite2D" parent="GameManager/Camera/Health Icon" unique_id=384984612]
 texture = ExtResource("38_0sl42")
+
+[node name="Danger" type="Sprite2D" parent="GameManager/Camera/Health Icon" unique_id=271784501]
+modulate = Color(1, 1, 1, 0)
+texture = ExtResource("41_h3rex")
 
 [node name="Health" type="Label" parent="GameManager/Camera/Health Icon" unique_id=1489919871]
 anchors_preset = 8
@@ -441,10 +450,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -552.50006
-offset_top = -555.0
-offset_right = -259.50006
-offset_bottom = -206.0
+offset_left = -152.5
+offset_top = -155.0
+offset_right = 140.5
+offset_bottom = 194.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "5"
@@ -726,6 +735,7 @@ theme_override_font_sizes/font_size = 48
 text = "Main Menu"
 
 [node name="Damage Vignette" type="Sprite2D" parent="GameManager/Camera" unique_id=1740525009]
+visible = false
 modulate = Color(1, 1, 1, 0)
 texture = ExtResource("31_v2yb1")
 

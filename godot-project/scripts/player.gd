@@ -4,7 +4,7 @@ extends CharacterBody2D
 @onready var hitbox = $"Hitbox (Entities)"
 @onready var pickup_area = $"Pickup Area"
 @onready var damage_vignette = $"/root/Node2D/GameManager/Camera/Damage Vignette"
-@onready var health_icon = $"/root/Node2D/GameManager/Camera/Health Icon"
+@onready var health_icon_danger = $"../GameManager/Camera/Health Icon/Danger"
 
 @export var MAX_HEALTH: int = 5
 @export var BASE_SPEED: float = 200.0
@@ -34,12 +34,14 @@ func _process(delta):
 		damage_vignette.modulate = Color(1,1,1,sqrt(invincible_timer/INVINCIBLE_TIME))
 	elif health == 1:
 		vignette_timer = max(0, vignette_timer - delta)
-		health_icon.modulate = Color(1,1-sqrt(vignette_timer/VIGNETTE_TIME),1-sqrt(vignette_timer/VIGNETTE_TIME),1)
+		health_icon_danger.modulate.a = sqrt(vignette_timer/VIGNETTE_TIME)
+		health_icon_danger.scale = Vector2(1,1) * (1.0 + (0.2 * sqrt(vignette_timer/VIGNETTE_TIME)))
 		if vignette_timer == 0:
 			vignette_timer = VIGNETTE_TIME
 	else:
 		sprite.modulate = Color(1,1,1,1)
-		health_icon.modulate = Color(1,1,1,1)
+		health_icon_danger.modulate.a = 0
+		health_icon_danger.scale = Vector2(1,1)
 		damage_vignette.modulate = Color(1,1,1,0)
 	
 	var movement_direction = Input.get_vector("left","right","up","down")
