@@ -726,7 +726,6 @@ theme_override_font_sizes/font_size = 48
 text = "Main Menu"
 
 [node name="Damage Vignette" type="Sprite2D" parent="GameManager/Camera" unique_id=1740525009]
-visible = false
 modulate = Color(1, 1, 1, 0)
 texture = ExtResource("31_v2yb1")
 

@@ -115,3 +115,4 @@ bus = &"VoiceJingles"
 
 [node name="playerHurt" type="AudioStreamPlayer" parent="." unique_id=1936957669]
 stream = ExtResource("20_gs81p")
+volume_db = -11.757

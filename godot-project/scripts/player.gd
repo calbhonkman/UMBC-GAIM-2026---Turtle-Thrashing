@@ -4,10 +4,12 @@ extends CharacterBody2D
 @onready var hitbox = $"Hitbox (Entities)"
 @onready var pickup_area = $"Pickup Area"
 @onready var damage_vignette = $"/root/Node2D/GameManager/Camera/Damage Vignette"
+@onready var health_icon = $"/root/Node2D/GameManager/Camera/Health Icon"
 
 @export var MAX_HEALTH: int = 5
 @export var BASE_SPEED: float = 200.0
 @export var INVINCIBLE_TIME: float = 0.5
+@export var VIGNETTE_TIME: float = .75
 @export var DAMAGE_KNOCKBACK: float = 100.0
 
 @export var upgrade_descriptions: Array[String]
@@ -18,6 +20,7 @@ var pickup_range_mod = 1.0
 var speed_mod = 1.0
 var health = 0
 var invincible_timer = 0.0
+var vignette_timer = 0.0
 var experience = 0
 var level = 1
 
@@ -29,8 +32,14 @@ func _process(delta):
 	if invincible_timer > 0 and health > 0:
 		sprite.modulate = Color(1,1-sqrt(invincible_timer/INVINCIBLE_TIME),1-sqrt(invincible_timer/INVINCIBLE_TIME),1)
 		damage_vignette.modulate = Color(1,1,1,sqrt(invincible_timer/INVINCIBLE_TIME))
+	elif health == 1:
+		vignette_timer = max(0, vignette_timer - delta)
+		health_icon.modulate = Color(1,1-sqrt(vignette_timer/VIGNETTE_TIME),1-sqrt(vignette_timer/VIGNETTE_TIME),1)
+		if vignette_timer == 0:
+			vignette_timer = VIGNETTE_TIME
 	else:
 		sprite.modulate = Color(1,1,1,1)
+		health_icon.modulate = Color(1,1,1,1)
 		damage_vignette.modulate = Color(1,1,1,0)
 	
 	var movement_direction = Input.get_vector("left","right","up","down")
@@ -64,12 +73,14 @@ func _on_hitbox_area_entered(area):
 		if invincible_timer == 0:
 			health -= 1
 			invincible_timer = INVINCIBLE_TIME
+			AudioManager.playerHurt.play()
 		if area.get_script():
 			area.global_position += ((area.global_position - global_position) / (area.global_position - global_position).length()) * DAMAGE_KNOCKBACK
 	elif area.is_in_group("Enemy Bullets"):
 		if invincible_timer == 0:
 			health -= 1
 			invincible_timer = INVINCIBLE_TIME
+			AudioManager.playerHurt.play()
 		area.queue_free()
 	# If hit by exp
 	elif area.has_meta("exp"):
@@ -81,6 +92,7 @@ func damage(dmg: int):
 	if invincible_timer == 0:
 		health -= dmg
 		invincible_timer = INVINCIBLE_TIME
+		vignette_timer = VIGNETTE_TIME
 		AudioManager.playerHurt.play()
 
 func get_random_upgrade(index):
