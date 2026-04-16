@@ -9,7 +9,7 @@ extends CharacterBody2D
 @export var MAX_HEALTH: int = 5
 @export var BASE_SPEED: float = 200.0
 @export var INVINCIBLE_TIME: float = 0.5
-@export var VIGNETTE_TIME: float = .75
+@export var HEARTBEAT_TIME: float = 0.75
 @export var DAMAGE_KNOCKBACK: float = 100.0
 
 @export var upgrade_descriptions: Array[String]
@@ -20,7 +20,7 @@ var pickup_range_mod = 1.0
 var speed_mod = 1.0
 var health = 0
 var invincible_timer = 0.0
-var vignette_timer = 0.0
+var heartbeat_timer = 0.0
 var experience = 0
 var level = 1
 
@@ -28,21 +28,13 @@ func _ready():
 	health = MAX_HEALTH
 
 func _process(delta):
-	invincible_timer = max(0, invincible_timer - delta)
-	if invincible_timer > 0 and health > 0:
-		sprite.modulate = Color(1,1-sqrt(invincible_timer/INVINCIBLE_TIME),1-sqrt(invincible_timer/INVINCIBLE_TIME),1)
-		damage_vignette.modulate = Color(1,1,1,sqrt(invincible_timer/INVINCIBLE_TIME))
-	elif health == 1:
-		vignette_timer = max(0, vignette_timer - delta)
-		health_icon_danger.modulate.a = sqrt(vignette_timer/VIGNETTE_TIME)
-		health_icon_danger.scale = Vector2(1,1) * (1.0 + (0.2 * sqrt(vignette_timer/VIGNETTE_TIME)))
-		if vignette_timer == 0:
-			vignette_timer = VIGNETTE_TIME
-	else:
-		sprite.modulate = Color(1,1,1,1)
-		health_icon_danger.modulate.a = 0
-		health_icon_danger.scale = Vector2(1,1)
-		damage_vignette.modulate = Color(1,1,1,0)
+	invincible_timer = max(0, invincible_timer - delta) if (invincible_timer > 0.0 and health > 0) else 0.0
+	sprite.modulate = Color(1,1-sqrt(invincible_timer/INVINCIBLE_TIME),1-sqrt(invincible_timer/INVINCIBLE_TIME),1)
+	damage_vignette.modulate = Color(1,1,1,sqrt(invincible_timer/INVINCIBLE_TIME))
+	
+	heartbeat_timer = wrap(heartbeat_timer - delta, 0.0, HEARTBEAT_TIME) if health == 1 else 0.0
+	health_icon_danger.modulate.a = sqrt(heartbeat_timer/HEARTBEAT_TIME)
+	health_icon_danger.scale = Vector2(1,1) * (1.0 + (0.2 * sqrt(heartbeat_timer/HEARTBEAT_TIME)))
 	
 	var movement_direction = Input.get_vector("left","right","up","down")
 	if health <= 0:
@@ -94,7 +86,7 @@ func damage(dmg: int):
 	if invincible_timer == 0:
 		health -= dmg
 		invincible_timer = INVINCIBLE_TIME
-		vignette_timer = VIGNETTE_TIME
+		heartbeat_timer = HEARTBEAT_TIME
 		AudioManager.playerHurt.play()
 
 func get_random_upgrade(index):
