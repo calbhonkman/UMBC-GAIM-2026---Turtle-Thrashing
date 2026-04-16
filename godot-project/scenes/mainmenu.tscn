@@ -10,7 +10,7 @@ font_size = 48
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_3vvtq"]
-font_size = 32
+font_size = 28
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_s5g8n"]
@@ -66,10 +66,10 @@ vertical_alignment = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 87.0
-offset_top = -75.0
-offset_right = 765.0
-offset_bottom = 232.0
+offset_left = 63.0
+offset_top = 44.0
+offset_right = 741.0
+offset_bottom = 351.0
 grow_horizontal = 2
 text = "<- This is your Health.
 Don't let it go down to 0!"
@@ -103,7 +103,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Health Icon" type="Sprite2D" parent="." unique_id=695678023]
-position = Vector2(110, 110)
+position = Vector2(160, 160)
 scale = Vector2(0.25, 0.25)
 texture = ExtResource("4_3vvtq")
 

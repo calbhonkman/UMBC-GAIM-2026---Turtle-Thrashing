@@ -33,7 +33,7 @@ func _process(delta):
 	for area in get_overlapping_areas():
 		if area.is_in_group("Enemies") and area not in b_target:
 			bullets.append(BULLET.instantiate())
-			add_child(bullets.back())
+			$"/root/Node2D/(Group) Bullets".add_child(bullets.back())
 			b_target.append(area)
 			b_timer.append(DAMAGE_TIME)
 			bullets.back().global_position = area.global_position
