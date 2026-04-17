@@ -119,6 +119,7 @@ func _process(delta):
 					mode = "charging part two"
 					mode_timer = CHARGE_DURATION
 					sprite.play("charge2")
+					AudioManager.stampede.play()
 			"charging part two":
 				if mode_timer <= 0.0:
 					mode = "default"
