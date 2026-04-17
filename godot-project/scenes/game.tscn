@@ -44,9 +44,10 @@
 [ext_resource type="PackedScene" uid="uid://bfchoqlyg23ad" path="res://prefabs/enemies/(boss)_eeveel.tscn" id="37_05nbr"]
 [ext_resource type="Texture2D" uid="uid://dnh504hpdwomo" path="res://assets/Player_Health.png" id="38_0sl42"]
 [ext_resource type="Texture2D" uid="uid://dk7fix7poxx17" path="res://assets/Enemies/Elites/Dumpster King/Dumpster_King_Health-Border.png" id="40_8qswn"]
+[ext_resource type="Texture2D" uid="uid://dgtvs5mh20dyj" path="res://assets/Enemies/Elites/Eeveel/Eeveel Health Bar v3.png" id="40_rm0al"]
 [ext_resource type="Texture2D" uid="uid://bifmwi4ai4yqa" path="res://assets/Player_Health_Danger.png" id="41_h3rex"]
-[ext_resource type="Texture2D" uid="uid://ch0v563f34big" path="res://assets/Enemies/Elites/Dumpster King/Dumpster_King_Health-Indicator.png" id="41_rm0al"]
 [ext_resource type="Texture2D" uid="uid://cde5isw6cdpwk" path="res://assets/Game Over Screen.png" id="42_0sl42"]
+[ext_resource type="Texture2D" uid="uid://bkxh3afqjuohj" path="res://assets/Enemies/Elites/Eeveel/Eeveel Bar.png" id="42_rm0al"]
 [ext_resource type="Script" uid="uid://bm07s0umyx3r2" path="res://scenes/boss_health_bar.gd" id="43_oaba0"]
 [ext_resource type="Texture2D" uid="uid://c376tooy8drjp" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_HealthBorder.png" id="44_oaba0"]
 
@@ -116,10 +117,10 @@ font_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oaba0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4re6"]
-bg_color = Color(0.8946457, 0.09292445, 0.17897955, 1)
+bg_color = Color(0.44313726, 0.8745098, 0.99607843, 1)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_pf7vy"]
-texture = ExtResource("41_rm0al")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fedci"]
+load_path = "res://.godot/imported/Dumpster_King_Health-Indicator.png-bba84619c0fd88ddb5f818adc76ce553.ctex"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0sl42"]
 animations = [{
@@ -136,7 +137,10 @@ animations = [{
 "name": &"default",
 "speed": 8.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("40_rm0al")
+}],
 "loop": false,
 "name": &"eel",
 "speed": 8.0
@@ -423,6 +427,7 @@ vertical_alignment = 1
 script = ExtResource("43_oaba0")
 
 [node name="CrabBar" type="ProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=1582023764]
+visible = false
 offset_left = -538.0
 offset_top = 457.0
 offset_right = 543.0
@@ -432,21 +437,30 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_i4re6")
 value = 100.0
 show_percentage = false
 
-[node name="RaccoonBar" type="ProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=397894633]
-offset_left = -289.0
-offset_top = 368.0
-offset_right = 252.0
-offset_bottom = 545.0
-theme_override_styles/background = SubResource("StyleBoxTexture_oaba0")
-theme_override_styles/fill = SubResource("StyleBoxTexture_pf7vy")
+[node name="RaccoonBar" type="TextureProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=345344206]
+visible = false
+offset_left = -293.99997
+offset_top = 366.0
+offset_right = 1891.0
+offset_bottom = 1094.0
+scale = Vector2(0.253, 0.253)
 value = 100.0
-show_percentage = false
+texture_progress = SubResource("CompressedTexture2D_fedci")
 
 [node name="BarSprite" type="AnimatedSprite2D" parent="GameManager/Camera/BossHealthBar" unique_id=300496195]
-position = Vector2(-10, 434)
-scale = Vector2(0.25, 0.25)
+position = Vector2(0, 417)
+scale = Vector2(0.41594008, 0.568)
 sprite_frames = SubResource("SpriteFrames_0sl42")
-animation = &"raccoon"
+animation = &"eel"
+
+[node name="EelBar" type="TextureProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=1354623048]
+offset_left = -198.00002
+offset_top = 414.00003
+offset_right = 920.0
+offset_bottom = 592.0
+scale = Vector2(0.415, 0.56)
+value = 100.0
+texture_progress = ExtResource("42_rm0al")
 
 [node name="Health Icon" type="Node2D" parent="GameManager/Camera" unique_id=2140580713]
 position = Vector2(-800, -380)

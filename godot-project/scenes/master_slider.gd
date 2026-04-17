@@ -15,5 +15,5 @@ func _on_value_changed(value: float):
 	AudioServer.set_bus_volume_db(bus_index, linear_to_db(value))
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

@@ -125,6 +125,7 @@ func _process(delta):
 					mode = "default"
 					mode_timer = CHARGE_COOLDOWN
 					sprite.play("default")
+					AudioManager.stampede.stop()
 				else:
 					global_position += charge_direction * (3.0 * move_speed) * delta
 					anti_knockback_position = global_position
