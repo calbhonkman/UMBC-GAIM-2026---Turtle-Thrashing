@@ -7,6 +7,7 @@ extends Node2D
 @onready var level = $Camera/Level
 @onready var health = $"Camera/Health Icon/Health"
 @onready var bossHealthBar = $"Camera/BossHealthBar"
+@onready var elite_warning = $"Camera/Elite Warning"
 
 const DAMAGE_PARTICLE = preload("uid://dum7dfhvymdrp")
 
@@ -48,6 +49,7 @@ var exp_hue: float = 0.0
 func _ready():
 	remaining_elites = ELITES.duplicate()
 	bossHealthBar.visible = false
+	elite_warning.visible = false
 
 func _process(delta):
 	exp_hue = wrapf(exp_hue + (EXP_HUE_SPEED * delta), 0.0, 1.0)
@@ -100,11 +102,16 @@ func _process(delta):
 		var timer_seconds = ("0" if (fmod(clock_time, 60.0) < 10) else "") + str(int(fmod(clock_time, 60.0)))
 		clock.text = timer_minutes + ":" + timer_seconds
 		
-		if game_timer >= (WAVE_TIME * current_wave) and boss == null:
+		if game_timer >= ((WAVE_TIME - 10) * current_wave) and elite_warning.visible == false and boss == null:
+			elite_warning.visible = true
+			AudioManager.eliteWarning.play()
+		
+		elif game_timer >= (WAVE_TIME * current_wave) and boss == null:
 			boss = spawn(remaining_elites.pop_at(randi_range(0, remaining_elites.size()-1)))
 			boss_fight = true
 			bossHealthBar.visible = true
 			bossHealthBar.newElite(boss)
+			elite_warning.visible = false
 		
 		spawn_timer += delta
 		if spawn_timer >= next_spawn_time:

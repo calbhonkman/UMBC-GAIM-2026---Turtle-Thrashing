@@ -50,6 +50,7 @@
 [ext_resource type="Texture2D" uid="uid://bkxh3afqjuohj" path="res://assets/Enemies/Elites/Eeveel/Eeveel Bar.png" id="42_rm0al"]
 [ext_resource type="Script" uid="uid://bm07s0umyx3r2" path="res://scenes/boss_health_bar.gd" id="43_oaba0"]
 [ext_resource type="Texture2D" uid="uid://c376tooy8drjp" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_HealthBorder.png" id="44_oaba0"]
+[ext_resource type="Texture2D" uid="uid://c1jvifyu8r25a" path="res://assets/BADDY INBOUND (Elite warning).png" id="50_i4re6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
 size = Vector2(1312.9883, 50)
@@ -422,6 +423,11 @@ text = "Level 0 (0/0)"
 label_settings = SubResource("LabelSettings_ssvqc")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Elite Warning" type="Sprite2D" parent="GameManager/Camera" unique_id=654696922]
+position = Vector2(-250.00002, -449.00003)
+scale = Vector2(0.15416664, 0.15416665)
+texture = ExtResource("50_i4re6")
 
 [node name="BossHealthBar" type="Node2D" parent="GameManager/Camera" unique_id=732824693]
 script = ExtResource("43_oaba0")

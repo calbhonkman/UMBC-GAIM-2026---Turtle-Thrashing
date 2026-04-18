@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://52wq8vsmkgm0" path="res://audio/sfx/suck.wav" id="18_tu6k2"]
 [ext_resource type="AudioStream" uid="uid://ckpoje6hbvxd4" path="res://audio/voiceAndJingles/levelUp.wav" id="19_2qk0m"]
 [ext_resource type="AudioStream" uid="uid://dtv4a0wt5jihv" path="res://audio/sfx/hurt.wav" id="20_gs81p"]
+[ext_resource type="AudioStream" uid="uid://dpb2s8a660807" path="res://audio/sfx/elite_warning.wav" id="21_gs81p"]
 
 [node name="AudioManager" type="Node2D" unique_id=1292916551]
 process_mode = 3
@@ -116,3 +117,8 @@ bus = &"VoiceJingles"
 [node name="playerHurt" type="AudioStreamPlayer" parent="." unique_id=1936957669]
 stream = ExtResource("20_gs81p")
 volume_db = -11.757
+
+[node name="eliteWarning" type="AudioStreamPlayer" parent="." unique_id=1772627433]
+stream = ExtResource("21_gs81p")
+volume_db = -15.746
+bus = &"Sfx"

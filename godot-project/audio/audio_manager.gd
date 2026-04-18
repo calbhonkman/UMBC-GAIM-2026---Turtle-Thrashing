@@ -18,6 +18,7 @@ extends Node2D
 @onready var roar = $roar
 @onready var suck = $suck
 @onready var playerHurt = $playerHurt
+@onready var eliteWarning = $eliteWarning
 
 #Voices/Jingles
 @onready var crabJingle = $crabJingle

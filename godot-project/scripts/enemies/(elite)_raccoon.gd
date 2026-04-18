@@ -39,7 +39,6 @@ var b_lifetime = []
 var b_amount = 0
 
 func _ready():
-	#Test
 	AudioManager.raccoonKingJingle.play()
 
 func _process(delta):
