@@ -364,6 +364,7 @@ upgrade_icon = ExtResource("23_pr1ej")
 shape = SubResource("CircleShape2D_iywne")
 
 [node name="(Minion) Shield" type="Node2D" parent="Player" unique_id=197280404]
+visible = false
 rotation = 3.1415927
 script = ExtResource("12_bt5mj")
 upgrade_descriptions = Array[String](["Unlock Shield", "Shield Speed +50%"])
@@ -372,6 +373,7 @@ upgrade_icon = ExtResource("25_7025r")
 [node name="Area2D" type="Area2D" parent="Player/(Minion) Shield" unique_id=1754672137]
 
 [node name="Sprite2D" type="Sprite2D" parent="Player/(Minion) Shield/Area2D" unique_id=305210915]
+z_index = 2
 position = Vector2(4.999999, 3.9999993)
 rotation = -2.9670596
 scale = Vector2(0.2, 0.2)

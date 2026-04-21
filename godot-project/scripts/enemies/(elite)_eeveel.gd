@@ -7,7 +7,7 @@ const EXP = preload("uid://bln5qlwy18sjf")
 @export var MAX_HEALTH: float = 15.0
 var health: float = MAX_HEALTH
 
-@export var BASE_MOVE_SPEED: float = 100.0
+@export var BASE_MOVE_SPEED: float = 80.0
 var move_speed: float = BASE_MOVE_SPEED
 
 var stunned: bool = false

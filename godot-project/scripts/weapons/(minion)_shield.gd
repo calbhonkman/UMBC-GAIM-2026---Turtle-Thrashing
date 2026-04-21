@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var BASE_ROTATION_SPEED: float = 2.0
-@export var STUN_DURATION: float = 0.25
+@export var STUN_DURATION: float = 0.1
 @export var MOVE_SPEED: float = 5.0
 
 @export var unlocked: bool = false
@@ -11,6 +11,7 @@ extends Node2D
 @onready var shield = $Area2D
 var anti_turtle_position = null
 var move_speed_mod = 1.0
+var size_mod = 1.0
 
 func _ready():
 	anti_turtle_position = global_position
@@ -38,7 +39,7 @@ func get_random_upgrade(index):
 	if not unlocked:
 		return Vector2(index, 0)
 	else:
-		return Vector2(index, randi_range(1, 1))
+		return Vector2(index, randi_range(1, 2))
 
 func get_upgrade_description(index: int):
 	var desc = "[outline_size=10][outline_color=black]"
@@ -46,10 +47,13 @@ func get_upgrade_description(index: int):
 	match index:
 		0:
 			desc += "Unlocks the Shield minion."
-			desc += "[br]Rotates around you to keep enemies away."
+			desc += "[br]Follows your mouse cursor and blocks enemies. Does not affect bosses."
 		1:
 			desc += "[i][color=#8f8f8f]Your Shield now moves faster.[/color][/i]"
 			desc += "[br]Increases Shield Move Speed ([color=#8FFFFF]" + str(round(move_speed_mod * 100) / 100.0) + "x -> " + str(round(move_speed_mod * 1.25 * 100) / 100.0) + "x[/color])."
+		2:
+			desc += "[i][color=#8f8f8f]Your Shield is now bigger.[/color][/i]"
+			desc += "[br]Increases Shield Size ([color=#8FFFFF]" + str(round(size_mod * 100) / 100.0) + "x -> " + str(round((size_mod + 0.25) * 100) / 100.0) + "x[/color])."
 	desc += "[/outline_color][/outline_size]"
 	return desc
 
@@ -61,3 +65,6 @@ func upgrade(index: int):
 			anti_turtle_position = global_position
 		1:
 			move_speed_mod *= 1.25
+		2:
+			size_mod += 0.25
+			shield.scale *= size_mod / (size_mod - 0.25)
