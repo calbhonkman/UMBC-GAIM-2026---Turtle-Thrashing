@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cjwmklbpd0qqs"]
 
-[ext_resource type="Script" uid="uid://nbm4sy4po062" path="res://scripts/enemies/(enemy)_seagull.gd" id="1_qgmfd"]
+[ext_resource type="Script" path="res://scripts/enemies/(enemy)_seagull.gd" id="1_qgmfd"]
 [ext_resource type="Texture2D" uid="uid://b7cb0wvoluasd" path="res://assets/Enemies/BasicEnemies/Seagull/Bird shadow.png" id="2_jwc44"]
 [ext_resource type="Texture2D" uid="uid://8ygf0q303pyc" path="res://assets/Enemies/BasicEnemies/Seagull/Bird dive bomb.png" id="3_5d6mm"]
 [ext_resource type="Texture2D" uid="uid://dxirir0ix8x2e" path="res://assets/Enemies/BasicEnemies/Seagull/Bird dirt land.png" id="4_jwc44"]

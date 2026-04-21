@@ -17,6 +17,9 @@ font_color = Color(0, 0, 0, 1)
 font_size = 256
 font_color = Color(0, 0, 0, 1)
 
+[sub_resource type="VideoStreamTheora" id="VideoStreamTheora_3vvtq"]
+file = "AttractModeAgain.ogv"
+
 [node name="Node2D" type="Node2D" unique_id=1445423648]
 script = ExtResource("1_5mbse")
 
@@ -124,6 +127,14 @@ label_settings = SubResource("LabelSettings_s5g8n")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="." unique_id=947866945]
+offset_right = 1280.0
+offset_bottom = 720.0
+scale = Vector2(1.505, 1.505)
+stream = SubResource("VideoStreamTheora_3vvtq")
+autoplay = true
+loop = true
 
 [connection signal="pressed" from="Play (Button)" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Quit (Button)" to="." method="_on_quit_button_pressed"]
