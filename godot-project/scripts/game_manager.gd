@@ -8,6 +8,8 @@ extends Node2D
 @onready var health = $"Camera/Health Icon/Health"
 @onready var bossHealthBar = $"Camera/BossHealthBar"
 @onready var elite_warning = $"Camera/Elite Warning"
+@onready var time_bar = $"Camera/Timer Bar/TimeBar"
+@onready var time_border = $"Camera/Timer Bar/TimeBoder"
 
 const DAMAGE_PARTICLE = preload("uid://dum7dfhvymdrp")
 
@@ -101,6 +103,11 @@ func _process(delta):
 		var timer_minutes = str(int(clock_time / 60.0))
 		var timer_seconds = ("0" if (fmod(clock_time, 60.0) < 10) else "") + str(int(fmod(clock_time, 60.0)))
 		clock.text = timer_minutes + ":" + timer_seconds
+		time_bar = (1 - ((game_timer * current_wave) / (WAVE_TIME * NUM_WAVES))) * 100
+		
+		if game_timer >= (WAVE_TIME - 10) and elite_warning.visible == false and boss == null:
+			elite_warning.visible = true
+			AudioManager.eliteWarning.play()
 		
 		if game_timer >= ((WAVE_TIME - 10) * current_wave) and elite_warning.visible == false and boss == null:
 			elite_warning.visible = true

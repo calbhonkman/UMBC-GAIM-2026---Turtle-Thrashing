@@ -43,6 +43,8 @@
 [ext_resource type="Script" uid="uid://b7jd3dyuq3laq" path="res://scenes/master_slider.gd" id="36_m4url"]
 [ext_resource type="PackedScene" uid="uid://bfchoqlyg23ad" path="res://prefabs/enemies/(boss)_eeveel.tscn" id="37_05nbr"]
 [ext_resource type="Texture2D" uid="uid://dnh504hpdwomo" path="res://assets/Player_Health.png" id="38_0sl42"]
+[ext_resource type="Texture2D" uid="uid://b10r8smllkcx4" path="res://assets/UI/Timer UI progression bar detailed.PNG" id="38_o8ni1"]
+[ext_resource type="Texture2D" uid="uid://cesefbtqrxldh" path="res://assets/UI/Timer UI detailed.PNG" id="38_pf7vy"]
 [ext_resource type="Texture2D" uid="uid://dk7fix7poxx17" path="res://assets/Enemies/Elites/Dumpster King/Dumpster_King_Health-Border.png" id="40_8qswn"]
 [ext_resource type="Texture2D" uid="uid://dgtvs5mh20dyj" path="res://assets/Enemies/Elites/Eeveel/Eeveel Health Bar v3.png" id="40_rm0al"]
 [ext_resource type="Texture2D" uid="uid://bifmwi4ai4yqa" path="res://assets/Player_Health_Danger.png" id="41_h3rex"]
@@ -400,6 +402,22 @@ ELITES = Array[Resource]([ExtResource("22_qnb83"), ExtResource("25_qnb83"), ExtR
 [node name="Camera" type="Camera2D" parent="GameManager" unique_id=1356503637]
 limit_enabled = false
 
+[node name="Timer Bar" type="Node2D" parent="GameManager/Camera" unique_id=1546100865]
+
+[node name="TimeBar" type="TextureProgressBar" parent="GameManager/Camera/Timer Bar" unique_id=735849424]
+offset_left = -432.00003
+offset_top = -553.0
+offset_right = 1341.0
+offset_bottom = -83.0
+scale = Vector2(0.495, 0.495)
+value = 100.0
+texture_progress = ExtResource("38_o8ni1")
+
+[node name="TimeBorder" type="Sprite2D" parent="GameManager/Camera/Timer Bar" unique_id=146856491]
+position = Vector2(-2, -435)
+scale = Vector2(0.47765958, 0.4776596)
+texture = ExtResource("38_pf7vy")
+
 [node name="Clock" type="Label" parent="GameManager/Camera" unique_id=1533942345]
 anchors_preset = 5
 anchor_left = 0.5
@@ -417,9 +435,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -69.0
-offset_top = -420.0
+offset_top = -375.0
 offset_right = 69.0
-offset_bottom = -386.0
+offset_bottom = -341.0
 grow_horizontal = 2
 text = "Level 0 (0/0)"
 label_settings = SubResource("LabelSettings_ssvqc")
@@ -427,7 +445,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Elite Warning" type="Sprite2D" parent="GameManager/Camera" unique_id=654696922]
-position = Vector2(-250.00002, -449.00003)
+position = Vector2(-501, -417.00003)
 scale = Vector2(0.15416664, 0.15416665)
 texture = ExtResource("50_i4re6")
 
