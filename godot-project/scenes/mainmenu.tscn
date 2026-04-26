@@ -4,6 +4,8 @@
 [ext_resource type="Texture2D" uid="uid://lpvkw4g1v1p3" path="res://assets/Splash_v3.webp" id="2_natt5"]
 [ext_resource type="Texture2D" uid="uid://cck0lk0eonuq5" path="res://assets/IslandBG_GreenishHue.png" id="3_r3g3c"]
 [ext_resource type="Texture2D" uid="uid://dnh504hpdwomo" path="res://assets/Player_Health.png" id="4_3vvtq"]
+[ext_resource type="Texture2D" uid="uid://cimqr2f7sjb4y" path="res://assets/UI/PLAY Button.png" id="4_s5g8n"]
+[ext_resource type="Texture2D" uid="uid://w556jgcy2g56" path="res://assets/UI/QUIT Button.png" id="5_7yvfd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r3g3c"]
 font_size = 48
@@ -35,29 +37,33 @@ scale = Vector2(0.36, 0.36)
 texture = ExtResource("3_r3g3c")
 
 [node name="Play (Button)" type="Button" parent="." unique_id=171000035]
-offset_left = 619.0
-offset_top = 643.0
-offset_right = 899.0
-offset_bottom = 753.0
+offset_left = 627.0
+offset_top = 628.0
+offset_right = 1914.0
+offset_bottom = 1574.0
+scale = Vector2(0.2, 0.2)
 theme_override_font_sizes/font_size = 48
-text = "Play"
+icon = ExtResource("4_s5g8n")
+flat = true
 
 [node name="Quit (Button)" type="Button" parent="." unique_id=706965802]
-offset_left = 1019.0
-offset_top = 643.0
-offset_right = 1299.0
-offset_bottom = 753.0
+offset_left = 976.0
+offset_top = 638.0
+offset_right = 2505.0
+offset_bottom = 1595.0
+scale = Vector2(0.2, 0.2)
 theme_override_font_sizes/font_size = 48
-text = "Quit"
+icon = ExtResource("5_7yvfd")
+flat = true
 
 [node name="HowToPlay" type="Label" parent="." unique_id=209598707]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -202.0
-offset_top = 758.0
+offset_top = 800.0
 offset_right = 2117.0
-offset_bottom = 1018.6665
+offset_bottom = 1060.6665
 grow_horizontal = 2
 text = "Use WASD or the ARROW KEYS to move around.
 Move close to enemies to attack them, but not too close!"
