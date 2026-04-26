@@ -1,45 +1,38 @@
 extends Node2D
 
 @export var BASE_ROTATION_SPEED: float = 2.0
-@export var STUN_DURATION: float = 0.1
-@export var MOVE_SPEED: float = 5.0
+@export var STUN_DURATION: float = 0.25
+@export var KNOCKBACK: float = 10.0
 
 @export var unlocked: bool = false
 @export var upgrade_descriptions: Array[String]
 @export var upgrade_icon: Resource
 
-@onready var shield = $Area2D
-var anti_turtle_position = null
-var move_speed_mod = 1.0
-var size_mod = 1.0
+var rotation_speed = 0.0
 
 func _ready():
-	anti_turtle_position = global_position
 	if unlocked:
 		visible = true
+	rotation_speed = BASE_ROTATION_SPEED
 
 func _process(delta):
 	if unlocked == false:
 		return
 	
-	if shield.global_position != get_global_mouse_position():
-		var player_dir = (get_global_mouse_position() - shield.global_position)
-		var rotation_dir = angle_difference(shield.rotation, player_dir.angle())
-		shield.rotation += rotation_dir if player_dir.length() > (MOVE_SPEED * move_speed_mod) else 0.0
-		shield.global_position = anti_turtle_position + (player_dir / player_dir.length()) * min((MOVE_SPEED * move_speed_mod), player_dir.length())
-		anti_turtle_position = shield.global_position
+	rotation += rotation_speed * delta
 	
 	for area in get_child(0).get_overlapping_areas():
-		if area.is_in_group("Enemies") and area.has_method("stun"):
-			area.stun(STUN_DURATION)
-		if area.is_in_group("Enemy Bullets"):
-			area.queue_free()
+		if area.has_meta("enemy"):
+			var knockback_dir = (area.global_position - global_position) / (area.global_position - global_position).length()
+			area.global_position += knockback_dir * KNOCKBACK
+			if area.has_method("stun"):
+				area.stun(STUN_DURATION)
 
 func get_random_upgrade(index):
 	if not unlocked:
 		return Vector2(index, 0)
 	else:
-		return Vector2(index, randi_range(1, 2))
+		return Vector2(index, randi_range(1, 1))
 
 func get_upgrade_description(index: int):
 	var desc = "[outline_size=10][outline_color=black]"
@@ -47,13 +40,10 @@ func get_upgrade_description(index: int):
 	match index:
 		0:
 			desc += "Unlocks the Shield minion."
-			desc += "[br]Follows your mouse cursor and blocks enemies. Does not affect bosses."
+			desc += "[br]Rotates around you to keep enemies away."
 		1:
-			desc += "[i][color=#8f8f8f]Your Shield now moves faster.[/color][/i]"
-			desc += "[br]Increases Shield Move Speed ([color=#8FFFFF]" + str(round(move_speed_mod * 100) / 100.0) + "x -> " + str(round(move_speed_mod * 1.25 * 100) / 100.0) + "x[/color])."
-		2:
-			desc += "[i][color=#8f8f8f]Your Shield is now bigger.[/color][/i]"
-			desc += "[br]Increases Shield Size ([color=#8FFFFF]" + str(round(size_mod * 100) / 100.0) + "x -> " + str(round((size_mod + 0.25) * 100) / 100.0) + "x[/color])."
+			desc += "[i][color=#8f8f8f]Your Shield now rotates faster.[/color][/i]"
+			desc += "[br]Increases Shield Rotation Speed ([color=#8FFFFF]" + str(round(rotation_speed * 100) / 100.0) + " -> " + str(round(rotation_speed * 1.5 * 100) / 100.0) + "[/color])."
 	desc += "[/outline_color][/outline_size]"
 	return desc
 
@@ -62,9 +52,5 @@ func upgrade(index: int):
 		0:
 			unlocked = true
 			visible = true
-			anti_turtle_position = global_position
 		1:
-			move_speed_mod *= 1.25
-		2:
-			size_mod += 0.25
-			shield.scale *= size_mod / (size_mod - 0.25)
+			rotation_speed *= 1.5
