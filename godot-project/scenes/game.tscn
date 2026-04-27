@@ -409,9 +409,9 @@ limit_enabled = false
 [node name="Timer Bar" type="Node2D" parent="GameManager/Camera" unique_id=1546100865]
 
 [node name="TimeBar" type="TextureProgressBar" parent="GameManager/Camera/Timer Bar" unique_id=735849424]
-offset_left = -432.00003
+offset_left = -329.59
 offset_top = -553.0
-offset_right = 1341.0
+offset_right = 1443.41
 offset_bottom = -83.0
 scale = Vector2(0.495, 0.495)
 step = 0.01
@@ -458,7 +458,6 @@ texture = ExtResource("50_i4re6")
 script = ExtResource("43_oaba0")
 
 [node name="CrabBar" type="ProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=1582023764]
-visible = false
 offset_left = -538.0
 offset_top = 457.0
 offset_right = 543.0
@@ -469,7 +468,6 @@ value = 100.0
 show_percentage = false
 
 [node name="RaccoonBar" type="TextureProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=345344206]
-visible = false
 offset_left = -293.99997
 offset_top = 366.0
 offset_right = 1891.0
@@ -479,12 +477,13 @@ value = 100.0
 texture_progress = SubResource("CompressedTexture2D_fedci")
 
 [node name="BarSprite" type="AnimatedSprite2D" parent="GameManager/Camera/BossHealthBar" unique_id=300496195]
-position = Vector2(0, 417)
-scale = Vector2(0.41594008, 0.568)
+position = Vector2(-10, 434)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_0sl42")
-animation = &"eel"
+animation = &"crab"
 
 [node name="EelBar" type="TextureProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=1354623048]
+visible = false
 offset_left = -198.00002
 offset_top = 414.00003
 offset_right = 920.0
