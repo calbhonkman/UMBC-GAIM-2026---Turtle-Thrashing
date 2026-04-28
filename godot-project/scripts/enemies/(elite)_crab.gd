@@ -7,7 +7,7 @@ const EXP = preload("uid://bln5qlwy18sjf")
 @export var MAX_HEALTH: float = 15.0
 var health: float = MAX_HEALTH
 
-@export var BASE_MOVE_SPEED: float = 180.0
+@export var BASE_MOVE_SPEED: float = 250.0
 var move_speed: float = BASE_MOVE_SPEED
 
 # Other enemies might not have these variables:
@@ -16,8 +16,9 @@ var move_speed: float = BASE_MOVE_SPEED
 @export var BASE_DAMAGE: float = 1.0
 @export var ATTACK_RANGE: float = 150.0
 @export var ATTACK_COOLDOWN: float = 1.0
+@export var CHARGE_RANGE: float = 500.0
 @export var CHARGE_PREP_TIME: float = 1.0
-@export var CHARGE_DURATION: float = 0.5
+@export var CHARGE_DURATION: float = 1.0
 @export var CHARGE_COOLDOWN: float = 0.5
 @export var JUMP_DISTANCE: float = 1000
 @export var JUMP_AIR_TIME: float = 3.0
@@ -53,20 +54,20 @@ func _process(delta):
 					mode = "hunting"
 					sprite.play("walk")
 			"hunting":
-				if (player.global_position - hitbox_slam.global_position).length() < ($"(hitbox)_slam/CollisionShape2D".shape.radius / 2.0):
+				if (player.global_position - hitbox_slam.global_position).length() < ($"(hitbox)_slam/CollisionShape2D".shape.radius * 0.75):
 					mode = "slamming part one"
 					sprite.play("slam1")
 				elif (abs(player_vect.x) >= (get_viewport_rect().size.x / 2)) or (abs(player_vect.y) >= (get_viewport_rect().size.y / 2)):
 					mode = "jumping part one"
 					sprite.play("jump1")
-				elif player_vect.y >= 0.0 or abs(player_vect.y) < abs(player_vect.x):
-					global_position += player_dir * move_speed * delta
-					anti_knockback_position = global_position
-				elif mode_timer <= 0.0:
+				elif player_dist >= CHARGE_RANGE and mode_timer <= 0.0:
 					mode = "charging part one"
 					mode_timer = CHARGE_PREP_TIME
-					charge_direction = Vector2.UP
+					charge_direction = player_dir
 					sprite.play("charge1")
+				else:
+					global_position += player_dir * move_speed * delta
+					anti_knockback_position = global_position
 			"slamming part one":
 				# The slam is split into two separate animations
 				# The actual moment of impact is the end of slam1

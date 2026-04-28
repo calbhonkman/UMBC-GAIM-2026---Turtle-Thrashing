@@ -296,15 +296,15 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("42_ncri0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_sursi")
 }],
 "loop": false,
 "name": &"slam1",
 "speed": 8.0
 }, {
 "frames": [{
-"duration": 1.0,
-"texture": ExtResource("43_sursi")
-}, {
 "duration": 1.0,
 "texture": ExtResource("44_775kj")
 }, {
@@ -340,7 +340,7 @@ animations = [{
 size = Vector2(223, 165)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8gx0c"]
-radius = 147.0
+radius = 303.01486
 
 [node name="(boss)_Crab" type="Area2D" unique_id=2044177891 groups=["Enemies"]]
 script = ExtResource("1_4a8of")
@@ -350,15 +350,12 @@ position = Vector2(-48, -34)
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_gkrs1")
 animation = &"slam2"
-frame = 5
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=155662765]
 shape = SubResource("RectangleShape2D_lq1tu")
 
 [node name="(hitbox)_slam" type="Area2D" parent="." unique_id=2074537651]
-position = Vector2(37, 223)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="(hitbox)_slam" unique_id=2004600664]
-position = Vector2(-4, -18)
+position = Vector2(30, 87)
 shape = SubResource("CircleShape2D_8gx0c")
