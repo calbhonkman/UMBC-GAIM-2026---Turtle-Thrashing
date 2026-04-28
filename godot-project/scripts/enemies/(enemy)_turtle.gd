@@ -11,7 +11,7 @@ var health: float = MAX_HEALTH
 var move_speed: float = BASE_MOVE_SPEED
 
 var stunned: bool = false
-@export var STUN_RESIST: float = 0.0 # Percentage
+@export var STUN_RESIST: float = 100.0 # Percentage
 var stun_timer: float = 0.0 # Seconds
 
 var dying: bool = false
