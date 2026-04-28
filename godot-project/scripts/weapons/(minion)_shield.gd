@@ -8,23 +8,23 @@ extends Node2D
 @export var upgrade_descriptions: Array[String]
 @export var upgrade_icon: Resource
 
-var rotation_speed = 0.0
+var rotation_speed_mod = 1.0
 
 func _ready():
 	if unlocked:
 		visible = true
-	rotation_speed = BASE_ROTATION_SPEED
 
 func _process(delta):
 	if unlocked == false:
 		return
 	
-	rotation += rotation_speed * delta
+	rotation += BASE_ROTATION_SPEED * rotation_speed_mod * delta
 	
 	for area in get_child(0).get_overlapping_areas():
 		if area.has_meta("enemy"):
-			var knockback_dir = (area.global_position - global_position) / (area.global_position - global_position).length()
-			area.global_position += knockback_dir * KNOCKBACK
+			if not "anti_knockback_position" in area:
+				var knockback_dir = (area.global_position - global_position) / (area.global_position - global_position).length()
+				area.global_position += knockback_dir * KNOCKBACK
 			if area.has_method("stun"):
 				area.stun(STUN_DURATION)
 
@@ -43,7 +43,7 @@ func get_upgrade_description(index: int):
 			desc += "[br]Rotates around you to keep enemies away."
 		1:
 			desc += "[i][color=#8f8f8f]Your Shield now rotates faster.[/color][/i]"
-			desc += "[br]Increases Shield Rotation Speed ([color=#8FFFFF]" + str(round(rotation_speed * 100) / 100.0) + " -> " + str(round(rotation_speed * 1.5 * 100) / 100.0) + "[/color])."
+			desc += "[br]Increases Shield Rotation Speed ([color=#8FFFFF]" + str(round(rotation_speed_mod * 100) / 100.0) + "x -> " + str(round((rotation_speed_mod + 0.5) * 100) / 100.0) + "x[/color])."
 	desc += "[/outline_color][/outline_size]"
 	return desc
 
@@ -53,4 +53,4 @@ func upgrade(index: int):
 			unlocked = true
 			visible = true
 		1:
-			rotation_speed *= 1.5
+			rotation_speed_mod += 0.5

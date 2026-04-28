@@ -10,28 +10,26 @@ var health: float = MAX_HEALTH
 @export var BASE_MOVE_SPEED: float = 180.0
 var move_speed: float = BASE_MOVE_SPEED
 
-var stunned: bool = false
-@export var STUN_RESIST: float = 100.0 # Percent
-var stun_timer: float = 0.0 # Seconds
-
 var dying: bool = false
 @export var DYING_TIME: float = 0.5
 var dying_timer: float = DYING_TIME
 @export var EXP_AMOUNT: int = 1
 
 # Other enemies may not have these variables:
-@export var ATTACK_RANGE: float = 350.0
+@export var ATTACK_RANGE: float = 400.0
 @export var ATTACK_COOLDOWN: float = 4.0
-@export var PREPARE_TIME: float = 1.0
+@export var PREPARE_TIME: float = 2.0
 @export var ATTACK_TIME: float = 1.0
 @export var ATTACK_AMOUNT: int = 3
 @export var BULLETS: Array[Resource]
 @export var RACCOON: Resource
 @export var BULLET_SPEED: float = 500.0
-@export var BULLET_LIFETIME: float = 3.0
+@export var BASE_BULLET_LIFETIME: float = 1.0
+var bullet_lifetime = BASE_BULLET_LIFETIME
 var anti_knockback_position = null
 var mode = "default"
 var mode_timer = 0
+var next_bullet = null
 var bullets = []
 var b_direction = []
 var b_position = []
@@ -76,29 +74,40 @@ func _process(delta):
 					anti_knockback_position = global_position
 					sprite.play("walk")
 				elif player_dist <= ATTACK_RANGE:
-					mode = "charging"
 					mode_timer = PREPARE_TIME
-					sprite.play("charge")
-			"charging":
+					if randf() > 0.5:
+						mode = "charging_bowl"
+						next_bullet = BULLETS[0]
+						bullet_lifetime = BASE_BULLET_LIFETIME * 3.0
+						sprite.play("charge_bowl")
+					else:
+						mode = "charging_rac"
+						next_bullet = BULLETS[1]
+						bullet_lifetime = BASE_BULLET_LIFETIME
+						sprite.play("charge_rac")
+			"charging_bowl":
 				if mode_timer <= 0.0:
 					mode = "attacking"
 					mode_timer = ATTACK_TIME
 					b_amount = 0
-					sprite.play("attack")
+					sprite.play("attack_bowl")
+			"charging_rac":
+				if mode_timer <= 0.0:
+					mode = "attacking"
+					mode_timer = ATTACK_TIME
+					b_amount = 0
+					sprite.play("attack_rac")
 			"attacking":
 				if mode_timer <= 0.0:
 					mode = "default"
 					mode_timer = ATTACK_COOLDOWN
 					sprite.play("default")
 				elif mode_timer <= (ATTACK_AMOUNT - b_amount) * (ATTACK_TIME / ATTACK_AMOUNT):
-					if randi_range(1,20) == 1:
-						bullets.append(BULLETS[2].instantiate())
-					else:
-						bullets.append(BULLETS[randi_range(0,1)].instantiate())
+					bullets.append(next_bullet.instantiate())
 					add_child(bullets.back())
 					b_direction.append(player_dir)
 					b_position.append(global_position)
-					b_lifetime.append(BULLET_LIFETIME)
+					b_lifetime.append(bullet_lifetime)
 					b_amount += 1
 			"dying":
 				queue_free()
@@ -136,8 +145,3 @@ func damage(dmg: float):
 	print(health)
 	if health <= 0.0:
 		mode = "dying"
-
-func stun(time: float):
-	if stunned != true:
-		stunned = true
-		stun_timer = time

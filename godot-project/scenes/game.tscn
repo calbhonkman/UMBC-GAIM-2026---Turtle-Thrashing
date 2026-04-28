@@ -313,6 +313,7 @@ shape = SubResource("CircleShape2D_0tnpc")
 
 [node name="(Weapon) Laser" type="Area2D" parent="Player" unique_id=1069287280]
 visible = false
+z_index = 2
 script = ExtResource("14_e1j6l")
 upgrade_descriptions = Array[String](["Unlock Laser", "Laser Width +50%", "Laser Knockback x1.25"])
 upgrade_icon = ExtResource("9_nepv3")
@@ -336,7 +337,7 @@ script = ExtResource("9_kvpfn")
 
 [node name="(Weapon) Punch" type="Area2D" parent="Player" unique_id=1650126049]
 visible = false
-z_index = 1
+z_index = 2
 script = ExtResource("7_kvpfn")
 BULLET = ExtResource("9_kvuet")
 unlocked = true
@@ -419,7 +420,7 @@ value = 100.0
 texture_progress = ExtResource("38_o8ni1")
 
 [node name="TimeBorder" type="Sprite2D" parent="GameManager/Camera/Timer Bar" unique_id=146856491]
-position = Vector2(-2, -435)
+position = Vector2(0, -435)
 scale = Vector2(0.47765958, 0.4776596)
 texture = ExtResource("38_pf7vy")
 
@@ -432,8 +433,10 @@ offset_top = -540.0
 offset_right = 95.0
 offset_bottom = -408.0
 grow_horizontal = 2
-text = "5:00"
+text = "9:57"
 label_settings = SubResource("LabelSettings_gee14")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Level" type="Label" parent="GameManager/Camera" unique_id=203818531]
 anchors_preset = 5
