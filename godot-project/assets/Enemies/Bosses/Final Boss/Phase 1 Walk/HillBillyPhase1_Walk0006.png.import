@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c5n08l4fpaylj"
-path="res://.godot/imported/HillBillyPhase1_Walk0001.png-d41ab98e0c3acb83fcd8a330480ab8fc.ctex"
+uid="uid://c3m5sekvdobfp"
+path="res://.godot/imported/HillBillyPhase1_Walk0006.png-a0173f2770bf01758731056b28f7f67a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemies/Bosses/Final Boss/Phase 1 Walk/HillBillyPhase1_Walk0001.png"
-dest_files=["res://.godot/imported/HillBillyPhase1_Walk0001.png-d41ab98e0c3acb83fcd8a330480ab8fc.ctex"]
+source_file="res://assets/Enemies/Bosses/Final Boss/Phase 1 Walk/HillBillyPhase1_Walk0006.png"
+dest_files=["res://.godot/imported/HillBillyPhase1_Walk0006.png-a0173f2770bf01758731056b28f7f67a.ctex"]
 
 [params]
 

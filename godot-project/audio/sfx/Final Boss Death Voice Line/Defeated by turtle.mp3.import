@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://x6t5lqxony8g"
+path="res://.godot/imported/Defeated by turtle.mp3-db6626ecc020d781759f58439f67ce33.mp3str"
+
+[deps]
+
+source_file="res://audio/sfx/Final Boss Death Voice Line/Defeated by turtle.mp3"
+dest_files=["res://.godot/imported/Defeated by turtle.mp3-db6626ecc020d781759f58439f67ce33.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
