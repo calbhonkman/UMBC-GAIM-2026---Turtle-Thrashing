@@ -16,6 +16,7 @@ const DAMAGE_PARTICLE = preload("uid://dum7dfhvymdrp")
 
 @export var WAVE_TIME: float = 150.0 # seconds
 @export var NUM_WAVES: int = 4
+@export var SIZE_LIMIT: float = 7.5 # limit for particle size
 var game_timer: float = 0.0
 var current_wave: int = 1
 var spawn_timer: float = 0.0
@@ -194,4 +195,4 @@ func create_damage_particle(dmg_position, damage):
 	var new_damage_particle = DAMAGE_PARTICLE.instantiate()
 	enemies_group.add_child(new_damage_particle)
 	new_damage_particle.global_position = dmg_position - (new_damage_particle.get_size() / 2.0)
-	new_damage_particle.text = "[font_size=" + str(16 * max(1.0, damage)) + "][color=red][b][i]" + str(round(damage * 100) / 100.0) + "[/i][/b][/color][/font_size]"
+	new_damage_particle.text = "[font_size=" + str(16 * min(max(1.0, damage), SIZE_LIMIT)) + "][color=red][b][i]" + str(round(damage * 100) / 100.0) + "[/i][/b][/color][/font_size]"
