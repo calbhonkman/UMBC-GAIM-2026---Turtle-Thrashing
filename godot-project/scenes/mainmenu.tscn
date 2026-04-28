@@ -100,15 +100,15 @@ grow_horizontal = 2
 text = "Lead:
 Karlos Lorenzo Veloso
 
-Programmers:
-Damon Gullion
-Caleb Moesner
-
 Artists:
 Jasmine Kareem-Robinson
 Daniel Noonan
 Liam Scott
-Adam Tran"
+Adam Tran
+
+Programmers:
+Damon Gullion
+Caleb Moesner"
 label_settings = SubResource("LabelSettings_3vvtq")
 horizontal_alignment = 1
 vertical_alignment = 1

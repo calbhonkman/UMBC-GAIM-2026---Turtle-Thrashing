@@ -16,6 +16,7 @@ extends Area2D
 @onready var player = $"/root/Node2D/Player"
 
 var damage = BASE_DAMAGE
+@export var damage_scaling = 0.10
 
 var knockback_mod = 1.0
 var size_mod = 1.0
@@ -37,9 +38,11 @@ func _process(delta):
 	b_cooldown -= delta
 	if bullet:
 		b_lifetime -= delta
+		damage += damage * damage_scaling * delta
 		if b_lifetime <= 0.0:
 			bullet.queue_free()
 			AudioManager.laser.stop()
+			damage = BASE_DAMAGE
 		
 		else:
 			var rotation_dir = angle_difference(bullet.rotation, (get_global_mouse_position() - global_position).angle())
@@ -65,8 +68,9 @@ func _process(delta):
 						b_target[i].damage(damage)
 						$"/root/Node2D/GameManager".create_damage_particle(b_target[i].global_position, damage)
 						b_timer[i] += -1 * DAMAGE_TIME
-					var knockback_dir = (b_target[i].global_position - player.global_position)
-					b_target[i].global_position += (knockback_dir / knockback_dir.length()) * BASE_KNOCKBACK * knockback_mod * delta
+					if not "anti_knockback_position" in b_target[i]:
+						var knockback_dir = (b_target[i].global_position - player.global_position)
+						b_target[i].global_position += (knockback_dir / knockback_dir.length()) * BASE_KNOCKBACK * knockback_mod * delta
 				else:
 					b_target.remove_at(i)
 					b_timer.remove_at(i)
@@ -97,8 +101,8 @@ func get_upgrade_description(index: int):
 			desc += "[i][color=#8f8f8f]Your Laser is now wider.[/color][/i]"
 			desc += "[br]Increases Laser Width ([color=#8FFFFF]" + str(round(size_mod * 100) / 100.0) + "x -> " + str(round(size_mod * 1.5 * 100) / 100.0) + "x[/color])."
 		2:
-			desc += "[i][color=#8f8f8f]Your Laser is now more repulsive.[/color][/i]"
-			desc += "[br]Increases Laser Knockback by ([color=#8FFFFF]" + str(round(knockback_mod * 100) / 100.0) + "x -> " + str(round(knockback_mod * 1.5 * 100) / 100.0) + "x[/color])."
+			desc += "[i][color=#8f8f8f]Your Laser damage scales faster.[/color][/i]"
+			desc += "[br]Increases Laser Damage Scaling ([color=#8FFFFF]+" + str(round(damage_scaling * 10000) / 100.0) + "%/s -> +" + str(round((damage_scaling + 0.10) * 10000) / 100.0) + "%/s[/color])."
 	desc += "[/outline_color][/outline_size]"
 	return desc
 
@@ -110,4 +114,4 @@ func upgrade(index: int):
 		1:
 			size_mod *= 1.5
 		2:
-			knockback_mod *= 1.5
+			damage_scaling += 0.10

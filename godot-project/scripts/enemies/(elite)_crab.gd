@@ -10,10 +10,6 @@ var health: float = MAX_HEALTH
 @export var BASE_MOVE_SPEED: float = 180.0
 var move_speed: float = BASE_MOVE_SPEED
 
-var stunned: bool = false
-@export var STUN_RESIST: float = 100.0 # Percent
-var stun_timer: float = 0.0 # Seconds
-
 # Other enemies might not have these variables:
 @onready var hitbox = $CollisionShape2D
 @onready var hitbox_slam = $"(hitbox)_slam"

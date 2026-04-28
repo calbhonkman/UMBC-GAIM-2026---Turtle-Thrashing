@@ -10,10 +10,6 @@ var health: float = MAX_HEALTH
 @export var BASE_MOVE_SPEED: float = 80.0
 var move_speed: float = BASE_MOVE_SPEED
 
-var stunned: bool = false
-@export var STUN_RESIST: float = 100.0 # Percent
-var stun_timer: float = 0.0 # Seconds
-
 var dying: bool = false
 @export var DYING_TIME: float = 0.5
 var dying_timer: float = DYING_TIME

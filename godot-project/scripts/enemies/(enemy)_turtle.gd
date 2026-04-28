@@ -19,6 +19,9 @@ var dying: bool = false
 var dying_timer: float = DYING_TIME
 @export var EXP_AMOUNT: int = 5
 
+# Other enemies may not have these variables:
+var anti_knockback_position = null
+
 func _process(delta):
 	scale = Vector2(1,1) * (0.75 + clamp(0.25 * health / MAX_HEALTH, 0.0, 0.25))
 	if dying and dying_timer > 0.0:
@@ -43,7 +46,10 @@ func _process(delta):
 		else: 	
 			var playerDirection = player.global_position - global_position
 			playerDirection = playerDirection / playerDirection.length()
+			if anti_knockback_position:
+				global_position = anti_knockback_position
 			global_position += playerDirection * delta * move_speed
+			anti_knockback_position = global_position
 			sprite.scale.x = -1 * abs(sprite.scale.x) * playerDirection.x / abs(playerDirection.x) if playerDirection.x != 0 else sprite.scale.x
 			sprite.play("walk")
 	

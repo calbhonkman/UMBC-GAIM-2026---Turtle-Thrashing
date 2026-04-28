@@ -116,46 +116,49 @@ func _process(delta):
 			bossHealthBar.newElite(boss)
 			elite_warning.visible = false
 		
-		spawn_timer += delta
+		if not boss_fight:
+			spawn_timer += delta
 		if spawn_timer >= next_spawn_time:
-			if boss_fight:
-				if boss.name == "(boss)_Raccoon":
-					# Small Raccoon
-					spawn(ENEMIES[3])
-				elif boss.name == "(boss)_Crab":
-					# Small Crab
-					spawn(ENEMIES[0])
-				elif boss.name == "(boss)_Eeveel":
-					# Small Crab
-					spawn(ENEMIES[0])
-			else:
-				if spawn_counter % 60 == 0:
-					spawn(FOOD[0])
-				if current_wave >= 1 and spawn_counter % 20 == 0:
-					if current_wave == 1:
-						spawn(ENEMIES[2]) # Turtle
-					if current_wave == 2:
-						spawn(ENEMIES[5]) # Seagull
-						spawn(ENEMIES[5]) # Seagull
-						spawn(ENEMIES[5]) # Seagull
-					if current_wave == 3:
-						spawn(ENEMIES[4]) # Bush
-				if current_wave >= 2 and spawn_counter % 15 == 0:
-					if current_wave == 2:
-						spawn(ENEMIES[1]) # Snake
-					if current_wave == 3:
-						spawn(ENEMIES[5]) # Seagull
-						spawn(ENEMIES[5]) # Seagull
-						spawn(ENEMIES[5]) # Seagull
-				elif current_wave >= 2 and spawn_counter % 10 == 0:
-					if current_wave == 2:
-						spawn(ENEMIES[1]) # Snake
-					if current_wave == 3:
-						spawn(ENEMIES[2]) # Turtle
-				elif current_wave >= 3 and spawn_counter % 5 == 0:
+			# NOTE: I think it would make more sense for enemies to stop spawning while a boss exists.
+			# Existing enemies won't be removed, but spawning them while trying to survive a boss is overwhelming.
+			#if boss_fight:
+				#if boss.name == "(boss)_Raccoon":
+					## Small Raccoon
+					#spawn(ENEMIES[3])
+				#elif boss.name == "(boss)_Crab":
+					## Small Crab
+					#spawn(ENEMIES[0])
+				#elif boss.name == "(boss)_Eeveel":
+					## Small Crab
+					#spawn(ENEMIES[0])
+			#else:
+			if spawn_counter % 60 == 0:
+				spawn(FOOD[0])
+			if current_wave >= 1 and spawn_counter % 20 == 0:
+				if current_wave == 1:
+					spawn(ENEMIES[2]) # Turtle
+				if current_wave == 2:
+					spawn(ENEMIES[5]) # Seagull
+					spawn(ENEMIES[5]) # Seagull
+					spawn(ENEMIES[5]) # Seagull
+				if current_wave == 3:
+					spawn(ENEMIES[4]) # Bush
+			if current_wave >= 2 and spawn_counter % 15 == 0:
+				if current_wave == 2:
 					spawn(ENEMIES[1]) # Snake
-				else:
-					spawn(ENEMIES[0]) # Crab
+				if current_wave == 3:
+					spawn(ENEMIES[5]) # Seagull
+					spawn(ENEMIES[5]) # Seagull
+					spawn(ENEMIES[5]) # Seagull
+			elif current_wave >= 2 and spawn_counter % 10 == 0:
+				if current_wave == 2:
+					spawn(ENEMIES[2]) # Turtle
+				if current_wave == 3:
+					spawn(ENEMIES[1]) # Snake
+			elif current_wave >= 3 and spawn_counter % 5 == 0:
+				spawn(ENEMIES[2]) # Turtle
+			else:
+				spawn(ENEMIES[0]) # Crab
 
 func clear_enemies():
 	for child in enemies_group.get_children():

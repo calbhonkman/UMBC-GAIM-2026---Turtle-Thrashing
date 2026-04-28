@@ -7,7 +7,7 @@ const EXP = preload("uid://bln5qlwy18sjf")
 @export var MAX_HEALTH: float = 1.0
 var health: float = MAX_HEALTH
 
-@export var BASE_MOVE_SPEED: float = 25.0
+@export var BASE_MOVE_SPEED: float = 50.0
 var move_speed: float = BASE_MOVE_SPEED
 
 var stunned: bool = false
@@ -44,8 +44,8 @@ func _process(delta):
 		global_position += player_dir * move_speed * delta
 
 func scale_health(s: float):
-	# This "enemy" is meant to die quickly
-	pass
+	MAX_HEALTH *= s
+	health = MAX_HEALTH
 
 func damage(dmg: float):
 	health -= dmg
