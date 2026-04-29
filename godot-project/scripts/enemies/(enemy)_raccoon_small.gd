@@ -37,7 +37,7 @@ func _process(delta):
 		stun_timer -= delta
 		if stun_timer <= 0:
 			stunned = false
-			#sprite.modulate = Color(1,1,1,1)
+			sprite.modulate = Color(1,1,1,1)
 	else:
 		var player_vect = player.global_position - global_position
 		var player_dir = player_vect / player_vect.length()
@@ -56,4 +56,4 @@ func stun(time: float):
 	if stunned != true:
 		stunned = true
 		stun_timer = time
-		#sprite.modulate = Color(0.788, 0.788, 0.0, 1.0)
+		sprite.modulate = Color(0.788, 0.788, 0.0, 1.0)

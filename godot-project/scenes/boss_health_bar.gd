@@ -22,6 +22,12 @@ var EEL_POS_Y: float = 417.0
 var EEL_SIZE_X: float = 0.416
 var EEL_SIZE_Y: float = 0.568
 
+#Hillbilly Border Constants
+var HILLBILLY_POS_X: float = -13.0
+var HILLBILLY_POS_Y: float = 449.0
+var HILLBILLY_SIZE_X: float = 0.423
+var HILLBILLY_SIZE_Y: float = 0.423
+
 var bosses = ["raccoon", "crab", "eel"]
 var curr_boss = null
 var curr_bar = null

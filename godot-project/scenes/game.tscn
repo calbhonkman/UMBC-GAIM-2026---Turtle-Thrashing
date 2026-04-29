@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://bi547l6xmt1jk" path="res://assets/Damage Vignette.png" id="31_v2yb1"]
 [ext_resource type="PackedScene" uid="uid://h840sm3fnray" path="res://prefabs/enemies/(enemy)_bush.tscn" id="33_8ool0"]
 [ext_resource type="PackedScene" uid="uid://cjwmklbpd0qqs" path="res://prefabs/enemies/(enemy)_seagull.tscn" id="34_pr1ej"]
+[ext_resource type="PackedScene" uid="uid://bq4gj57qfkh1y" path="res://prefabs/enemies/(enemy)_raccoon_regular.tscn" id="35_n8ral"]
 [ext_resource type="Script" uid="uid://b7jd3dyuq3laq" path="res://scenes/master_slider.gd" id="36_m4url"]
 [ext_resource type="PackedScene" uid="uid://bfchoqlyg23ad" path="res://prefabs/enemies/(boss)_eeveel.tscn" id="37_05nbr"]
 [ext_resource type="Texture2D" uid="uid://dnh504hpdwomo" path="res://assets/Player_Health.png" id="38_0sl42"]
@@ -49,9 +50,11 @@
 [ext_resource type="Texture2D" uid="uid://dgtvs5mh20dyj" path="res://assets/Enemies/Elites/Eeveel/Eeveel Health Bar v3.png" id="40_rm0al"]
 [ext_resource type="Texture2D" uid="uid://bifmwi4ai4yqa" path="res://assets/Player_Health_Danger.png" id="41_h3rex"]
 [ext_resource type="Texture2D" uid="uid://cde5isw6cdpwk" path="res://assets/Game Over Screen.png" id="42_0sl42"]
+[ext_resource type="Texture2D" uid="uid://x32oyvkwyjkt" path="res://assets/Enemies/Bosses/Final Boss/Health Bar/Final Boss Health Bar.png" id="42_bk1p3"]
 [ext_resource type="Texture2D" uid="uid://bkxh3afqjuohj" path="res://assets/Enemies/Elites/Eeveel/Eeveel Bar.png" id="42_rm0al"]
 [ext_resource type="Script" uid="uid://bm07s0umyx3r2" path="res://scenes/boss_health_bar.gd" id="43_oaba0"]
 [ext_resource type="Texture2D" uid="uid://c376tooy8drjp" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_HealthBorder.png" id="44_oaba0"]
+[ext_resource type="Texture2D" uid="uid://dpuh3ts1rxwt6" path="res://assets/Enemies/Bosses/Final Boss/Health Bar/Final Boss Health Border.png" id="45_n8ral"]
 [ext_resource type="Texture2D" uid="uid://xytxib1f11io" path="res://assets/UI/RESUME.png" id="48_ms3bu"]
 [ext_resource type="Texture2D" uid="uid://dhg0yjtfxmu6v" path="res://assets/UI/TITLE.png" id="49_7ixpq"]
 [ext_resource type="Texture2D" uid="uid://c1jvifyu8r25a" path="res://assets/BADDY INBOUND (Elite warning).png" id="50_i4re6"]
@@ -149,6 +152,14 @@ animations = [{
 }],
 "loop": false,
 "name": &"eel",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("45_n8ral")
+}],
+"loop": false,
+"name": &"hillybilly",
 "speed": 8.0
 }, {
 "frames": [{
@@ -401,7 +412,7 @@ process_mode = 3
 z_index = 3
 script = ExtResource("9_0tnpc")
 FOOD = Array[Resource]([ExtResource("19_bhx41")])
-ENEMIES = Array[Resource]([ExtResource("19_e1j6l"), ExtResource("20_pl11u"), ExtResource("21_bhx41"), ExtResource("23_pl11u"), ExtResource("33_8ool0"), ExtResource("34_pr1ej")])
+ENEMIES = Array[Resource]([ExtResource("19_e1j6l"), ExtResource("20_pl11u"), ExtResource("21_bhx41"), ExtResource("23_pl11u"), ExtResource("33_8ool0"), ExtResource("34_pr1ej"), ExtResource("35_n8ral")])
 ELITES = Array[Resource]([ExtResource("22_qnb83"), ExtResource("25_qnb83"), ExtResource("37_05nbr")])
 
 [node name="Camera" type="Camera2D" parent="GameManager" unique_id=1356503637]
@@ -461,6 +472,7 @@ texture = ExtResource("50_i4re6")
 script = ExtResource("43_oaba0")
 
 [node name="CrabBar" type="ProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=1582023764]
+visible = false
 offset_left = -538.0
 offset_top = 457.0
 offset_right = 543.0
@@ -471,6 +483,7 @@ value = 100.0
 show_percentage = false
 
 [node name="RaccoonBar" type="TextureProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=345344206]
+visible = false
 offset_left = -293.99997
 offset_top = 366.0
 offset_right = 1891.0
@@ -479,11 +492,20 @@ scale = Vector2(0.253, 0.253)
 value = 100.0
 texture_progress = SubResource("CompressedTexture2D_fedci")
 
+[node name="HillyBillyBar" type="TextureProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=1852842509]
+offset_left = -291.0
+offset_top = 457.0
+offset_right = 1038.0
+offset_bottom = 579.0
+scale = Vector2(0.43, 0.43)
+value = 100.0
+texture_progress = ExtResource("42_bk1p3")
+
 [node name="BarSprite" type="AnimatedSprite2D" parent="GameManager/Camera/BossHealthBar" unique_id=300496195]
-position = Vector2(-10, 434)
-scale = Vector2(0.25, 0.25)
+position = Vector2(-13, 449)
+scale = Vector2(0.42339244, 0.4233924)
 sprite_frames = SubResource("SpriteFrames_0sl42")
-animation = &"crab"
+animation = &"hillybilly"
 
 [node name="EelBar" type="TextureProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=1354623048]
 visible = false

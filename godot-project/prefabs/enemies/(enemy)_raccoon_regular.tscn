@@ -1,0 +1,81 @@
+[gd_scene format=3 uid="uid://bq4gj57qfkh1y"]
+
+[ext_resource type="Script" uid="uid://glok4n888448" path="res://scripts/enemies/(enemy)_raccoon_regular.gd" id="1_i4nw4"]
+[ext_resource type="PackedScene" uid="uid://3v0r37h7qbyc" path="res://prefabs/enemies/(bullet)_projectile.tscn" id="2_54mbo"]
+[ext_resource type="Texture2D" uid="uid://b56u8whpusoq1" path="res://assets/Enemies/Bosses/Enemy_Raccoon (Walk 1).png" id="2_81qfu"]
+[ext_resource type="Texture2D" uid="uid://io04eatkn4ad" path="res://assets/Enemies/Bosses/Enemy_Raccoon (Walk 2).png" id="3_c4pdk"]
+[ext_resource type="Texture2D" uid="uid://b7wehnexsvlv" path="res://assets/Enemies/Bosses/Enemy_Raccoon (Prep 1).png" id="3_i4nw4"]
+[ext_resource type="Texture2D" uid="uid://dtkr743331i6g" path="res://assets/Enemies/Bosses/Enemy_Raccoon (Prep 2).png" id="4_54mbo"]
+[ext_resource type="Texture2D" uid="uid://qot565t2mhlu" path="res://assets/Enemies/Bosses/Enemy_Raccoon (Walk 3).png" id="4_81qfu"]
+[ext_resource type="Texture2D" uid="uid://qwj2ucr0u8e6" path="res://assets/Enemies/Bosses/Enemy_Raccoon (Attack 1).png" id="5_55uxq"]
+[ext_resource type="Texture2D" uid="uid://586htps24ngo" path="res://assets/Enemies/Bosses/Enemy_Raccoon (Attack 2).png" id="6_k6dng"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17m8f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_81qfu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_i4nw4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_54mbo")
+}],
+"loop": true,
+"name": &"prep",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_55uxq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_k6dng")
+}],
+"loop": false,
+"name": &"throw",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_81qfu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_c4pdk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_81qfu")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c6gi6"]
+radius = 20.0
+height = 146.66667
+
+[node name="Area2D" type="Area2D" unique_id=1424500926 groups=["Enemies"]]
+script = ExtResource("1_i4nw4")
+BULLETS = Array[Resource]([ExtResource("2_54mbo")])
+metadata/enemy = ""
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2025924635]
+position = Vector2(17, -7)
+scale = Vector2(0.07, 0.07)
+sprite_frames = SubResource("SpriteFrames_17m8f")
+animation = &"throw"
+autoplay = "default"
+frame = 1
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=85199956]
+position = Vector2(5, -8)
+scale = Vector2(1, 0.45)
+shape = SubResource("CapsuleShape2D_c6gi6")
