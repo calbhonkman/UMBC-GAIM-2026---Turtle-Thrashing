@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://qot565t2mhlu" path="res://assets/Enemies/Bosses/Enemy_Raccoon (Walk 3).png" id="4_81qfu"]
 [ext_resource type="Texture2D" uid="uid://qwj2ucr0u8e6" path="res://assets/Enemies/Bosses/Enemy_Raccoon (Attack 1).png" id="5_55uxq"]
 [ext_resource type="Texture2D" uid="uid://586htps24ngo" path="res://assets/Enemies/Bosses/Enemy_Raccoon (Attack 2).png" id="6_k6dng"]
+[ext_resource type="Texture2D" uid="uid://celdq1gtyjabb" path="res://assets/Enemies/BasicEnemies/Raccoon/Enemy_Raccoon (Walk 1).png" id="8_55uxq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_17m8f"]
 animations = [{
@@ -35,8 +36,11 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("5_55uxq")
 }, {
-"duration": 1.0,
+"duration": 2.0,
 "texture": ExtResource("6_k6dng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_55uxq")
 }],
 "loop": false,
 "name": &"throw",
@@ -58,8 +62,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_c6gi6"]
-radius = 20.0
-height = 146.66667
+radius = 32.0
+height = 235.55557
 
 [node name="Area2D" type="Area2D" unique_id=1424500926 groups=["Enemies"]]
 script = ExtResource("1_i4nw4")
@@ -67,15 +71,15 @@ BULLETS = Array[Resource]([ExtResource("2_54mbo")])
 metadata/enemy = ""
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2025924635]
-position = Vector2(17, -7)
-scale = Vector2(0.07, 0.07)
+position = Vector2(21, -38)
+scale = Vector2(0.125, 0.125)
 sprite_frames = SubResource("SpriteFrames_17m8f")
 animation = &"throw"
 autoplay = "default"
-frame = 1
+frame = 2
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=85199956]
-position = Vector2(5, -8)
+position = Vector2(1, -32)
 scale = Vector2(1, 0.45)
 shape = SubResource("CapsuleShape2D_c6gi6")

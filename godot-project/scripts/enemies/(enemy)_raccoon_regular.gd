@@ -7,7 +7,7 @@ const EXP = preload("uid://bln5qlwy18sjf")
 @export var MAX_HEALTH: float = 1.0
 var health: float = MAX_HEALTH
 
-@export var BASE_MOVE_SPEED: float = 120.0
+@export var BASE_MOVE_SPEED: float = 200.0
 var move_speed: float = BASE_MOVE_SPEED
 
 var stunned: bool = false
@@ -21,10 +21,10 @@ var dying_timer: float = DYING_TIME
 
 # Other enemies may not have these variables:
 @export var RUNAWAY_RANGE: float = 350.0
-@export var ATTACK_RANGE: float = 700.0
-@export var ATTACK_COOLDOWN: float = 4.0
+@export var ATTACK_RANGE: float = 500.0
+@export var ATTACK_COOLDOWN: float = 1.0
 @export var PREPARE_TIME: float = 1.0
-@export var ATTACK_TIME: float = 2.0
+@export var ATTACK_TIME: float = 1.0
 @export var ATTACK_AMOUNT: int = 1
 @export var BULLETS: Array[Resource]
 @export var BULLET_SPEED: float = 500.0
@@ -77,17 +77,17 @@ func _process(delta):
 					if player_dist > ATTACK_RANGE:
 						global_position += player_dir * move_speed * delta
 						sprite.play("walk")
+					elif player_dist <= RUNAWAY_RANGE:
+						mode = "runaway"
 					elif player_dist <= ATTACK_RANGE:
 						mode_timer = PREPARE_TIME
 						mode = "charging"
 						next_bullet = BULLETS[0]
 						bullet_lifetime = BASE_BULLET_LIFETIME * 3.0
 						sprite.play("prep")
-					elif player_dist <= RUNAWAY_RANGE:
-						mode = "runaway"
 				"runaway":
 					sprite.scale.x = sprite.scale.x if playerDirection.x != 0 else -1 * abs(sprite.scale.x) * playerDirection.x / abs(playerDirection.x)
-					if player_dist < RUNAWAY_RANGE:
+					if player_dist < ATTACK_RANGE:
 						global_position -= player_dir * move_speed * delta
 						sprite.play("walk")
 					else:
@@ -114,6 +114,22 @@ func _process(delta):
 						b_position.append(global_position)
 						b_lifetime.append(bullet_lifetime)
 						b_amount += 1
+			if bullets.size() > 0:
+				for i in range(bullets.size()):
+					if i < bullets.size():
+						b_lifetime[i] -= delta
+						if bullets[i] and b_lifetime[i] <= 0.0:
+							bullets[i].queue_free()
+						if bullets[i] == null:
+							bullets.remove_at(i)
+							b_direction.remove_at(i)
+							b_position.remove_at(i)
+							b_lifetime.remove_at(i)
+							i += -1
+						else:
+							bullets[i].global_position = b_position[i] + b_direction[i] * BULLET_SPEED * delta
+							b_position[i] = bullets[i].global_position
+							bullets[i].scale.x = -1 * abs(bullets[i].scale.x) if b_direction[i].x < 0 else abs(bullets[i].scale.x)
 
 func scale_health(s: float):
 	MAX_HEALTH *= s
