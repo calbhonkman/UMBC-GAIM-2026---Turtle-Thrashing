@@ -3,16 +3,19 @@ extends Node2D
 var game_scene = preload("res://scenes/game.tscn")
 
 @onready var attract_mode = $VideoStreamPlayer
+@onready var cursor = $Cursor
 @export var ATTRACT_MODE_TIME: float = 15.0
 var video_length
 var timer
 
 func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 	attract_mode.visible == false
 	timer = ATTRACT_MODE_TIME
 	video_length = attract_mode.get_stream_length()
 
 func _process(delta):
+	cursor.global_position = get_global_mouse_position()
 	timer = max(0, timer - delta)
 	if timer == 0 and attract_mode.visible == false:
 		# Pick a random spot in the video to play from

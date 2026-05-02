@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dnh504hpdwomo" path="res://assets/Player_Health.png" id="4_3vvtq"]
 [ext_resource type="Texture2D" uid="uid://cimqr2f7sjb4y" path="res://assets/UI/PLAY Button.png" id="4_s5g8n"]
 [ext_resource type="Texture2D" uid="uid://w556jgcy2g56" path="res://assets/UI/QUIT Button.png" id="5_7yvfd"]
+[ext_resource type="Texture2D" uid="uid://beh6cmgrmiyj6" path="res://assets/UI/Cursor.png" id="7_dfy5j"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_r3g3c"]
 font_size = 48
@@ -143,6 +144,12 @@ scale = Vector2(1.505, 1.505)
 stream = SubResource("VideoStreamTheora_3vvtq")
 autoplay = true
 loop = true
+
+[node name="Cursor" type="Sprite2D" parent="." unique_id=1341053283]
+position = Vector2(1831, 972)
+scale = Vector2(0.092, 0.092)
+texture = ExtResource("7_dfy5j")
+offset = Vector2(260.86914, 467.3916)
 
 [connection signal="pressed" from="Play (Button)" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="Quit (Button)" to="." method="_on_quit_button_pressed"]

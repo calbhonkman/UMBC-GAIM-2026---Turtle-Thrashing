@@ -9,10 +9,15 @@ extends Node2D
 @onready var bossHealthBar = $"Camera/BossHealthBar"
 @onready var elite_warning = $"Camera/Elite Warning"
 @onready var time_bar = $"Camera/Timer Bar/TimeBar"
+@onready var xp_bar = $"Camera/XP Bar"
+@onready var cursor = $"Camera/Cursor"
 
 const DAMAGE_PARTICLE = preload("uid://dum7dfhvymdrp")
 
 @export var CAMERA_LIMIT: float = 1600.0
+# Offsets for XP Bar, important for when player isn't centered in the camera
+@export var XP_POS_X: float = -35.0 
+@export var XP_POS_Y: float = 57.0
 
 @export var WAVE_TIME: float = 150.0 # seconds
 @export var NUM_WAVES: int = 4
@@ -54,6 +59,7 @@ func _ready():
 	elite_warning.visible = false
 
 func _process(delta):
+	cursor.global_position = get_global_mouse_position()
 	exp_hue = wrapf(exp_hue + (EXP_HUE_SPEED * delta), 0.0, 1.0)
 	
 	if not AudioManager.music.playing:
@@ -65,6 +71,11 @@ func _process(delta):
 	camera.global_position.y = clampf(player.global_position.y, -1*cam_limit_y, cam_limit_y)
 	
 	level.text = "Level " + str(player.level) + " (" + str(player.experience) + "/" + str(5 * (player.level * (player.level+1) / 2)) + ")"
+	var prev_level: float = (5 * ((player.level-1) * (player.level) / 2))
+	var curr_level: float = (5 * (player.level * (player.level+1) / 2))
+	xp_bar.value = ((player.experience - prev_level) / (curr_level - prev_level) * 100)
+	xp_bar.global_position.x = player.global_position.x + XP_POS_X
+	xp_bar.global_position.y = player.global_position.y + XP_POS_Y
 	health.text = str(player.health)
 	
 	if pausable and Input.is_action_just_pressed("pause"):

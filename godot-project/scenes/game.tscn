@@ -59,6 +59,7 @@
 [ext_resource type="Texture2D" uid="uid://dhg0yjtfxmu6v" path="res://assets/UI/TITLE.png" id="49_7ixpq"]
 [ext_resource type="Texture2D" uid="uid://c1jvifyu8r25a" path="res://assets/BADDY INBOUND (Elite warning).png" id="50_i4re6"]
 [ext_resource type="Texture2D" uid="uid://bdfwv3fyosv7l" path="res://assets/UI/CONFIRM.png" id="53_bk1p3"]
+[ext_resource type="Texture2D" uid="uid://beh6cmgrmiyj6" path="res://assets/UI/Cursor.png" id="58_yd4ix"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
 size = Vector2(1312.9883, 50)
@@ -463,6 +464,16 @@ label_settings = SubResource("LabelSettings_ssvqc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="XP Bar" type="ProgressBar" parent="GameManager/Camera" unique_id=1036457090]
+modulate = Color(0.3764706, 1, 1, 1)
+self_modulate = Color(0, 1, 1, 1)
+offset_left = -35.0
+offset_top = 57.0
+offset_right = 31.0
+offset_bottom = 79.0
+value = 33.51
+show_percentage = false
+
 [node name="Elite Warning" type="Sprite2D" parent="GameManager/Camera" unique_id=654696922]
 position = Vector2(-501, -417.00003)
 scale = Vector2(0.15416664, 0.15416665)
@@ -484,15 +495,16 @@ show_percentage = false
 
 [node name="RaccoonBar" type="TextureProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=345344206]
 visible = false
-offset_left = -293.99997
+offset_left = -279.99997
 offset_top = 366.0
-offset_right = 1891.0
+offset_right = 1905.0
 offset_bottom = 1094.0
 scale = Vector2(0.253, 0.253)
 value = 100.0
 texture_progress = SubResource("CompressedTexture2D_fedci")
 
-[node name="HillyBillyBar" type="TextureProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=1852842509]
+[node name="HillBillyBar" type="TextureProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=1852842509]
+visible = false
 offset_left = -291.0
 offset_top = 457.0
 offset_right = 1038.0
@@ -502,10 +514,11 @@ value = 100.0
 texture_progress = ExtResource("42_bk1p3")
 
 [node name="BarSprite" type="AnimatedSprite2D" parent="GameManager/Camera/BossHealthBar" unique_id=300496195]
-position = Vector2(-13, 449)
-scale = Vector2(0.42339244, 0.4233924)
+visible = false
+position = Vector2(-10, 434)
+scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_0sl42")
-animation = &"hillybilly"
+animation = &"raccoon"
 
 [node name="EelBar" type="TextureProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=1354623048]
 visible = false
@@ -832,6 +845,12 @@ theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.4392157)
 theme_override_font_sizes/font_size = 48
 icon = ExtResource("49_7ixpq")
 flat = true
+
+[node name="Cursor" type="Sprite2D" parent="GameManager/Camera" unique_id=625102554]
+position = Vector2(-20, 225)
+scale = Vector2(0.09187279, 0.09187279)
+texture = ExtResource("58_yd4ix")
+offset = Vector2(250.34616, 468.03857)
 
 [node name="Damage Vignette" type="Sprite2D" parent="GameManager/Camera" unique_id=1740525009]
 modulate = Color(1, 1, 1, 0)

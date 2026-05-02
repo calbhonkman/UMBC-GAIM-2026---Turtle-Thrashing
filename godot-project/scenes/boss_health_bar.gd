@@ -3,6 +3,7 @@ extends Node2D
 @onready var crab_bar = $CrabBar
 @onready var raccoon_bar = $RaccoonBar
 @onready var eel_bar = $EelBar
+@onready var hillbilly_bar = $HillBillyBar
 
 #Crab Border Constants
 var CRAB_POS_X: float = -12.0
@@ -37,6 +38,7 @@ func _ready():
 	crab_bar.visible = false
 	raccoon_bar.visible = false
 	eel_bar.visible = false
+	hillbilly_bar.visible = false
 	
 	curr_bar = crab_bar #placeholder assignment
 
