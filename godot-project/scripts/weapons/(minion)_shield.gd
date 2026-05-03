@@ -7,6 +7,7 @@ extends Node2D
 @export var unlocked: bool = false
 @export var upgrade_descriptions: Array[String]
 @export var upgrade_icon: Resource
+@export var upgrade_icon_selected: Resource
 
 var rotation_speed_mod = 1.0
 

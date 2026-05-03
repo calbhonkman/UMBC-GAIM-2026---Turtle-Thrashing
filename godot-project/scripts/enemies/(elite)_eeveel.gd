@@ -2,6 +2,7 @@ extends Area2D
 
 @onready var player = $"/root/Node2D/Player"
 @onready var sprite = $AnimatedSprite2D
+@onready var discharge_sprite = $DischargeSprite
 const EXP = preload("uid://bln5qlwy18sjf")
 
 @export var MAX_HEALTH: float = 15.0
@@ -33,6 +34,7 @@ const LIGHTNING = preload("uid://2rpf5ee3ixmd")
 var strike_timer = 0.0
 
 func _ready():
+	discharge_sprite.visible = false
 	AudioManager.eelJingle.play()
 
 func _process(delta):
@@ -82,7 +84,8 @@ func _process(delta):
 					mode = "discharging"
 					mode_timer = DISCHARGE_TIME
 					hitbox_discharge.disabled = false
-					sprite.play("discharge")
+					discharge_sprite.visible = true
+					sprite.play("default")
 			"discharging":
 				if mode_timer <= 0.0:
 					mode = "default"
@@ -90,10 +93,14 @@ func _process(delta):
 					hitbox_discharge.disabled = true
 					hitbox1.disabled = false
 					hitbox2.disabled = false
+					discharge_sprite.visible = false
 					sprite.play("default")
 				else:
 					global_position += player_dir * move_speed * delta * 1.5
 					anti_knockback_position = global_position
+			"dying":
+				if not sprite.is_playing():
+					mode = "dead"
 			"dead":
 				queue_free()
 
@@ -106,4 +113,6 @@ func damage(dmg: float):
 	health -= dmg
 	print(health)
 	if health <= 0.0:
-		mode = "dead"
+		mode = "dying"
+		sprite.play("death")
+		discharge_sprite.visible = false

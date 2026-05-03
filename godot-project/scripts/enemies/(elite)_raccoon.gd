@@ -20,11 +20,14 @@ var dying_timer: float = DYING_TIME
 @export var ATTACK_COOLDOWN: float = 4.0
 @export var PREPARE_TIME: float = 2.0
 @export var ATTACK_TIME: float = 1.0
+@export var DEATH_SPRITE_TIME: float = 1.0
 @export var ATTACK_AMOUNT: int = 3
 @export var BULLETS: Array[Resource]
 @export var RACCOON: Resource
 @export var BULLET_SPEED: float = 500.0
 @export var BASE_BULLET_LIFETIME: float = 1.0
+@export var DEATH_POS_X: float = -28.0
+@export var DEATH_POS_Y: float = -65.0
 var bullet_lifetime = BASE_BULLET_LIFETIME
 var anti_knockback_position = null
 var mode = "default"
@@ -110,7 +113,16 @@ func _process(delta):
 					b_lifetime.append(bullet_lifetime)
 					b_amount += 1
 			"dying":
-				queue_free()
+				if mode_timer <= 0.0:
+					sprite.play("death2")
+					mode = "dead"
+					mode_timer = DEATH_SPRITE_TIME
+					# Trying to center the borrowed poof sprite
+					position.x = DEATH_POS_X
+					position.y = DEATH_POS_Y
+			"dead":
+				if not sprite.is_playing():
+					queue_free()
 		
 		if bullets.size() > 0:
 			for i in range(bullets.size()):
@@ -144,4 +156,6 @@ func damage(dmg: float):
 	health -= dmg
 	print(health)
 	if health <= 0.0:
+		sprite.play("death1")
 		mode = "dying"
+		mode_timer = DEATH_SPRITE_TIME

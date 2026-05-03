@@ -11,6 +11,8 @@ var chosen_upgrade = null
 
 var ready_to_upgrade = false
 
+var selected = false
+
 var group := ButtonGroup.new()
 
 func _ready():
@@ -26,6 +28,14 @@ func _process(delta):
 	
 	for i in upgrade_buttons.size():
 		if upgrade_buttons[i].button_pressed:
+			selected = true
+			chosen_upgrade = selected_upgrades[i]
+			upgrade_description.text = upgradeables[selected_upgrades[i].x].get_upgrade_description(selected_upgrades[i].y)
+			upgrade_buttons[i].icon = upgradeables[selected_upgrades[i].x].upgrade_icon_selected
+			for j in upgrade_buttons.size():
+				if j != i:
+					upgrade_buttons[j].icon = upgradeables[selected_upgrades[j].x].upgrade_icon
+		elif upgrade_buttons[i].is_hovered() and selected == false:
 			chosen_upgrade = selected_upgrades[i]
 			upgrade_description.text = upgradeables[selected_upgrades[i].x].get_upgrade_description(selected_upgrades[i].y)
 
@@ -35,6 +45,7 @@ func prepare_to_upgrade():
 		upgrade_buttons[i].icon = upgradeables[selected_upgrades[i].x].upgrade_icon
 	visible = true
 	ready_to_upgrade = true
+	selected = false
 	AudioManager.levelUp.play()
 
 func select_upgrades():

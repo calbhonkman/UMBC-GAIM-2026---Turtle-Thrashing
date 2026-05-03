@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b0lhcesvxk5es" path="res://assets/Turtle/TurtWalk1.png" id="3_gee14"]
 [ext_resource type="Texture2D" uid="uid://py7xx4octhbf" path="res://assets/Turtle/Upgrade Icons/(icon)_Basic.png" id="3_v2yb1"]
 [ext_resource type="Texture2D" uid="uid://vg1j3cyln3qy" path="res://assets/Turtle/TurtWalk2.png" id="4_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://b7oa2recvmaoo" path="res://assets/Turtle/Upgrade Icons/Ability Icons Clicked/Basic Clicked.png" id="4_mmvbu"]
 [ext_resource type="Script" uid="uid://btydxe3n7bvhi" path="res://scripts/weapons/(weapon)_punch.gd" id="7_kvpfn"]
 [ext_resource type="Script" uid="uid://bstu2wfytyykc" path="res://scripts/game_manager.gd" id="9_0tnpc"]
 [ext_resource type="Script" uid="uid://cjnrhr8lp15vt" path="res://scripts/weapons/(weapon)_lightning.gd" id="9_dinhu"]
@@ -14,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://csgsdh6itco8" path="res://prefabs/weapons/(bullet)_punch.tscn" id="9_kvuet"]
 [ext_resource type="Texture2D" uid="uid://cjob8cu5mmcmy" path="res://assets/Turtle/Upgrade Icons/(icon)_Laser.png" id="9_nepv3"]
 [ext_resource type="PackedScene" uid="uid://w0qokvo1f2gx" path="res://prefabs/weapons/(bullet)_lightning.tscn" id="10_dinhu"]
+[ext_resource type="Texture2D" uid="uid://bm3ktw4apr5m8" path="res://assets/Turtle/Upgrade Icons/Ability Icons Clicked/LAAZAA Clicked.png" id="10_l6q63"]
 [ext_resource type="Script" uid="uid://d3diaewcyfj0l" path="res://scripts/weapons/(minion)_shield.gd" id="12_bt5mj"]
 [ext_resource type="Texture2D" uid="uid://5nodvhabq0mg" path="res://assets/Turtle/Minions/ShieldTurtle.png" id="13_e1j6l"]
 [ext_resource type="Script" uid="uid://ba7xodmvwpqyv" path="res://scripts/weapons/(weapon)_flamestarter.gd" id="14_264po"]
@@ -23,20 +25,25 @@
 [ext_resource type="PackedScene" uid="uid://ntiukiv8fvqy" path="res://prefabs/weapons/(bullet)_flamestarter.tscn" id="15_1kice"]
 [ext_resource type="PackedScene" uid="uid://le1ukfjocokb" path="res://prefabs/weapons/(bullet)_laser.tscn" id="15_pl11u"]
 [ext_resource type="PackedScene" uid="uid://bjkelkyklrwiy" path="res://prefabs/weapons/(bullet)_slap.tscn" id="15_qnb83"]
+[ext_resource type="Texture2D" uid="uid://dm1vxwh47fjch" path="res://assets/Turtle/Upgrade Icons/Ability Icons Clicked/Lightnin Clicked.png" id="16_mmvbu"]
 [ext_resource type="Texture2D" uid="uid://d1nyiljcd5xns" path="res://assets/Turtle/Upgrade Icons/(icon)_Punch.png" id="17_m4url"]
 [ext_resource type="PackedScene" uid="uid://fnhiviwbuuj8" path="res://audio/audio_manager.tscn" id="18_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://venyw07uskjf" path="res://prefabs/cherry.tscn" id="19_bhx41"]
 [ext_resource type="PackedScene" uid="uid://d1k32mfbnnud3" path="res://prefabs/enemies/(enemy)_crab.tscn" id="19_e1j6l"]
 [ext_resource type="Texture2D" uid="uid://h2a06nd3krx3" path="res://assets/Turtle/Upgrade Icons/(icon)_Slap.png" id="20_8ool0"]
 [ext_resource type="PackedScene" uid="uid://dfuv28c2ne1eo" path="res://prefabs/enemies/(enemy)_snake.tscn" id="20_pl11u"]
+[ext_resource type="Texture2D" uid="uid://cq8d12gsap7yg" path="res://assets/Turtle/Upgrade Icons/Ability Icons Clicked/Punch Clicked.png" id="20_weeiq"]
+[ext_resource type="Texture2D" uid="uid://dwxgvse6ih8aw" path="res://assets/Turtle/Upgrade Icons/Ability Icons Clicked/Slap Clicked.png" id="21_66xif"]
 [ext_resource type="PackedScene" uid="uid://dq43dbtcuu4m" path="res://prefabs/enemies/(enemy)_turtle.tscn" id="21_bhx41"]
 [ext_resource type="PackedScene" uid="uid://dw20u1c5v07qr" path="res://prefabs/enemies/(boss)_raccoon.tscn" id="22_qnb83"]
 [ext_resource type="PackedScene" uid="uid://bsjban1wyxwl4" path="res://prefabs/enemies/(enemy)_raccoon_small.tscn" id="23_pl11u"]
 [ext_resource type="Texture2D" uid="uid://bmxp74jc2q5bw" path="res://assets/Turtle/Upgrade Icons/(icon)_Flamestarter.png" id="23_pr1ej"]
 [ext_resource type="Texture2D" uid="uid://soojs7y1cfdn" path="res://assets/Turtle/Upgrade Icons/(icon)_Shield.png" id="25_7025r"]
 [ext_resource type="PackedScene" uid="uid://cfdlk4r0ys684" path="res://prefabs/enemies/(boss)_crab.tscn" id="25_qnb83"]
+[ext_resource type="Texture2D" uid="uid://dpt2vuiqll18q" path="res://assets/Turtle/Upgrade Icons/Ability Icons Clicked/Flame Starter Clicked.png" id="28_uxocx"]
 [ext_resource type="Script" uid="uid://cypit3nrwog1x" path="res://scripts/level_up.gd" id="29_sgl2t"]
 [ext_resource type="Texture2D" uid="uid://b7a6bfks24i60" path="res://assets/Turtle/Upgrade Icons/(icon)_BLANK.png" id="30_wljb1"]
+[ext_resource type="Texture2D" uid="uid://o04sbbcfx7p7" path="res://assets/Turtle/Upgrade Icons/Ability Icons Clicked/Shield Clicked.png" id="31_7nv0b"]
 [ext_resource type="Texture2D" uid="uid://bi547l6xmt1jk" path="res://assets/Damage Vignette.png" id="31_v2yb1"]
 [ext_resource type="PackedScene" uid="uid://h840sm3fnray" path="res://prefabs/enemies/(enemy)_bush.tscn" id="33_8ool0"]
 [ext_resource type="PackedScene" uid="uid://cjwmklbpd0qqs" path="res://prefabs/enemies/(enemy)_seagull.tscn" id="34_pr1ej"]
@@ -291,6 +298,7 @@ shape = SubResource("RectangleShape2D_0tnpc")
 script = ExtResource("1_yqjtg")
 upgrade_descriptions = Array[String](["Max Health +1", "Pickup Range +25%", "Movement Speed +50%"])
 upgrade_icon = ExtResource("3_v2yb1")
+upgrade_icon_selected = ExtResource("4_mmvbu")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=1355100074]
 scale = Vector2(0.2, 0.2)
@@ -329,6 +337,7 @@ z_index = 2
 script = ExtResource("14_e1j6l")
 upgrade_descriptions = Array[String](["Unlock Laser", "Laser Width +50%", "Laser Knockback x1.25"])
 upgrade_icon = ExtResource("9_nepv3")
+upgrade_icon_selected = ExtResource("10_l6q63")
 BULLET = ExtResource("15_pl11u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Laser" unique_id=814649257]
@@ -342,6 +351,7 @@ script = ExtResource("9_dinhu")
 BULLET = ExtResource("10_dinhu")
 upgrade_descriptions = Array[String](["Unlock Cloud", "Max Clouds +1", "Cloud Damage +50%", "Cloud Size +50%"])
 upgrade_icon = ExtResource("14_7025r")
+upgrade_icon_selected = ExtResource("16_mmvbu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Lightning" unique_id=1843913089]
 shape = SubResource("RectangleShape2D_dinhu")
@@ -355,6 +365,7 @@ BULLET = ExtResource("9_kvuet")
 unlocked = true
 upgrade_descriptions = Array[String](["Unlock Punch", "Punch Damage +50%", "Punch Cooldown -25%", "Punch Size +50%"])
 upgrade_icon = ExtResource("17_m4url")
+upgrade_icon_selected = ExtResource("20_weeiq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Punch" unique_id=1221786466]
 shape = SubResource("CircleShape2D_iywne")
@@ -366,6 +377,7 @@ script = ExtResource("14_bhx41")
 BULLET = ExtResource("15_qnb83")
 upgrade_descriptions = Array[String](["Unlock Slap", "Slap Stun Duration +25%", "Slap Cooldown -25%", "Slap Size +50%"])
 upgrade_icon = ExtResource("20_8ool0")
+upgrade_icon_selected = ExtResource("21_66xif")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Slap" unique_id=286922218]
 shape = SubResource("CircleShape2D_iywne")
@@ -377,6 +389,7 @@ script = ExtResource("14_264po")
 BULLET = ExtResource("15_1kice")
 upgrade_descriptions = Array[String](["Unlock Flamestarter", "Flamestarter Range +25%", "Flamestarter Damage +25%"])
 upgrade_icon = ExtResource("23_pr1ej")
+upgrade_icon_selected = ExtResource("28_uxocx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Flamestarter" unique_id=1804428324]
 shape = SubResource("CircleShape2D_iywne")
@@ -387,6 +400,7 @@ rotation = 3.1415927
 script = ExtResource("12_bt5mj")
 upgrade_descriptions = Array[String](["Unlock Shield", "Shield Speed +50%"])
 upgrade_icon = ExtResource("25_7025r")
+upgrade_icon_selected = ExtResource("31_7nv0b")
 
 [node name="Area2D" type="Area2D" parent="Player/(Minion) Shield" unique_id=1754672137]
 
@@ -514,7 +528,6 @@ value = 100.0
 texture_progress = ExtResource("42_bk1p3")
 
 [node name="BarSprite" type="AnimatedSprite2D" parent="GameManager/Camera/BossHealthBar" unique_id=300496195]
-visible = false
 position = Vector2(-10, 434)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_0sl42")

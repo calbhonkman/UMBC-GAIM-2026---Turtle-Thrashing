@@ -5,6 +5,7 @@ extends Area2D
 @export var unlocked: bool = false
 @export var upgrade_descriptions: Array[String]
 @export var upgrade_icon: Resource
+@export var upgrade_icon_selected: Resource
 
 @export var BASE_SPEED: float = 800.0
 @export var BASE_DAMAGE: float = 1.0
