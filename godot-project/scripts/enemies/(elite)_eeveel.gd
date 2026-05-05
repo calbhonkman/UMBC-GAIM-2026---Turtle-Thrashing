@@ -39,14 +39,12 @@ func _ready():
 
 func _process(delta):
 	scale = Vector2(1,1) * (0.75 + clamp(0.25 * health / MAX_HEALTH, 0.0, 0.25))
-	if dying and dying_timer > 0.0:
+	if dying:
 		monitorable = false
 		monitoring = false
 		dying_timer -= delta
 		scale = Vector2(1,1) * clamp(0.75 * dying_timer / DYING_TIME, 0.0, 0.75)
 		sprite.modulate = Color(1,0,0,clamp(0.5 * dying_timer / DYING_TIME, 0.0, 0.5))
-	elif dying and dying_timer <= 0.0:
-		queue_free()
 	elif player:
 		var player_vect = player.global_position - global_position
 		var player_dist = player_vect.length()
@@ -100,18 +98,15 @@ func _process(delta):
 					anti_knockback_position = global_position
 			"dying":
 				if not sprite.is_playing():
-					mode = "dead"
-			"dead":
-				queue_free()
+					queue_free()
 
 func scale_health(s: float):
 	health = MAX_HEALTH * s
 
 func damage(dmg: float):
-	if mode == "dead":
+	if mode == "dying":
 		return
 	health -= dmg
-	print(health)
 	if health <= 0.0:
 		mode = "dying"
 		sprite.play("death")

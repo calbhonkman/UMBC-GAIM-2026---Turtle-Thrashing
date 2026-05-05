@@ -44,13 +44,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if visible == true:
+	if visible:
 		curr_bar.value = int(curr_boss.health / max_health * 100)
 
 func newElite(boss):
 	curr_bar.visible = false
 	curr_boss = boss
-	max_health = curr_boss.health
+	max_health = curr_boss.MAX_HEALTH
 	if boss.name == "(boss)_Raccoon":
 		curr_bar = raccoon_bar
 		setBorder(bosses[0], RACCOON_POS_X, RACCOON_POS_Y, RACCOON_SIZE_X, RACCOON_SIZE_Y)

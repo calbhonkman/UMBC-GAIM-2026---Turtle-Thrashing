@@ -141,7 +141,6 @@ func damage(dmg: float):
 	if mode == "dying" or mode == "dead":
 		return
 	health -= dmg
-	print(health)
 	if health <= 0.0:
 		mode = "dying"
 		sprite.play("death1")

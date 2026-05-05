@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dt4wywnf1a4po"]
 
+[ext_resource type="Script" uid="uid://cd4pwj6b7ncua" path="res://prefabs/enemies/(boss)_hill_billy.gd" id="1_aguuk"]
 [ext_resource type="Texture2D" uid="uid://bh44wa6r4hl6x" path="res://assets/Enemies/Bosses/Final Boss/Death/HillBilly_Death0001.png" id="1_okukq"]
 [ext_resource type="Texture2D" uid="uid://bxxuv077xf2pa" path="res://assets/Enemies/Bosses/Final Boss/Death/HillBilly_Death0002.png" id="2_h6br1"]
 [ext_resource type="Texture2D" uid="uid://d23k3qpclw8xc" path="res://assets/Enemies/Bosses/Final Boss/Death/HillBilly_Death0003.png" id="3_jy7xl"]
@@ -86,14 +87,23 @@
 [ext_resource type="Texture2D" uid="uid://ciy7yk7egogeh" path="res://assets/Enemies/Bosses/Final Boss/Phase 1 Knife Attack/HillBillyPhase1_KnifeAttack0017.png" id="84_5i5h8"]
 [ext_resource type="Texture2D" uid="uid://71t3ucrxa7ol" path="res://assets/Enemies/Bosses/Final Boss/Phase 2 Baguette Attack/HillBillyPhase2_BaguetteAttack0001.png" id="85_1ajjm"]
 [ext_resource type="Texture2D" uid="uid://cf2wt7ogurbcw" path="res://assets/Enemies/Bosses/Final Boss/Phase 2 Baguette Attack/HillBillyPhase2_BaguetteAttack0002.png" id="86_a0tb4"]
+[ext_resource type="Texture2D" uid="uid://c5n08l4fpaylj" path="res://assets/Enemies/Bosses/Final Boss/Phase 1 Walk/HillBillyPhase1_Walk0001.png" id="87_g0dam"]
 [ext_resource type="Texture2D" uid="uid://o6km8thox2sw" path="res://assets/Enemies/Bosses/Final Boss/Phase 2 Baguette Attack/HillBillyPhase2_BaguetteAttack0003.png" id="87_j0cgc"]
+[ext_resource type="Texture2D" uid="uid://qb6nf24yhv2p" path="res://assets/Enemies/Bosses/Final Boss/Phase 1 Walk/HillBillyPhase1_Walk0002.png" id="88_aguuk"]
 [ext_resource type="Texture2D" uid="uid://bwnjrr5wydb7o" path="res://assets/Enemies/Bosses/Final Boss/Phase 2 Baguette Attack/HillBillyPhase2_BaguetteAttack0004.png" id="88_ipupd"]
+[ext_resource type="Texture2D" uid="uid://bxpubv5ok2trc" path="res://assets/Enemies/Bosses/Final Boss/Phase 1 Walk/HillBillyPhase1_Walk0003.png" id="89_ag1uf"]
 [ext_resource type="Texture2D" uid="uid://bdafdreo6hwq2" path="res://assets/Enemies/Bosses/Final Boss/Phase 2 Baguette Attack/HillBillyPhase2_BaguetteAttack0005.png" id="89_dat83"]
 [ext_resource type="Texture2D" uid="uid://cgjy67v36ndl3" path="res://assets/Enemies/Bosses/Final Boss/Phase 2 Baguette Attack/HillBillyPhase2_BaguetteAttack0006.png" id="90_42ybs"]
+[ext_resource type="Texture2D" uid="uid://dfxw8d2edetn3" path="res://assets/Enemies/Bosses/Final Boss/Phase 1 Walk/HillBillyPhase1_Walk0004.png" id="90_dw3vd"]
+[ext_resource type="Texture2D" uid="uid://c7hh7cgeg85p2" path="res://assets/Enemies/Bosses/Final Boss/Phase 1 Walk/HillBillyPhase1_Walk0005.png" id="91_62p2e"]
 [ext_resource type="Texture2D" uid="uid://de5jon4f8vn0c" path="res://assets/Enemies/Bosses/Final Boss/Phase 2 Baguette Attack/HillBillyPhase2_BaguetteAttack0007.png" id="91_el46c"]
 [ext_resource type="Texture2D" uid="uid://necc43uy42u1" path="res://assets/Enemies/Bosses/Final Boss/Phase 2 Baguette Attack/HillBillyPhase2_BaguetteAttack0008.png" id="92_jjfte"]
+[ext_resource type="Texture2D" uid="uid://c3m5sekvdobfp" path="res://assets/Enemies/Bosses/Final Boss/Phase 1 Walk/HillBillyPhase1_Walk0006.png" id="92_w00cf"]
+[ext_resource type="Texture2D" uid="uid://qx5otkhgbd6f" path="res://assets/Enemies/Bosses/Final Boss/Phase 1 Walk/HillBillyPhase1_Walk0007.png" id="93_570ug"]
 [ext_resource type="Texture2D" uid="uid://crjrpkqgdce0h" path="res://assets/Enemies/Bosses/Final Boss/Phase 2 Baguette Attack/HillBillyPhase2_BaguetteAttack0009.png" id="93_l4teu"]
 [ext_resource type="Texture2D" uid="uid://bei86vncl1ohs" path="res://assets/Enemies/Bosses/Final Boss/Phase 2 Baguette Attack/HillBillyPhase2_BaguetteAttack0010.png" id="94_c3m3n"]
+[ext_resource type="Texture2D" uid="uid://v5fdt3oy3llc" path="res://assets/Enemies/Bosses/Final Boss/Phase 1 Walk/HillBillyPhase1_Walk0008.png" id="94_ilun6"]
+[ext_resource type="Texture2D" uid="uid://cpxpjo8ky1pjj" path="res://assets/Enemies/Bosses/Final Boss/Phase 1 Walk/HillBillyPhase1_Walk0009.png" id="95_jt03t"]
 [ext_resource type="Texture2D" uid="uid://3gb85f1dxdc7" path="res://assets/Enemies/Bosses/Final Boss/Phase 2 Baguette Attack/HillBillyPhase2_BaguetteAttack0011.png" id="95_xfpuq"]
 [ext_resource type="Texture2D" uid="uid://c71ucjcebmhsl" path="res://assets/Enemies/Bosses/Final Boss/Phase 2 Baguette Attack/HillBillyPhase2_BaguetteAttack0012.png" id="96_f7b1t"]
 [ext_resource type="Texture2D" uid="uid://oqv2ux2d05hj" path="res://assets/Enemies/Bosses/Final Boss/Phase 2 Baguette Attack/HillBillyPhase2_BaguetteAttack0013.png" id="97_mgn7m"]
@@ -178,38 +188,10 @@
 [ext_resource type="Texture2D" uid="uid://dbdd87fbarovb" path="res://assets/Enemies/Bosses/Final Boss/Phase 2 Transition/HillBillyPhase2Transition0008.png" id="176_yvar4"]
 [ext_resource type="Texture2D" uid="uid://cs3eexq6eckbb" path="res://assets/Enemies/Bosses/Final Boss/Phase 2 Transition/HillBillyPhase2Transition0009.png" id="177_x0crm"]
 [ext_resource type="Texture2D" uid="uid://bbjuq2i5jajlq" path="res://assets/Enemies/Bosses/Final Boss/Phase 2 Transition/HillBillyPhase2Transition0010.png" id="178_ly2ee"]
+[ext_resource type="Texture2D" uid="uid://oj3l7iq2nr58" path="res://assets/Enemies/Bosses/Final Boss/Phase 2 Walk/HillBillyPhase2_Walk0009.png" id="188_87ftl"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_137te"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("1_okukq")
-}, {
-"duration": 1.0,
-"texture": ExtResource("2_h6br1")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_jy7xl")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_1kylm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_hwty2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_ufyrw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_lxde2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_mqeaw")
-}],
-"loop": false,
-"name": &"death",
-"speed": 8.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("9_ug2lb")
@@ -260,7 +242,7 @@ animations = [{
 "texture": ExtResource("24_elism")
 }],
 "loop": false,
-"name": &"p1_baguette",
+"name": &"baguette",
 "speed": 8.0
 }, {
 "frames": [{
@@ -334,7 +316,7 @@ animations = [{
 "texture": ExtResource("47_wrrpd")
 }],
 "loop": false,
-"name": &"p1_beam",
+"name": &"beam",
 "speed": 8.0
 }, {
 "frames": [{
@@ -348,7 +330,7 @@ animations = [{
 "texture": ExtResource("50_4dvnv")
 }],
 "loop": true,
-"name": &"p1_default",
+"name": &"default",
 "speed": 8.0
 }, {
 "frames": [{
@@ -404,7 +386,7 @@ animations = [{
 "texture": ExtResource("67_clfmo")
 }],
 "loop": false,
-"name": &"p1_fork",
+"name": &"fork",
 "speed": 8.0
 }, {
 "frames": [{
@@ -440,7 +422,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("78_y3euv")
+}],
+"loop": false,
+"name": &"knife1",
+"speed": 8.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("79_8g33j")
 }, {
@@ -460,9 +447,79 @@ animations = [{
 "texture": ExtResource("84_5i5h8")
 }],
 "loop": false,
-"name": &"p1_knife",
+"name": &"knife2",
 "speed": 8.0
 }, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("169_oqd3x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("170_sj5ew")
+}, {
+"duration": 1.0,
+"texture": ExtResource("171_oe7t0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("172_xrlxs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("173_j8ewd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("174_1fv6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("175_suvy5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("176_yvar4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("177_x0crm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("178_ly2ee")
+}],
+"loop": false,
+"name": &"transition",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("87_g0dam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_aguuk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_ag1uf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_dw3vd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_62p2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_w00cf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_570ug")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_ilun6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_jt03t")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_55x8f"]
+animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("85_1ajjm")
@@ -513,7 +570,7 @@ animations = [{
 "texture": ExtResource("100_cng0r")
 }],
 "loop": false,
-"name": &"p2_baguette",
+"name": &"baguette",
 "speed": 8.0
 }, {
 "frames": [{
@@ -587,7 +644,36 @@ animations = [{
 "texture": ExtResource("123_3tfav")
 }],
 "loop": false,
-"name": &"p2_beam",
+"name": &"beam",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_okukq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_h6br1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_jy7xl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1kylm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_hwty2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ufyrw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_lxde2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_mqeaw")
+}],
+"loop": false,
+"name": &"death",
 "speed": 8.0
 }, {
 "frames": [{
@@ -601,7 +687,7 @@ animations = [{
 "texture": ExtResource("126_851eb")
 }],
 "loop": true,
-"name": &"p2_default",
+"name": &"default",
 "speed": 8.0
 }, {
 "frames": [{
@@ -657,7 +743,7 @@ animations = [{
 "texture": ExtResource("143_lqu8k")
 }],
 "loop": false,
-"name": &"p2_fork",
+"name": &"fork",
 "speed": 8.0
 }, {
 "frames": [{
@@ -693,7 +779,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("154_tdbjp")
+}],
+"loop": false,
+"name": &"knife1",
+"speed": 8.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("155_au3nj")
 }, {
@@ -713,7 +804,7 @@ animations = [{
 "texture": ExtResource("160_ijtfk")
 }],
 "loop": false,
-"name": &"p2_knife",
+"name": &"knife2",
 "speed": 8.0
 }, {
 "frames": [{
@@ -740,60 +831,57 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("168_k0d6q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("188_87ftl")
 }],
 "loop": true,
-"name": &"p2_walk",
-"speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("169_oqd3x")
-}, {
-"duration": 1.0,
-"texture": ExtResource("170_sj5ew")
-}, {
-"duration": 1.0,
-"texture": ExtResource("171_oe7t0")
-}, {
-"duration": 1.0,
-"texture": ExtResource("172_xrlxs")
-}, {
-"duration": 1.0,
-"texture": ExtResource("173_j8ewd")
-}, {
-"duration": 1.0,
-"texture": ExtResource("174_1fv6n")
-}, {
-"duration": 1.0,
-"texture": ExtResource("175_suvy5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("176_yvar4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("177_x0crm")
-}, {
-"duration": 1.0,
-"texture": ExtResource("178_ly2ee")
-}],
-"loop": false,
-"name": &"transition",
+"name": &"walk",
 "speed": 8.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_68roy"]
-radius = 79.0
-height = 500.0
+radius = 40.0
+height = 296.0
 
-[node name="Area2D" type="Area2D" unique_id=1496698261]
+[node name="(boss)_Hill_Billy" type="Area2D" unique_id=1496698261 groups=["Enemies"]]
+script = ExtResource("1_aguuk")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1358359407]
-scale = Vector2(0.75, 0.75)
+[node name="Sprite (Phase 1)" type="AnimatedSprite2D" parent="." unique_id=1358359407]
+scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_137te")
-animation = &"p2_baguette"
-autoplay = "p1_default"
-frame = 15
+animation = &"knife1"
+autoplay = "default"
+frame = 10
+frame_progress = 1.0
+
+[node name="Sprite (Phase 2)" type="AnimatedSprite2D" parent="." unique_id=1257745323]
+visible = false
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_55x8f")
+animation = &"knife1"
+autoplay = "default"
+frame = 10
 frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1594269233]
+visible = false
+position = Vector2(-13, 3.0000002)
+rotation = -0.17453292
 shape = SubResource("CapsuleShape2D_68roy")
+
+[node name="Knife Hitbox (Phase 1)" type="Area2D" parent="." unique_id=1876540241]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Knife Hitbox (Phase 1)" unique_id=1740184857]
+position = Vector2(-271.4922, 58.250004)
+scale = Vector2(8.7890625, 9.375001)
+polygon = PackedVector2Array(9.840889, -26.693333, 8.816889, -7.706667, 16.553778, 10.533333, 30.093334, 22.373333, 44.429333, 25.893333, 16.667557, -41.09333)
+
+[node name="Knife Hitbox (Phase 2)" type="Area2D" parent="." unique_id=1457013656]
+visible = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Knife Hitbox (Phase 2)" unique_id=1340103975]
+position = Vector2(-166.5, 192)
+scale = Vector2(22.45, 12.6)
+polygon = PackedVector2Array(2.6057906, -44.285713, 16.547882, 9.841269, 8.084632, 12.380951, 0.51224947, 5.2380943, -4.387528, -12.222221, -3.9420934, -30.15873)

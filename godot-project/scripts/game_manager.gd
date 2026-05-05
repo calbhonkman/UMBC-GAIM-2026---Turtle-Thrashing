@@ -4,20 +4,15 @@ extends Node2D
 
 @onready var camera = $Camera
 @onready var clock = $Camera/Clock
-@onready var level = $Camera/Level
 @onready var health = $"Camera/Health Icon/Health"
 @onready var bossHealthBar = $"Camera/BossHealthBar"
 @onready var elite_warning = $"Camera/Elite Warning"
 @onready var time_bar = $"Camera/Timer Bar/TimeBar"
 @onready var xp_bar = $"Camera/XP Bar"
-@onready var cursor = $"Camera/Cursor"
 
 const DAMAGE_PARTICLE = preload("uid://dum7dfhvymdrp")
 
 @export var CAMERA_LIMIT: float = 1600.0
-# Offsets for XP Bar, important for when player isn't centered in the camera
-@export var XP_POS_X: float = -35.0 
-@export var XP_POS_Y: float = 57.0
 
 @export var WAVE_TIME: float = 150.0 # seconds
 @export var NUM_WAVES: int = 4
@@ -36,6 +31,7 @@ const BIGENEMY = preload("uid://dq43dbtcuu4m")
 const SNAKE = preload("uid://dfuv28c2ne1eo")
 @export var ENEMIES: Array[Resource]
 @export var ELITES: Array[Resource]
+@export var FINAL_BOSS: Resource
 @export var SPAWN_COOLDOWN = 1.0
 @export var SPAWN_AREA = 800
 
@@ -50,7 +46,7 @@ var boss = null
 
 var pausable = true
 
-@export var EXP_HUE_SPEED: float = 2.0
+@export var EXP_HUE_SPEED: float = 1.0
 var exp_hue: float = 0.0
 
 func _ready():
@@ -59,7 +55,6 @@ func _ready():
 	elite_warning.visible = false
 
 func _process(delta):
-	cursor.global_position = get_global_mouse_position()
 	exp_hue = wrapf(exp_hue + (EXP_HUE_SPEED * delta), 0.0, 1.0)
 	
 	if not AudioManager.music.playing:
@@ -70,12 +65,10 @@ func _process(delta):
 	camera.global_position.x = clampf(player.global_position.x, -1*cam_limit_x, cam_limit_x)
 	camera.global_position.y = clampf(player.global_position.y, -1*cam_limit_y, cam_limit_y)
 	
-	level.text = "Level " + str(player.level) + " (" + str(player.experience) + "/" + str(5 * (player.level * (player.level+1) / 2)) + ")"
 	var prev_level: float = (5 * ((player.level-1) * (player.level) / 2))
 	var curr_level: float = (5 * (player.level * (player.level+1) / 2))
 	xp_bar.value = ((player.experience - prev_level) / (curr_level - prev_level) * 100)
-	xp_bar.global_position.x = player.global_position.x + XP_POS_X
-	xp_bar.global_position.y = player.global_position.y + XP_POS_Y
+	xp_bar.modulate = Color.from_hsv(exp_hue, 0.8, 0.8)
 	health.text = str(player.health)
 	
 	if pausable and Input.is_action_just_pressed("pause"):
@@ -103,7 +96,6 @@ func _process(delta):
 			screen_win.visible = true
 		else:
 			screen_level.prepare_to_upgrade()
-			boss = null
 		current_wave += 1
 		boss_fight = false
 		bossHealthBar.visible = false
@@ -122,6 +114,7 @@ func _process(delta):
 		
 		elif game_timer >= (WAVE_TIME * current_wave) and boss == null:
 			boss = spawn(remaining_elites.pop_at(randi_range(0, remaining_elites.size()-1)))
+			#boss = spawn(FINAL_BOSS)
 			boss_fight = true
 			bossHealthBar.visible = true
 			bossHealthBar.newElite(boss)
@@ -130,19 +123,6 @@ func _process(delta):
 		if not boss_fight:
 			spawn_timer += delta
 		if spawn_timer >= next_spawn_time:
-			# NOTE: I think it would make more sense for enemies to stop spawning while a boss exists.
-			# Existing enemies won't be removed, but spawning them while trying to survive a boss is overwhelming.
-			#if boss_fight:
-				#if boss.name == "(boss)_Raccoon":
-					## Small Raccoon
-					#spawn(ENEMIES[3])
-				#elif boss.name == "(boss)_Crab":
-					## Small Crab
-					#spawn(ENEMIES[0])
-				#elif boss.name == "(boss)_Eeveel":
-					## Small Crab
-					#spawn(ENEMIES[0])
-			#else:
 			if spawn_counter % 60 == 0:
 				spawn(FOOD[0])
 			if current_wave >= 1 and spawn_counter % 20 == 0:
@@ -182,7 +162,7 @@ func spawn(entity: Resource):
 	new_spawn.global_position = player.global_position + (SPAWN_AREA * Vector2.LEFT).rotated(randf_range(0, 2*PI))
 	if new_spawn.get_script():
 		new_spawn.scale_health(1 + (game_timer / 60.0))
-	next_spawn_time += 1.0 - (0.5 * current_wave / NUM_WAVES)
+	next_spawn_time += 1.0
 	spawn_counter += 1
 	return new_spawn
 

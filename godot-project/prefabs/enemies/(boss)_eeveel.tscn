@@ -147,14 +147,14 @@ height = 381.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_or3ip"]
 radius = 78.160095
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_3nyoy"]
-size = Vector2(565, 314)
+[sub_resource type="CircleShape2D" id="CircleShape2D_2o2cc"]
+radius = 358.13965
 
 [node name="(boss)_Eeveel" type="Area2D" unique_id=1711400772 groups=["Enemies"]]
 script = ExtResource("1_42qmj")
 
 [node name="DischargeSprite" type="AnimatedSprite2D" parent="." unique_id=816037722]
-position = Vector2(-17.000015, -21)
+position = Vector2(-9.000003, -20.999998)
 scale = Vector2(0.19486764, 0.19791667)
 sprite_frames = SubResource("SpriteFrames_oguuh")
 frame_progress = 0.92930776
@@ -176,5 +176,6 @@ shape = SubResource("CircleShape2D_or3ip")
 
 [node name="Hitbox_(Discharge)" type="CollisionShape2D" parent="." unique_id=269731234]
 position = Vector2(1, -12)
-shape = SubResource("RectangleShape2D_3nyoy")
+scale = Vector2(1, 0.55)
+shape = SubResource("CircleShape2D_2o2cc")
 disabled = true

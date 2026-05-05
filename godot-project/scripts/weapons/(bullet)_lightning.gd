@@ -6,7 +6,7 @@ var mode = "default"
 
 var damage = 0.0
 
-func _process(delta):
+func _process(_delta):
 	match mode:
 		"default":
 			cloud.play("cloud1")

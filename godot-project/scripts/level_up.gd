@@ -19,9 +19,9 @@ func _ready():
 	for button in upgrade_buttons:
 		button.button_group = group
 
-func _process(delta):
+func _process(_delta):
 	if not ready_to_upgrade:
-		pass
+		return
 	
 	chosen_upgrade = null
 	upgrade_description.text = "Select An Upgrade."

@@ -153,8 +153,9 @@ func scale_health(s: float):
 	health = MAX_HEALTH * s
 
 func damage(dmg: float):
+	if mode == "dying" or mode == "dead":
+		return
 	health -= dmg
-	print(health)
 	if health <= 0.0:
 		sprite.play("death1")
 		mode = "dying"

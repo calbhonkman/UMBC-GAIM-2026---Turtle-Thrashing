@@ -47,7 +47,6 @@ func _process(delta):
 		
 		else:
 			var rotation_dir = angle_difference(bullet.rotation, (get_global_mouse_position() - global_position).angle())
-			print(rotation_dir)
 			bullet.rotation += rotation_dir if abs(rotation_dir) < ROTATION_SPEED else ROTATION_SPEED * (0.0 if rotation_dir == 0.0 else rotation_dir / abs(rotation_dir))
 			bullet.scale.y = size_mod
 			bullet.visible = true
