@@ -40,7 +40,7 @@ func _process(delta):
 			if stun_timer <= 0:
 				stunned = false
 				sprite.modulate = Color(1,1,1,1)
-		else: 	
+		else:
 			var playerDirection = player.global_position - global_position
 			playerDirection = playerDirection / playerDirection.length()
 			global_position += playerDirection * delta * move_speed

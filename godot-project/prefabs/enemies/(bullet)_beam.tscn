@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://c71m8va772aof"]
+
+[ext_resource type="Texture2D" uid="uid://d2qcskvidtxci" path="res://assets/Enemies/Bosses/Final Boss/beam_p1_1.png" id="1_y1o8r"]
+[ext_resource type="Texture2D" uid="uid://cks4rl8nb5nly" path="res://assets/Enemies/Bosses/Final Boss/beam_p1_2.png" id="2_ofgn2"]
+[ext_resource type="Texture2D" uid="uid://c0rvsoxas2rpp" path="res://assets/Enemies/Bosses/Final Boss/beam_p1_3.png" id="3_wwddb"]
+[ext_resource type="Texture2D" uid="uid://bxujbwk7ukr0e" path="res://assets/Enemies/Bosses/Final Boss/beam_p2_1.png" id="4_087r8"]
+[ext_resource type="Texture2D" uid="uid://bu5jwcf3m335x" path="res://assets/Enemies/Bosses/Final Boss/beam_p2_2.png" id="5_lims6"]
+[ext_resource type="Texture2D" uid="uid://i3lx3n1ifj4p" path="res://assets/Enemies/Bosses/Final Boss/beam_p2_3.png" id="6_vo6m8"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dsbqb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_y1o8r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ofgn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wwddb")
+}],
+"loop": true,
+"name": &"beam_p1",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_087r8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lims6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_vo6m8")
+}],
+"loop": true,
+"name": &"beam_p2",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqgxj"]
+size = Vector2(3000, 100)
+
+[node name="Area2D" type="Area2D" unique_id=626060781]
+z_index = 1
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1441923463]
+modulate = Color(1, 1, 1, 0.70000005)
+position = Vector2(1500.0001, 9.536743e-07)
+scale = Vector2(0.857143, 0.05299417)
+sprite_frames = SubResource("SpriteFrames_dsbqb")
+animation = &"beam_p2"
+frame_progress = 0.122224554
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1480054210]
+position = Vector2(1500, 0)
+shape = SubResource("RectangleShape2D_nqgxj")

@@ -14,12 +14,19 @@ var health: float = MAX_HEALTH
 var move_speed: float = BASE_MOVE_SPEED
 
 # Other enemies might not have these variables:
+@export var FORK: Resource
+@export var BEAM: Resource
+@export var BAGUETTE: Resource
 @export var BASE_DAMAGE: float = 1.0
-@export var KNIFE_RANGE: float = 400.0
+@export var ATTACK_TIME: float = 5.0
+@export var PULL_TIME: float = 5.0
+@export var PULL_STRENGTH: float = 150.0
 var anti_knockback_position = null
 var sprite = null
 var mode = "default"
+var next_mode = "fork"
 var mode_timer = 0
+var bullets = []
 
 func _ready():
 	sprite = sprite_p1
@@ -34,6 +41,7 @@ func _process(delta):
 		
 		if anti_knockback_position:
 			global_position = anti_knockback_position
+		scale.x = -1 * abs(scale.x) if player_dir.x > 0 else abs(scale.x)
 		
 		mode_timer -= delta
 		
@@ -48,18 +56,29 @@ func _process(delta):
 					sprite.play("walk")
 			"transition":
 				if not sprite.is_playing():
+					sprite.visible = false
 					sprite = sprite_p2
+					sprite.visible = true
 					mode = "default"
 					sprite.play("default")
 			"hunting":
-				scale.x = -1 * abs(scale.x) if player_dir.x > 0 else abs(scale.x)
 				var knife_hitbox = knife_hitbox_p1 if sprite == sprite_p1 else knife_hitbox_p2
-				if player.hitbox in knife_hitbox.get_overlapping_areas():
-					mode = "knife1"
-					sprite.play("knife1")
+				if next_mode == "knife1":
+					if player.hitbox in knife_hitbox.get_overlapping_areas():
+						mode = "knife1"
+						sprite.play("knife1")
+					else:
+						global_position += player_dir * move_speed * delta
+						anti_knockback_position = global_position
 				else:
-					global_position += player_dir * move_speed * delta
-					anti_knockback_position = global_position
+					mode = next_mode
+					mode_timer = ATTACK_TIME
+					sprite.play(next_mode)
+			"fork":
+				if mode_timer <= 0.0:
+					mode = "default"
+					next_mode = "knife1"
+					sprite.play("default")
 			"knife1":
 				if not sprite.is_playing():
 					mode = "knife2"
@@ -70,6 +89,28 @@ func _process(delta):
 			"knife2":
 				if not sprite.is_playing():
 					mode = "default"
+					next_mode = "baguette"
+					sprite.play("default")
+			"baguette":
+				if mode_timer <= 0.0:
+					mode = "default"
+					next_mode = "beam1"
+					sprite.play("default")
+			"beam1":
+				if not sprite.is_playing():
+					mode = "beam2"
+					mode_timer = PULL_TIME
+					sprite.play("beam2")
+			"beam2":
+				if mode_timer <= 0.0:
+					mode = "beam3"
+					sprite.play("beam3")
+				else:
+					player.global_position -= player_dir * PULL_STRENGTH * delta
+			"beam3":
+				if not sprite.is_playing():
+					mode = "default"
+					next_mode = "fork"
 					sprite.play("default")
 			"dying":
 				if not sprite.is_playing():

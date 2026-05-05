@@ -43,7 +43,7 @@ func _process(delta):
 			if stun_timer <= 0:
 				stunned = false
 				sprite.modulate = Color(1,1,1,1)
-		else: 	
+		else:
 			var playerDirection = player.global_position - global_position
 			playerDirection = playerDirection / playerDirection.length()
 			if anti_knockback_position:
@@ -52,13 +52,6 @@ func _process(delta):
 			anti_knockback_position = global_position
 			sprite.scale.x = -1 * abs(sprite.scale.x) * playerDirection.x / abs(playerDirection.x) if playerDirection.x != 0 else sprite.scale.x
 			sprite.play("walk")
-	
-	if dying:
-		for i in range(EXP_AMOUNT):
-			var new_xp = EXP.instantiate()
-			new_xp.global_position = global_position
-			get_parent().add_child(new_xp)
-		queue_free()
 
 func scale_health(s: float):
 	MAX_HEALTH *= s
