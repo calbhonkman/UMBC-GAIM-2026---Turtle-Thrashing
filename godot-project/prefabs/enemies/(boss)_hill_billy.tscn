@@ -266,7 +266,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("31_m437s")
+}],
+"loop": false,
+"name": &"beam1",
+"speed": 8.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("32_k8npw")
 }, {
@@ -275,7 +280,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("34_1e6bj")
+}],
+"loop": true,
+"name": &"beam2",
+"speed": 8.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("35_e4y0m")
 }, {
@@ -316,7 +326,7 @@ animations = [{
 "texture": ExtResource("47_wrrpd")
 }],
 "loop": false,
-"name": &"beam",
+"name": &"beam3",
 "speed": 8.0
 }, {
 "frames": [{
@@ -594,7 +604,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("107_olp8y")
+}],
+"loop": false,
+"name": &"beam1",
+"speed": 8.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("108_ig6mh")
 }, {
@@ -603,7 +618,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("110_jlk6p")
+}],
+"loop": true,
+"name": &"beam2",
+"speed": 8.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("111_hxl7t")
 }, {
@@ -644,7 +664,7 @@ animations = [{
 "texture": ExtResource("123_3tfav")
 }],
 "loop": false,
-"name": &"beam",
+"name": &"beam3",
 "speed": 8.0
 }, {
 "frames": [{
@@ -850,19 +870,15 @@ script = ExtResource("1_aguuk")
 [node name="Sprite (Phase 1)" type="AnimatedSprite2D" parent="." unique_id=1358359407]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_137te")
-animation = &"knife1"
+animation = &"beam3"
 autoplay = "default"
-frame = 10
-frame_progress = 1.0
 
 [node name="Sprite (Phase 2)" type="AnimatedSprite2D" parent="." unique_id=1257745323]
 visible = false
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_55x8f")
-animation = &"knife1"
+animation = &"beam1"
 autoplay = "default"
-frame = 10
-frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1594269233]
 visible = false
