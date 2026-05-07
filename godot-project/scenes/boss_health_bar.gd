@@ -29,7 +29,7 @@ var HILLBILLY_POS_Y: float = 449.0
 var HILLBILLY_SIZE_X: float = 0.423
 var HILLBILLY_SIZE_Y: float = 0.423
 
-var bosses = ["raccoon", "crab", "eel"]
+var bosses = ["raccoon", "crab", "eel", "hillbilly"]
 var curr_boss = null
 var curr_bar = null
 var max_health
@@ -50,7 +50,7 @@ func _process(_delta: float) -> void:
 func newElite(boss):
 	curr_bar.visible = false
 	curr_boss = boss
-	max_health = curr_boss.MAX_HEALTH
+	max_health = curr_boss.health
 	if boss.name == "(boss)_Raccoon":
 		curr_bar = raccoon_bar
 		setBorder(bosses[0], RACCOON_POS_X, RACCOON_POS_Y, RACCOON_SIZE_X, RACCOON_SIZE_Y)
@@ -60,6 +60,9 @@ func newElite(boss):
 	elif boss.name == "(boss)_Eeveel":
 		curr_bar = eel_bar
 		setBorder(bosses[2], EEL_POS_X, EEL_POS_Y, EEL_SIZE_X, EEL_SIZE_Y)
+	elif boss.name == "(boss)_hill_billy":
+		curr_bar = hillbilly_bar
+		setBorder(bosses[3], HILLBILLY_POS_X, HILLBILLY_POS_Y, HILLBILLY_SIZE_X, HILLBILLY_SIZE_Y)
 	curr_bar.visible = true
 
 func setBorder(spr, pos_x, pos_y, size_x, size_y):

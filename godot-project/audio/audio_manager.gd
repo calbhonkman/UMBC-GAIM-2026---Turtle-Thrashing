@@ -1,7 +1,8 @@
 extends Node2D
 
 #Music
-@onready var music = $music
+@onready var music1 = $music1
+@onready var music2 = $music2
 
 #SFX
 @onready var xp_pickup_sfx = $xp_pickup
@@ -31,7 +32,7 @@ var paused_sounds : Dictionary
 func pause_all_sounds():
 	paused_sounds = {}
 	for sound : AudioStreamPlayer in get_children():
-		if sound.name == "music": continue
+		if sound.name == "music1" or sound.name == "music2": continue
 		if sound.playing: 
 			paused_sounds[sound] = sound.get_playback_position()
 			sound.stop()

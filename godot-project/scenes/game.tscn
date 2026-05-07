@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b0lhcesvxk5es" path="res://assets/Turtle/TurtWalk1.png" id="3_gee14"]
 [ext_resource type="Texture2D" uid="uid://py7xx4octhbf" path="res://assets/Turtle/Upgrade Icons/(icon)_Basic.png" id="3_v2yb1"]
 [ext_resource type="Texture2D" uid="uid://vg1j3cyln3qy" path="res://assets/Turtle/TurtWalk2.png" id="4_0tnpc"]
+[ext_resource type="Texture2D" uid="uid://b7oa2recvmaoo" path="res://assets/Turtle/Upgrade Icons/Ability Icons Clicked/Basic Clicked.png" id="4_weeiq"]
 [ext_resource type="Script" uid="uid://btydxe3n7bvhi" path="res://scripts/weapons/(weapon)_punch.gd" id="7_kvpfn"]
 [ext_resource type="Script" uid="uid://bstu2wfytyykc" path="res://scripts/game_manager.gd" id="9_0tnpc"]
 [ext_resource type="Script" uid="uid://cjnrhr8lp15vt" path="res://scripts/weapons/(weapon)_lightning.gd" id="9_dinhu"]
@@ -41,9 +42,12 @@
 [ext_resource type="PackedScene" uid="uid://cfdlk4r0ys684" path="res://prefabs/enemies/(boss)_crab.tscn" id="25_qnb83"]
 [ext_resource type="Texture2D" uid="uid://dpt2vuiqll18q" path="res://assets/Turtle/Upgrade Icons/Ability Icons Clicked/Flame Starter Clicked.png" id="28_uxocx"]
 [ext_resource type="Script" uid="uid://cypit3nrwog1x" path="res://scripts/level_up.gd" id="29_sgl2t"]
+[ext_resource type="Script" uid="uid://cxx5npg6645rl" path="res://scripts/weapons/(weapon)_turtle_sama.gd" id="30_uxocx"]
 [ext_resource type="Texture2D" uid="uid://b7a6bfks24i60" path="res://assets/Turtle/Upgrade Icons/(icon)_BLANK.png" id="30_wljb1"]
 [ext_resource type="Texture2D" uid="uid://o04sbbcfx7p7" path="res://assets/Turtle/Upgrade Icons/Ability Icons Clicked/Shield Clicked.png" id="31_7nv0b"]
+[ext_resource type="Texture2D" uid="uid://cs4hrggtlw6bx" path="res://assets/Turtle/Upgrade Icons/Turtle-Sama Summon.png" id="31_o8oq8"]
 [ext_resource type="Texture2D" uid="uid://bi547l6xmt1jk" path="res://assets/Damage Vignette.png" id="31_v2yb1"]
+[ext_resource type="Texture2D" uid="uid://o1uwdsukrmbs" path="res://assets/Turtle/Upgrade Icons/Ability Icons Clicked/Turtle-Sama Summon Clicked.png" id="32_sxt1d"]
 [ext_resource type="PackedScene" uid="uid://h840sm3fnray" path="res://prefabs/enemies/(enemy)_bush.tscn" id="33_8ool0"]
 [ext_resource type="PackedScene" uid="uid://cjwmklbpd0qqs" path="res://prefabs/enemies/(enemy)_seagull.tscn" id="34_pr1ej"]
 [ext_resource type="PackedScene" uid="uid://bq4gj57qfkh1y" path="res://prefabs/enemies/(enemy)_raccoon_regular.tscn" id="35_n8ral"]
@@ -299,6 +303,7 @@ z_index = 1
 script = ExtResource("1_yqjtg")
 upgrade_descriptions = Array[String](["Max Health +1", "Pickup Range +25%", "Movement Speed +50%"])
 upgrade_icon = ExtResource("3_v2yb1")
+upgrade_icon_selected = ExtResource("4_weeiq")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=1355100074]
 scale = Vector2(0.2, 0.2)
@@ -393,6 +398,13 @@ upgrade_icon_selected = ExtResource("28_uxocx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Flamestarter" unique_id=1804428324]
 shape = SubResource("CircleShape2D_iywne")
+
+[node name="(Weapon) Turtle-Sama" type="Node2D" parent="Player" unique_id=932928084]
+visible = false
+script = ExtResource("30_uxocx")
+upgrade_descriptions = Array[String](["Unleash Turtle-Sama", "Turtle-Sama damage + 0.5", "Turtle-Sama punches per flurry + 2", "Turtle-Sama size * 1.25"])
+upgrade_icon = ExtResource("31_o8oq8")
+upgrade_icon_selected = ExtResource("32_sxt1d")
 
 [node name="(Minion) Shield" type="Node2D" parent="Player" unique_id=197280404]
 visible = false
@@ -516,7 +528,7 @@ texture_progress = ExtResource("42_bk1p3")
 position = Vector2(-10, 434)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_0sl42")
-animation = &"raccoon"
+animation = &"crab"
 
 [node name="EelBar" type="TextureProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=1354623048]
 visible = false
@@ -699,7 +711,7 @@ vertical_alignment = 1
 [node name="[Level Up]" type="Node2D" parent="GameManager/Camera" unique_id=1735115605 node_paths=PackedStringArray("upgradeables", "upgrade_buttons")]
 visible = false
 script = ExtResource("29_sgl2t")
-upgradeables = [NodePath("../../../Player"), NodePath("../../../Player/(Weapon) Laser"), NodePath("../../../Player/(Weapon) Lightning"), NodePath("../../../Player/(Weapon) Punch"), NodePath("../../../Player/(Weapon) Slap"), NodePath("../../../Player/(Weapon) Flamestarter"), NodePath("../../../Player/(Minion) Shield")]
+upgradeables = [NodePath("../../../Player"), NodePath("../../../Player/(Weapon) Laser"), NodePath("../../../Player/(Weapon) Lightning"), NodePath("../../../Player/(Weapon) Punch"), NodePath("../../../Player/(Weapon) Slap"), NodePath("../../../Player/(Weapon) Flamestarter"), NodePath("../../../Player/(Minion) Shield"), NodePath("../../../Player/(Weapon) Turtle-Sama")]
 upgrade_buttons = [NodePath("Option #1"), NodePath("Option #2"), NodePath("Option #3")]
 
 [node name="ColorRect" type="ColorRect" parent="GameManager/Camera/[Level Up]" unique_id=512252080]
@@ -852,7 +864,6 @@ texture = ExtResource("58_yd4ix")
 offset = Vector2(250.34616, 468.03857)
 
 [node name="Damage Vignette" type="Sprite2D" parent="GameManager/Camera" unique_id=1740525009]
-visible = false
 modulate = Color(1, 1, 1, 0)
 texture = ExtResource("31_v2yb1")
 

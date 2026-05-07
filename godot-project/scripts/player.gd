@@ -14,6 +14,7 @@ extends CharacterBody2D
 
 @export var upgrade_descriptions: Array[String]
 @export var upgrade_icon: Resource
+@export var upgrade_icon_selected: Resource
 
 var pickup_range_mod = 1.0
 

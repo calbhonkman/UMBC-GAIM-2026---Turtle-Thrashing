@@ -57,8 +57,11 @@ func _ready():
 func _process(delta):
 	exp_hue = wrapf(exp_hue + (EXP_HUE_SPEED * delta), 0.0, 1.0)
 	
-	if not AudioManager.music.playing:
-		AudioManager.music.play()
+	if not AudioManager.music1.playing and current_wave < 3:
+		AudioManager.music1.play()
+	elif not AudioManager.music2.playing and current_wave >= 3:
+		AudioManager.music1.stop()
+		AudioManager.music2.play()
 	
 	var cam_limit_x = CAMERA_LIMIT - (get_viewport().get_visible_rect().size.x/2)
 	var cam_limit_y = CAMERA_LIMIT - (get_viewport().get_visible_rect().size.y/2)
@@ -77,7 +80,8 @@ func _process(delta):
 		AudioManager.pause_all_sounds()
 	
 	if player.health <= 0:
-		AudioManager.music.stop()
+		AudioManager.music1.stop()
+		AudioManager.music2.stop()
 		pausable = false
 		get_tree().paused = true
 		screen_lose.visible = true

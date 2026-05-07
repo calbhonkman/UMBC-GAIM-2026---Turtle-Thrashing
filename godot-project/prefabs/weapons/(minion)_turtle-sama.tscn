@@ -1,0 +1,158 @@
+[gd_scene format=3 uid="uid://cv148hqf0xhcr"]
+
+[ext_resource type="Texture2D" uid="uid://dqcdhchfyr06" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_014.png" id="1_3gnx0"]
+[ext_resource type="Script" uid="uid://df3xbkvncj3on" path="res://scripts/weapons/(minion)_turtle_sama.gd" id="1_fi3e6"]
+[ext_resource type="Texture2D" uid="uid://bq2xqsvrjhdf5" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_015.png" id="2_y2c0h"]
+[ext_resource type="Texture2D" uid="uid://bdsa4u8cnntk1" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_016.png" id="3_o1qym"]
+[ext_resource type="Texture2D" uid="uid://c8pc30ucyyoln" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_017.png" id="4_yaut2"]
+[ext_resource type="Texture2D" uid="uid://wiebnsr3lcp1" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_001.png" id="5_m8mvi"]
+[ext_resource type="Texture2D" uid="uid://dgq76ncojyx3g" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_002.png" id="6_8kobp"]
+[ext_resource type="Texture2D" uid="uid://bb1on47ew24kd" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_003.png" id="7_r57tp"]
+[ext_resource type="Texture2D" uid="uid://dvu70oanuckw7" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_004.png" id="8_xwfuv"]
+[ext_resource type="Texture2D" uid="uid://bq4k57v3nubr2" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_005.png" id="9_588b0"]
+[ext_resource type="Texture2D" uid="uid://bx5m0nb2v4ews" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_006.png" id="10_fi3e6"]
+[ext_resource type="Texture2D" uid="uid://b4276vpn2i2s2" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_007.png" id="11_n02tv"]
+[ext_resource type="Texture2D" uid="uid://b4y8qbescxbx5" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_008.png" id="12_jsjp0"]
+[ext_resource type="Texture2D" uid="uid://b47mqp88skt0a" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_009.png" id="13_we6tr"]
+[ext_resource type="Texture2D" uid="uid://0kg2iygxwhm8" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_010.png" id="14_eqdsb"]
+[ext_resource type="Texture2D" uid="uid://ds31qdxyalrvk" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_011.png" id="15_eh2bl"]
+[ext_resource type="Texture2D" uid="uid://kh56lob37vr8" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_012.png" id="16_ckgxm"]
+[ext_resource type="Texture2D" uid="uid://cy4i4rfqy14le" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_013.png" id="17_56x25"]
+[ext_resource type="Texture2D" uid="uid://bpsg8ciex11nn" path="res://assets/Free Upgrade.png" id="18_588b0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_03mdj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_3gnx0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_y2c0h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_o1qym")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_yaut2")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_m8mvi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8kobp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_r57tp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_8kobp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_xwfuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_588b0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fi3e6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_n02tv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jsjp0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_we6tr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_eqdsb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_eh2bl")
+}],
+"loop": false,
+"name": &"pose",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_xwfuv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_588b0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_fi3e6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_n02tv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_jsjp0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_we6tr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_eqdsb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_eh2bl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ckgxm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_56x25")
+}],
+"loop": false,
+"name": &"prepare",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_588b0"]
+size = Vector2(128.5625, 50)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fi3e6"]
+radius = 524.02386
+
+[node name="(minion)TurtleSama" type="Node2D" unique_id=747758252]
+script = ExtResource("1_fi3e6")
+
+[node name="Hitbox Area" type="Area2D" parent="." unique_id=1339139144]
+
+[node name="Target Node" type="Sprite2D" parent="Hitbox Area" unique_id=778189751]
+visible = false
+position = Vector2(1.9999981, 2.9999995)
+scale = Vector2(0.05670926, 0.056709263)
+texture = ExtResource("18_588b0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Hitbox Area" unique_id=1786251653]
+position = Vector2(7.6293945e-06, 2.842171e-14)
+scale = Vector2(0.1912037, 0.1912037)
+sprite_frames = SubResource("SpriteFrames_03mdj")
+animation = &"attack"
+autoplay = "default"
+frame_progress = 0.14282459
+offset = Vector2(-3.0517578e-05, -6.604138e-07)
+
+[node name="Hitbox" type="CollisionShape2D" parent="Hitbox Area" unique_id=383536453]
+position = Vector2(-70, -17)
+shape = SubResource("RectangleShape2D_588b0")
+
+[node name="Detection Area" type="Area2D" parent="." unique_id=637639563]
+
+[node name="Detection Range" type="CollisionShape2D" parent="Detection Area" unique_id=1198827983]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_fi3e6")
