@@ -41,18 +41,19 @@ func _process(delta: float):
 	detect_area.global_position = player.global_position
 	match mode:
 		"default":
+			var targetDirection = target_node.global_position - global_position
+			if targetDirection.length() > 0:
+				targetDirection = targetDirection.normalized()
 			if (player.global_position - global_position).length() > PLAYER_RANGE:
 				mode = "fallback"
+				hitbox_area.scale.x = -1 * abs(hitbox_area.scale.x) * targetDirection.x / abs(targetDirection.x) if targetDirection.x != 0 else hitbox_area.scale.x
 			if target:
 				target_node.global_position = target.global_position
-				var targetDirection = target_node.global_position - global_position
-				if targetDirection.length() > 0:
-					targetDirection = targetDirection.normalized()
 				global_position += targetDirection * delta * SPEED
-				hitbox_area.scale.x = -1 * abs(hitbox_area.scale.x) * targetDirection.x / abs(targetDirection.x) if targetDirection.x != 0 else hitbox_area.scale.x
 				if (target.global_position - global_position).length() < ENEMY_RANGE:
 					mode = "prepare"
 					sprite.play("prepare")
+					hitbox_area.scale.x = -1 * abs(hitbox_area.scale.x) * targetDirection.x / abs(targetDirection.x) if targetDirection.x != 0 else hitbox_area.scale.x
 			else:
 				find_target()
 					
