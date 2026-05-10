@@ -57,14 +57,17 @@ func _process(delta):
 				if (player.global_position - hitbox_slam.global_position).length() < ($"(hitbox)_slam/CollisionShape2D".shape.radius * 0.75):
 					mode = "slamming part one"
 					sprite.play("slam1")
+					AudioManager.chargeup.play()
 				elif (abs(player_vect.x) >= (get_viewport_rect().size.x / 2)) or (abs(player_vect.y) >= (get_viewport_rect().size.y / 2)):
 					mode = "jumping part one"
 					sprite.play("jump1")
+					AudioManager.king_throw.play()
 				elif player_dist >= CHARGE_RANGE and mode_timer <= 0.0:
 					mode = "charging part one"
 					mode_timer = CHARGE_PREP_TIME
 					charge_direction = player_dir
 					sprite.play("charge1")
+					AudioManager.chargeup.play()
 				else:
 					global_position += player_dir * move_speed * delta
 					anti_knockback_position = global_position

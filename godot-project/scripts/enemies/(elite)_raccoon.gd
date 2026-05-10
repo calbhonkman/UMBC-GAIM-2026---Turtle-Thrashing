@@ -112,6 +112,7 @@ func _process(delta):
 					b_position.append(global_position)
 					b_lifetime.append(bullet_lifetime)
 					b_amount += 1
+					AudioManager.king_throw.play()
 			"dying":
 				if mode_timer <= 0.0:
 					sprite.play("death2")
@@ -160,3 +161,4 @@ func damage(dmg: float):
 		sprite.play("death1")
 		mode = "dying"
 		mode_timer = DEATH_SPRITE_TIME
+		AudioManager.raccoon_surrender.play()

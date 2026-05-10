@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dfmxws4tn6kws"
+path="res://.godot/imported/Making me hungry .mp3-dcec37d123a97d6a9bc91ff987224a54.mp3str"
+
+[deps]
+
+source_file="res://audio/voiceAndJingles/Final Boss Phase 2 Voice Line/Making me hungry .mp3"
+dest_files=["res://.godot/imported/Making me hungry .mp3-dcec37d123a97d6a9bc91ff987224a54.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

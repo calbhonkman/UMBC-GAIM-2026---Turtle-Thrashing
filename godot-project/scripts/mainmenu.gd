@@ -28,8 +28,10 @@ func _input(event):
 		timer = ATTRACT_MODE_TIME
 
 func _on_play_button_pressed():
+	AudioManager.ui_pop.play()
 	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 
 func _on_quit_button_pressed():
+	AudioManager.ui_pop.play()
 	get_tree().quit()

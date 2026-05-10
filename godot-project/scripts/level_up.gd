@@ -63,3 +63,4 @@ func _on_confirm_pressed():
 			button.button_pressed = false
 		get_parent().get_parent().resume()
 		AudioManager.resume_all_sounds()
+		AudioManager.ui_pop.play()

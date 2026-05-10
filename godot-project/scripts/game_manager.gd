@@ -174,6 +174,7 @@ func _on_button_main_menu_pressed():
 	get_tree().paused = false
 	for child in AudioManager.get_children():
 		child.stop()
+	AudioManager.ui_pop.play()
 	get_tree().change_scene_to_file("res://scenes/mainmenu.tscn")
 
 func _on_button_continue_pressed():
@@ -185,6 +186,7 @@ func resume():
 	get_tree().paused = false
 	pausable = true
 	AudioManager.resume_all_sounds()
+	AudioManager.ui_pop.play()
 
 func create_damage_particle(dmg_position, damage):
 	var new_damage_particle = DAMAGE_PARTICLE.instantiate()

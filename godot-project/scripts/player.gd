@@ -8,7 +8,7 @@ extends CharacterBody2D
 
 @export var MAX_HEALTH: int = 5
 @export var BASE_SPEED: float = 200.0
-@export var INVINCIBLE_TIME: float = 0.5
+@export var INVINCIBLE_TIME: float = 0.75
 @export var HEARTBEAT_TIME: float = 0.75
 @export var DAMAGE_KNOCKBACK: float = 100.0
 
@@ -36,6 +36,10 @@ func _process(delta):
 	heartbeat_timer = wrap(heartbeat_timer - delta, 0.0, HEARTBEAT_TIME) if health == 1 else 0.0
 	health_icon_danger.modulate.a = sqrt(heartbeat_timer/HEARTBEAT_TIME)
 	health_icon_danger.scale = Vector2(1,1) * (1.0 + (0.2 * sqrt(heartbeat_timer/HEARTBEAT_TIME)))
+	if health == 1 and not AudioManager.heartbeat.playing:
+		AudioManager.heartbeat.play()
+	elif health > 1 and AudioManager.heartbeat.playing:
+		AudioManager.heartbeat.stop()
 	
 	var movement_direction = Input.get_vector("left","right","up","down")
 	if health <= 0:

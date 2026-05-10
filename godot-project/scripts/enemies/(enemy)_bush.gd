@@ -4,6 +4,7 @@ extends Area2D
 @onready var sprite = $AnimatedSprite2D
 @onready var area_suck = $"(hitbox)_suck"
 @onready var hitbox_suck = $"(hitbox)_suck/CollisionShape2D"
+@onready var air_sprite = $"Air Sprite"
 const EXP = preload("uid://bln5qlwy18sjf")
 
 @export var MAX_HEALTH: float = 4.0
@@ -30,6 +31,8 @@ var mode = "default"
 
 func _ready():
 	hitbox_suck.disabled = true
+	air_sprite.visible = false
+	air_sprite.play("default")
 
 func _process(delta):
 	scale = Vector2(1,1) * (0.75 + clamp(0.25 * health / MAX_HEALTH, 0.0, 0.25))
@@ -56,7 +59,9 @@ func _process(delta):
 			var playerDirection = player.global_position - global_position
 			playerDirection = playerDirection / playerDirection.length()
 			sprite.scale.x = abs(sprite.scale.x) * sign(playerDirection.x)
+			air_sprite.scale.x = abs(air_sprite.scale.x) * sign(sprite.scale.x)
 			hitbox_suck.position.x = abs(hitbox_suck.position.x) * sign(playerDirection.x)
+			air_sprite.position.x = abs(air_sprite.position.x) * sign(playerDirection.x)
 			match mode:
 				"default":
 					global_position += playerDirection * delta * move_speed
@@ -73,6 +78,7 @@ func _process(delta):
 					await sprite.animation_finished
 					_go_to_hostile()
 				"unleash suck":
+					air_sprite.visible = true
 					await sprite.animation_finished
 					_go_to_suck()
 				"hostile":
@@ -91,6 +97,7 @@ func _process(delta):
 						mode = "hostile"
 						AudioManager.suck.stop()
 						AudioManager.roar.play()
+						air_sprite.visible = false
 						sprite.play("attack")
 					elif abs(player.global_position.y - global_position.y) > SUCK_RANGE:
 						hitbox_suck.disabled = true
@@ -98,6 +105,7 @@ func _process(delta):
 						sprite.play("retract")
 				"retract":
 					AudioManager.suck.stop()
+					air_sprite.visible = false
 					await sprite.animation_finished
 					_go_to_default()
 				

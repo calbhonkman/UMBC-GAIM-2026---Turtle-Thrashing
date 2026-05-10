@@ -114,6 +114,7 @@ func _process(delta):
 						b_position.append(global_position)
 						b_lifetime.append(bullet_lifetime)
 						b_amount += 1
+						AudioManager.raccoon_throw.play()
 			if bullets.size() > 0:
 				for i in range(bullets.size()):
 					if i < bullets.size():

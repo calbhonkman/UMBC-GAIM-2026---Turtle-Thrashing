@@ -66,6 +66,7 @@ func _process(delta):
 					hitbox1.disabled = true
 					hitbox2.disabled = true
 					sprite.play("charge")
+					AudioManager.eel_chargeup.play()
 				else:
 					global_position += player_dir * move_speed * delta
 					anti_knockback_position = global_position
@@ -84,6 +85,8 @@ func _process(delta):
 					hitbox_discharge.disabled = false
 					discharge_sprite.visible = true
 					sprite.play("default")
+					AudioManager.eel_discharge.play()
+					AudioManager.eel_chargeup.stop()
 			"discharging":
 				if mode_timer <= 0.0:
 					mode = "default"
@@ -93,6 +96,7 @@ func _process(delta):
 					hitbox2.disabled = false
 					discharge_sprite.visible = false
 					sprite.play("default")
+					AudioManager.eel_discharge.stop()
 				else:
 					global_position += player_dir * move_speed * delta * 1.5
 					anti_knockback_position = global_position
@@ -111,3 +115,4 @@ func damage(dmg: float):
 		mode = "dying"
 		sprite.play("death")
 		discharge_sprite.visible = false
+		AudioManager.eeveel_death.play()

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1wqodntrx6aw"
-path="res://.godot/imported/Projectiles_Sheet (1) (1).png-18d568c6e42af2b732cc4a0437b64314.ctex"
+uid="uid://bpjecrns0c8kh"
+path="res://.godot/imported/Tiger shark_attack_1.png-4784662fcb5d62f9c6b5a79621ef3626.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Enemies/BasicEnemies/Raccoon/Projectiles_Sheet (1) (1).png"
-dest_files=["res://.godot/imported/Projectiles_Sheet (1) (1).png-18d568c6e42af2b732cc4a0437b64314.ctex"]
+source_file="res://assets/Enemies/Elites/TigerShark/Tiger shark_attack_1.png"
+dest_files=["res://.godot/imported/Tiger shark_attack_1.png-4784662fcb5d62f9c6b5a79621ef3626.ctex"]
 
 [params]
 

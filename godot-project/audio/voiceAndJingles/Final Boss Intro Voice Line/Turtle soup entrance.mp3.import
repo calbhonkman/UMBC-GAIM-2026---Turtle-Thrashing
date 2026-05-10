@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bn1k8y7oapwff"
+path="res://.godot/imported/Turtle soup entrance.mp3-d0d89c42d7362553d7cd8a60eb582803.mp3str"
+
+[deps]
+
+source_file="res://audio/voiceAndJingles/Final Boss Intro Voice Line/Turtle soup entrance.mp3"
+dest_files=["res://.godot/imported/Turtle soup entrance.mp3-d0d89c42d7362553d7cd8a60eb582803.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

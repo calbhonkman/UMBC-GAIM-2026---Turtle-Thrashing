@@ -24,6 +24,12 @@ var punch_timer = 0
 var remaining_punches
 var prev = []
 var target = null
+var chosen_sound = null
+var punch_sounds = [AudioManager.trt_sma_pch_1, 
+AudioManager.trt_sma_pch_2, 
+AudioManager.trt_sma_pch_3, 
+AudioManager.trt_sma_pch_4, 
+AudioManager.trt_sma_pch_5]
 
 var damage = 0.0
 var punches = 0
@@ -46,7 +52,8 @@ func _process(delta: float):
 				targetDirection = targetDirection.normalized()
 			if (player.global_position - global_position).length() > PLAYER_RANGE:
 				mode = "fallback"
-				hitbox_area.scale.x = -1 * abs(hitbox_area.scale.x) * targetDirection.x / abs(targetDirection.x) if targetDirection.x != 0 else hitbox_area.scale.x
+				hitbox_area.scale.x = -1 * sign(player.sprite.scale.x)
+				#hitbox_area.scale.x = -1 * abs(hitbox_area.scale.x) * targetDirection.x / abs(targetDirection.x) if targetDirection.x != 0 else hitbox_area.scale.x
 			if target:
 				target_node.global_position = target.global_position
 				global_position += targetDirection * delta * SPEED
@@ -77,8 +84,11 @@ func _process(delta: float):
 							remaining_punches = 1
 					prev.append(area)
 					area.damage(damage)
+					chosen_sound.play()
 					$"/root/Node2D/GameManager".create_damage_particle(area.global_position, damage)
 			if punch_timer <= 0:
+				chosen_sound = punch_sounds[randi() % 5]
+				
 				hitbox.disabled = false
 				hitbox_timer = ACTIVE_FRAMES
 				punch_timer = PUNCH_RATE
@@ -93,6 +103,7 @@ func _process(delta: float):
 		"finish":
 			if not sprite.is_playing():
 				if (player.global_position - global_position).length() > PLAYER_RANGE:
+					hitbox_area.scale.x = -1 * sign(player.sprite.scale.x)
 					mode = "fallback"
 				else:
 					mode = "default"
@@ -103,7 +114,7 @@ func _process(delta: float):
 			if playerDirection.length() > 0:
 				playerDirection = playerDirection.normalized()
 			global_position += playerDirection * delta * SPEED
-			hitbox_area.scale.x = -1 * abs(hitbox_area.scale.x) * playerDirection.x / abs(playerDirection.x) if playerDirection.x != 0 else hitbox_area.scale.x
+			#hitbox_area.scale.x = -1 * abs(hitbox_area.scale.x) * playerDirection.x / abs(playerDirection.x) if playerDirection.x != 0 else hitbox_area.scale.x
 			if (player.global_position - global_position).length() < PLAYER_RANGE:
 				mode = "default"
 				find_target()

@@ -14,6 +14,8 @@ func _process(delta):
 		shadow_sprite.play("blank")
 		sprite.play("strike")
 		striking = true
+		if not AudioManager.eel_lightning.playing:
+			AudioManager.eel_lightning.play()
 	if striking and not sprite.is_playing():
 		if player.hitbox in get_overlapping_areas():
 			player.damage(1)

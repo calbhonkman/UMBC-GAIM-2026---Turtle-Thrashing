@@ -20,6 +20,21 @@ extends Node2D
 @onready var suck = $suck
 @onready var playerHurt = $playerHurt
 @onready var eliteWarning = $eliteWarning
+@onready var trt_sma_pch_1 = $turtlesamapunch1
+@onready var trt_sma_pch_2 = $turtlesamapunch2
+@onready var trt_sma_pch_3 = $turtlesamapunch3
+@onready var trt_sma_pch_4 = $turtlesamapunch4
+@onready var trt_sma_pch_5 = $turtlesamapunch5
+@onready var eel_lightning = $eel_lightning
+@onready var raccoon_surrender = $raccoon_surrender
+@onready var king_throw = $king_throw
+@onready var raccoon_throw = $raccoon_throw
+@onready var chargeup = $chargeup
+@onready var ui_pop = $ui_pop
+@onready var eel_chargeup = $eel_chargeup
+@onready var eel_discharge = $eel_discharge
+@onready var heartbeat = $heartbeat
+@onready var eeveel_death = $eeveel_death
 
 #Voices/Jingles
 @onready var crabJingle = $crabJingle
