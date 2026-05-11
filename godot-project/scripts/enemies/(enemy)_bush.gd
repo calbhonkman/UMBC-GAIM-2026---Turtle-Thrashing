@@ -7,7 +7,7 @@ extends Area2D
 @onready var air_sprite = $"Air Sprite"
 const EXP = preload("uid://bln5qlwy18sjf")
 
-@export var MAX_HEALTH: float = 4.0
+@export var MAX_HEALTH: float = 3.0
 var health: float = MAX_HEALTH
 
 @export var BASE_MOVE_SPEED: float = 20.0

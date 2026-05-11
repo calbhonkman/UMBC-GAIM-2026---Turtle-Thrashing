@@ -2,9 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cd4pwj6b7ncua" path="res://prefabs/enemies/(boss)_hill_billy.gd" id="1_aguuk"]
 [ext_resource type="Texture2D" uid="uid://bh44wa6r4hl6x" path="res://assets/Enemies/Bosses/Final Boss/Death/HillBilly_Death0001.png" id="1_okukq"]
+[ext_resource type="PackedScene" uid="uid://dw8jhtvt3qa1t" path="res://prefabs/enemies/(bullet)_fork.tscn" id="2_dw3vd"]
 [ext_resource type="Texture2D" uid="uid://bxxuv077xf2pa" path="res://assets/Enemies/Bosses/Final Boss/Death/HillBilly_Death0002.png" id="2_h6br1"]
 [ext_resource type="Texture2D" uid="uid://d23k3qpclw8xc" path="res://assets/Enemies/Bosses/Final Boss/Death/HillBilly_Death0003.png" id="3_jy7xl"]
 [ext_resource type="Texture2D" uid="uid://olhfwogjh4sg" path="res://assets/Enemies/Bosses/Final Boss/Death/HillBilly_Death0004.png" id="4_1kylm"]
+[ext_resource type="PackedScene" uid="uid://g78lugpcr4qv" path="res://prefabs/enemies/(bullet)_baguette.tscn" id="4_62p2e"]
 [ext_resource type="Texture2D" uid="uid://b6q4ce4kwudv6" path="res://assets/Enemies/Bosses/Final Boss/Death/HillBilly_Death0005.png" id="5_hwty2"]
 [ext_resource type="Texture2D" uid="uid://r8bu8cot807m" path="res://assets/Enemies/Bosses/Final Boss/Death/HillBilly_Death0006.png" id="6_ufyrw"]
 [ext_resource type="Texture2D" uid="uid://cgefuknh5jts3" path="res://assets/Enemies/Bosses/Final Boss/Death/HillBilly_Death0007.png" id="7_lxde2"]
@@ -189,6 +191,7 @@
 [ext_resource type="Texture2D" uid="uid://cs3eexq6eckbb" path="res://assets/Enemies/Bosses/Final Boss/Phase 2 Transition/HillBillyPhase2Transition0009.png" id="177_x0crm"]
 [ext_resource type="Texture2D" uid="uid://bbjuq2i5jajlq" path="res://assets/Enemies/Bosses/Final Boss/Phase 2 Transition/HillBillyPhase2Transition0010.png" id="178_ly2ee"]
 [ext_resource type="Texture2D" uid="uid://oj3l7iq2nr58" path="res://assets/Enemies/Bosses/Final Boss/Phase 2 Walk/HillBillyPhase2_Walk0009.png" id="188_87ftl"]
+[ext_resource type="PackedScene" uid="uid://c71m8va772aof" path="res://prefabs/enemies/(bullet)_beam.tscn" id="190_ag1uf"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_137te"]
 animations = [{
@@ -228,7 +231,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("20_87ftl")
+}],
+"loop": false,
+"name": &"baguette1",
+"speed": 8.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("21_55x8f")
 }, {
@@ -242,7 +250,7 @@ animations = [{
 "texture": ExtResource("24_elism")
 }],
 "loop": false,
-"name": &"baguette",
+"name": &"baguette2",
 "speed": 8.0
 }, {
 "frames": [{
@@ -297,7 +305,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("38_758c6")
+}],
+"loop": false,
+"name": &"beam3",
+"speed": 8.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("39_pub6j")
 }, {
@@ -315,7 +328,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("44_q60ce")
+}],
+"loop": false,
+"name": &"beam4",
+"speed": 8.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("45_yiwlm")
 }, {
@@ -326,7 +344,7 @@ animations = [{
 "texture": ExtResource("47_wrrpd")
 }],
 "loop": false,
-"name": &"beam3",
+"name": &"beam5",
 "speed": 8.0
 }, {
 "frames": [{
@@ -382,7 +400,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("63_smy6f")
+}],
+"loop": false,
+"name": &"fork1",
+"speed": 8.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("64_id2rk")
 }, {
@@ -396,7 +419,7 @@ animations = [{
 "texture": ExtResource("67_clfmo")
 }],
 "loop": false,
-"name": &"fork",
+"name": &"fork2",
 "speed": 8.0
 }, {
 "frames": [{
@@ -566,7 +589,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("96_f7b1t")
+}],
+"loop": false,
+"name": &"baguette1",
+"speed": 8.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("97_mgn7m")
 }, {
@@ -580,7 +608,7 @@ animations = [{
 "texture": ExtResource("100_cng0r")
 }],
 "loop": false,
-"name": &"baguette",
+"name": &"baguette2",
 "speed": 8.0
 }, {
 "frames": [{
@@ -635,7 +663,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("114_eaq60")
+}],
+"loop": false,
+"name": &"beam3",
+"speed": 8.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("115_s1seo")
 }, {
@@ -653,7 +686,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("120_kaays")
+}],
+"loop": false,
+"name": &"beam4",
+"speed": 8.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("121_cmcmm")
 }, {
@@ -664,7 +702,7 @@ animations = [{
 "texture": ExtResource("123_3tfav")
 }],
 "loop": false,
-"name": &"beam3",
+"name": &"beam5",
 "speed": 8.0
 }, {
 "frames": [{
@@ -749,7 +787,12 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("139_vdlsj")
+}],
+"loop": false,
+"name": &"fork1",
+"speed": 8.0
 }, {
+"frames": [{
 "duration": 1.0,
 "texture": ExtResource("140_x8p7c")
 }, {
@@ -763,7 +806,7 @@ animations = [{
 "texture": ExtResource("143_lqu8k")
 }],
 "loop": false,
-"name": &"fork",
+"name": &"fork2",
 "speed": 8.0
 }, {
 "frames": [{
@@ -866,18 +909,21 @@ height = 296.0
 
 [node name="(boss)_Hill_Billy" type="Area2D" unique_id=1496698261 groups=["Enemies"]]
 script = ExtResource("1_aguuk")
+FORK = ExtResource("2_dw3vd")
+BEAM = ExtResource("190_ag1uf")
+BAGUETTE = ExtResource("4_62p2e")
 
 [node name="Sprite (Phase 1)" type="AnimatedSprite2D" parent="." unique_id=1358359407]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_137te")
-animation = &"beam3"
+animation = &"baguette2"
 autoplay = "default"
 
 [node name="Sprite (Phase 2)" type="AnimatedSprite2D" parent="." unique_id=1257745323]
 visible = false
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_55x8f")
-animation = &"beam1"
+animation = &"baguette1"
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1594269233]
@@ -901,3 +947,12 @@ visible = false
 position = Vector2(-166.5, 192)
 scale = Vector2(22.45, 12.6)
 polygon = PackedVector2Array(2.6057906, -44.285713, 16.547882, 9.841269, 8.084632, 12.380951, 0.51224947, 5.2380943, -4.387528, -12.222221, -3.9420934, -30.15873)
+
+[node name="Beam Pivot" type="Node2D" parent="." unique_id=2086543531]
+visible = false
+position = Vector2(-74, -41)
+
+[node name="Area2D" parent="Beam Pivot" unique_id=626060781 instance=ExtResource("190_ag1uf")]
+
+[node name="Fork Pivot" type="Node2D" parent="." unique_id=424265853]
+position = Vector2(-157, 6)

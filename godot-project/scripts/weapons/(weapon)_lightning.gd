@@ -1,7 +1,7 @@
 extends Area2D
 
 @export var SPEED: float = 500.0
-@export var BASE_DAMAGE: float = 2.0
+@export var BASE_DAMAGE: float = 4.0
 @export var COOLDOWN: float = 3.0
 @export var AMOUNT: int = 1
 @export var BULLET: Resource

@@ -117,7 +117,7 @@ func _process(delta):
 			AudioManager.eliteWarning.play()
 		
 		elif game_timer >= (WAVE_TIME * current_wave) and boss == null:
-			boss = spawn(remaining_elites.pop_at(randi_range(0, remaining_elites.size()-1)))
+			boss = spawn(remaining_elites.pop_at(randi_range(0, remaining_elites.size()-1))) if current_wave < 4 else spawn(FINAL_BOSS)
 			#boss = spawn(FINAL_BOSS)
 			boss_fight = true
 			bossHealthBar.visible = true

@@ -167,7 +167,7 @@ animations = [{
 "texture": ExtResource("45_n8ral")
 }],
 "loop": false,
-"name": &"hillybilly",
+"name": &"hill_billy",
 "speed": 8.0
 }, {
 "frames": [{
@@ -528,7 +528,7 @@ texture_progress = ExtResource("42_bk1p3")
 position = Vector2(-10, 434)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_0sl42")
-animation = &"crab"
+animation = &"hill_billy"
 
 [node name="EelBar" type="TextureProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=1354623048]
 visible = false

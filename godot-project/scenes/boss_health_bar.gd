@@ -29,7 +29,7 @@ var HILLBILLY_POS_Y: float = 449.0
 var HILLBILLY_SIZE_X: float = 0.423
 var HILLBILLY_SIZE_Y: float = 0.423
 
-var bosses = ["raccoon", "crab", "eel", "hillbilly"]
+var bosses = ["raccoon", "crab", "eel", "hill_billy"]
 var curr_boss = null
 var curr_bar = null
 var max_health
@@ -60,7 +60,7 @@ func newElite(boss):
 	elif boss.name == "(boss)_Eeveel":
 		curr_bar = eel_bar
 		setBorder(bosses[2], EEL_POS_X, EEL_POS_Y, EEL_SIZE_X, EEL_SIZE_Y)
-	elif boss.name == "(boss)_hill_billy":
+	elif boss.name == "(boss)_Hill_Billy":
 		curr_bar = hillbilly_bar
 		setBorder(bosses[3], HILLBILLY_POS_X, HILLBILLY_POS_Y, HILLBILLY_SIZE_X, HILLBILLY_SIZE_Y)
 	curr_bar.visible = true

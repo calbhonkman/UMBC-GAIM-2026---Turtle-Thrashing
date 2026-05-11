@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c71m8va772aof"]
 
+[ext_resource type="Script" uid="uid://duac4kwojl28d" path="res://prefabs/enemies/(bullet)_beam.gd" id="1_ofgn2"]
 [ext_resource type="Texture2D" uid="uid://d2qcskvidtxci" path="res://assets/Enemies/Bosses/Final Boss/beam_p1_1.png" id="1_y1o8r"]
 [ext_resource type="Texture2D" uid="uid://cks4rl8nb5nly" path="res://assets/Enemies/Bosses/Final Boss/beam_p1_2.png" id="2_ofgn2"]
 [ext_resource type="Texture2D" uid="uid://c0rvsoxas2rpp" path="res://assets/Enemies/Bosses/Final Boss/beam_p1_3.png" id="3_wwddb"]
@@ -38,20 +39,17 @@ animations = [{
 "speed": 8.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nqgxj"]
-size = Vector2(3000, 100)
-
 [node name="Area2D" type="Area2D" unique_id=626060781]
 z_index = 1
+scale = Vector2(-1, 2)
+script = ExtResource("1_ofgn2")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1441923463]
 modulate = Color(1, 1, 1, 0.70000005)
-position = Vector2(1500.0001, 9.536743e-07)
-scale = Vector2(0.857143, 0.05299417)
+position = Vector2(1500, -10)
+scale = Vector2(0.857, 0.1)
 sprite_frames = SubResource("SpriteFrames_dsbqb")
-animation = &"beam_p2"
-frame_progress = 0.122224554
+animation = &"beam_p1"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1480054210]
-position = Vector2(1500, 0)
-shape = SubResource("RectangleShape2D_nqgxj")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1423044715]
+polygon = PackedVector2Array(212, -37, 593, -53, 1810, -79, 3000, -96, 3000, 77, 1814, 63, 594, 40, 211, 27, 61, 18, 17, 10, 4, 5, 1, 0, 5, -5, 17, -12, 67, -23)

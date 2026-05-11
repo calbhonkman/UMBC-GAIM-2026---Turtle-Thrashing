@@ -22,12 +22,14 @@ func _process(delta):
 	rotation += BASE_ROTATION_SPEED * rotation_speed_mod * delta
 	
 	for area in get_child(0).get_overlapping_areas():
-		if area.has_meta("enemy"):
+		if area.is_in_group("Enemies"):
 			if not "anti_knockback_position" in area:
 				var knockback_dir = (area.global_position - global_position) / (area.global_position - global_position).length()
 				area.global_position += knockback_dir * KNOCKBACK
 			if area.has_method("stun"):
 				area.stun(STUN_DURATION)
+		elif area.is_in_group("Enemy Bullets"):
+			area.queue_free()
 
 func get_random_upgrade(index):
 	if not unlocked:

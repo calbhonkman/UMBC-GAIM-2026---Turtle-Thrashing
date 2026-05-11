@@ -45,11 +45,12 @@ func _process(delta):
 	if health <= 0:
 		sprite.play("death")
 		get_tree().paused = true
-	elif movement_direction.length() != 0:
+	elif movement_direction.length() != 0.0:
 		sprite.play("walk")
 		velocity = movement_direction * BASE_SPEED * speed_mod
-		sprite.scale.x = -1 * abs(sprite.scale.x) if velocity.x < 0 else abs(sprite.scale.x)
-		hitbox.scale.x = -1 * abs(hitbox.scale.x) if velocity.x < 0 else abs(hitbox.scale.x)
+		if movement_direction.x != 0.0:
+			sprite.scale.x = -1 * abs(sprite.scale.x) if velocity.x < 0 else abs(sprite.scale.x)
+			hitbox.scale.x = -1 * abs(hitbox.scale.x) if velocity.x < 0 else abs(hitbox.scale.x)
 		move_and_slide()
 	elif health > 0:
 		sprite.play("default")
@@ -95,7 +96,7 @@ func damage(dmg: int):
 		AudioManager.playerHurt.play()
 
 func get_random_upgrade(index):
-	return Vector2(index, randi_range(0, 2))
+	return Vector2(index, randi_range(0, 1))
 
 func get_upgrade_description(index: int):
 	var desc = "[outline_size=10][outline_color=black]"
@@ -108,9 +109,6 @@ func get_upgrade_description(index: int):
 		1:
 			desc += "[i][color=#8f8f8f]The force is stronger with this one.[/color][/i]"
 			desc += "[br]Increases Pickup Range ([color=#8FFFFF]" + str(round(pickup_range_mod * 100) / 100.0) + "x -> " + str(round(pickup_range_mod * 1.25 * 100) / 100.0) + "x[/color])."
-		2:
-			desc += "[i][color=#8f8f8f]Gotta go faster.[/color][/i]"
-			desc += "[br]Increases Movement Speed ([color=#8FFFFF]" + str(round(speed_mod * 100) / 100.0) + "x -> " + str(round(speed_mod * 1.25 * 100) / 100.0) + "x[/color])."
 	desc += "[/outline_color][/outline_size]"
 	return desc
 
@@ -123,5 +121,3 @@ func upgrade(index: int):
 			pickup_area.get_child(0).shape.radius /= pickup_range_mod
 			pickup_range_mod *= 1.25
 			pickup_area.get_child(0).shape.radius *= pickup_range_mod
-		2:
-			speed_mod *= 1.25

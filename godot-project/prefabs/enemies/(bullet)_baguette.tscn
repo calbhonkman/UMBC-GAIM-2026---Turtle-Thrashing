@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://g78lugpcr4qv"]
+
+[ext_resource type="Script" uid="uid://c42e8diba8glf" path="res://prefabs/enemies/(bullet)_baguette.gd" id="1_8rw4a"]
+[ext_resource type="Texture2D" uid="uid://cjy67g01peu47" path="res://assets/Enemies/Bosses/Final Boss/baguette_p1.png" id="2_5w4nl"]
+[ext_resource type="Texture2D" uid="uid://cwmrdf0b6g4so" path="res://assets/Enemies/Bosses/Final Boss/baguette_p2.png" id="3_ekyb8"]
+[ext_resource type="Texture2D" uid="uid://clnnw50lfyqy1" path="res://assets/Enemies/Elites/Big Meaty Crab/Warning.png" id="4_f6xsj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iom65"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5w4nl")
+}],
+"loop": false,
+"name": &"baguette_p1",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ekyb8")
+}],
+"loop": true,
+"name": &"baguette_p2",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xho2t"]
+radius = 64.381676
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7sb6d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_f6xsj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jvsc"]
+size = Vector2(700, 700)
+
+[node name="Area2D" type="Area2D" unique_id=1424500926]
+script = ExtResource("1_8rw4a")
+metadata/enemy = ""
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2025924635]
+position = Vector2(-2, 10)
+scale = Vector2(0.115, 0.115)
+sprite_frames = SubResource("SpriteFrames_iom65")
+animation = &"baguette_p1"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=85199956]
+rotation = 0.6806784
+scale = Vector2(0.3, 1)
+shape = SubResource("CircleShape2D_xho2t")
+
+[node name="WarningSprite" type="AnimatedSprite2D" parent="." unique_id=1839267535]
+visible = false
+position = Vector2(-17, -11.000001)
+scale = Vector2(0.235, 0.235)
+sprite_frames = SubResource("SpriteFrames_7sb6d")
+
+[node name="DiveBox" type="CollisionShape2D" parent="." unique_id=199897782]
+visible = false
+position = Vector2(3.25, -4.25)
+shape = SubResource("RectangleShape2D_2jvsc")

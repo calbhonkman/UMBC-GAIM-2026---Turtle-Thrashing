@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dw8jhtvt3qa1t"]
+
+[ext_resource type="Script" uid="uid://jvnc4ij8tbxb" path="res://fork.gd" id="1_fjqwh"]
+[ext_resource type="Texture2D" uid="uid://cfnu6t53vfffa" path="res://assets/Enemies/Bosses/Final Boss/fork_p1.png" id="2_86no5"]
+[ext_resource type="Texture2D" uid="uid://diqs8j8hecfn1" path="res://assets/Enemies/Bosses/Final Boss/fork_p2.png" id="3_13sgf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kdu52"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_86no5")
+}],
+"loop": false,
+"name": &"fork_p1",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_13sgf")
+}],
+"loop": false,
+"name": &"fork_p2",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_s4vcx"]
+radius = 11.0
+height = 234.0
+
+[node name="Area2D" type="Area2D" unique_id=182581813 groups=["Enemy Bullets"]]
+script = ExtResource("1_fjqwh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1013368380]
+position = Vector2(-5, -2.9999995)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_kdu52")
+animation = &"fork_p2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1592558456]
+shape = SubResource("CapsuleShape2D_s4vcx")

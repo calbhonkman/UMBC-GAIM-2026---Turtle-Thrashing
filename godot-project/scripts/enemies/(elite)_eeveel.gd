@@ -98,7 +98,7 @@ func _process(delta):
 					sprite.play("default")
 					AudioManager.eel_discharge.stop()
 				else:
-					global_position += player_dir * move_speed * delta * 1.5
+					global_position += player_dir * move_speed * delta
 					anti_knockback_position = global_position
 			"dying":
 				if not sprite.is_playing():
