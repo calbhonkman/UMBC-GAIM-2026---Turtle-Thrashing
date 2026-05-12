@@ -94,7 +94,7 @@ func _process(delta):
 	if boss_fight and boss == null:
 		pausable = false
 		get_tree().paused = true
-		if current_wave >= ELITES.size() or game_timer >= WAVE_TIME * NUM_WAVES:
+		if game_timer >= WAVE_TIME * NUM_WAVES:
 			screen_win.visible = true
 			AudioManager.levelUp.play()
 		else:
@@ -116,8 +116,7 @@ func _process(delta):
 			AudioManager.eliteWarning.play()
 		
 		elif game_timer >= (WAVE_TIME * current_wave) and boss == null:
-			#boss = spawn(remaining_elites.pop_at(randi_range(0, remaining_elites.size()-1))) if current_wave < 4 else spawn(FINAL_BOSS)
-			boss = spawn(FINAL_BOSS)
+			boss = spawn(remaining_elites.pop_at(randi_range(0, remaining_elites.size()-1))) if current_wave < 4 else spawn(FINAL_BOSS)
 			boss_fight = true
 			bossHealthBar.visible = true
 			bossHealthBar.newElite(boss)
@@ -136,20 +135,33 @@ func _process(delta):
 					spawn(ENEMIES[5]) # Seagull
 					spawn(ENEMIES[5]) # Seagull
 				if current_wave == 3:
+					spawn(ENEMIES[1]) # Snake
+				if current_wave == 4:
 					spawn(ENEMIES[4]) # Bush
 			if current_wave >= 2 and spawn_counter % 15 == 0:
 				if current_wave == 2:
-					spawn(ENEMIES[1]) # Snake
+					spawn(ENEMIES[6]) # Raccoon
 				if current_wave == 3:
 					spawn(ENEMIES[5]) # Seagull
 					spawn(ENEMIES[5]) # Seagull
 					spawn(ENEMIES[5]) # Seagull
+				if current_wave == 4:
+					spawn(ENEMIES[1]) # Snake
 			elif current_wave >= 2 and spawn_counter % 10 == 0:
 				if current_wave == 2:
 					spawn(ENEMIES[2]) # Turtle
 				if current_wave == 3:
-					spawn(ENEMIES[1]) # Snake
-			elif current_wave >= 3 and spawn_counter % 5 == 0:
+					spawn(ENEMIES[6]) # Raccoon
+				if current_wave == 4:
+					spawn(ENEMIES[5]) # Seagull
+					spawn(ENEMIES[5]) # Seagull
+					spawn(ENEMIES[5]) # Seagull
+			elif current_wave >= 3 and spawn_counter % 7 == 0:
+				if current_wave == 3:
+					spawn(ENEMIES[2]) # Turtle
+				if current_wave == 4:
+					spawn(ENEMIES[6]) # Raccoon
+			elif current_wave >= 4 and spawn_counter % 5 == 0:
 				spawn(ENEMIES[2]) # Turtle
 			else:
 				spawn(ENEMIES[0]) # Crab
