@@ -28,10 +28,11 @@ var next_mode = "knife1"
 var mode_timer = 0
 var beam_cooldown = false
 var bullets = []
+var health_scale = 0
 
 func _ready():
 	sprite = sprite_p1
-	AudioManager.crabJingle.play()
+	AudioManager.hillbilly_voice_intro.play()
 
 func _process(delta):
 	scale = Vector2(1,1) * (0.75 + clamp(0.25 * health / MAX_HEALTH, 0.0, 0.25))
@@ -52,10 +53,12 @@ func _process(delta):
 		match mode:
 			"default":
 				# Basically cooldown mode
-				if sprite == sprite_p1 and health <= 0.5 * MAX_HEALTH:
+				if sprite == sprite_p1 and health <= 0.5 * MAX_HEALTH * health_scale:
 					mode = "transition"
 					PULL_STRENGTH *= 1.5
 					sprite.play("transition")
+					AudioManager.hillbilly_voice_half.play()
+					AudioManager.hillbilly_voice_intro.stop()
 				elif mode_timer <= 0.0:
 					mode = "hunting"
 					sprite.play("walk")
@@ -120,8 +123,10 @@ func _process(delta):
 					sprite.play("beam2")
 					if sprite == sprite_p1:
 						$"Beam Pivot/Area2D".play("beam_p1")
+						AudioManager.hillbilly_suck_p1.play()
 					else:
 						$"Beam Pivot/Area2D".play("beam_p2")
+						AudioManager.hillbilly_suck_p2.play()
 					$"Beam Pivot".visible = true
 			"beam2":
 				if mode_timer <= 0.0:
@@ -138,6 +143,10 @@ func _process(delta):
 					sprite.play("beam4")
 					$"Beam Pivot".modulate.a = 1.0
 					beam_cooldown = false
+					if sprite == sprite_p1:
+						AudioManager.hillbilly_laser_p1.play()
+					else:
+						AudioManager.hillbilly_laser_p2.play()
 			"beam4":
 				if not sprite.is_playing():
 					mode = "beam5"
@@ -176,6 +185,7 @@ func _process(delta):
 
 func scale_health(s: float):
 	health = MAX_HEALTH * s
+	health_scale = s
 
 func damage(dmg: float):
 	if mode == "dying":
@@ -184,3 +194,5 @@ func damage(dmg: float):
 	if health <= 0.0:
 		mode = "dying"
 		sprite.play("death")
+		AudioManager.hillbilly_voice_death.play()
+		AudioManager.hillbilly_voice_half.stop()

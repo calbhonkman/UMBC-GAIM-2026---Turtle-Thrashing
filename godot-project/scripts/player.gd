@@ -11,6 +11,7 @@ extends CharacterBody2D
 @export var INVINCIBLE_TIME: float = 0.75
 @export var HEARTBEAT_TIME: float = 0.75
 @export var DAMAGE_KNOCKBACK: float = 100.0
+@export var FULL_INDICATOR_TIME: float = 2.0
 
 @export var upgrade_descriptions: Array[String]
 @export var upgrade_icon: Resource
@@ -22,6 +23,7 @@ var speed_mod = 1.0
 var health = 0
 var invincible_timer = 0.0
 var heartbeat_timer = 0.0
+var full_timer = 0.0 # So that full health indicator doesn't overload
 var experience = 0
 var level = 1
 
@@ -29,6 +31,7 @@ func _ready():
 	health = MAX_HEALTH
 
 func _process(delta):
+	full_timer -= delta
 	invincible_timer = max(0, invincible_timer - delta) if (invincible_timer > 0.0 and health > 0) else 0.0
 	sprite.modulate = Color(1,1-sqrt(invincible_timer/INVINCIBLE_TIME),1-sqrt(invincible_timer/INVINCIBLE_TIME),1)
 	damage_vignette.modulate = Color(1,1,1,sqrt(invincible_timer/INVINCIBLE_TIME))
@@ -65,10 +68,15 @@ func _process(delta):
 
 func _on_hitbox_area_entered(area):
 	# If hit by an enemy
-	if area.is_in_group("Food") and health < MAX_HEALTH:
-		area.queue_free()
-		health = min(MAX_HEALTH, health+1)
-		AudioManager.eat.play()
+	if area.is_in_group("Food"):
+		if health >= MAX_HEALTH and full_timer <= 0:
+			full_timer = FULL_INDICATOR_TIME
+			$"/root/Node2D/GameManager".create_text_particle(area.global_position, "Health Full", "blue")
+		elif health < MAX_HEALTH:
+			$"/root/Node2D/GameManager".create_text_particle(area.global_position, "+1", "green")
+			area.queue_free()
+			health = min(MAX_HEALTH, health+1)
+			AudioManager.eat.play()
 	elif area.is_in_group("Enemies"):
 		if invincible_timer == 0:
 			health -= 1

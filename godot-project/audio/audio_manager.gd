@@ -35,12 +35,21 @@ extends Node2D
 @onready var eel_discharge = $eel_discharge
 @onready var heartbeat = $heartbeat
 @onready var eeveel_death = $eeveel_death
+@onready var ignite = $ignite
+@onready var hiss = $hiss
+@onready var hillbilly_suck_p1 = $hillbilly_suck_p1
+@onready var hillbilly_suck_p2 = $hillbilly_suck_p2
+@onready var hillbilly_laser_p1 = $hillbilly_laser_p1
+@onready var hillbilly_laser_p2 = $hillbilly_laser_p2
 
 #Voices/Jingles
 @onready var crabJingle = $crabJingle
 @onready var eelJingle = $eelJingle
 @onready var raccoonKingJingle = $raccoonKingJingle
 @onready var levelUp = $levelUp
+@onready var hillbilly_voice_intro = $hillbilly_voice_intro
+@onready var hillbilly_voice_half = $hillbilly_voice_half
+@onready var hillbilly_voice_death = $hillbilly_voice_death
 
 var paused_sounds : Dictionary 
 

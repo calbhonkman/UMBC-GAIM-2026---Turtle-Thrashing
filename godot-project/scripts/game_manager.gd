@@ -9,6 +9,7 @@ extends Node2D
 @onready var elite_warning = $"Camera/Elite Warning"
 @onready var time_bar = $"Camera/Timer Bar/TimeBar"
 @onready var xp_bar = $"Camera/XP Bar"
+@onready var win_sprite = $"Camera/[You Win]/Win Sprite"
 
 const DAMAGE_PARTICLE = preload("uid://dum7dfhvymdrp")
 
@@ -26,9 +27,6 @@ var spawn_counter: int = 1
 @export var FOOD: Array[Resource]
 
 @onready var enemies_group = $"../(Group) Enemies"
-const ENEMY = preload("uid://d1k32mfbnnud3")
-const BIGENEMY = preload("uid://dq43dbtcuu4m")
-const SNAKE = preload("uid://dfuv28c2ne1eo")
 @export var ENEMIES: Array[Resource]
 @export var ELITES: Array[Resource]
 @export var FINAL_BOSS: Resource
@@ -98,6 +96,7 @@ func _process(delta):
 		get_tree().paused = true
 		if current_wave >= ELITES.size() or game_timer >= WAVE_TIME * NUM_WAVES:
 			screen_win.visible = true
+			AudioManager.levelUp.play()
 		else:
 			screen_level.prepare_to_upgrade()
 		current_wave += 1
@@ -117,8 +116,8 @@ func _process(delta):
 			AudioManager.eliteWarning.play()
 		
 		elif game_timer >= (WAVE_TIME * current_wave) and boss == null:
-			boss = spawn(remaining_elites.pop_at(randi_range(0, remaining_elites.size()-1))) if current_wave < 4 else spawn(FINAL_BOSS)
-			#boss = spawn(FINAL_BOSS)
+			#boss = spawn(remaining_elites.pop_at(randi_range(0, remaining_elites.size()-1))) if current_wave < 4 else spawn(FINAL_BOSS)
+			boss = spawn(FINAL_BOSS)
 			boss_fight = true
 			bossHealthBar.visible = true
 			bossHealthBar.newElite(boss)
@@ -192,4 +191,10 @@ func create_damage_particle(dmg_position, damage):
 	var new_damage_particle = DAMAGE_PARTICLE.instantiate()
 	enemies_group.add_child(new_damage_particle)
 	new_damage_particle.global_position = dmg_position - (new_damage_particle.get_size() / 2.0)
-	new_damage_particle.text = "[font_size=" + str(16 * min(max(1.0, damage), SIZE_LIMIT)) + "][color=red][b][i]" + str(round(damage * 100) / 100.0) + "[/i][/b][/color][/font_size]"
+	new_damage_particle.text = "[font_size=" + str(16 * min(max(2.0, damage), SIZE_LIMIT)) + "][color=red][b][i]" + str(round(damage * 100) / 100.0) + "[/i][/b][/color][/font_size]"
+
+func create_text_particle(txt_position, txt: String, color: String):
+	var new_text_particle = DAMAGE_PARTICLE.instantiate()
+	add_child(new_text_particle)
+	new_text_particle.global_position = txt_position - (new_text_particle.get_size() / 2.0)
+	new_text_particle.text = "[font_size=" + str(32.0) + "][color=" + color + "][b][i]" + txt + "[/i][/b][/color][/font_size]"

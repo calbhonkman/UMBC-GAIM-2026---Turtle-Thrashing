@@ -33,6 +33,8 @@ func _process(delta):
 	
 	for area in get_overlapping_areas():
 		if area.is_in_group("Enemies") and area not in b_target:
+			if bullets.is_empty():
+				AudioManager.ignite.play()
 			bullets.append(BULLET.instantiate())
 			$"/root/Node2D/(Group) Bullets".add_child(bullets.back())
 			b_target.append(area)

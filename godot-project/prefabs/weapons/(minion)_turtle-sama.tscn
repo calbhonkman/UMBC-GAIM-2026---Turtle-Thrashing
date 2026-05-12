@@ -128,6 +128,7 @@ size = Vector2(128.5625, 50)
 radius = 524.02386
 
 [node name="(minion)TurtleSama" type="Node2D" unique_id=747758252]
+modulate = Color(1, 1, 1, 0.7607843)
 script = ExtResource("1_fi3e6")
 
 [node name="Hitbox Area" type="Area2D" parent="." unique_id=1339139144]

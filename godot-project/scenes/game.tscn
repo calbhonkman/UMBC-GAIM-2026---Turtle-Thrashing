@@ -71,6 +71,10 @@
 [ext_resource type="Texture2D" uid="uid://c1jvifyu8r25a" path="res://assets/BADDY INBOUND (Elite warning).png" id="50_i4re6"]
 [ext_resource type="Texture2D" uid="uid://bdfwv3fyosv7l" path="res://assets/UI/CONFIRM.png" id="53_bk1p3"]
 [ext_resource type="Texture2D" uid="uid://beh6cmgrmiyj6" path="res://assets/UI/Cursor.png" id="58_yd4ix"]
+[ext_resource type="Texture2D" uid="uid://ce67hotklbs52" path="res://assets/PAUSE.png" id="62_sxt1d"]
+[ext_resource type="Texture2D" uid="uid://bghb24juyw7au" path="res://assets/Win Screen/WinScreen0001.png" id="70_753oq"]
+[ext_resource type="Texture2D" uid="uid://cs4ba4bjbk68x" path="res://assets/Win Screen/WinScreen0002.png" id="71_3x338"]
+[ext_resource type="Texture2D" uid="uid://cj6j8nre2a035" path="res://assets/Win Screen/WinScreen0003.png" id="72_1yg85"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
 size = Vector2(1312.9883, 50)
@@ -183,12 +187,29 @@ animations = [{
 font_size = 256
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="LabelSettings" id="LabelSettings_dinhu"]
-font_size = 96
-
 [sub_resource type="LabelSettings" id="LabelSettings_ssvqc"]
 font_size = 24
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_dinhu"]
+font_size = 96
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_s0g06"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("70_753oq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_3x338")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_1yg85")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
 
 [node name="Node2D" type="Node2D" unique_id=2020137742]
 
@@ -579,14 +600,10 @@ offset_right = 960.0
 offset_bottom = 540.0
 color = Color(0, 0, 0, 0.5)
 
-[node name="(Label) Paused" type="Label" parent="GameManager/Camera/[Paused]" unique_id=423176673]
-offset_left = -380.0
-offset_top = -271.0
-offset_right = 383.0
-offset_bottom = -139.0
-text = "Paused"
-label_settings = SubResource("LabelSettings_dinhu")
-horizontal_alignment = 1
+[node name="Sprite2D" type="Sprite2D" parent="GameManager/Camera/[Paused]" unique_id=231859300]
+position = Vector2(-38.000023, -0.9999771)
+scale = Vector2(0.49953705, 0.49953705)
+texture = ExtResource("62_sxt1d")
 
 [node name="(Button) Continue" type="Button" parent="GameManager/Camera/[Paused]" unique_id=361645290]
 offset_left = -453.0
@@ -836,20 +853,16 @@ offset_right = 960.0
 offset_bottom = 540.0
 color = Color(0, 0, 0, 0.5)
 
-[node name="(Label) You Win" type="Label" parent="GameManager/Camera/[You Win]" unique_id=1232488267]
-offset_left = -380.0
-offset_top = -271.0
-offset_right = 383.0
-offset_bottom = -139.0
-text = "You Win!"
-label_settings = SubResource("LabelSettings_dinhu")
-horizontal_alignment = 1
+[node name="Win Sprite" type="AnimatedSprite2D" parent="GameManager/Camera/[You Win]" unique_id=1474810771]
+sprite_frames = SubResource("SpriteFrames_s0g06")
+autoplay = "default"
+frame_progress = 0.15835896
 
 [node name="(Button) Main Menu" type="Button" parent="GameManager/Camera/[You Win]" unique_id=109030467]
-offset_left = -192.0
-offset_top = 149.0
-offset_right = 1736.0
-offset_bottom = 681.0
+offset_left = -190.0
+offset_top = 297.0
+offset_right = 1738.0
+offset_bottom = 829.0
 scale = Vector2(0.2, 0.2)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.4392157)
 theme_override_font_sizes/font_size = 48

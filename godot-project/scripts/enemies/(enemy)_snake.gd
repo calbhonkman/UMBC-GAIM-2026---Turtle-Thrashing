@@ -65,6 +65,7 @@ func _process(delta):
 						mode_timer = LUNGE_COOLDOWN
 						sprite.play("lunge")
 						lunge_direction = playerDirection
+						AudioManager.hiss.play()
 			else:
 				lunge = false
 				global_position += playerDirection * delta * move_speed

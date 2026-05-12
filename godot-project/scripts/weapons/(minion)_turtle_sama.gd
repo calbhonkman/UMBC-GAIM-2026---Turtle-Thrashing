@@ -33,7 +33,6 @@ AudioManager.trt_sma_pch_5]
 
 var damage = 0.0
 var punches = 0
-#var size_mod = 1.0
 
 func _ready():
 	hitbox.disabled = true
@@ -50,11 +49,12 @@ func _process(delta: float):
 			var targetDirection = target_node.global_position - global_position
 			if targetDirection.length() > 0:
 				targetDirection = targetDirection.normalized()
+			# Too far from player
 			if (player.global_position - global_position).length() > PLAYER_RANGE:
 				mode = "fallback"
 				hitbox_area.scale.x = -1 * sign(player.sprite.scale.x)
-				#hitbox_area.scale.x = -1 * abs(hitbox_area.scale.x) * targetDirection.x / abs(targetDirection.x) if targetDirection.x != 0 else hitbox_area.scale.x
 			if target:
+				# Move towards enemy until he gets close enough
 				target_node.global_position = target.global_position
 				global_position += targetDirection * delta * SPEED
 				if (target.global_position - global_position).length() < ENEMY_RANGE:
@@ -66,6 +66,7 @@ func _process(delta: float):
 					
 		"prepare":
 			if target:
+				# Lock onto target
 				global_position = target.global_position + Vector2(X_OFFSET * sign(hitbox_area.scale.x), 0)
 			if not sprite.is_playing():
 				mode = "punching"
@@ -80,6 +81,7 @@ func _process(delta: float):
 			for area in hitbox_area.get_overlapping_areas():
 				if area not in prev and area.is_in_group("Enemies"):
 					if area == target:
+						# Stop punching when he kills target
 						if target.health - damage <= 0:
 							remaining_punches = 1
 					prev.append(area)
@@ -87,8 +89,8 @@ func _process(delta: float):
 					chosen_sound.play()
 					$"/root/Node2D/GameManager".create_damage_particle(area.global_position, damage)
 			if punch_timer <= 0:
+				# Next punch from flurry
 				chosen_sound = punch_sounds[randi() % 5]
-				
 				hitbox.disabled = false
 				hitbox_timer = ACTIVE_FRAMES
 				punch_timer = PUNCH_RATE
@@ -99,6 +101,7 @@ func _process(delta: float):
 					sprite.play("pose")
 			else:
 				if hitbox_timer <= 0:
+					# Disable active punch hitbox
 					hitbox.disabled = true
 		"finish":
 			if not sprite.is_playing():
@@ -110,16 +113,17 @@ func _process(delta: float):
 					find_target()
 				sprite.play("default")
 		"fallback":
+			# Move towards player until back in range
 			var playerDirection = player.global_position - global_position
 			if playerDirection.length() > 0:
 				playerDirection = playerDirection.normalized()
 			global_position += playerDirection * delta * SPEED
-			#hitbox_area.scale.x = -1 * abs(hitbox_area.scale.x) * playerDirection.x / abs(playerDirection.x) if playerDirection.x != 0 else hitbox_area.scale.x
 			if (player.global_position - global_position).length() < PLAYER_RANGE:
 				mode = "default"
 				find_target()
 	
 func find_target():
+	# Determine a target close to player with the most health
 	target = null
 	for area in detect_area.get_overlapping_areas():
 		if area.is_in_group("Enemies"):
