@@ -210,7 +210,7 @@ bus = &"Sfx"
 
 [node name="raccoon_throw" type="AudioStreamPlayer" parent="." unique_id=1685643995]
 stream = ExtResource("28_0cn5c")
-volume_db = -6.5
+volume_db = -15.0
 bus = &"Sfx"
 
 [node name="chargeup" type="AudioStreamPlayer" parent="." unique_id=661158352]
@@ -229,7 +229,7 @@ bus = &"Sfx"
 
 [node name="eel_discharge" type="AudioStreamPlayer" parent="." unique_id=1070767735]
 stream = ExtResource("31_k7taf")
-volume_db = -12.459
+volume_db = -7.042
 bus = &"Sfx"
 
 [node name="heartbeat" type="AudioStreamPlayer" parent="." unique_id=978554518]

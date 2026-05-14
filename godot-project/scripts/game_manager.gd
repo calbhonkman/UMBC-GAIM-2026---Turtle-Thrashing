@@ -98,6 +98,7 @@ func _process(delta):
 			screen_win.visible = true
 			AudioManager.levelUp.play()
 		else:
+			AudioManager.pause_all_sounds()
 			screen_level.prepare_to_upgrade()
 		current_wave += 1
 		boss_fight = false

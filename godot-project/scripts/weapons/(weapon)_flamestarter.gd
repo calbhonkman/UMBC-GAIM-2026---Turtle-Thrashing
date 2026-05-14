@@ -11,6 +11,8 @@ extends Area2D
 @export var BASE_RANGE: float = 200.0
 @export var RANGE_BUFFER: float = 50.0
 @export var DAMAGE_TIME: float = 1.0
+# To prevent case where the sound rapidly plays due to an enemy being at the edge of the range
+@export var SOUND_DELAY_TIME: float = 1.0
 
 var damage = 0.0
 var range_mod = 1.0
@@ -19,6 +21,8 @@ var bullets = []
 var b_target = []
 var b_timer = []
 
+var sound_timer = 0.0
+
 func _ready():
 	damage = BASE_DAMAGE
 	
@@ -26,6 +30,7 @@ func _ready():
 		visible = true
 
 func _process(delta):
+	sound_timer -= delta
 	if unlocked == false:
 		return
 	
@@ -33,7 +38,8 @@ func _process(delta):
 	
 	for area in get_overlapping_areas():
 		if area.is_in_group("Enemies") and area not in b_target:
-			if bullets.is_empty():
+			if bullets.is_empty() and sound_timer <= 0:
+				sound_timer = SOUND_DELAY_TIME
 				AudioManager.ignite.play()
 			bullets.append(BULLET.instantiate())
 			$"/root/Node2D/(Group) Bullets".add_child(bullets.back())

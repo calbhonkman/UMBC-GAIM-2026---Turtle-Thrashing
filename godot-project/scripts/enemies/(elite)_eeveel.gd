@@ -35,6 +35,7 @@ var strike_timer = 0.0
 
 func _ready():
 	discharge_sprite.visible = false
+	discharge_sprite.play("default")
 	AudioManager.eelJingle.play()
 
 func _process(delta):

@@ -157,7 +157,7 @@ script = ExtResource("1_42qmj")
 position = Vector2(-9.000003, -20.999998)
 scale = Vector2(0.19486764, 0.19791667)
 sprite_frames = SubResource("SpriteFrames_oguuh")
-frame_progress = 0.92930776
+frame_progress = 0.007843756
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1910162732]
 position = Vector2(-17, -68)
