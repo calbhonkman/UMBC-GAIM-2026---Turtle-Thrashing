@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://c42e8diba8glf" path="res://prefabs/enemies/(bullet)_baguette.gd" id="1_8rw4a"]
 [ext_resource type="Texture2D" uid="uid://cjy67g01peu47" path="res://assets/Enemies/Bosses/Final Boss/baguette_p1.png" id="2_5w4nl"]
 [ext_resource type="Texture2D" uid="uid://cwmrdf0b6g4so" path="res://assets/Enemies/Bosses/Final Boss/baguette_p2.png" id="3_ekyb8"]
-[ext_resource type="Texture2D" uid="uid://clnnw50lfyqy1" path="res://assets/Enemies/Elites/Big Meaty Crab/Warning.png" id="4_f6xsj"]
+[ext_resource type="Texture2D" uid="uid://clnnw50lfyqy1" path="res://assets/Enemies/Elite/Giant Crab/Jump/Warning.png" id="4_f6xsj"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iom65"]
 animations = [{

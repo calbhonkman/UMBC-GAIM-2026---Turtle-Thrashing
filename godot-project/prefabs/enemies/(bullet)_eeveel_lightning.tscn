@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://2rpf5ee3ixmd"]
 
-[ext_resource type="Script" path="res://scripts/(bullet)_eeveel_lightning.gd" id="1_g2mf7"]
-[ext_resource type="Texture2D" uid="uid://d4g2m6l3in8ix" path="res://assets/Enemies/Elites/Eeveel/Eeveel lightning attack/Eeveel_Lightning_1.png" id="2_umdij"]
-[ext_resource type="Texture2D" uid="uid://q5fffvymauk6" path="res://assets/Enemies/Elites/Eeveel/Eeveel lightning attack/Eeveel_Lightning_2.png" id="3_7txgn"]
-[ext_resource type="Texture2D" uid="uid://hyqjeh5b75l" path="res://assets/Enemies/Elites/Eeveel/Eeveel lightning attack/Eeveel_Lightning_3.png" id="4_0tvev"]
-[ext_resource type="Texture2D" uid="uid://dejo1oww7hwln" path="res://assets/Enemies/Elites/Big Meaty Crab/BMCrab_Shadow.png" id="5_ut21u"]
-[ext_resource type="Texture2D" uid="uid://clnnw50lfyqy1" path="res://assets/Enemies/Elites/Big Meaty Crab/Warning.png" id="6_umdij"]
+[ext_resource type="Script" uid="uid://dob2jd13btney" path="res://scripts/(bullet)_eeveel_lightning.gd" id="1_g2mf7"]
+[ext_resource type="Texture2D" uid="uid://d4g2m6l3in8ix" path="res://assets/Enemies/Elite/Eeveel/(Bullet) Lightning/Eeveel_Lightning_1.png" id="2_umdij"]
+[ext_resource type="Texture2D" uid="uid://q5fffvymauk6" path="res://assets/Enemies/Elite/Eeveel/(Bullet) Lightning/Eeveel_Lightning_2.png" id="3_7txgn"]
+[ext_resource type="Texture2D" uid="uid://hyqjeh5b75l" path="res://assets/Enemies/Elite/Eeveel/(Bullet) Lightning/Eeveel_Lightning_3.png" id="4_0tvev"]
+[ext_resource type="Texture2D" uid="uid://dejo1oww7hwln" path="res://assets/Enemies/Elite/Giant Crab/Jump/BMCrab_Shadow.png" id="5_ut21u"]
+[ext_resource type="Texture2D" uid="uid://clnnw50lfyqy1" path="res://assets/Enemies/Elite/Giant Crab/Jump/Warning.png" id="6_umdij"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5oblv"]
 animations = [{

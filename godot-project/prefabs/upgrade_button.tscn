@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://o1ekysyg808j"]
 
-[ext_resource type="Texture2D" uid="uid://d3ru825hawvf0" path="res://assets/Upgrade Icons/(icon)_template.png" id="1_ei70q"]
+[ext_resource type="Texture2D" uid="uid://d3ru825hawvf0" path="res://assets/UI/Upgrade Icons/(icon)_template.png" id="1_ei70q"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_l8567"]
 font_size = 72

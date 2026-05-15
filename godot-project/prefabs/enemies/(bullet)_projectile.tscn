@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://3v0r37h7qbyc"]
 
-[ext_resource type="Texture2D" uid="uid://dsvrasr85vcr8" path="res://assets/Enemies/BasicEnemies/Raccoon/can.png" id="1_excmv"]
+[ext_resource type="Texture2D" uid="uid://dsvrasr85vcr8" path="res://assets/Enemies/Regular/Raccoon/can.png" id="1_excmv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aylo3"]
 animations = [{

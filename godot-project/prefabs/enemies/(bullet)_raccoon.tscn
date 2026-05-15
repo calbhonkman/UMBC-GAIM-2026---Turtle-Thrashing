@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://3eooor7aubj4"]
 
-[ext_resource type="Texture2D" uid="uid://be7omrm1wwpl1" path="res://assets/Enemies/BasicEnemies/Raccoon/PlaceholderRaccoon.png" id="1_ho6oc"]
+[ext_resource type="Texture2D" uid="uid://be7omrm1wwpl1" path="res://assets/Enemies/Regular/T-Pose Raccoon/PlaceholderRaccoon.png" id="1_ho6oc"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aylo3"]
 animations = [{
