@@ -23,7 +23,7 @@ func _process(delta):
 	
 	for area in get_child(0).get_overlapping_areas():
 		if area.is_in_group("Enemies"):
-			if not "anti_knockback_position" in area:
+			if not "knockback_immunity" in area or not area.knockback_immunity:
 				var knockback_dir = (area.global_position - global_position) / (area.global_position - global_position).length()
 				area.global_position += knockback_dir * KNOCKBACK
 			if area.has_method("stun"):

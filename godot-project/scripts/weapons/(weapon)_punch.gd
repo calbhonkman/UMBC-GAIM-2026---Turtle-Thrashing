@@ -68,8 +68,9 @@ func _process(delta):
 				area.damage(damage)
 				$"/root/Node2D/GameManager".create_damage_particle(area.global_position, damage)
 				AudioManager.punch.play()
-				var knockback_dir = (area.global_position - global_position)
-				area.global_position += (knockback_dir / knockback_dir.length()) * KNOCKBACK
+				if not "knockback_immunity" in area or not area.knockback_immunity:
+					var knockback_dir = (area.global_position - global_position)
+					area.global_position += (knockback_dir / knockback_dir.length()) * KNOCKBACK
 
 
 func is_enemy_in_area(area: Area2D):

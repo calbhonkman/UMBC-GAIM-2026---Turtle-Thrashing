@@ -26,7 +26,7 @@ var move_speed: float = BASE_MOVE_SPEED
 @export var JUMP_COOLDOWN: float = 1.0
 @export var ATTACK_TIME: float = 2.0
 var charge_direction = Vector2.ZERO
-var anti_knockback_position = null
+@export var knockback_immunity = true
 var jump_landing_position = null
 var mode = "default"
 var mode_timer = 0
@@ -41,8 +41,6 @@ func _process(delta):
 		var player_dist = player_vect.length()
 		var player_dir = player_vect / player_dist
 		
-		if anti_knockback_position:
-			global_position = anti_knockback_position
 		scale.x = -1 * abs(scale.x) if player_dir.x > 0 else abs(scale.x)
 		
 		mode_timer -= delta
@@ -70,7 +68,6 @@ func _process(delta):
 					AudioManager.chargeup.play()
 				else:
 					global_position += player_dir * move_speed * delta
-					anti_knockback_position = global_position
 			"slamming part one":
 				# The slam is split into two separate animations
 				# The actual moment of impact is the end of slam1
@@ -100,7 +97,6 @@ func _process(delta):
 					sprite.play("jump1.5.5")
 				else:
 					global_position = player.global_position
-					anti_knockback_position = global_position
 			"jumping part one and a half and a half":
 				if mode_timer <= 0.0:
 					mode = "jumping part two"
@@ -128,7 +124,6 @@ func _process(delta):
 					AudioManager.stampede.stop()
 				else:
 					global_position += charge_direction * (3.0 * move_speed) * delta
-					anti_knockback_position = global_position
 			"dying":
 				if not sprite.is_playing():
 					sprite.play("death2")

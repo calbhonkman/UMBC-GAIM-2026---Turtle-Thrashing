@@ -68,7 +68,7 @@ func _process(delta):
 						b_target[i].damage(damage)
 						$"/root/Node2D/GameManager".create_damage_particle(b_target[i].global_position, damage)
 						b_timer[i] += -1 * DAMAGE_TIME
-					if not "anti_knockback_position" in b_target[i]:
+					if not "knockback_immunity" in b_target[i] or not b_target[i].knockback_immunity:
 						var knockback_dir = (b_target[i].global_position - player.global_position)
 						b_target[i].global_position += (knockback_dir / knockback_dir.length()) * BASE_KNOCKBACK * knockback_mod * delta
 				else:

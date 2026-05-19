@@ -29,7 +29,7 @@ var dying_timer: float = DYING_TIME
 @export var DEATH_POS_X: float = -28.0
 @export var DEATH_POS_Y: float = -65.0
 var bullet_lifetime = BASE_BULLET_LIFETIME
-var anti_knockback_position = null
+@export var knockback_immunity = true
 var mode = "default"
 var mode_timer = 0
 var next_bullet = null
@@ -61,8 +61,6 @@ func _process(delta):
 		var player_dist = player_vect.length()
 		var player_dir = player_vect / player_dist
 		
-		if anti_knockback_position:
-			global_position = anti_knockback_position
 		scale.x = -1 * abs(scale.x) if player_dir.x > 0 else abs(scale.x)
 		
 		mode_timer -= delta
@@ -74,7 +72,6 @@ func _process(delta):
 			"hunting":
 				if player_dist > ATTACK_RANGE:
 					global_position += player_dir * move_speed * delta
-					anti_knockback_position = global_position
 					sprite.play("walk")
 				elif player_dist <= ATTACK_RANGE:
 					mode_timer = PREPARE_TIME

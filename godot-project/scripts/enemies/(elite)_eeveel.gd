@@ -20,7 +20,7 @@ var dying_timer: float = DYING_TIME
 @onready var hitbox1 = $CollisionShape2D
 @onready var hitbox2 = $CollisionShape2D2
 @onready var hitbox_discharge = $"Hitbox_(Discharge)"
-var anti_knockback_position = null
+@export var knockback_immunity = true
 
 @export var CHARGE_DIST: float = 300.0
 @export var CHARGE_TIME: float = 1.0
@@ -51,8 +51,6 @@ func _process(delta):
 		var player_dist = player_vect.length()
 		var player_dir = player_vect / player_dist
 		
-		if anti_knockback_position:
-			global_position = anti_knockback_position
 		scale.x = abs(scale.x) if player_dir.x > 0 else -1 * abs(scale.x)
 		
 		mode_timer -= delta
@@ -70,7 +68,6 @@ func _process(delta):
 					AudioManager.eel_chargeup.play()
 				else:
 					global_position += player_dir * move_speed * delta
-					anti_knockback_position = global_position
 					
 					strike_timer -= delta
 					if strike_timer <= 0.0:
@@ -100,7 +97,6 @@ func _process(delta):
 					AudioManager.eel_discharge.stop()
 				else:
 					global_position += player_dir * move_speed * delta
-					anti_knockback_position = global_position
 			"dying":
 				if not sprite.is_playing():
 					queue_free()

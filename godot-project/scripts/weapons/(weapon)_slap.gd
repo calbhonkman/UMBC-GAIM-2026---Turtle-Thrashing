@@ -79,7 +79,7 @@ func _process(delta):
 				b_prev[i].append(area)
 				area.damage(damage)
 				$"/root/Node2D/GameManager".create_damage_particle(area.global_position, damage)
-				if not "anti_knockback_position" in area:
+				if not "knockback_immunity" in area or not area.knockback_immunity:
 					var knockback_dir = (area.global_position - bullets[i].global_position)
 					area.global_position += (knockback_dir / knockback_dir.length()) * KNOCKBACK
 				if area.has_method("stun"):

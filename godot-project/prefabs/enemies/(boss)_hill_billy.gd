@@ -21,7 +21,7 @@ var move_speed: float = BASE_MOVE_SPEED
 @export var COOLDOWN: float = 1.0
 @export var PULL_TIME: float = 5.0
 @export var PULL_STRENGTH: float = 400.0
-var anti_knockback_position = null
+@export var knockback_immunity = true
 var sprite = null
 var mode = "default"
 var next_mode = "knife1"
@@ -36,10 +36,6 @@ func _ready():
 
 func _process(delta):
 	scale = Vector2(1,1) * (0.75 + clamp(0.25 * health / MAX_HEALTH, 0.0, 0.25))
-	
-	if anti_knockback_position:
-		global_position = anti_knockback_position
-	anti_knockback_position = global_position
 	
 	if player:
 		var player_vect = player.global_position - global_position
@@ -76,8 +72,7 @@ func _process(delta):
 						mode = "knife1"
 						sprite.play("knife1")
 					else:
-						global_position = anti_knockback_position + player_dir * move_speed * delta
-						anti_knockback_position = global_position
+						global_position += player_dir * move_speed * delta
 				else:
 					mode = next_mode
 					#mode_timer = ATTACK_TIME
