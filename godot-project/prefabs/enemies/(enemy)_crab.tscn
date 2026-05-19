@@ -38,9 +38,9 @@ metadata/enemy = ""
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2025924635]
 position = Vector2(-2, -8)
-scale = Vector2(0.07, 0.07)
 sprite_frames = SubResource("SpriteFrames_17m8f")
 autoplay = "default"
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=85199956]
 scale = Vector2(1, 0.45)

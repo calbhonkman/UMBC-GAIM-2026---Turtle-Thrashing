@@ -6,6 +6,9 @@ extends CharacterBody2D
 @onready var damage_vignette = $"/root/Node2D/GameManager/Camera/Damage Vignette"
 @onready var health_icon_danger = $"../GameManager/Camera/Health Icon/Danger"
 
+@export var FLIP_SPEED: float = 20.0
+var facing_direction = 1.0
+
 @export var MAX_HEALTH: int = 5
 @export var BASE_SPEED: float = 200.0
 @export var INVINCIBLE_TIME: float = 0.75
@@ -51,12 +54,13 @@ func _process(delta):
 	elif movement_direction.length() != 0.0:
 		sprite.play("walk")
 		velocity = movement_direction * BASE_SPEED * speed_mod
-		if movement_direction.x != 0.0:
-			sprite.scale.x = -1 * abs(sprite.scale.x) if velocity.x < 0 else abs(sprite.scale.x)
-			hitbox.scale.x = -1 * abs(hitbox.scale.x) if velocity.x < 0 else abs(hitbox.scale.x)
+		facing_direction = movement_direction.x / abs(movement_direction.x) if movement_direction.x != 0.0 else facing_direction
 		move_and_slide()
 	elif health > 0:
 		sprite.play("default")
+	
+	sprite.scale.x = move_toward(sprite.scale.x, facing_direction, delta * FLIP_SPEED)
+	hitbox.scale.x = move_toward(hitbox.scale.x, facing_direction, delta * FLIP_SPEED)
 	
 	# Pickup Area
 	for area in pickup_area.get_overlapping_areas():

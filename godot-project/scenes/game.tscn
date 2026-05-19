@@ -141,7 +141,6 @@ font_color = Color(0, 0, 0, 1)
 bg_color = Color(0.44313726, 0.8745098, 0.99607843, 1)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fedci"]
-load_path = "res://.godot/imported/Dumpster_King_Health-Indicator.png-bba84619c0fd88ddb5f818adc76ce553.ctex"
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0sl42"]
 animations = [{
@@ -184,7 +183,7 @@ animations = [{
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_kvpfn"]
-font_size = 256
+font_size = 64
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_ssvqc"]
@@ -327,7 +326,6 @@ upgrade_icon = ExtResource("3_v2yb1")
 upgrade_icon_selected = ExtResource("4_weeiq")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=1355100074]
-scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_vtaks")
 animation = &"walk"
 
@@ -563,7 +561,6 @@ texture_progress = ExtResource("42_rm0al")
 
 [node name="Health Icon" type="Node2D" parent="GameManager/Camera" unique_id=2140580713]
 position = Vector2(-800, -380)
-scale = Vector2(0.25, 0.25)
 
 [node name="Healthy" type="Sprite2D" parent="GameManager/Camera/Health Icon" unique_id=384984612]
 texture = ExtResource("38_0sl42")
@@ -578,10 +575,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -152.5
-offset_top = -155.0
-offset_right = 140.5
-offset_bottom = 194.0
+offset_left = -18.5
+offset_top = -40.0
+offset_right = 18.5
+offset_bottom = 48.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "5"

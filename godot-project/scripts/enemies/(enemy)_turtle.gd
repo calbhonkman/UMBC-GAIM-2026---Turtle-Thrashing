@@ -19,6 +19,9 @@ var dying: bool = false
 var dying_timer: float = DYING_TIME
 @export var EXP_AMOUNT: int = 5
 
+@export var FLIP_SPEED: float = 20.0
+var facing_direction = 1.0
+
 # Other enemies may not have these variables:
 var anti_knockback_position = null
 
@@ -44,13 +47,14 @@ func _process(delta):
 				stunned = false
 				sprite.modulate = Color(1,1,1,1)
 		else:
-			var playerDirection = player.global_position - global_position
-			playerDirection = playerDirection / playerDirection.length()
+			var player_dir = player.global_position - global_position
+			player_dir = player_dir / player_dir.length()
 			if anti_knockback_position:
 				global_position = anti_knockback_position
-			global_position += playerDirection * delta * move_speed
+			global_position += player_dir * delta * move_speed
 			anti_knockback_position = global_position
-			sprite.scale.x = -1 * abs(sprite.scale.x) * playerDirection.x / abs(playerDirection.x) if playerDirection.x != 0 else sprite.scale.x
+			facing_direction = player_dir.x / abs(player_dir.x) if player_dir.x != 0.0 else facing_direction
+			sprite.scale.x = move_toward(sprite.scale.x, facing_direction, delta * FLIP_SPEED)
 			sprite.play("walk")
 
 func scale_health(s: float):

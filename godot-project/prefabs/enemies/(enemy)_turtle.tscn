@@ -43,11 +43,10 @@ script = ExtResource("1_biv0o")
 metadata/enemy = ""
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1183113898]
-position = Vector2(-32.666668, 17.333334)
-scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_dmq2k")
 animation = &"walk"
 autoplay = "default"
+offset = Vector2(50, 10)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=605949476]
 scale = Vector2(1, 0.9)

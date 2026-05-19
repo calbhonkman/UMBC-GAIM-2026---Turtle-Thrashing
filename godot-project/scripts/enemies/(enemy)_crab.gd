@@ -19,6 +19,9 @@ var dying: bool = false
 var dying_timer: float = DYING_TIME
 @export var EXP_AMOUNT: int = 1
 
+@export var FLIP_SPEED: float = 20
+var facing_direction = 1.0
+
 func _process(delta):
 	scale = Vector2(1,1) * (0.75 + clamp(0.25 * health / MAX_HEALTH, 0.0, 0.25))
 	if dying and dying_timer > 0.0:
@@ -34,18 +37,18 @@ func _process(delta):
 			get_parent().add_child(new_xp)
 			new_xp.global_position = global_position
 		queue_free()
+	elif stunned:
+		stun_timer -= delta
+		if stun_timer <= 0:
+			stunned = false
+			sprite.modulate = Color(1,1,1,1)
 	elif player:
-		if stunned:
-			stun_timer -= delta
-			if stun_timer <= 0:
-				stunned = false
-				sprite.modulate = Color(1,1,1,1)
-		else:
-			var playerDirection = player.global_position - global_position
-			playerDirection = playerDirection / playerDirection.length()
-			global_position += playerDirection * delta * move_speed
-			sprite.scale.x = -1 * abs(sprite.scale.x) * playerDirection.x / abs(playerDirection.x) if playerDirection.x != 0 else sprite.scale.x
-			sprite.play("walk")
+		var player_dir = player.global_position - global_position
+		player_dir = player_dir / player_dir.length()
+		global_position += player_dir * delta * move_speed
+		facing_direction = player_dir.x / abs(player_dir.x) if player_dir.x != 0.0 else facing_direction
+		sprite.scale.x = move_toward(sprite.scale.x, facing_direction, delta * FLIP_SPEED)
+		sprite.play("walk")
 
 func scale_health(s: float):
 	MAX_HEALTH *= s
