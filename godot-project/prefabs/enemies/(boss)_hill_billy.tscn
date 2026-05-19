@@ -914,19 +914,21 @@ BEAM = ExtResource("190_ag1uf")
 BAGUETTE = ExtResource("4_62p2e")
 
 [node name="Sprite (Phase 1)" type="AnimatedSprite2D" parent="." unique_id=1358359407]
-scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_137te")
-animation = &"beam1"
+animation = &"knife1"
 autoplay = "default"
-frame = 6
+frame = 10
 frame_progress = 1.0
+offset = Vector2(-20, -25)
 
 [node name="Sprite (Phase 2)" type="AnimatedSprite2D" parent="." unique_id=1257745323]
 visible = false
-scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_55x8f")
-animation = &"baguette1"
+animation = &"knife1"
 autoplay = "default"
+frame = 10
+frame_progress = 1.0
+offset = Vector2(-20, -25)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1594269233]
 visible = false
@@ -952,9 +954,14 @@ polygon = PackedVector2Array(2.6057906, -44.285713, 16.547882, 9.841269, 8.08463
 
 [node name="Beam Pivot" type="Node2D" parent="." unique_id=2086543531]
 visible = false
-position = Vector2(-74, -41)
 
 [node name="Area2D" parent="Beam Pivot" unique_id=626060781 instance=ExtResource("190_ag1uf")]
+position = Vector2(-74, -41)
+rotation = 3.1415927
+scale = Vector2(1, -2)
 
 [node name="Fork Pivot" type="Node2D" parent="." unique_id=424265853]
+visible = false
+
+[node name="Fork Position" type="Node2D" parent="Fork Pivot" unique_id=1391851525]
 position = Vector2(-157, 6)

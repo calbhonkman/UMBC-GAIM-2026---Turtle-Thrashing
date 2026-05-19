@@ -219,7 +219,6 @@ scale = Vector2(0.6, 0.6)
 
 [node name="Grass" type="Sprite2D" parent="Island" unique_id=1566851548]
 position = Vector2(0, 400)
-scale = Vector2(0.6, 0.6)
 texture = ExtResource("1_ca42v")
 
 [node name="NorthWall" type="CollisionShape2D" parent="Island" unique_id=1519303801]

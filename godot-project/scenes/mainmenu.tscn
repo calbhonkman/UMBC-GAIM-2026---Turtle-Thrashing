@@ -31,7 +31,7 @@ texture = ExtResource("2_natt5")
 [node name="Sprite2D2" type="Sprite2D" parent="." unique_id=1099482368]
 z_index = -2
 position = Vector2(960, 480)
-scale = Vector2(0.36, 0.36)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("3_r3g3c")
 
 [node name="Play (Button)" type="Button" parent="." unique_id=171000035]

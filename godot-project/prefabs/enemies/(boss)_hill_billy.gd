@@ -13,6 +13,9 @@ var health: float = MAX_HEALTH
 @export var BASE_MOVE_SPEED: float = 250.0
 var move_speed: float = BASE_MOVE_SPEED
 
+@export var FLIP_SPEED: float = 20.0
+var facing_direction = 1.0
+
 # Other enemies might not have these variables:
 @export var FORK: Resource
 @export var BEAM: Resource
@@ -23,6 +26,7 @@ var move_speed: float = BASE_MOVE_SPEED
 @export var PULL_STRENGTH: float = 400.0
 @export var knockback_immunity = true
 var sprite = null
+var knife_hitbox = null
 var mode = "default"
 var next_mode = "knife1"
 var mode_timer = 0
@@ -32,6 +36,7 @@ var health_scale = 0
 
 func _ready():
 	sprite = sprite_p1
+	knife_hitbox = knife_hitbox_p1
 	AudioManager.hillbilly_voice_intro.play()
 
 func _process(delta):
@@ -42,7 +47,11 @@ func _process(delta):
 		var player_dist = player_vect.length()
 		var player_dir = player_vect / player_dist
 		
-		scale.x = -1 * abs(scale.x) if player_dir.x > 0 else abs(scale.x)
+		facing_direction = -1 * player_dir.x / abs(player_dir.x) if player_dir.x != 0.0 else facing_direction
+		sprite.scale.x = move_toward(sprite.scale.x, facing_direction, delta * FLIP_SPEED)
+		knife_hitbox.scale.x = move_toward(knife_hitbox.scale.x, facing_direction, delta * FLIP_SPEED)
+		$"Beam Pivot".scale.x = move_toward($"Beam Pivot".scale.x, facing_direction, delta * FLIP_SPEED)
+		$"Fork Pivot".scale.x = move_toward($"Fork Pivot".scale.x, facing_direction, delta * FLIP_SPEED)
 		
 		mode_timer -= delta
 		
@@ -62,6 +71,7 @@ func _process(delta):
 				if not sprite.is_playing():
 					sprite.visible = false
 					sprite = sprite_p2
+					knife_hitbox = knife_hitbox_p2
 					sprite.visible = true
 					mode = "default"
 					sprite.play("default")
@@ -80,7 +90,6 @@ func _process(delta):
 			"knife1":
 				if not sprite.is_playing():
 					mode = "knife2"
-					var knife_hitbox = knife_hitbox_p1 if sprite == sprite_p1 else knife_hitbox_p2
 					if player.hitbox in knife_hitbox.get_overlapping_areas():
 						player.damage(1)
 					sprite.play("knife2")
@@ -98,7 +107,7 @@ func _process(delta):
 					
 					for i in range(amount):
 						bullets.append(FORK.instantiate())
-						bullets.back().global_position = $"Fork Pivot".global_position
+						bullets.back().global_position = $"Fork Pivot/Fork Position".global_position
 						bullets.back().play(anim)
 						bullets.back().wait((i+3) * 0.25)
 						$"/root/Node2D/(Group) Bullets".add_child(bullets.back())
@@ -131,7 +140,7 @@ func _process(delta):
 				else:
 					$"Beam Pivot".modulate.a = (pow((PULL_TIME - mode_timer) / PULL_TIME, 2) * 0.50) + 0.25
 					var pull_str = PULL_STRENGTH * ((pow((mode_timer) / PULL_TIME, 2) * 0.75) + 0.25) * delta
-					player.global_position.y += pull_str if player.global_position.y < $"Beam Pivot".global_position.y else -1 * pull_str
+					player.global_position.y += pull_str if player.global_position.y < $"Beam Pivot/Area2D".global_position.y else -1 * pull_str
 			"beam3":
 				if not sprite.is_playing():
 					mode = "beam4"

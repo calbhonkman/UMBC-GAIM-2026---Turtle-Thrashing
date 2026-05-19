@@ -32,9 +32,8 @@ script = ExtResource("1_fjqwh")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1013368380]
 position = Vector2(-5, -2.9999995)
-scale = Vector2(0.2, 0.2)
 sprite_frames = SubResource("SpriteFrames_kdu52")
-animation = &"fork_p2"
+animation = &"fork_p1"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1592558456]
 shape = SubResource("CapsuleShape2D_s4vcx")
