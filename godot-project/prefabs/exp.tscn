@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bln5qlwy18sjf"]
 
-[ext_resource type="Script" uid="uid://2ee4a3acvjen" path="res://scripts/exp_sprite.gd" id="1_em5ll"]
+[ext_resource type="Script" uid="uid://2ee4a3acvjen" path="res://scripts/UI/exp_sprite.gd" id="1_em5ll"]
 [ext_resource type="Texture2D" uid="uid://bgq0ofsnky1ok" path="res://assets/Turtle EXP.png" id="2_iqir6"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0hk7p"]

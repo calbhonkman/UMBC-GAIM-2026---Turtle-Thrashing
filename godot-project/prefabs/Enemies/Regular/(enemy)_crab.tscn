@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://d1k32mfbnnud3"]
+
+[ext_resource type="Script" uid="uid://d2rsnatar30qh" path="res://scripts/Enemies/Regular/(enemy)_crab.gd" id="1_yfjof"]
+[ext_resource type="Texture2D" uid="uid://dxk7qck0kvnio" path="res://assets/Enemies/Regular/Crab/Enemy Crab (Walk 1).png" id="2_utqn2"]
+[ext_resource type="Texture2D" uid="uid://cpfw1w23v0u45" path="res://assets/Enemies/Regular/Crab/Enemy Crab (Walk 2).png" id="3_ny6qa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17m8f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_utqn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ny6qa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_utqn2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ny6qa")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8w3ar"]
+radius = 30.52
+
+[node name="Area2D" type="Area2D" unique_id=1424500926 groups=["Enemies"]]
+script = ExtResource("1_yfjof")
+metadata/enemy = ""
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2025924635]
+position = Vector2(-2, -8)
+sprite_frames = SubResource("SpriteFrames_17m8f")
+autoplay = "default"
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=85199956]
+scale = Vector2(1, 0.45)
+shape = SubResource("CircleShape2D_8w3ar")

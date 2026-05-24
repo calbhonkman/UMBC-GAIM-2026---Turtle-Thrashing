@@ -1,0 +1,361 @@
+[gd_scene format=3 uid="uid://cfdlk4r0ys684"]
+
+[ext_resource type="Script" uid="uid://c6k501y0lwk6h" path="res://scripts/Enemies/Elite/(elite)_crab.gd" id="1_4a8of"]
+[ext_resource type="Texture2D" uid="uid://uxkkywocd2fp" path="res://assets/Enemies/Elite/Giant Crab/Charge/BMCrab_Charge0001.png" id="2_xpubl"]
+[ext_resource type="Texture2D" uid="uid://crr7g7p88cufb" path="res://assets/Enemies/Elite/Giant Crab/Charge/BMCrab_Charge0002.png" id="3_h8s8d"]
+[ext_resource type="Texture2D" uid="uid://b3blep6l8o4we" path="res://assets/Enemies/Elite/Giant Crab/Charge/BMCrab_Charge0003.png" id="4_in8ms"]
+[ext_resource type="Texture2D" uid="uid://cu25es632raf7" path="res://assets/Enemies/Elite/Giant Crab/Charge/BMCrab_Charge0004.png" id="5_yh0xi"]
+[ext_resource type="Texture2D" uid="uid://b7oy7haticu5b" path="res://assets/Enemies/Elite/Giant Crab/Charge/BMCrab_Charge0005.png" id="6_kd1is"]
+[ext_resource type="Texture2D" uid="uid://cfggmtpe05fq0" path="res://assets/Enemies/Elite/Giant Crab/Charge/BMCrab_Charge0006.png" id="7_5166r"]
+[ext_resource type="Texture2D" uid="uid://b5fyuk2cuo6mk" path="res://assets/Enemies/Elite/Giant Crab/Charge/BMCrab_Charge0007.png" id="8_lwt42"]
+[ext_resource type="Texture2D" uid="uid://btsx5i8g03oy7" path="res://assets/Enemies/Elite/Giant Crab/Charge/BMCrab_Charge0008.png" id="9_cod3a"]
+[ext_resource type="Texture2D" uid="uid://dmseg55stq7nm" path="res://assets/Enemies/Elite/Giant Crab/Charge/BMCrab_Charge0009.png" id="10_2ajx1"]
+[ext_resource type="Texture2D" uid="uid://raf772yvvq55" path="res://assets/Enemies/Elite/Giant Crab/Charge/BMCrab_Charge0010.png" id="11_10jb2"]
+[ext_resource type="Texture2D" uid="uid://druke18f2t8k8" path="res://assets/Enemies/Elite/Giant Crab/Charge/BMCrab_Charge0011.png" id="12_22tme"]
+[ext_resource type="Texture2D" uid="uid://cn2damkfvgbrq" path="res://assets/Enemies/Elite/Giant Crab/Death/MBCrab_Death0001.png" id="13_8gx0c"]
+[ext_resource type="Texture2D" uid="uid://r0bu7avefkny" path="res://assets/Enemies/Elite/Giant Crab/Idle/BMCrab_Idle0001.png" id="13_rfg3k"]
+[ext_resource type="Texture2D" uid="uid://cbnqgcnumhjrh" path="res://assets/Enemies/Elite/Giant Crab/Death/MBCrab_Death0002.png" id="14_lfe1v"]
+[ext_resource type="Texture2D" uid="uid://hrn3le5uj62m" path="res://assets/Enemies/Elite/Giant Crab/Idle/BMCrab_Idle0002.png" id="14_xn8ts"]
+[ext_resource type="Texture2D" uid="uid://d3py01mjh7w3q" path="res://assets/Enemies/Elite/Giant Crab/Death/MBCrab_Death0003.png" id="15_1eqfi"]
+[ext_resource type="Texture2D" uid="uid://c4wngrkvflaeb" path="res://assets/Enemies/Elite/Giant Crab/Idle/BMCrab_Idle0003.png" id="15_yej7l"]
+[ext_resource type="Texture2D" uid="uid://ba4gh3t22wnid" path="res://assets/Enemies/Elite/Giant Crab/Jump/BMCrab_Jump0001.png" id="16_14p4p"]
+[ext_resource type="Texture2D" uid="uid://d3xkr1runxq1i" path="res://assets/Enemies/Elite/Giant Crab/Death/MBCrab_Death0004.png" id="16_25l5a"]
+[ext_resource type="Texture2D" uid="uid://cjfvnaminnbl0" path="res://assets/Enemies/Elite/Giant Crab/Death/MBCrab_Death0005.png" id="17_dlp0w"]
+[ext_resource type="Texture2D" uid="uid://s0lxsk0i4wya" path="res://assets/Enemies/Elite/Giant Crab/Jump/BMCrab_Jump0002.png" id="17_jn87i"]
+[ext_resource type="Texture2D" uid="uid://vq24s8vsnnjl" path="res://assets/Enemies/Elite/Giant Crab/Death/MBCrab_Death0006.png" id="18_lkqs3"]
+[ext_resource type="Texture2D" uid="uid://duja3nh5u6wtp" path="res://assets/Enemies/Elite/Giant Crab/Jump/BMCrab_Jump0003.png" id="18_xph3s"]
+[ext_resource type="Texture2D" uid="uid://d6bxyfnup7cc" path="res://assets/Enemies/Elite/Giant Crab/Jump/BMCrab_Jump0004.png" id="19_8m1vc"]
+[ext_resource type="Texture2D" uid="uid://c3j4hd3jvbi25" path="res://assets/Enemies/Elite/Giant Crab/Death/MBCrab_Death0007.png" id="19_ppngl"]
+[ext_resource type="Texture2D" uid="uid://6swqw66f6mou" path="res://assets/Enemies/Elite/Giant Crab/Jump/BMCrab_Jump0005.png" id="20_mkph3"]
+[ext_resource type="Texture2D" uid="uid://dgsqeo2wcvcld" path="res://assets/Enemies/Elite/Giant Crab/Death/MBCrab_Death0008.png" id="20_smtm0"]
+[ext_resource type="Texture2D" uid="uid://dlmrgnqw3baun" path="res://assets/Enemies/Elite/Giant Crab/Death/MBCrab_Death0009.png" id="21_dwnyt"]
+[ext_resource type="Texture2D" uid="uid://dt1fpkbwghwfi" path="res://assets/Enemies/Elite/Giant Crab/Jump/BMCrab_Jump0006.png" id="21_fbhm3"]
+[ext_resource type="Texture2D" uid="uid://b2465ja7d1jlf" path="res://assets/Enemies/Elite/Giant Crab/Death/MBCrab_DeathPoof0001.png" id="22_0dkde"]
+[ext_resource type="Texture2D" uid="uid://dbcp10ksqh5xu" path="res://assets/Enemies/Elite/Giant Crab/Jump/BMCrab_Jump0007.png" id="22_xlp5x"]
+[ext_resource type="Texture2D" uid="uid://4tp65uhqt14t" path="res://assets/Enemies/Elite/Giant Crab/Jump/BMCrab_Jump0008.png" id="23_82u4y"]
+[ext_resource type="Texture2D" uid="uid://dejo1oww7hwln" path="res://assets/Enemies/Elite/Giant Crab/Jump/BMCrab_Shadow.png" id="23_fbhm3"]
+[ext_resource type="Texture2D" uid="uid://c3e7eajqbp853" path="res://assets/Enemies/Elite/Giant Crab/Death/MBCrab_DeathPoof0002.png" id="23_igpsk"]
+[ext_resource type="Texture2D" uid="uid://cknhijcoc44hq" path="res://assets/Enemies/Elite/Giant Crab/Death/MBCrab_DeathPoof0003.png" id="24_5f61s"]
+[ext_resource type="Texture2D" uid="uid://cdviqmjyiqeig" path="res://assets/Enemies/Elite/Giant Crab/Jump/BMCrab_Jump0009.png" id="24_i45ok"]
+[ext_resource type="Texture2D" uid="uid://clnnw50lfyqy1" path="res://assets/Enemies/Elite/Giant Crab/Jump/Warning.png" id="24_xlp5x"]
+[ext_resource type="Texture2D" uid="uid://syyqat58642v" path="res://assets/Enemies/Elite/Giant Crab/Jump/BMCrab_Jump0010.png" id="25_1daf5"]
+[ext_resource type="Texture2D" uid="uid://684r324ma76l" path="res://assets/Enemies/Elite/Giant Crab/Death/MBCrab_DeathPoof0004.png" id="25_cyrws"]
+[ext_resource type="Texture2D" uid="uid://ca0c1ho12lkdm" path="res://assets/Enemies/Elite/Giant Crab/Death/MBCrab_DeathPoof0005.png" id="26_8tmp1"]
+[ext_resource type="Texture2D" uid="uid://c5bpmgc6b2i37" path="res://assets/Enemies/Elite/Giant Crab/Jump/BMCrab_Jump0011.png" id="26_ke82u"]
+[ext_resource type="Texture2D" uid="uid://cb2idlmh6iyl4" path="res://assets/Enemies/Elite/Giant Crab/Death/MBCrab_DeathPoof0006.png" id="27_2nqv7"]
+[ext_resource type="Texture2D" uid="uid://cn75g5bwvpwj" path="res://assets/Enemies/Elite/Giant Crab/Jump/BMCrab_Jump0012.png" id="27_ncri0"]
+[ext_resource type="Texture2D" uid="uid://c3jn82upjtal4" path="res://assets/Enemies/Elite/Giant Crab/Death/MBCrab_DeathPoof0007.png" id="28_g3nhs"]
+[ext_resource type="Texture2D" uid="uid://rx7itsei53dh" path="res://assets/Enemies/Elite/Giant Crab/Jump/BMCrab_Jump0013.png" id="28_sursi"]
+[ext_resource type="Texture2D" uid="uid://v0pk1q03h5b1" path="res://assets/Enemies/Elite/Giant Crab/Jump/BMCrab_Jump0014.png" id="29_775kj"]
+[ext_resource type="Texture2D" uid="uid://dx5xlp8u4hq3g" path="res://assets/Enemies/Elite/Giant Crab/Jump/BMCrab_Jump0015.png" id="30_nesm8"]
+[ext_resource type="Texture2D" uid="uid://csycusaot8hff" path="res://assets/Enemies/Elite/Giant Crab/Jump/BMCrab_Jump0016.png" id="31_dgysl"]
+[ext_resource type="Texture2D" uid="uid://2dyeqplu7kqg" path="res://assets/Enemies/Elite/Giant Crab/Jump/BMCrab_Jump0017.png" id="32_0pmif"]
+[ext_resource type="Texture2D" uid="uid://dro3baf5ukfhk" path="res://assets/Enemies/Elite/Giant Crab/Slam/BMCrab_Slam0001.png" id="33_xph3s"]
+[ext_resource type="Texture2D" uid="uid://cf34ksfw65ldh" path="res://assets/Enemies/Elite/Giant Crab/Slam/BMCrab_Slam0002.png" id="34_8m1vc"]
+[ext_resource type="Texture2D" uid="uid://b85d01sy4ofj1" path="res://assets/Enemies/Elite/Giant Crab/Slam/BMCrab_Slam0003.png" id="35_mkph3"]
+[ext_resource type="Texture2D" uid="uid://bcw4rq13igw43" path="res://assets/Enemies/Elite/Giant Crab/Slam/BMCrab_Slam0004.png" id="36_fbhm3"]
+[ext_resource type="Texture2D" uid="uid://dgd0atlafd650" path="res://assets/Enemies/Elite/Giant Crab/Slam/BMCrab_Slam0005.png" id="37_xlp5x"]
+[ext_resource type="Texture2D" uid="uid://br77556ky2spc" path="res://assets/Enemies/Elite/Giant Crab/Slam/BMCrab_Slam0006.png" id="38_82u4y"]
+[ext_resource type="Texture2D" uid="uid://b4wu242o4hqel" path="res://assets/Enemies/Elite/Giant Crab/Slam/BMCrab_Slam0007.png" id="39_i45ok"]
+[ext_resource type="Texture2D" uid="uid://1v40j5j53imr" path="res://assets/Enemies/Elite/Giant Crab/Slam/BMCrab_Slam0008.png" id="40_1daf5"]
+[ext_resource type="Texture2D" uid="uid://d3wolxeh81gx" path="res://assets/Enemies/Elite/Giant Crab/Slam/BMCrab_Slam0009.png" id="41_ke82u"]
+[ext_resource type="Texture2D" uid="uid://thedcc17h0hc" path="res://assets/Enemies/Elite/Giant Crab/Slam/BMCrab_Slam0010.png" id="42_ncri0"]
+[ext_resource type="Texture2D" uid="uid://bcfjicmnvr4k1" path="res://assets/Enemies/Elite/Giant Crab/Slam/BMCrab_Slam0011.png" id="43_sursi"]
+[ext_resource type="Texture2D" uid="uid://cxe4ory4cx3q7" path="res://assets/Enemies/Elite/Giant Crab/Slam/BMCrab_Slam0012.png" id="44_775kj"]
+[ext_resource type="Texture2D" uid="uid://bmxx7asm4yavc" path="res://assets/Enemies/Elite/Giant Crab/Slam/BMCrab_Slam0013.png" id="45_nesm8"]
+[ext_resource type="Texture2D" uid="uid://4gx74k5dp7da" path="res://assets/Enemies/Elite/Giant Crab/Slam/BMCrab_Slam0014.png" id="46_dgysl"]
+[ext_resource type="Texture2D" uid="uid://g27o0la3ro3m" path="res://assets/Enemies/Elite/Giant Crab/Slam/BMCrab_Slam0015.png" id="47_0pmif"]
+[ext_resource type="Texture2D" uid="uid://c80iiuphjg6hk" path="res://assets/Enemies/Elite/Giant Crab/Slam/BMCrab_Slam0016.png" id="48_gkrs1"]
+[ext_resource type="Texture2D" uid="uid://bkxgcn3jvlfgs" path="res://assets/Enemies/Elite/Giant Crab/Walk/BMCrab_Walk0001.png" id="50_mkph3"]
+[ext_resource type="Texture2D" uid="uid://wlmcem0xift0" path="res://assets/Enemies/Elite/Giant Crab/Walk/BMCrab_Walk0002.png" id="51_fbhm3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gkrs1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_xpubl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_h8s8d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_in8ms")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_yh0xi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kd1is")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5166r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_lwt42")
+}],
+"loop": false,
+"name": &"charge1",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_cod3a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_2ajx1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_10jb2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_22tme")
+}],
+"loop": true,
+"name": &"charge2",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_8gx0c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_lfe1v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_1eqfi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_25l5a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_dlp0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_lkqs3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ppngl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_smtm0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_dwnyt")
+}],
+"loop": false,
+"name": &"death1",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_0dkde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_igpsk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_5f61s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_cyrws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_8tmp1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_2nqv7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_g3nhs")
+}],
+"loop": false,
+"name": &"death2",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_rfg3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_xn8ts")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_yej7l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_14p4p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_jn87i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_xph3s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_8m1vc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_mkph3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_fbhm3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_xlp5x")
+}],
+"loop": false,
+"name": &"jump1",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_fbhm3")
+}],
+"loop": true,
+"name": &"jump1.5",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_fbhm3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_xlp5x")
+}],
+"loop": true,
+"name": &"jump1.5.5",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("23_82u4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_i45ok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_1daf5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_ke82u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_ncri0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_sursi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_775kj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_nesm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_dgysl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_0pmif")
+}],
+"loop": false,
+"name": &"jump2",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("33_xph3s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_8m1vc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_mkph3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_fbhm3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_xlp5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_82u4y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_i45ok")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_1daf5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_ke82u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_ncri0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_sursi")
+}],
+"loop": false,
+"name": &"slam1",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("44_775kj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_nesm8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_dgysl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("47_0pmif")
+}, {
+"duration": 1.0,
+"texture": ExtResource("48_gkrs1")
+}],
+"loop": false,
+"name": &"slam2",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("50_mkph3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_fbhm3")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lq1tu"]
+size = Vector2(223, 165)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8gx0c"]
+radius = 303.01486
+
+[node name="(boss)_Crab" type="Area2D" unique_id=2044177891 groups=["Enemies"]]
+script = ExtResource("1_4a8of")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=227461755]
+position = Vector2(-48, -34)
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_gkrs1")
+animation = &"slam2"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=155662765]
+shape = SubResource("RectangleShape2D_lq1tu")
+
+[node name="(hitbox)_slam" type="Area2D" parent="." unique_id=2074537651]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="(hitbox)_slam" unique_id=2004600664]
+position = Vector2(30, 87)
+shape = SubResource("CircleShape2D_8gx0c")

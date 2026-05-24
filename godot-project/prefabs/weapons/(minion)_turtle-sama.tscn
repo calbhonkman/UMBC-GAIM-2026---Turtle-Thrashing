@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cv148hqf0xhcr"]
 
 [ext_resource type="Texture2D" uid="uid://dqcdhchfyr06" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_014.png" id="1_3gnx0"]
-[ext_resource type="Script" uid="uid://df3xbkvncj3on" path="res://scripts/weapons/(minion)_turtle_sama.gd" id="1_fi3e6"]
+[ext_resource type="Script" uid="uid://df3xbkvncj3on" path="res://scripts/Weapons/(minion)_turtle_sama.gd" id="1_fi3e6"]
 [ext_resource type="Texture2D" uid="uid://bq2xqsvrjhdf5" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_015.png" id="2_y2c0h"]
 [ext_resource type="Texture2D" uid="uid://bdsa4u8cnntk1" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_016.png" id="3_o1qym"]
 [ext_resource type="Texture2D" uid="uid://c8pc30ucyyoln" path="res://assets/Turtle/Minions/Turtle-sama/Buff turtle_017.png" id="4_yaut2"]

@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://g78lugpcr4qv"]
+
+[ext_resource type="Script" uid="uid://c42e8diba8glf" path="res://scripts/Enemies/Enemy Bullets/(bullet)_baguette.gd" id="1_8rw4a"]
+[ext_resource type="Texture2D" uid="uid://bvi3koyyumjwc" path="res://assets/Enemies/Final Boss/Phase 1 Baguette Attack/HillBillyPhase1_Baguette0000.png" id="2_8rw4a"]
+[ext_resource type="Texture2D" uid="uid://ki11gof118pc" path="res://assets/Enemies/Final Boss/Phase 2 Baguette Attack/HillBillyPhase2_Baguette0000.png" id="3_5w4nl"]
+[ext_resource type="Texture2D" uid="uid://clnnw50lfyqy1" path="res://assets/Enemies/Elite/Giant Crab/Jump/Warning.png" id="4_f6xsj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_iom65"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8rw4a")
+}],
+"loop": false,
+"name": &"baguette_p1",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5w4nl")
+}],
+"loop": true,
+"name": &"baguette_p2",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xho2t"]
+radius = 64.381676
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7sb6d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_f6xsj")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jvsc"]
+size = Vector2(700, 700)
+
+[node name="Area2D" type="Area2D" unique_id=1424500926]
+script = ExtResource("1_8rw4a")
+metadata/enemy = ""
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2025924635]
+sprite_frames = SubResource("SpriteFrames_iom65")
+animation = &"baguette_p1"
+offset = Vector2(20, -25)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=85199956]
+position = Vector2(31, -35.999996)
+rotation = 0.6806784
+scale = Vector2(0.3, 1)
+shape = SubResource("CircleShape2D_xho2t")
+
+[node name="WarningSprite" type="AnimatedSprite2D" parent="." unique_id=1839267535]
+visible = false
+position = Vector2(-17, -11.000001)
+scale = Vector2(0.235, 0.235)
+sprite_frames = SubResource("SpriteFrames_7sb6d")
+
+[node name="DiveBox" type="CollisionShape2D" parent="." unique_id=199897782]
+visible = false
+position = Vector2(3.25, -4.25)
+shape = SubResource("RectangleShape2D_2jvsc")

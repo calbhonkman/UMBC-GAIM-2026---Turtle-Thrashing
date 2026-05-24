@@ -1,0 +1,145 @@
+[gd_scene format=3 uid="uid://h840sm3fnray"]
+
+[ext_resource type="Script" uid="uid://b3lwermuhd5r5" path="res://scripts/Enemies/Regular/(enemy)_bush.gd" id="1_ubuuv"]
+[ext_resource type="Texture2D" uid="uid://b0sfyq3kp5x6o" path="res://assets/Enemies/Regular/Bush/Bush attack1.PNG" id="2_ddjay"]
+[ext_resource type="Texture2D" uid="uid://cm6g1lgkfldtm" path="res://assets/Enemies/Regular/Bush/Bush walk1.PNG" id="2_nfhws"]
+[ext_resource type="Texture2D" uid="uid://0vmfpehs3uek" path="res://assets/Enemies/Regular/Bush/Bush attack2 .PNG" id="3_j4tid"]
+[ext_resource type="Texture2D" uid="uid://dxjjgc7h6hivr" path="res://assets/Enemies/Regular/Bush/Bush walk2.PNG" id="3_ocdv5"]
+[ext_resource type="Texture2D" uid="uid://nmuxn0dguy46" path="res://assets/Enemies/Regular/Bush/Bush walk3.PNG" id="4_lpltg"]
+[ext_resource type="Texture2D" uid="uid://cr2rryvvntsvi" path="res://assets/Enemies/Regular/Bush/Bush attack3 .PNG" id="4_ri5pd"]
+[ext_resource type="Texture2D" uid="uid://bw1d3oecob04e" path="res://assets/Enemies/Regular/Bush/Bush shift back1 .PNG" id="8_3xlbe"]
+[ext_resource type="Texture2D" uid="uid://b4q4s1uf283b4" path="res://assets/Enemies/Regular/Bush/Bush shift back2.PNG" id="9_515ur"]
+[ext_resource type="Texture2D" uid="uid://gw2b7q327cum" path="res://assets/Enemies/Regular/Bush/Suck attack thicker lines 1 .PNG" id="10_3xlbe"]
+[ext_resource type="Texture2D" uid="uid://lw3ocu6bjur3" path="res://assets/Enemies/Regular/Bush/Suck attack thicker lines 2.PNG" id="11_515ur"]
+[ext_resource type="Texture2D" uid="uid://rgr6y7x66md" path="res://assets/Enemies/Regular/Bush/Suck attack thicker lines 3.PNG" id="12_v5dbr"]
+[ext_resource type="Texture2D" uid="uid://bufslinqn6ll0" path="res://assets/Enemies/Regular/Bush/Bush shift1 .PNG" id="13_v5dbr"]
+[ext_resource type="Texture2D" uid="uid://bkpnh4m16otbt" path="res://assets/Enemies/Regular/Bush/Bush shift2.PNG" id="14_palyb"]
+[ext_resource type="Texture2D" uid="uid://ehvkl2itk8w" path="res://assets/Enemies/Regular/Bush/Bush shift3.PNG" id="15_4qktc"]
+[ext_resource type="Texture2D" uid="uid://cktgo2ldpto2j" path="res://assets/Enemies/Regular/Bush/Sucking air attachment 1  .PNG" id="16_palyb"]
+[ext_resource type="Texture2D" uid="uid://3k0p844rfq5s" path="res://assets/Enemies/Regular/Bush/Sucking air attachment 2 .PNG" id="17_4qktc"]
+[ext_resource type="Texture2D" uid="uid://liwbmj1fg18w" path="res://assets/Enemies/Regular/Bush/Sucking air attachment 3.PNG" id="18_n14ue"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17m8f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_ddjay")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_j4tid")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ri5pd")
+}],
+"loop": true,
+"name": &"attack",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nfhws")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ocdv5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_lpltg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_3xlbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_515ur")
+}],
+"loop": false,
+"name": &"retract",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_3xlbe")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_515ur")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_v5dbr")
+}],
+"loop": true,
+"name": &"suck",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_v5dbr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_palyb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_4qktc")
+}],
+"loop": false,
+"name": &"unleash",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ddjay"]
+radius = 69.0
+height = 342.22226
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nle2h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_palyb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_4qktc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_n14ue")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddjay"]
+size = Vector2(1860.125, 442.22223)
+
+[node name="Area2D" type="Area2D" unique_id=1424500926 groups=["Enemies"]]
+script = ExtResource("1_ubuuv")
+metadata/enemy = ""
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2025924635]
+scale = Vector2(0.265, 0.265)
+sprite_frames = SubResource("SpriteFrames_17m8f")
+animation = &"retract"
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=85199956]
+position = Vector2(-2, -1)
+scale = Vector2(1, 0.45)
+shape = SubResource("CapsuleShape2D_ddjay")
+
+[node name="Air Sprite" type="AnimatedSprite2D" parent="." unique_id=217639179]
+position = Vector2(967.00006, -234.99998)
+scale = Vector2(0.94999975, 0.19059606)
+sprite_frames = SubResource("SpriteFrames_nle2h")
+frame = 2
+frame_progress = 0.75439173
+offset = Vector2(36.84204, 1201.9031)
+
+[node name="(hitbox)_suck" type="Area2D" parent="." unique_id=1860938534]
+position = Vector2(37, 223)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="(hitbox)_suck" unique_id=913178873]
+position = Vector2(956.9375, -227.00002)
+scale = Vector2(1, 0.45)
+shape = SubResource("RectangleShape2D_ddjay")

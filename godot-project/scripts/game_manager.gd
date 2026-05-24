@@ -112,6 +112,8 @@ func _process(delta):
 		clock.text = timer_minutes + ":" + timer_seconds
 		time_bar.value =  (game_timer / (WAVE_TIME * NUM_WAVES)) * 100
 		
+		$"/root/Node2D/Island/Grass (End)".modulate = Color(1,1,1,clampf(game_timer / (WAVE_TIME * NUM_WAVES), 0.0, 1.0))
+		
 		if game_timer >= WAVE_TIME * current_wave - 10 and elite_warning.visible == false and boss == null:
 			elite_warning.visible = true
 			AudioManager.eliteWarning.play()

@@ -2,57 +2,56 @@
 
 [ext_resource type="Texture2D" uid="uid://cck0lk0eonuq5" path="res://assets/Backgrounds/IslandBG_GreenishHue.png" id="1_ca42v"]
 [ext_resource type="Script" uid="uid://c2q51iiaxua7n" path="res://scripts/player.gd" id="1_yqjtg"]
+[ext_resource type="Texture2D" uid="uid://beavbwqc6lrcu" path="res://assets/Backgrounds/IslandBG_RedishHue.png" id="2_3x338"]
 [ext_resource type="Texture2D" uid="uid://dd4kgnf0sr7pb" path="res://assets/Turtle/Turtle_Dead.png" id="2_gee14"]
 [ext_resource type="Texture2D" uid="uid://dmdftboxv07d5" path="res://assets/Turtle/Turtle_Idle.png" id="2_u5sy4"]
 [ext_resource type="Texture2D" uid="uid://b0lhcesvxk5es" path="res://assets/Turtle/TurtWalk1.png" id="3_gee14"]
 [ext_resource type="Texture2D" uid="uid://py7xx4octhbf" path="res://assets/UI/Upgrade Icons/(icon)_Basic.png" id="3_v2yb1"]
 [ext_resource type="Texture2D" uid="uid://vg1j3cyln3qy" path="res://assets/Turtle/TurtWalk2.png" id="4_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://b7oa2recvmaoo" path="res://assets/UI/Upgrade Icons/Ability Icons Clicked/Basic Clicked.png" id="4_weeiq"]
-[ext_resource type="Script" uid="uid://btydxe3n7bvhi" path="res://scripts/weapons/(weapon)_punch.gd" id="7_kvpfn"]
+[ext_resource type="Script" uid="uid://btydxe3n7bvhi" path="res://scripts/Weapons/(weapon)_punch.gd" id="7_kvpfn"]
 [ext_resource type="Script" uid="uid://bstu2wfytyykc" path="res://scripts/game_manager.gd" id="9_0tnpc"]
-[ext_resource type="Script" uid="uid://cjnrhr8lp15vt" path="res://scripts/weapons/(weapon)_lightning.gd" id="9_dinhu"]
+[ext_resource type="Script" uid="uid://cjnrhr8lp15vt" path="res://scripts/Weapons/(weapon)_lightning.gd" id="9_dinhu"]
 [ext_resource type="Script" uid="uid://c32p66nqvhstf" path="res://scripts/special_screen_shape.gd" id="9_kvpfn"]
-[ext_resource type="PackedScene" uid="uid://csgsdh6itco8" path="res://prefabs/weapons/(bullet)_punch.tscn" id="9_kvuet"]
+[ext_resource type="PackedScene" uid="uid://csgsdh6itco8" path="res://prefabs/Weapons/(bullet)_punch.tscn" id="9_kvuet"]
 [ext_resource type="Texture2D" uid="uid://cjob8cu5mmcmy" path="res://assets/UI/Upgrade Icons/(icon)_Laser.png" id="9_nepv3"]
-[ext_resource type="PackedScene" uid="uid://w0qokvo1f2gx" path="res://prefabs/weapons/(bullet)_lightning.tscn" id="10_dinhu"]
+[ext_resource type="PackedScene" uid="uid://w0qokvo1f2gx" path="res://prefabs/Weapons/(bullet)_lightning.tscn" id="10_dinhu"]
 [ext_resource type="Texture2D" uid="uid://bm3ktw4apr5m8" path="res://assets/UI/Upgrade Icons/Ability Icons Clicked/LAAZAA Clicked.png" id="10_l6q63"]
-[ext_resource type="Script" uid="uid://d3diaewcyfj0l" path="res://scripts/weapons/(minion)_shield.gd" id="12_bt5mj"]
+[ext_resource type="Script" uid="uid://d3diaewcyfj0l" path="res://scripts/Weapons/(minion)_shield.gd" id="12_bt5mj"]
 [ext_resource type="Texture2D" uid="uid://5nodvhabq0mg" path="res://assets/Turtle/Minions/ShieldTurtle.png" id="13_e1j6l"]
-[ext_resource type="Script" uid="uid://ba7xodmvwpqyv" path="res://scripts/weapons/(weapon)_flamestarter.gd" id="14_264po"]
+[ext_resource type="Script" uid="uid://ba7xodmvwpqyv" path="res://scripts/Weapons/(weapon)_flamestarter.gd" id="14_264po"]
 [ext_resource type="Texture2D" uid="uid://d0tnx4q4sieti" path="res://assets/UI/Upgrade Icons/(icon)_Lightning.png" id="14_7025r"]
-[ext_resource type="Script" uid="uid://djppaegdlouul" path="res://scripts/weapons/(weapon)_slap.gd" id="14_bhx41"]
-[ext_resource type="Script" uid="uid://cl403en7htnjl" path="res://scripts/weapons/(weapon)_laser.gd" id="14_e1j6l"]
-[ext_resource type="PackedScene" uid="uid://ntiukiv8fvqy" path="res://prefabs/weapons/(bullet)_flamestarter.tscn" id="15_1kice"]
-[ext_resource type="PackedScene" uid="uid://le1ukfjocokb" path="res://prefabs/weapons/(bullet)_laser.tscn" id="15_pl11u"]
-[ext_resource type="PackedScene" uid="uid://bjkelkyklrwiy" path="res://prefabs/weapons/(bullet)_slap.tscn" id="15_qnb83"]
+[ext_resource type="Script" uid="uid://djppaegdlouul" path="res://scripts/Weapons/(weapon)_slap.gd" id="14_bhx41"]
+[ext_resource type="Script" uid="uid://cl403en7htnjl" path="res://scripts/Weapons/(weapon)_laser.gd" id="14_e1j6l"]
+[ext_resource type="PackedScene" uid="uid://ntiukiv8fvqy" path="res://prefabs/Weapons/(bullet)_flamestarter.tscn" id="15_1kice"]
+[ext_resource type="PackedScene" uid="uid://le1ukfjocokb" path="res://prefabs/Weapons/(bullet)_laser.tscn" id="15_pl11u"]
+[ext_resource type="PackedScene" uid="uid://bjkelkyklrwiy" path="res://prefabs/Weapons/(bullet)_slap.tscn" id="15_qnb83"]
 [ext_resource type="Texture2D" uid="uid://dm1vxwh47fjch" path="res://assets/UI/Upgrade Icons/Ability Icons Clicked/Lightnin Clicked.png" id="16_mmvbu"]
 [ext_resource type="Texture2D" uid="uid://d1nyiljcd5xns" path="res://assets/UI/Upgrade Icons/(icon)_Punch.png" id="17_m4url"]
-[ext_resource type="PackedScene" uid="uid://fnhiviwbuuj8" path="res://audio/audio_manager.tscn" id="18_ssvqc"]
+[ext_resource type="PackedScene" uid="uid://fnhiviwbuuj8" path="res://prefabs/audio_manager.tscn" id="18_ssvqc"]
 [ext_resource type="PackedScene" uid="uid://venyw07uskjf" path="res://prefabs/cherry.tscn" id="19_bhx41"]
-[ext_resource type="PackedScene" uid="uid://d1k32mfbnnud3" path="res://prefabs/enemies/(enemy)_crab.tscn" id="19_e1j6l"]
-[ext_resource type="Texture2D" uid="uid://h2a06nd3krx3" path="res://assets/UI/Upgrade Icons/(icon)_Slap.png" id="20_8ool0"]
-[ext_resource type="PackedScene" uid="uid://dfuv28c2ne1eo" path="res://prefabs/enemies/(enemy)_snake.tscn" id="20_pl11u"]
+[ext_resource type="PackedScene" uid="uid://d1k32mfbnnud3" path="res://prefabs/Enemies/Regular/(enemy)_crab.tscn" id="19_e1j6l"]
+[ext_resource type="PackedScene" uid="uid://dfuv28c2ne1eo" path="res://prefabs/Enemies/Regular/(enemy)_snake.tscn" id="20_pl11u"]
 [ext_resource type="Texture2D" uid="uid://cq8d12gsap7yg" path="res://assets/UI/Upgrade Icons/Ability Icons Clicked/Punch Clicked.png" id="20_weeiq"]
-[ext_resource type="Texture2D" uid="uid://dwxgvse6ih8aw" path="res://assets/UI/Upgrade Icons/Ability Icons Clicked/Slap Clicked.png" id="21_66xif"]
-[ext_resource type="PackedScene" uid="uid://dq43dbtcuu4m" path="res://prefabs/enemies/(enemy)_turtle.tscn" id="21_bhx41"]
-[ext_resource type="PackedScene" uid="uid://dw20u1c5v07qr" path="res://prefabs/enemies/(boss)_raccoon.tscn" id="22_qnb83"]
-[ext_resource type="PackedScene" uid="uid://bsjban1wyxwl4" path="res://prefabs/enemies/(enemy)_raccoon_small.tscn" id="23_pl11u"]
+[ext_resource type="PackedScene" uid="uid://dq43dbtcuu4m" path="res://prefabs/Enemies/Regular/(enemy)_turtle.tscn" id="21_bhx41"]
+[ext_resource type="PackedScene" uid="uid://dw20u1c5v07qr" path="res://prefabs/Enemies/Elite/(boss)_raccoon.tscn" id="22_qnb83"]
+[ext_resource type="PackedScene" uid="uid://bsjban1wyxwl4" path="res://prefabs/Enemies/Regular/(enemy)_raccoon_small.tscn" id="23_pl11u"]
 [ext_resource type="Texture2D" uid="uid://bmxp74jc2q5bw" path="res://assets/UI/Upgrade Icons/(icon)_Flamestarter.png" id="23_pr1ej"]
 [ext_resource type="Texture2D" uid="uid://soojs7y1cfdn" path="res://assets/UI/Upgrade Icons/(icon)_Shield.png" id="25_7025r"]
-[ext_resource type="PackedScene" uid="uid://cfdlk4r0ys684" path="res://prefabs/enemies/(boss)_crab.tscn" id="25_qnb83"]
+[ext_resource type="PackedScene" uid="uid://cfdlk4r0ys684" path="res://prefabs/Enemies/Elite/(boss)_crab.tscn" id="25_qnb83"]
 [ext_resource type="Texture2D" uid="uid://dpt2vuiqll18q" path="res://assets/UI/Upgrade Icons/Ability Icons Clicked/Flame Starter Clicked.png" id="28_uxocx"]
 [ext_resource type="Script" uid="uid://cypit3nrwog1x" path="res://scripts/level_up.gd" id="29_sgl2t"]
-[ext_resource type="Script" uid="uid://cxx5npg6645rl" path="res://scripts/weapons/(weapon)_turtle_sama.gd" id="30_uxocx"]
+[ext_resource type="Script" uid="uid://cxx5npg6645rl" path="res://scripts/Weapons/(weapon)_turtle_sama.gd" id="30_uxocx"]
 [ext_resource type="Texture2D" uid="uid://b7a6bfks24i60" path="res://assets/UI/Upgrade Icons/(icon)_BLANK.png" id="30_wljb1"]
 [ext_resource type="Texture2D" uid="uid://o04sbbcfx7p7" path="res://assets/UI/Upgrade Icons/Ability Icons Clicked/Shield Clicked.png" id="31_7nv0b"]
 [ext_resource type="Texture2D" uid="uid://cs4hrggtlw6bx" path="res://assets/UI/Upgrade Icons/Turtle-Sama Summon.png" id="31_o8oq8"]
 [ext_resource type="Texture2D" uid="uid://bi547l6xmt1jk" path="res://assets/UI/Damage Vignette.png" id="31_v2yb1"]
 [ext_resource type="Texture2D" uid="uid://o1uwdsukrmbs" path="res://assets/UI/Upgrade Icons/Ability Icons Clicked/Turtle-Sama Summon Clicked.png" id="32_sxt1d"]
-[ext_resource type="PackedScene" uid="uid://h840sm3fnray" path="res://prefabs/enemies/(enemy)_bush.tscn" id="33_8ool0"]
-[ext_resource type="PackedScene" uid="uid://cjwmklbpd0qqs" path="res://prefabs/enemies/(enemy)_seagull.tscn" id="34_pr1ej"]
-[ext_resource type="PackedScene" uid="uid://bq4gj57qfkh1y" path="res://prefabs/enemies/(enemy)_raccoon_regular.tscn" id="35_n8ral"]
-[ext_resource type="Script" uid="uid://b7jd3dyuq3laq" path="res://scenes/master_slider.gd" id="36_m4url"]
-[ext_resource type="PackedScene" uid="uid://bfchoqlyg23ad" path="res://prefabs/enemies/(boss)_eeveel.tscn" id="37_05nbr"]
+[ext_resource type="PackedScene" uid="uid://h840sm3fnray" path="res://prefabs/Enemies/Regular/(enemy)_bush.tscn" id="33_8ool0"]
+[ext_resource type="PackedScene" uid="uid://cjwmklbpd0qqs" path="res://prefabs/Enemies/Regular/(enemy)_seagull.tscn" id="34_pr1ej"]
+[ext_resource type="PackedScene" uid="uid://bq4gj57qfkh1y" path="res://prefabs/Enemies/Regular/(enemy)_raccoon_regular.tscn" id="35_n8ral"]
+[ext_resource type="Script" uid="uid://b7jd3dyuq3laq" path="res://scripts/UI/master_slider.gd" id="36_m4url"]
+[ext_resource type="PackedScene" uid="uid://bfchoqlyg23ad" path="res://prefabs/Enemies/Elite/(boss)_eeveel.tscn" id="37_05nbr"]
 [ext_resource type="Texture2D" uid="uid://dnh504hpdwomo" path="res://assets/UI/Player_Health.png" id="38_0sl42"]
 [ext_resource type="Texture2D" uid="uid://b10r8smllkcx4" path="res://assets/UI/Timer UI progression bar detailed.PNG" id="38_o8ni1"]
 [ext_resource type="Texture2D" uid="uid://cesefbtqrxldh" path="res://assets/UI/Timer UI detailed.PNG" id="38_pf7vy"]
@@ -60,21 +59,21 @@
 [ext_resource type="Texture2D" uid="uid://dgtvs5mh20dyj" path="res://assets/Enemies/Elite/Eeveel/Health Bar/Eeveel Health Bar v3.png" id="40_rm0al"]
 [ext_resource type="Texture2D" uid="uid://bifmwi4ai4yqa" path="res://assets/UI/Player_Health_Danger.png" id="41_h3rex"]
 [ext_resource type="Texture2D" uid="uid://cde5isw6cdpwk" path="res://assets/UI/Game Over Screen.png" id="42_0sl42"]
-[ext_resource type="Texture2D" uid="uid://x32oyvkwyjkt" path="res://assets/Enemies/Bosses/Final Boss/Health Bar/Final Boss Health Bar.png" id="42_bk1p3"]
+[ext_resource type="Texture2D" uid="uid://x32oyvkwyjkt" path="res://assets/Enemies/Final Boss/Health Bar/Final Boss Health Bar.png" id="42_bk1p3"]
 [ext_resource type="Texture2D" uid="uid://bkxh3afqjuohj" path="res://assets/Enemies/Elite/Eeveel/Health Bar/Eeveel Bar.png" id="42_rm0al"]
-[ext_resource type="Script" uid="uid://bm07s0umyx3r2" path="res://scenes/boss_health_bar.gd" id="43_oaba0"]
+[ext_resource type="Script" uid="uid://bm07s0umyx3r2" path="res://scripts/UI/boss_health_bar.gd" id="43_oaba0"]
 [ext_resource type="Texture2D" uid="uid://c376tooy8drjp" path="res://assets/Enemies/Elite/Giant Crab/Health Bar/BMCrab_HealthBorder.png" id="44_oaba0"]
-[ext_resource type="PackedScene" uid="uid://dt4wywnf1a4po" path="res://prefabs/enemies/(boss)_hill_billy.tscn" id="45_mmvbu"]
-[ext_resource type="Texture2D" uid="uid://dpuh3ts1rxwt6" path="res://assets/Enemies/Bosses/Final Boss/Health Bar/Final Boss Health Border.png" id="45_n8ral"]
+[ext_resource type="PackedScene" uid="uid://dt4wywnf1a4po" path="res://prefabs/Enemies/Final Boss/(boss)_hill_billy.tscn" id="45_mmvbu"]
+[ext_resource type="Texture2D" uid="uid://dpuh3ts1rxwt6" path="res://assets/Enemies/Final Boss/Health Bar/Final Boss Health Border.png" id="45_n8ral"]
 [ext_resource type="Texture2D" uid="uid://xytxib1f11io" path="res://assets/UI/RESUME.png" id="48_ms3bu"]
 [ext_resource type="Texture2D" uid="uid://dhg0yjtfxmu6v" path="res://assets/UI/TITLE.png" id="49_7ixpq"]
 [ext_resource type="Texture2D" uid="uid://c1jvifyu8r25a" path="res://assets/UI/BADDY INBOUND (Elite warning).png" id="50_i4re6"]
 [ext_resource type="Texture2D" uid="uid://bdfwv3fyosv7l" path="res://assets/UI/CONFIRM.png" id="53_bk1p3"]
 [ext_resource type="Texture2D" uid="uid://beh6cmgrmiyj6" path="res://assets/UI/Cursor.png" id="58_yd4ix"]
 [ext_resource type="Texture2D" uid="uid://ce67hotklbs52" path="res://assets/UI/PAUSE.png" id="62_sxt1d"]
-[ext_resource type="Texture2D" uid="uid://bghb24juyw7au" path="res://assets/Win Screen/WinScreen0001.png" id="70_753oq"]
-[ext_resource type="Texture2D" uid="uid://cs4ba4bjbk68x" path="res://assets/Win Screen/WinScreen0002.png" id="71_3x338"]
-[ext_resource type="Texture2D" uid="uid://cj6j8nre2a035" path="res://assets/Win Screen/WinScreen0003.png" id="72_1yg85"]
+[ext_resource type="Texture2D" uid="uid://bghb24juyw7au" path="res://assets/UI/Win Screen/WinScreen0001.png" id="70_753oq"]
+[ext_resource type="Texture2D" uid="uid://cs4ba4bjbk68x" path="res://assets/UI/Win Screen/WinScreen0002.png" id="71_3x338"]
+[ext_resource type="Texture2D" uid="uid://cj6j8nre2a035" path="res://assets/UI/Win Screen/WinScreen0003.png" id="72_1yg85"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0tnpc"]
 size = Vector2(1312.9883, 50)
@@ -215,106 +214,127 @@ animations = [{
 [node name="Island" type="StaticBody2D" parent="." unique_id=21348922]
 z_index = -1
 position = Vector2(0, -300)
-scale = Vector2(0.6, 0.6)
 
-[node name="Grass" type="Sprite2D" parent="Island" unique_id=1566851548]
-position = Vector2(0, 400)
+[node name="Grass (Start)" type="Sprite2D" parent="Island" unique_id=1566851548]
+position = Vector2(0, 240.00002)
 texture = ExtResource("1_ca42v")
 
+[node name="Grass (End)" type="Sprite2D" parent="Island" unique_id=1428345640]
+position = Vector2(0, 240.00002)
+texture = ExtResource("2_3x338")
+
 [node name="NorthWall" type="CollisionShape2D" parent="Island" unique_id=1519303801]
-position = Vector2(-621.6666, -1893.333)
-rotation = 0.121797286
+position = Vector2(-373, -1135.9999)
+rotation = 0.12179729
+scale = Vector2(0.59999996, 0.59999996)
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall2" type="CollisionShape2D" parent="Island" unique_id=1404371838]
-position = Vector2(-2311.6665, -1278.3334)
+position = Vector2(-1387, -767)
 rotation = -0.51608497
+scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall18" type="CollisionShape2D" parent="Island" unique_id=909227449]
-position = Vector2(-1229.9999, -1913.3331)
-rotation = -0.5465888
+position = Vector2(-737.99994, -1147.9999)
+rotation = -0.5465887
+scale = Vector2(0.6000001, 0.6000001)
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall4" type="CollisionShape2D" parent="Island" unique_id=1976246661]
-position = Vector2(-2359.9998, 36.666733)
+position = Vector2(-1415.9999, 22.00003)
 rotation = -0.5663373
+scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall17" type="CollisionShape2D" parent="Island" unique_id=778373405]
-position = Vector2(-2296.6667, 168.33331)
+position = Vector2(-1378.0001, 101)
 rotation = -1.0211073
+scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall3" type="CollisionShape2D" parent="Island" unique_id=217982617]
-position = Vector2(-2368.3333, -1045)
+position = Vector2(-1421, -627)
 rotation = 0.52491164
+scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall16" type="CollisionShape2D" parent="Island" unique_id=1695993073]
-position = Vector2(-1751.6666, -613.33344)
+position = Vector2(-1051, -368.00006)
 rotation = -2.0928776
-scale = Vector2(0.99999994, 0.99999994)
+scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_rysoc")
 
 [node name="NorthWall19" type="CollisionShape2D" parent="Island" unique_id=1829678078]
-position = Vector2(-1751.6666, -421.6666)
+position = Vector2(-1051, -253)
 rotation = -1.0476354
+scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_rysoc")
 
 [node name="NorthWall5" type="CollisionShape2D" parent="Island" unique_id=141663997]
-position = Vector2(-2178.3333, 695)
+position = Vector2(-1307, 417.00003)
 rotation = -1.8385842
+scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall6" type="CollisionShape2D" parent="Island" unique_id=1403039320]
-position = Vector2(-1971.6664, 1326.6665)
+position = Vector2(-1182.9999, 795.99994)
 rotation = -2.143515
+scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall7" type="CollisionShape2D" parent="Island" unique_id=1588511696]
-position = Vector2(-1671.6666, 1841.6669)
+position = Vector2(-1003, 1105.0001)
 rotation = -3.0743413
+scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall8" type="CollisionShape2D" parent="Island" unique_id=1712126714]
-position = Vector2(-503.33337, 2260.0002)
+position = Vector2(-302.00003, 1356.0002)
 rotation = -2.4790916
+scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall9" type="CollisionShape2D" parent="Island" unique_id=262330601]
-position = Vector2(-60.000008, 2371.6667)
+position = Vector2(-36.000008, 1423.0001)
 rotation = -3.0077944
+scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall10" type="CollisionShape2D" parent="Island" unique_id=1448824927]
-position = Vector2(913.3332, 2296.6665)
-rotation = -3.4909704
+position = Vector2(547.99994, 1378)
+rotation = 2.7922149
+scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall11" type="CollisionShape2D" parent="Island" unique_id=1514951125]
-position = Vector2(2049.9995, 1676.6664)
-rotation = -3.7868316
+position = Vector2(1229.9998, 1005.9999)
+rotation = 2.4963536
+scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall12" type="CollisionShape2D" parent="Island" unique_id=1259689005]
-position = Vector2(2541.6665, 631.6667)
-rotation = -4.7160378
+position = Vector2(1525, 379.00003)
+rotation = 1.5671476
+scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall13" type="CollisionShape2D" parent="Island" unique_id=482913348]
-position = Vector2(2541.6665, -686.66675)
-rotation = -4.7160378
+position = Vector2(1525, -412.00006)
+rotation = 1.5671476
+scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall14" type="CollisionShape2D" parent="Island" unique_id=212433254]
-position = Vector2(1914.9999, -1534.9998)
-rotation = -5.9741387
+position = Vector2(1149, -920.9999)
+rotation = 0.3090466
+scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="NorthWall15" type="CollisionShape2D" parent="Island" unique_id=2047528167]
-position = Vector2(676.66656, -1770)
-rotation = -6.221928
+position = Vector2(405.99997, -1062)
+rotation = 0.06125719
+scale = Vector2(0.6, 0.6)
 shape = SubResource("RectangleShape2D_0tnpc")
 
 [node name="Player" type="CharacterBody2D" parent="." unique_id=1744978302 groups=["Player"]]
@@ -399,8 +419,6 @@ z_index = 1
 script = ExtResource("14_bhx41")
 BULLET = ExtResource("15_qnb83")
 upgrade_descriptions = Array[String](["Unlock Slap", "Slap Stun Duration +25%", "Slap Cooldown -25%", "Slap Size +50%"])
-upgrade_icon = ExtResource("20_8ool0")
-upgrade_icon_selected = ExtResource("21_66xif")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Slap" unique_id=286922218]
 shape = SubResource("CircleShape2D_iywne")

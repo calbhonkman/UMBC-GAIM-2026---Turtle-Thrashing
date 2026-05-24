@@ -1,0 +1,181 @@
+[gd_scene format=3 uid="uid://bfchoqlyg23ad"]
+
+[ext_resource type="Script" uid="uid://cw7edk8iv1sul" path="res://scripts/Enemies/Elite/(elite)_eeveel.gd" id="1_42qmj"]
+[ext_resource type="Texture2D" uid="uid://dgmhe7bk6ig8h" path="res://assets/Enemies/Elite/Eeveel/Discharge/Eeveel attack F1.png" id="2_2o2cc"]
+[ext_resource type="Texture2D" uid="uid://blvm8ca3kyqdt" path="res://assets/Enemies/Elite/Eeveel/Discharge/Eeveel buildup+attack_001.png" id="2_a2k80"]
+[ext_resource type="Texture2D" uid="uid://hwnrc4mfq53l" path="res://assets/Enemies/Elite/Eeveel/Discharge/Eeveel buildup+attack_002.png" id="3_cjm5d"]
+[ext_resource type="Texture2D" uid="uid://bx6mnouvhlpn1" path="res://assets/Enemies/Elite/Eeveel/Discharge/Eeveel attack F2.png" id="3_qw718"]
+[ext_resource type="Texture2D" uid="uid://kscmrodxlo7d" path="res://assets/Enemies/Elite/Eeveel/Walk/Eeveel Tail Swing 1.png" id="4_cjm5d"]
+[ext_resource type="Texture2D" uid="uid://dlcb1mmov8ljb" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_002.png" id="4_rhr4u"]
+[ext_resource type="Texture2D" uid="uid://c2twxcn8iiqy2" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_004.png" id="5_5pwpr"]
+[ext_resource type="Texture2D" uid="uid://dguj7pnv6ulys" path="res://assets/Enemies/Elite/Eeveel/Discharge/Eeveel buildup+attack_031.png" id="5_a33qy"]
+[ext_resource type="Texture2D" uid="uid://c3jx2daadablq" path="res://assets/Enemies/Elite/Eeveel/Idle/Eeveel Idle.png" id="5_iao8l"]
+[ext_resource type="Texture2D" uid="uid://ct0o6o2buv8ts" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_006.png" id="6_2o2cc"]
+[ext_resource type="Texture2D" uid="uid://dljo3jqbafas1" path="res://assets/Enemies/Elite/Eeveel/Walk/Eeveel Tail Swing 2.png" id="6_a33qy"]
+[ext_resource type="Texture2D" uid="uid://d3lujork05cd7" path="res://assets/Enemies/Elite/Eeveel/Discharge/Eeveel buildup+attack_032.png" id="6_po5f5"]
+[ext_resource type="Texture2D" uid="uid://d06qgb6bfurcj" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_008.png" id="7_qw718"]
+[ext_resource type="Texture2D" uid="uid://5w4lc8q78alv" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_010.png" id="8_oguuh"]
+[ext_resource type="Texture2D" uid="uid://inhrfshyqs3h" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_012.png" id="9_2t2vm"]
+[ext_resource type="Texture2D" uid="uid://bq8lmaw4cqvgc" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_014.png" id="10_8w7jp"]
+[ext_resource type="Texture2D" uid="uid://hhanlywcv0lt" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_016.png" id="11_rb486"]
+[ext_resource type="Texture2D" uid="uid://bswto3gua1ms4" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_019.png" id="12_teg4n"]
+[ext_resource type="Texture2D" uid="uid://cn2eun0h2gow1" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_020.png" id="13_lnxi8"]
+[ext_resource type="Texture2D" uid="uid://1ayu8irla8ip" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_029.png" id="14_tlp46"]
+[ext_resource type="Texture2D" uid="uid://3khrajec5hy1" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_031.png" id="15_w5ejh"]
+[ext_resource type="Texture2D" uid="uid://cr7rufb388moc" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_034.png" id="16_y4uq4"]
+[ext_resource type="Texture2D" uid="uid://dwiyn07bmx4ad" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_036.png" id="17_7sy3c"]
+[ext_resource type="Texture2D" uid="uid://b5u46qq55b3d6" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_037.png" id="18_l5ar4"]
+[ext_resource type="Texture2D" uid="uid://bne01buwdk6bv" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_038.png" id="19_ywjki"]
+[ext_resource type="Texture2D" uid="uid://d3crbbtng205u" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_039.png" id="20_evpq3"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oguuh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_2o2cc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_qw718")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n67ta"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_a2k80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_cjm5d")
+}],
+"loop": true,
+"name": &"charge",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_rhr4u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_5pwpr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2o2cc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qw718")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_oguuh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_2t2vm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_8w7jp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_rb486")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_teg4n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_lnxi8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_tlp46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_w5ejh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_y4uq4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_7sy3c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_l5ar4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_ywjki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_evpq3")
+}],
+"loop": false,
+"name": &"death",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_cjm5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_iao8l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a33qy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_iao8l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_a33qy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_po5f5")
+}],
+"loop": true,
+"name": &"discharge",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_74bk0"]
+radius = 60.0
+height = 381.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_or3ip"]
+radius = 78.160095
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2o2cc"]
+radius = 358.13965
+
+[node name="(boss)_Eeveel" type="Area2D" unique_id=1711400772 groups=["Enemies"]]
+script = ExtResource("1_42qmj")
+
+[node name="DischargeSprite" type="AnimatedSprite2D" parent="." unique_id=816037722]
+position = Vector2(-9.000003, -20.999998)
+scale = Vector2(0.19486764, 0.19791667)
+sprite_frames = SubResource("SpriteFrames_oguuh")
+frame_progress = 0.007843756
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1910162732]
+position = Vector2(-17, -68)
+scale = Vector2(0.15, 0.15)
+sprite_frames = SubResource("SpriteFrames_n67ta")
+autoplay = "default"
+frame_progress = 0.7321904
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1028948672]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_74bk0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." unique_id=935527318]
+position = Vector2(145, -15)
+shape = SubResource("CircleShape2D_or3ip")
+
+[node name="Hitbox_(Discharge)" type="CollisionShape2D" parent="." unique_id=269731234]
+position = Vector2(1, -12)
+scale = Vector2(1, 0.55)
+shape = SubResource("CircleShape2D_2o2cc")
+disabled = true

@@ -1,0 +1,114 @@
+[gd_scene format=3 uid="uid://cjwmklbpd0qqs"]
+
+[ext_resource type="Script" uid="uid://nbm4sy4po062" path="res://scripts/Enemies/Regular/(enemy)_seagull.gd" id="1_qgmfd"]
+[ext_resource type="Texture2D" uid="uid://b7cb0wvoluasd" path="res://assets/Enemies/Regular/Seagull/Bird shadow.png" id="2_jwc44"]
+[ext_resource type="Texture2D" uid="uid://8ygf0q303pyc" path="res://assets/Enemies/Regular/Seagull/Bird dive bomb.png" id="3_5d6mm"]
+[ext_resource type="Texture2D" uid="uid://dxirir0ix8x2e" path="res://assets/Enemies/Regular/Seagull/Bird dirt land.png" id="4_jwc44"]
+[ext_resource type="Texture2D" uid="uid://diciawdrw86kp" path="res://assets/Enemies/Regular/Seagull/Bird dirt escape/Bird dirt escape_046.png" id="4_qgmfd"]
+[ext_resource type="Texture2D" uid="uid://bg025tokcnbcw" path="res://assets/Enemies/Regular/Seagull/Bird dirt escape/Bird dirt escape_051.png" id="5_7sb6d"]
+[ext_resource type="Texture2D" uid="uid://bdo4c0jhmixmp" path="res://assets/Enemies/Regular/Seagull/Bird dirt escape/Bird dirt escape_001.png" id="5_ukbtu"]
+[ext_resource type="Texture2D" uid="uid://bdtxao7eing65" path="res://assets/Enemies/Regular/Seagull/Bird dirt escape/Bird dirt escape_055.png" id="6_2jvsc"]
+[ext_resource type="Texture2D" uid="uid://cp3yknafwrwkl" path="res://assets/Enemies/Regular/Seagull/Bird dirt escape/Bird dirt escape_058.png" id="7_7332a"]
+[ext_resource type="Texture2D" uid="uid://47r5q5y3oat2" path="res://assets/Enemies/Regular/Seagull/Bird dirt escape/Bird dirt escape_023.png" id="7_qgmfd"]
+[ext_resource type="Texture2D" uid="uid://bqbs76r2wpgdw" path="res://assets/Enemies/Regular/Seagull/Bird dirt escape/Bird dirt escape_061.png" id="8_27g3v"]
+[ext_resource type="Texture2D" uid="uid://clnnw50lfyqy1" path="res://assets/Enemies/Elite/Giant Crab/Jump/Warning.png" id="12_2jvsc"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_17m8f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_jwc44")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_5d6mm")
+}],
+"loop": true,
+"name": &"dive",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 5.0,
+"texture": ExtResource("4_qgmfd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_7sb6d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_2jvsc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_7332a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_27g3v")
+}],
+"loop": false,
+"name": &"escape",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jwc44")
+}],
+"loop": true,
+"name": &"land",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ukbtu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_qgmfd")
+}],
+"loop": true,
+"name": &"struggle",
+"speed": 8.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7sb6d"]
+radius = 29.0
+height = 155.55557
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7sb6d"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_2jvsc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2jvsc"]
+size = Vector2(541.5, 414.5)
+
+[node name="Area2D" type="Area2D" unique_id=1424500926 groups=["Enemies"]]
+script = ExtResource("1_qgmfd")
+metadata/enemy = ""
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2025924635]
+position = Vector2(-2, -8)
+scale = Vector2(0.115, 0.115)
+sprite_frames = SubResource("SpriteFrames_17m8f")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=85199956]
+position = Vector2(-5, -16)
+scale = Vector2(1, 0.45)
+shape = SubResource("CapsuleShape2D_7sb6d")
+
+[node name="WarningSprite" type="AnimatedSprite2D" parent="." unique_id=1839267535]
+position = Vector2(-17, -11.000001)
+scale = Vector2(0.235, 0.235)
+sprite_frames = SubResource("SpriteFrames_7sb6d")
+
+[node name="DiveBox" type="CollisionShape2D" parent="." unique_id=199897782]
+position = Vector2(3.25, -4.25)
+shape = SubResource("RectangleShape2D_2jvsc")
