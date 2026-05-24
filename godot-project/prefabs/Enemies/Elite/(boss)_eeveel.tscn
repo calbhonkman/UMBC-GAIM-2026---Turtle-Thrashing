@@ -8,11 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://kscmrodxlo7d" path="res://assets/Enemies/Elite/Eeveel/Walk/Eeveel Tail Swing 1.png" id="4_cjm5d"]
 [ext_resource type="Texture2D" uid="uid://dlcb1mmov8ljb" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_002.png" id="4_rhr4u"]
 [ext_resource type="Texture2D" uid="uid://c2twxcn8iiqy2" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_004.png" id="5_5pwpr"]
-[ext_resource type="Texture2D" uid="uid://dguj7pnv6ulys" path="res://assets/Enemies/Elite/Eeveel/Discharge/Eeveel buildup+attack_031.png" id="5_a33qy"]
 [ext_resource type="Texture2D" uid="uid://c3jx2daadablq" path="res://assets/Enemies/Elite/Eeveel/Idle/Eeveel Idle.png" id="5_iao8l"]
 [ext_resource type="Texture2D" uid="uid://ct0o6o2buv8ts" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_006.png" id="6_2o2cc"]
 [ext_resource type="Texture2D" uid="uid://dljo3jqbafas1" path="res://assets/Enemies/Elite/Eeveel/Walk/Eeveel Tail Swing 2.png" id="6_a33qy"]
-[ext_resource type="Texture2D" uid="uid://d3lujork05cd7" path="res://assets/Enemies/Elite/Eeveel/Discharge/Eeveel buildup+attack_032.png" id="6_po5f5"]
 [ext_resource type="Texture2D" uid="uid://d06qgb6bfurcj" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_008.png" id="7_qw718"]
 [ext_resource type="Texture2D" uid="uid://5w4lc8q78alv" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_010.png" id="8_oguuh"]
 [ext_resource type="Texture2D" uid="uid://inhrfshyqs3h" path="res://assets/Enemies/Elite/Eeveel/Death/Eeveel Death_012.png" id="9_2t2vm"]
@@ -127,17 +125,6 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 8.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("5_a33qy")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_po5f5")
-}],
-"loop": true,
-"name": &"discharge",
-"speed": 8.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_74bk0"]
@@ -154,17 +141,14 @@ radius = 358.13965
 script = ExtResource("1_42qmj")
 
 [node name="DischargeSprite" type="AnimatedSprite2D" parent="." unique_id=816037722]
-position = Vector2(-9.000003, -20.999998)
-scale = Vector2(0.19486764, 0.19791667)
 sprite_frames = SubResource("SpriteFrames_oguuh")
 frame_progress = 0.007843756
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1910162732]
 position = Vector2(-17, -68)
-scale = Vector2(0.15, 0.15)
 sprite_frames = SubResource("SpriteFrames_n67ta")
 autoplay = "default"
-frame_progress = 0.7321904
+frame_progress = 0.16788909
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1028948672]
 rotation = 1.5707964
@@ -175,7 +159,6 @@ position = Vector2(145, -15)
 shape = SubResource("CircleShape2D_or3ip")
 
 [node name="Hitbox_(Discharge)" type="CollisionShape2D" parent="." unique_id=269731234]
-position = Vector2(1, -12)
 scale = Vector2(1, 0.55)
 shape = SubResource("CircleShape2D_2o2cc")
 disabled = true

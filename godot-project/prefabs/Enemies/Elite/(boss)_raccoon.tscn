@@ -150,9 +150,8 @@ RACCOON = ExtResource("4_hpsqs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1010640560]
 position = Vector2(28, -29)
-scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_ofi5x")
-animation = &"death2"
+animation = &"attack_bowl"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1696238714]
 position = Vector2(-27.239523, 23.17249)
