@@ -5,6 +5,7 @@ extends Area2D
 var mode = "default"
 
 var damage = 0.0
+var stun = 0.25
 
 func _process(_delta):
 	match mode:
@@ -23,6 +24,8 @@ func _process(_delta):
 					if area.is_in_group("Enemies"):
 						area.damage(damage)
 						$"/root/Node2D/GameManager".create_damage_particle(area.global_position, damage)
+					if area.has_method("stun"):
+						area.stun(stun)
 				strike.play("strike2")
 				mode = "done"
 		"done":

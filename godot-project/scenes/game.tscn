@@ -37,8 +37,10 @@
 [ext_resource type="PackedScene" uid="uid://dw20u1c5v07qr" path="res://prefabs/Enemies/Elite/(boss)_raccoon.tscn" id="22_qnb83"]
 [ext_resource type="PackedScene" uid="uid://bsjban1wyxwl4" path="res://prefabs/Enemies/Regular/(enemy)_raccoon_small.tscn" id="23_pl11u"]
 [ext_resource type="Texture2D" uid="uid://bmxp74jc2q5bw" path="res://assets/UI/Upgrade Icons/(icon)_Flamestarter.png" id="23_pr1ej"]
+[ext_resource type="Texture2D" uid="uid://h2a06nd3krx3" path="res://assets/UI/Upgrade Icons/(icon)_Slap.png" id="25_3x338"]
 [ext_resource type="Texture2D" uid="uid://soojs7y1cfdn" path="res://assets/UI/Upgrade Icons/(icon)_Shield.png" id="25_7025r"]
 [ext_resource type="PackedScene" uid="uid://cfdlk4r0ys684" path="res://prefabs/Enemies/Elite/(boss)_crab.tscn" id="25_qnb83"]
+[ext_resource type="Texture2D" uid="uid://dwxgvse6ih8aw" path="res://assets/UI/Upgrade Icons/Ability Icons Clicked/Slap Clicked.png" id="26_1yg85"]
 [ext_resource type="Texture2D" uid="uid://dpt2vuiqll18q" path="res://assets/UI/Upgrade Icons/Ability Icons Clicked/Flame Starter Clicked.png" id="28_uxocx"]
 [ext_resource type="Script" uid="uid://cypit3nrwog1x" path="res://scripts/level_up.gd" id="29_sgl2t"]
 [ext_resource type="Script" uid="uid://cxx5npg6645rl" path="res://scripts/Weapons/(weapon)_turtle_sama.gd" id="30_uxocx"]
@@ -54,7 +56,6 @@
 [ext_resource type="PackedScene" uid="uid://bfchoqlyg23ad" path="res://prefabs/Enemies/Elite/(boss)_eeveel.tscn" id="37_05nbr"]
 [ext_resource type="Texture2D" uid="uid://dnh504hpdwomo" path="res://assets/UI/Player_Health.png" id="38_0sl42"]
 [ext_resource type="Texture2D" uid="uid://b10r8smllkcx4" path="res://assets/UI/Timer UI progression bar detailed.PNG" id="38_o8ni1"]
-[ext_resource type="Texture2D" uid="uid://cesefbtqrxldh" path="res://assets/UI/Timer UI detailed.PNG" id="38_pf7vy"]
 [ext_resource type="Texture2D" uid="uid://dk7fix7poxx17" path="res://assets/Enemies/Elite/Dumpster King/Health Bar/Dumpster_King_Health-Border.png" id="40_8qswn"]
 [ext_resource type="Texture2D" uid="uid://dgtvs5mh20dyj" path="res://assets/Enemies/Elite/Eeveel/Health Bar/Eeveel Health Bar v3.png" id="40_rm0al"]
 [ext_resource type="Texture2D" uid="uid://bifmwi4ai4yqa" path="res://assets/UI/Player_Health_Danger.png" id="41_h3rex"]
@@ -68,6 +69,7 @@
 [ext_resource type="Texture2D" uid="uid://xytxib1f11io" path="res://assets/UI/RESUME.png" id="48_ms3bu"]
 [ext_resource type="Texture2D" uid="uid://dhg0yjtfxmu6v" path="res://assets/UI/TITLE.png" id="49_7ixpq"]
 [ext_resource type="Texture2D" uid="uid://c1jvifyu8r25a" path="res://assets/UI/BADDY INBOUND (Elite warning).png" id="50_i4re6"]
+[ext_resource type="Texture2D" uid="uid://bdvrgdojythmx" path="res://assets/UI/Timer UI.png" id="52_3x338"]
 [ext_resource type="Texture2D" uid="uid://bdfwv3fyosv7l" path="res://assets/UI/CONFIRM.png" id="53_bk1p3"]
 [ext_resource type="Texture2D" uid="uid://beh6cmgrmiyj6" path="res://assets/UI/Cursor.png" id="58_yd4ix"]
 [ext_resource type="Texture2D" uid="uid://ce67hotklbs52" path="res://assets/UI/PAUSE.png" id="62_sxt1d"]
@@ -80,6 +82,8 @@ size = Vector2(1312.9883, 50)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rysoc"]
 size = Vector2(253.19856, 50)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7gkqi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_vtaks"]
 animations = [{
@@ -112,10 +116,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ca42v"]
-radius = 57.0179
+radius = 40.8063
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rysoc"]
-radius = 24.0
+radius = 16.03122
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0tnpc"]
 radius = 300.0
@@ -131,7 +135,7 @@ radius = 16.0
 height = 70.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_gee14"]
-font_size = 96
+font_size = 80
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_oaba0"]
@@ -345,27 +349,27 @@ upgrade_icon = ExtResource("3_v2yb1")
 upgrade_icon_selected = ExtResource("4_weeiq")
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Player" unique_id=1355100074]
+material = SubResource("ShaderMaterial_7gkqi")
 sprite_frames = SubResource("SpriteFrames_vtaks")
-animation = &"walk"
 
 [node name="Hitbox (Shell)" type="CollisionShape2D" parent="Player" unique_id=385710140]
-position = Vector2(-9, -10)
+position = Vector2(-4, -7)
 scale = Vector2(1, 0.7)
 shape = SubResource("CircleShape2D_ca42v")
 
 [node name="Hitbox (Head)" type="CollisionShape2D" parent="Player" unique_id=1400320592]
-position = Vector2(76, 4)
+position = Vector2(55, 0)
 shape = SubResource("CircleShape2D_rysoc")
 
 [node name="Hitbox (Entities)" type="Area2D" parent="Player" unique_id=2047547949]
 
 [node name="Hitbox (Shell)" type="CollisionShape2D" parent="Player/Hitbox (Entities)" unique_id=195191149]
-position = Vector2(-9, -10)
+position = Vector2(-4, -7)
 scale = Vector2(1, 0.7)
 shape = SubResource("CircleShape2D_ca42v")
 
 [node name="Hitbox (Head)" type="CollisionShape2D" parent="Player/Hitbox (Entities)" unique_id=1449868337]
-position = Vector2(76, 4)
+position = Vector2(55, 0)
 shape = SubResource("CircleShape2D_rysoc")
 
 [node name="Pickup Area" type="Area2D" parent="Player" unique_id=1340889769]
@@ -386,6 +390,8 @@ BULLET = ExtResource("15_pl11u")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Laser" unique_id=814649257]
 shape = SubResource("RectangleShape2D_dinhu")
 script = ExtResource("9_kvpfn")
+
+[node name="Laser Pivot" type="Node2D" parent="Player/(Weapon) Laser" unique_id=516530189]
 
 [node name="(Weapon) Lightning" type="Area2D" parent="Player" unique_id=1238629527]
 visible = false
@@ -419,6 +425,8 @@ z_index = 1
 script = ExtResource("14_bhx41")
 BULLET = ExtResource("15_qnb83")
 upgrade_descriptions = Array[String](["Unlock Slap", "Slap Stun Duration +25%", "Slap Cooldown -25%", "Slap Size +50%"])
+upgrade_icon = ExtResource("25_3x338")
+upgrade_icon_selected = ExtResource("26_1yg85")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Slap" unique_id=286922218]
 shape = SubResource("CircleShape2D_iywne")
@@ -444,7 +452,6 @@ upgrade_icon_selected = ExtResource("32_sxt1d")
 
 [node name="(Minion) Shield" type="Node2D" parent="Player" unique_id=197280404]
 visible = false
-rotation = 3.1415927
 script = ExtResource("12_bt5mj")
 upgrade_descriptions = Array[String](["Unlock Shield", "Shield Speed +50%"])
 upgrade_icon = ExtResource("25_7025r")
@@ -454,14 +461,13 @@ upgrade_icon_selected = ExtResource("31_7nv0b")
 
 [node name="Sprite2D" type="Sprite2D" parent="Player/(Minion) Shield/Area2D" unique_id=305210915]
 z_index = 2
-position = Vector2(153, -3.0000157)
+position = Vector2(113, -3)
 rotation = 1.7453293
-scale = Vector2(0.2, 0.2)
 texture = ExtResource("13_e1j6l")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Minion) Shield/Area2D" unique_id=1838998279]
 z_index = 2
-position = Vector2(150, 0)
+position = Vector2(110, 0)
 shape = SubResource("CapsuleShape2D_pl11u")
 
 [node name="(Group) Bullets" type="Node2D" parent="." unique_id=1494891267]
@@ -482,32 +488,32 @@ FINAL_BOSS = ExtResource("45_mmvbu")
 limit_enabled = false
 
 [node name="Timer Bar" type="Node2D" parent="GameManager/Camera" unique_id=1546100865]
+position = Vector2(0, 20)
 
 [node name="TimeBar" type="TextureProgressBar" parent="GameManager/Camera/Timer Bar" unique_id=735849424]
-offset_left = -329.59
-offset_top = -553.0
-offset_right = 1043.41
-offset_bottom = -83.0
-scale = Vector2(0.455, 0.495)
+offset_left = -343.25
+offset_top = -605.0
+offset_right = 1029.75
+offset_bottom = -135.0
+scale = Vector2(0.5, 0.5)
 step = 0.01
 value = 100.0
 texture_progress = ExtResource("38_o8ni1")
 
 [node name="TimeBorder" type="Sprite2D" parent="GameManager/Camera/Timer Bar" unique_id=146856491]
 position = Vector2(0, -435)
-scale = Vector2(0.47765958, 0.4776596)
-texture = ExtResource("38_pf7vy")
+texture = ExtResource("52_3x338")
 
 [node name="Clock" type="Label" parent="GameManager/Camera" unique_id=1533942345]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -96.0
-offset_top = -540.0
-offset_right = 95.0
-offset_bottom = -408.0
+offset_left = -95.5
+offset_top = -443.0
+offset_right = 95.5
+offset_bottom = -311.0
 grow_horizontal = 2
-text = "9:57"
+text = "9:59"
 label_settings = SubResource("LabelSettings_gee14")
 horizontal_alignment = 1
 vertical_alignment = 1

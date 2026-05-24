@@ -1,6 +1,5 @@
 extends Area2D
 
-
 @export var unlocked: bool = false
 @export var upgrade_descriptions: Array[String]
 @export var upgrade_icon: Resource
@@ -9,6 +8,7 @@ extends Area2D
 @export var BASE_DAMAGE: float = 0.25
 @export var COOLDOWN: float = 10.0
 @export var BULLET: Resource
+@export var BULLET_OFFSET_X: float = 80.0
 @export var LIFETIME: float = 5.0
 @export var BASE_KNOCKBACK: float = 50
 @export var DAMAGE_TIME: float = 0.50
@@ -46,8 +46,8 @@ func _process(delta):
 			damage = BASE_DAMAGE
 		
 		else:
-			var rotation_dir = angle_difference(bullet.rotation, (get_global_mouse_position() - global_position).angle())
-			bullet.rotation += rotation_dir if abs(rotation_dir) < ROTATION_SPEED else ROTATION_SPEED * (0.0 if rotation_dir == 0.0 else rotation_dir / abs(rotation_dir))
+			var rotation_dir = angle_difference($"Laser Pivot".rotation, (get_global_mouse_position() - global_position).angle())
+			$"Laser Pivot".rotation += rotation_dir if abs(rotation_dir) < ROTATION_SPEED else ROTATION_SPEED * (0.0 if rotation_dir == 0.0 else rotation_dir / abs(rotation_dir))
 			bullet.scale.y = size_mod
 			bullet.visible = true
 			
@@ -79,8 +79,10 @@ func _process(delta):
 	elif b_cooldown <= 0.0 and bullet == null:
 		AudioManager.laser.play()
 		bullet = BULLET.instantiate()
-		add_child(bullet)
-		bullet.rotation = (get_global_mouse_position() - global_position).angle()
+		$"Laser Pivot".rotation = 0
+		$"Laser Pivot".add_child(bullet)
+		bullet.global_position = $"Laser Pivot".global_position + Vector2(BULLET_OFFSET_X, 0)
+		$"Laser Pivot".rotation = (get_global_mouse_position() - global_position).angle()
 		b_lifetime = LIFETIME
 		b_cooldown = COOLDOWN
 
