@@ -17,7 +17,7 @@ var stun_timer: float = 0.0 # Seconds
 var dying: bool = false
 @export var DYING_TIME: float = 0.5
 var dying_timer: float = DYING_TIME
-@export var EXP_AMOUNT: int = 1
+@export var EXP_AMOUNT: int = 2
 
 # Other enemies may not have these variables:
 @export var RUNAWAY_RANGE: float = 350.0

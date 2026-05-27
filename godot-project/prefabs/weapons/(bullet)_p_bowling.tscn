@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dhsod5pposnlu"]
+
+[ext_resource type="Texture2D" uid="uid://d4jh74m7j4o07" path="res://assets/Turtle/Direct Attacks/Bowling Ball/Weapon Bowling Ball roll_1.png" id="1_uf0tn"]
+[ext_resource type="Texture2D" uid="uid://b4nalvglla0ov" path="res://assets/Turtle/Direct Attacks/Bowling Ball/Weapon Bowling Ball roll_2.png" id="2_o7rmo"]
+[ext_resource type="Texture2D" uid="uid://e3e4syt7ob08" path="res://assets/Turtle/Direct Attacks/Bowling Ball/Weapon Bowling Ball roll_3.png" id="3_dgms5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lmy6u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_uf0tn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_o7rmo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_dgms5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_njw5c"]
+radius = 120.06665
+
+[node name="Fist" type="Area2D" unique_id=238644860]
+scale = Vector2(0.5, 0.5)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=521042213]
+position = Vector2(14, 36)
+scale = Vector2(0.25, 0.25)
+sprite_frames = SubResource("SpriteFrames_lmy6u")
+autoplay = "default"
+frame_progress = 0.8145642
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=468740506]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_njw5c")

@@ -9,23 +9,23 @@
 [ext_resource type="Texture2D" uid="uid://py7xx4octhbf" path="res://assets/UI/Upgrade Icons/(icon)_Basic.png" id="3_v2yb1"]
 [ext_resource type="Texture2D" uid="uid://vg1j3cyln3qy" path="res://assets/Turtle/TurtWalk2.png" id="4_0tnpc"]
 [ext_resource type="Texture2D" uid="uid://b7oa2recvmaoo" path="res://assets/UI/Upgrade Icons/Ability Icons Clicked/Basic Clicked.png" id="4_weeiq"]
-[ext_resource type="Script" uid="uid://btydxe3n7bvhi" path="res://scripts/Weapons/(weapon)_punch.gd" id="7_kvpfn"]
+[ext_resource type="Script" uid="uid://btydxe3n7bvhi" path="res://scripts/weapons/(weapon)_punch.gd" id="7_kvpfn"]
 [ext_resource type="Script" uid="uid://bstu2wfytyykc" path="res://scripts/game_manager.gd" id="9_0tnpc"]
-[ext_resource type="Script" uid="uid://cjnrhr8lp15vt" path="res://scripts/Weapons/(weapon)_lightning.gd" id="9_dinhu"]
+[ext_resource type="Script" uid="uid://cjnrhr8lp15vt" path="res://scripts/weapons/(weapon)_lightning.gd" id="9_dinhu"]
 [ext_resource type="Script" uid="uid://c32p66nqvhstf" path="res://scripts/special_screen_shape.gd" id="9_kvpfn"]
-[ext_resource type="PackedScene" uid="uid://csgsdh6itco8" path="res://prefabs/Weapons/(bullet)_punch.tscn" id="9_kvuet"]
+[ext_resource type="PackedScene" uid="uid://csgsdh6itco8" path="res://prefabs/weapons/(bullet)_punch.tscn" id="9_kvuet"]
 [ext_resource type="Texture2D" uid="uid://cjob8cu5mmcmy" path="res://assets/UI/Upgrade Icons/(icon)_Laser.png" id="9_nepv3"]
-[ext_resource type="PackedScene" uid="uid://w0qokvo1f2gx" path="res://prefabs/Weapons/(bullet)_lightning.tscn" id="10_dinhu"]
+[ext_resource type="PackedScene" uid="uid://w0qokvo1f2gx" path="res://prefabs/weapons/(bullet)_lightning.tscn" id="10_dinhu"]
 [ext_resource type="Texture2D" uid="uid://bm3ktw4apr5m8" path="res://assets/UI/Upgrade Icons/Ability Icons Clicked/LAAZAA Clicked.png" id="10_l6q63"]
-[ext_resource type="Script" uid="uid://d3diaewcyfj0l" path="res://scripts/Weapons/(minion)_shield.gd" id="12_bt5mj"]
+[ext_resource type="Script" uid="uid://d3diaewcyfj0l" path="res://scripts/weapons/(minion)_shield.gd" id="12_bt5mj"]
 [ext_resource type="Texture2D" uid="uid://5nodvhabq0mg" path="res://assets/Turtle/Minions/ShieldTurtle.png" id="13_e1j6l"]
-[ext_resource type="Script" uid="uid://ba7xodmvwpqyv" path="res://scripts/Weapons/(weapon)_flamestarter.gd" id="14_264po"]
+[ext_resource type="Script" uid="uid://ba7xodmvwpqyv" path="res://scripts/weapons/(weapon)_flamestarter.gd" id="14_264po"]
 [ext_resource type="Texture2D" uid="uid://d0tnx4q4sieti" path="res://assets/UI/Upgrade Icons/(icon)_Lightning.png" id="14_7025r"]
-[ext_resource type="Script" uid="uid://djppaegdlouul" path="res://scripts/Weapons/(weapon)_slap.gd" id="14_bhx41"]
-[ext_resource type="Script" uid="uid://cl403en7htnjl" path="res://scripts/Weapons/(weapon)_laser.gd" id="14_e1j6l"]
-[ext_resource type="PackedScene" uid="uid://ntiukiv8fvqy" path="res://prefabs/Weapons/(bullet)_flamestarter.tscn" id="15_1kice"]
-[ext_resource type="PackedScene" uid="uid://le1ukfjocokb" path="res://prefabs/Weapons/(bullet)_laser.tscn" id="15_pl11u"]
-[ext_resource type="PackedScene" uid="uid://bjkelkyklrwiy" path="res://prefabs/Weapons/(bullet)_slap.tscn" id="15_qnb83"]
+[ext_resource type="Script" uid="uid://djppaegdlouul" path="res://scripts/weapons/(weapon)_slap.gd" id="14_bhx41"]
+[ext_resource type="Script" uid="uid://cl403en7htnjl" path="res://scripts/weapons/(weapon)_laser.gd" id="14_e1j6l"]
+[ext_resource type="PackedScene" uid="uid://ntiukiv8fvqy" path="res://prefabs/weapons/(bullet)_flamestarter.tscn" id="15_1kice"]
+[ext_resource type="PackedScene" uid="uid://le1ukfjocokb" path="res://prefabs/weapons/(bullet)_laser.tscn" id="15_pl11u"]
+[ext_resource type="PackedScene" uid="uid://bjkelkyklrwiy" path="res://prefabs/weapons/(bullet)_slap.tscn" id="15_qnb83"]
 [ext_resource type="Texture2D" uid="uid://dm1vxwh47fjch" path="res://assets/UI/Upgrade Icons/Ability Icons Clicked/Lightnin Clicked.png" id="16_mmvbu"]
 [ext_resource type="Texture2D" uid="uid://d1nyiljcd5xns" path="res://assets/UI/Upgrade Icons/(icon)_Punch.png" id="17_m4url"]
 [ext_resource type="PackedScene" uid="uid://fnhiviwbuuj8" path="res://prefabs/audio_manager.tscn" id="18_ssvqc"]
@@ -35,15 +35,19 @@
 [ext_resource type="Texture2D" uid="uid://cq8d12gsap7yg" path="res://assets/UI/Upgrade Icons/Ability Icons Clicked/Punch Clicked.png" id="20_weeiq"]
 [ext_resource type="PackedScene" uid="uid://dq43dbtcuu4m" path="res://prefabs/Enemies/Regular/(enemy)_turtle.tscn" id="21_bhx41"]
 [ext_resource type="PackedScene" uid="uid://dw20u1c5v07qr" path="res://prefabs/Enemies/Elite/(boss)_raccoon.tscn" id="22_qnb83"]
+[ext_resource type="Script" uid="uid://b2evnncvptywx" path="res://scripts/weapons/(weapon)_bowling.gd" id="23_1yg85"]
 [ext_resource type="PackedScene" uid="uid://bsjban1wyxwl4" path="res://prefabs/Enemies/Regular/(enemy)_raccoon_small.tscn" id="23_pl11u"]
 [ext_resource type="Texture2D" uid="uid://bmxp74jc2q5bw" path="res://assets/UI/Upgrade Icons/(icon)_Flamestarter.png" id="23_pr1ej"]
+[ext_resource type="PackedScene" uid="uid://dhsod5pposnlu" path="res://prefabs/weapons/(bullet)_p_bowling.tscn" id="24_2gnni"]
 [ext_resource type="Texture2D" uid="uid://h2a06nd3krx3" path="res://assets/UI/Upgrade Icons/(icon)_Slap.png" id="25_3x338"]
+[ext_resource type="Texture2D" uid="uid://b8t302tafcdoh" path="res://assets/UI/Upgrade Icons/(icon)_Strike.png" id="25_4nbsr"]
 [ext_resource type="Texture2D" uid="uid://soojs7y1cfdn" path="res://assets/UI/Upgrade Icons/(icon)_Shield.png" id="25_7025r"]
 [ext_resource type="PackedScene" uid="uid://cfdlk4r0ys684" path="res://prefabs/Enemies/Elite/(boss)_crab.tscn" id="25_qnb83"]
 [ext_resource type="Texture2D" uid="uid://dwxgvse6ih8aw" path="res://assets/UI/Upgrade Icons/Ability Icons Clicked/Slap Clicked.png" id="26_1yg85"]
+[ext_resource type="Texture2D" uid="uid://c0og481igkxj0" path="res://assets/UI/Upgrade Icons/Ability Icons Clicked/Strike Clicked.png" id="26_fkywm"]
 [ext_resource type="Texture2D" uid="uid://dpt2vuiqll18q" path="res://assets/UI/Upgrade Icons/Ability Icons Clicked/Flame Starter Clicked.png" id="28_uxocx"]
 [ext_resource type="Script" uid="uid://cypit3nrwog1x" path="res://scripts/level_up.gd" id="29_sgl2t"]
-[ext_resource type="Script" uid="uid://cxx5npg6645rl" path="res://scripts/Weapons/(weapon)_turtle_sama.gd" id="30_uxocx"]
+[ext_resource type="Script" uid="uid://cxx5npg6645rl" path="res://scripts/weapons/(weapon)_turtle_sama.gd" id="30_uxocx"]
 [ext_resource type="Texture2D" uid="uid://b7a6bfks24i60" path="res://assets/UI/Upgrade Icons/(icon)_BLANK.png" id="30_wljb1"]
 [ext_resource type="Texture2D" uid="uid://o04sbbcfx7p7" path="res://assets/UI/Upgrade Icons/Ability Icons Clicked/Shield Clicked.png" id="31_7nv0b"]
 [ext_resource type="Texture2D" uid="uid://cs4hrggtlw6bx" path="res://assets/UI/Upgrade Icons/Turtle-Sama Summon.png" id="31_o8oq8"]
@@ -71,6 +75,7 @@
 [ext_resource type="Texture2D" uid="uid://c1jvifyu8r25a" path="res://assets/UI/BADDY INBOUND (Elite warning).png" id="50_i4re6"]
 [ext_resource type="Texture2D" uid="uid://bdvrgdojythmx" path="res://assets/UI/Timer UI.png" id="52_3x338"]
 [ext_resource type="Texture2D" uid="uid://bdfwv3fyosv7l" path="res://assets/UI/CONFIRM.png" id="53_bk1p3"]
+[ext_resource type="Texture2D" uid="uid://ch0v563f34big" path="res://assets/Enemies/Elite/Dumpster King/Health Bar/Dumpster_King_Health-Indicator.png" id="56_s0g06"]
 [ext_resource type="Texture2D" uid="uid://beh6cmgrmiyj6" path="res://assets/UI/Cursor.png" id="58_yd4ix"]
 [ext_resource type="Texture2D" uid="uid://ce67hotklbs52" path="res://assets/UI/PAUSE.png" id="62_sxt1d"]
 [ext_resource type="Texture2D" uid="uid://bghb24juyw7au" path="res://assets/UI/Win Screen/WinScreen0001.png" id="70_753oq"]
@@ -142,8 +147,6 @@ font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i4re6"]
 bg_color = Color(0.44313726, 0.8745098, 0.99607843, 1)
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fedci"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0sl42"]
 animations = [{
@@ -419,6 +422,19 @@ upgrade_icon_selected = ExtResource("20_weeiq")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Punch" unique_id=1221786466]
 shape = SubResource("CircleShape2D_iywne")
 
+[node name="(Weapon) Bowling" type="Area2D" parent="Player" unique_id=27759476]
+visible = false
+z_index = 2
+script = ExtResource("23_1yg85")
+BULLET = ExtResource("24_2gnni")
+unlocked = true
+upgrade_descriptions = Array[String](["Unlock Bowling Ball", "Bowling Ball Damage + 0.5", "Bowling Ball Speed +25%", "Bowling Ball Bounces + 1"])
+upgrade_icon = ExtResource("25_4nbsr")
+upgrade_icon_selected = ExtResource("26_fkywm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/(Weapon) Bowling" unique_id=1950602155]
+shape = SubResource("CircleShape2D_iywne")
+
 [node name="(Weapon) Slap" type="Area2D" parent="Player" unique_id=1180534717]
 visible = false
 z_index = 1
@@ -554,7 +570,7 @@ offset_right = 1905.0
 offset_bottom = 1094.0
 scale = Vector2(0.253, 0.253)
 value = 100.0
-texture_progress = SubResource("CompressedTexture2D_fedci")
+texture_progress = ExtResource("56_s0g06")
 
 [node name="HillBillyBar" type="TextureProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=1852842509]
 visible = false
@@ -570,7 +586,7 @@ texture_progress = ExtResource("42_bk1p3")
 position = Vector2(-10, 434)
 scale = Vector2(0.25, 0.25)
 sprite_frames = SubResource("SpriteFrames_0sl42")
-animation = &"hill_billy"
+animation = &"raccoon"
 
 [node name="EelBar" type="TextureProgressBar" parent="GameManager/Camera/BossHealthBar" unique_id=1354623048]
 visible = false
@@ -748,7 +764,7 @@ vertical_alignment = 1
 [node name="[Level Up]" type="Node2D" parent="GameManager/Camera" unique_id=1735115605 node_paths=PackedStringArray("upgradeables", "upgrade_buttons")]
 visible = false
 script = ExtResource("29_sgl2t")
-upgradeables = [NodePath("../../../Player"), NodePath("../../../Player/(Weapon) Laser"), NodePath("../../../Player/(Weapon) Lightning"), NodePath("../../../Player/(Weapon) Punch"), NodePath("../../../Player/(Weapon) Slap"), NodePath("../../../Player/(Weapon) Flamestarter"), NodePath("../../../Player/(Minion) Shield"), NodePath("../../../Player/(Weapon) Turtle-Sama")]
+upgradeables = [NodePath("../../../Player"), NodePath("../../../Player/(Weapon) Laser"), NodePath("../../../Player/(Weapon) Lightning"), NodePath("../../../Player/(Weapon) Punch"), NodePath("../../../Player/(Weapon) Slap"), NodePath("../../../Player/(Weapon) Flamestarter"), NodePath("../../../Player/(Minion) Shield"), NodePath("../../../Player/(Weapon) Turtle-Sama"), NodePath("../../../Player/(Weapon) Bowling")]
 upgrade_buttons = [NodePath("Option #1"), NodePath("Option #2"), NodePath("Option #3")]
 
 [node name="ColorRect" type="ColorRect" parent="GameManager/Camera/[Level Up]" unique_id=512252080]

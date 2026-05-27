@@ -15,7 +15,7 @@ const DAMAGE_PARTICLE = preload("uid://dum7dfhvymdrp")
 
 @export var CAMERA_LIMIT: float = 1600.0
 
-@export var WAVE_TIME: float = 3.0 # seconds
+@export var WAVE_TIME: float = 150.0 # seconds
 @export var NUM_WAVES: int = 4
 @export var SIZE_LIMIT: float = 7.5 # limit for particle size
 var game_timer: float = 0.0
