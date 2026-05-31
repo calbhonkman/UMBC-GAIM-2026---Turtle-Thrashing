@@ -117,7 +117,7 @@ func get_upgrade_description(index: int):
 		0:
 			desc += "[i][color=#8f8f8f]You can do this all day.[/color][/i]"
 			desc += "[br]Increases Max Health ([color=#8FFFFF]" + str(MAX_HEALTH) + " -> " + str(MAX_HEALTH + 1) + "[/color])."
-			desc += "[br]Restores Health to Max ([color=#8FFFFF]" + str(MAX_HEALTH + 1) + "[/color])."
+			desc += "[br]Restores Health by 1 ([color=#8FFFFF]" + str(health + 1) + "[/color])."
 		1:
 			desc += "[i][color=#8f8f8f]The force is stronger with this one.[/color][/i]"
 			desc += "[br]Increases Pickup Range ([color=#8FFFFF]" + str(round(pickup_range_mod * 100) / 100.0) + "x -> " + str(round(pickup_range_mod * 1.25 * 100) / 100.0) + "x[/color])."
@@ -128,7 +128,7 @@ func upgrade(index: int):
 	match index:
 		0:
 			MAX_HEALTH += 1
-			health = MAX_HEALTH
+			health += 1
 		1:
 			pickup_area.get_child(0).shape.radius /= pickup_range_mod
 			pickup_range_mod *= 1.25

@@ -15,6 +15,8 @@ const DAMAGE_PARTICLE = preload("uid://dum7dfhvymdrp")
 
 @export var CAMERA_LIMIT: float = 1600.0
 
+@export var TIMER_DECELERATION = [25.0, 25.0, 30.0, 60.0]
+
 @export var WAVE_TIME: float = 150.0 # seconds
 @export var NUM_WAVES: int = 4
 @export var SIZE_LIMIT: float = 7.5 # limit for particle size
@@ -110,7 +112,7 @@ func _process(delta):
 		var timer_minutes = str(int(clock_time / 60.0))
 		var timer_seconds = ("0" if (fmod(clock_time, 60.0) < 10) else "") + str(int(fmod(clock_time, 60.0)))
 		clock.text = timer_minutes + ":" + timer_seconds
-		time_bar.value =  (game_timer / (WAVE_TIME * NUM_WAVES)) * 100
+		time_bar.value =  (game_timer / ((WAVE_TIME * NUM_WAVES) + TIMER_DECELERATION[current_wave-1])) * 100
 		
 		$"/root/Node2D/Island/Grass (End)".modulate = Color(1,1,1,clampf(game_timer / (WAVE_TIME * NUM_WAVES), 0.0, 1.0))
 		
@@ -210,6 +212,6 @@ func create_damage_particle(dmg_position, damage):
 
 func create_text_particle(txt_position, txt: String, color: String):
 	var new_text_particle = DAMAGE_PARTICLE.instantiate()
-	add_child(new_text_particle)
+	enemies_group.add_child(new_text_particle)
 	new_text_particle.global_position = txt_position - (new_text_particle.get_size() / 2.0)
 	new_text_particle.text = "[font_size=" + str(32.0) + "][color=" + color + "][b][i]" + txt + "[/i][/b][/color][/font_size]"

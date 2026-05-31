@@ -15,6 +15,7 @@ extends Area2D
 @export var BASE_BOUNCES: int = 1
 @export var BASE_DELAY: float = 0.5
 @export var KNOCKBACK: float = 50.0
+@export var POS_OFFSET: float = 25.0
 
 var speed = 0.0
 var damage = 0.0
@@ -73,12 +74,12 @@ func _process(delta):
 			b_bounces[i] -= 1
 			b_prev[i].clear()
 			b_direction[i].x *= -1
-			bullets[i].global_position.x = cam_left if bullets[i].global_position.x <= cam_left else cam_right
+			bullets[i].global_position.x = cam_left + POS_OFFSET if bullets[i].global_position.x <= cam_left else cam_right - POS_OFFSET
 		elif bullets[i].global_position.y <= cam_up or bullets[i].global_position.y >= cam_down:
 			b_bounces[i] -= 1
 			b_prev[i].clear()
 			b_direction[i].y *= -1
-			bullets[i].global_position.y = cam_up if bullets[i].global_position.y <= cam_up else cam_down
+			bullets[i].global_position.y = cam_up + POS_OFFSET if bullets[i].global_position.y <= cam_up else cam_down - POS_OFFSET
 			
 		bullets[i].global_position = b_position[i] + b_direction[i] * delta * speed
 		b_position[i] = bullets[i].global_position

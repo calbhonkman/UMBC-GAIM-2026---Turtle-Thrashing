@@ -81,7 +81,7 @@ func get_upgrade_description(index: int):
 			desc += "[br]Increases Lightning Strikes ([color=#8FFFFF]" + str(AMOUNT) + " -> " + str(AMOUNT + 1) + "[/color])."
 		2:
 			desc += "[i][color=#8f8f8f]Your Lightning now does more damage.[/color][/i]"
-			desc += "[br]Increases Lightning Damage ([color=#8FFFFF]" + str(round(damage * 100) / 100.0) + " -> " + str(round(damage * 1.5 * 100) / 100.0) + "[/color])."
+			desc += "[br]Increases Lightning Damage ([color=#8FFFFF]" + str(round(damage * 100) / 100.0) + " -> " + str(round((damage + 2) * 100) / 100.0) + "[/color])."
 		3:
 			desc += "[i][color=#8f8f8f]Your Lightning now strikes a larger area.[/color][/i]"
 			desc += "[br]Increases Lightning Strike Size ([color=#8FFFFF]" + str(round(size_mod * 100) / 100.0) + "x -> " + str(round(size_mod * 1.5 * 100) / 100.0) + "x[/color])."
@@ -99,6 +99,6 @@ func upgrade(index: int):
 			b_target.append(null)
 			b_position.append(null)
 		2:
-			damage *= 1.5
+			damage += 2
 		3:
 			size_mod *= 1.5

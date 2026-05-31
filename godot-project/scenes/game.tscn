@@ -427,7 +427,6 @@ visible = false
 z_index = 2
 script = ExtResource("23_1yg85")
 BULLET = ExtResource("24_2gnni")
-unlocked = true
 upgrade_descriptions = Array[String](["Unlock Bowling Ball", "Bowling Ball Damage + 0.5", "Bowling Ball Speed +25%", "Bowling Ball Bounces + 1"])
 upgrade_icon = ExtResource("25_4nbsr")
 upgrade_icon_selected = ExtResource("26_fkywm")
