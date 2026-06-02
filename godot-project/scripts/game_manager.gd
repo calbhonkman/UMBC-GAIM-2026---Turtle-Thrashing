@@ -15,7 +15,7 @@ const DAMAGE_PARTICLE = preload("uid://dum7dfhvymdrp")
 
 @export var CAMERA_LIMIT: float = 1600.0
 
-@export var TIMER_DECELERATION = [25.0, 25.0, 30.0, 60.0]
+@export var TIMER_DECELERATION = [50.0, 25.0, 25.0, 30.0]
 
 @export var WAVE_TIME: float = 150.0 # seconds
 @export var NUM_WAVES: int = 4
@@ -57,9 +57,10 @@ func _ready():
 func _process(delta):
 	exp_hue = wrapf(exp_hue + (EXP_HUE_SPEED * delta), 0.0, 1.0)
 	
-	if not AudioManager.music1.playing and current_wave < 3:
+	if not AudioManager.music1.playing and (current_wave % NUM_WAVES == 2 or current_wave % NUM_WAVES == 1):
 		AudioManager.music1.play()
-	elif not AudioManager.music2.playing and current_wave >= 3:
+		AudioManager.music2.stop()
+	elif not AudioManager.music2.playing and (current_wave % NUM_WAVES == 0 or current_wave % NUM_WAVES == 3):
 		AudioManager.music1.stop()
 		AudioManager.music2.play()
 	
@@ -96,23 +97,29 @@ func _process(delta):
 	if boss_fight and boss == null:
 		pausable = false
 		get_tree().paused = true
-		if game_timer >= WAVE_TIME * NUM_WAVES:
+		if game_timer >= WAVE_TIME * NUM_WAVES and not GameCustomizer.endless:
 			screen_win.visible = true
 			AudioManager.levelUp.play()
 		else:
 			AudioManager.pause_all_sounds()
 			screen_level.prepare_to_upgrade()
+		if current_wave % NUM_WAVES == 0 and GameCustomizer.endless:
+			remaining_elites = ELITES.duplicate()
 		current_wave += 1
 		boss_fight = false
 		bossHealthBar.visible = false
 	
 	if not get_tree().paused:
 		game_timer = (round(game_timer / WAVE_TIME) * WAVE_TIME) if boss_fight else game_timer + delta
-		var clock_time = clampf((WAVE_TIME * NUM_WAVES) - game_timer, 0.0, WAVE_TIME * NUM_WAVES)
+		var clock_time 
+		if GameCustomizer.endless:
+			clock_time = game_timer
+		else:
+			clock_time = clampf((WAVE_TIME * NUM_WAVES) - game_timer, 0.0, WAVE_TIME * NUM_WAVES)
 		var timer_minutes = str(int(clock_time / 60.0))
 		var timer_seconds = ("0" if (fmod(clock_time, 60.0) < 10) else "") + str(int(fmod(clock_time, 60.0)))
 		clock.text = timer_minutes + ":" + timer_seconds
-		time_bar.value =  (game_timer / ((WAVE_TIME * NUM_WAVES) + TIMER_DECELERATION[current_wave-1])) * 100
+		time_bar.value =  (game_timer / ((WAVE_TIME * NUM_WAVES) + TIMER_DECELERATION[current_wave % NUM_WAVES])) * 100
 		
 		$"/root/Node2D/Island/Grass (End)".modulate = Color(1,1,1,clampf(game_timer / (WAVE_TIME * NUM_WAVES), 0.0, 1.0))
 		
@@ -121,13 +128,13 @@ func _process(delta):
 			AudioManager.eliteWarning.play()
 		
 		elif game_timer >= (WAVE_TIME * current_wave) and boss == null:
-			boss = spawn(remaining_elites.pop_at(randi_range(0, remaining_elites.size()-1))) if current_wave < 4 else spawn(FINAL_BOSS)
+			boss = spawn(remaining_elites.pop_at(randi_range(0, remaining_elites.size()-1))) if current_wave % 4 != 0 else spawn(FINAL_BOSS)
 			boss_fight = true
 			bossHealthBar.visible = true
 			bossHealthBar.newElite(boss)
 			elite_warning.visible = false
 		
-		if not boss_fight:
+		if not boss_fight or GameCustomizer.difficulty == "hard":
 			spawn_timer += delta
 		if spawn_timer >= next_spawn_time:
 			if spawn_counter % 60 == 0:
@@ -141,7 +148,7 @@ func _process(delta):
 					spawn(ENEMIES[5]) # Seagull
 				if current_wave == 3:
 					spawn(ENEMIES[1]) # Snake
-				if current_wave == 4:
+				if current_wave >= 4:
 					spawn(ENEMIES[4]) # Bush
 			if current_wave >= 2 and spawn_counter % 15 == 0:
 				if current_wave == 2:
@@ -150,21 +157,21 @@ func _process(delta):
 					spawn(ENEMIES[5]) # Seagull
 					spawn(ENEMIES[5]) # Seagull
 					spawn(ENEMIES[5]) # Seagull
-				if current_wave == 4:
+				if current_wave >= 4:
 					spawn(ENEMIES[1]) # Snake
 			elif current_wave >= 2 and spawn_counter % 10 == 0:
 				if current_wave == 2:
 					spawn(ENEMIES[2]) # Turtle
 				if current_wave == 3:
 					spawn(ENEMIES[6]) # Raccoon
-				if current_wave == 4:
+				if current_wave >= 4:
 					spawn(ENEMIES[5]) # Seagull
 					spawn(ENEMIES[5]) # Seagull
 					spawn(ENEMIES[5]) # Seagull
 			elif current_wave >= 3 and spawn_counter % 7 == 0:
 				if current_wave == 3:
 					spawn(ENEMIES[2]) # Turtle
-				if current_wave == 4:
+				if current_wave >= 4:
 					spawn(ENEMIES[6]) # Raccoon
 			elif current_wave >= 4 and spawn_counter % 5 == 0:
 				spawn(ENEMIES[2]) # Turtle

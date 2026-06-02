@@ -18,6 +18,17 @@ var group := ButtonGroup.new()
 func _ready():
 	for button in upgrade_buttons:
 		button.button_group = group
+	var i = 0
+	while upgradeables.size() != GameCustomizer.upgrades.size():
+		if upgradeables[i].name in GameCustomizer.upgrades:
+			i += 1
+		else:
+			upgradeables.remove_at(i)
+	for j in range(len(upgradeables)):
+		if upgradeables[j].name == GameCustomizer.upgrades[GameCustomizer.default_unlocked]:
+			upgradeables[j].upgrade(0)
+			break
+		
 
 func _process(_delta):
 	if not ready_to_upgrade:
@@ -51,10 +62,14 @@ func prepare_to_upgrade():
 func select_upgrades():
 	selected_upgrades = []
 	var available_upgradeables = upgradeables.duplicate()
-	for i in range(min(available_upgradeables.size(), num_upgrade_option)):
+	for i in range(num_upgrade_option):
 		var rand_index = randi_range(0, available_upgradeables.size()-1)
-		var rand_upgradeable = available_upgradeables.pop_at(rand_index)
-		selected_upgrades.append(rand_upgradeable.get_random_upgrade(upgradeables.find(rand_upgradeable)))
+		#var rand_upgradeable
+		if GameCustomizer.upgrades.size() >= 3:
+			var rand_upgradeable = available_upgradeables.pop_at(rand_index)
+			selected_upgrades.append(rand_upgradeable.get_random_upgrade(upgradeables.find(rand_upgradeable)))
+		else:
+			selected_upgrades.append(available_upgradeables[rand_index].get_random_upgrade(upgradeables.find(available_upgradeables[rand_index])))
 
 func _on_confirm_pressed():
 	if chosen_upgrade != null:

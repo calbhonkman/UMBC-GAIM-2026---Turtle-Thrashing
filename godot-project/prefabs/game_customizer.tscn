@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bjmp355go7gyg"]
+
+[ext_resource type="Script" uid="uid://bnex21cksjkgn" path="res://prefabs/game_customizer.gd" id="1_a28k2"]
+
+[node name="GameCustomizer" type="Node2D" unique_id=1212360203]
+script = ExtResource("1_a28k2")
+difficulty = "hard"
+endless = true
+upgrades = Array[String](["Player", "(Weapon) Bowling", "(Weapon) Turtle-Sama"])

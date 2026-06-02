@@ -414,7 +414,6 @@ visible = false
 z_index = 2
 script = ExtResource("7_kvpfn")
 BULLET = ExtResource("9_kvuet")
-unlocked = true
 upgrade_descriptions = Array[String](["Unlock Punch", "Punch Damage +50%", "Punch Cooldown -25%", "Punch Size +50%"])
 upgrade_icon = ExtResource("17_m4url")
 upgrade_icon_selected = ExtResource("20_weeiq")

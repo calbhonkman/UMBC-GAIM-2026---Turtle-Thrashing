@@ -52,7 +52,8 @@ func upgrade(index: int):
 			unlocked = true 
 			visible = true 
 			minion = TURTLE_SAMA.instantiate() 
-			get_tree().current_scene.add_child(minion)
+			#get_tree().current_scene.add_child(minion)
+			get_tree().current_scene.add_child.call_deferred(minion)
 			minion.global_position = player.global_position
 		1: 
 			damage += 0.5
